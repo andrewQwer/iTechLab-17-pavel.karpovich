@@ -3,6 +3,11 @@
     src: url(fonts/FjallaOne-Regular.otf);
 }
 
+@font-face {
+    font-family: Lato;
+    src: url(fonts/Lato-Regular.ttf);
+}
+
 * {
     margin: 0;
 }
@@ -53,7 +58,7 @@ header .navigation-item :hover {
     height: 560px;
 }
 
-.banner .container{
+.banner .container {
     margin: 0 auto;
     width: 1170px;
     height: 560px;
@@ -77,6 +82,7 @@ header .navigation-item :hover {
     height: 70px;
     width: 34px;
 }
+
 .banner .info {
     padding: 290px 0px 0px 0px;
     height: 270px;
@@ -124,3 +130,68 @@ header .navigation-item :hover {
     padding: 23px 0px 0px 0px;
     letter-spacing: 2.8px;
 }
+
+.main .row-1 {
+    height: 277px;
+    width: 100%;
+    background: #e7e7e7;
+}
+
+.main .container {
+    margin: 0 auto;
+    width: 1170px;
+}
+
+.main .column {
+    display: inline-block;
+    width: 33%;
+    height: 121px;
+    padding: 80px 0px 76px 0px;
+}
+
+.main .icon-substrate {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background: #e84c3d;
+    display: table;
+    float: left;
+}
+
+.main .icon {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+}
+
+.main .column-info {
+    margin: 0px 24px 0px 24px;
+    float: right;
+    width: 268px;
+}
+
+.main .column-info-name {
+    font-family: Fjalla;
+    font-size: 21px;
+    color: #000;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+}
+
+.main .column-info-description {
+    font-family: Lato;
+    font-size: 14px;
+    color: #666666;
+    padding: 24px 0px 0px 0px;
+}
+
+.main .column-info-link {
+    text-decoration: none;
+}
+
+.main .column-info-link:after {
+    color: #e84c3d;
+    content: "=> more";
+}
+
