@@ -1,11 +1,21 @@
 @font-face {
     font-family: Fjalla;
-    src: url(fonts/FjallaOne-Regular.otf);
+    src: url(../fonts/FjallaOne-Regular.otf);
 }
 
 @font-face {
-    font-family: Lato;
-    src: url(fonts/Lato-Regular.ttf);
+    font-family: Lato-Regular;
+    src: url(../fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lato-Bold;
+    src: url(../fonts/Lato-Bold.ttf);
+}
+
+@font-face {
+    font-family: Oswald-Regular;
+    src: url(../fonts/Oswald-Regular.ttf)
 }
 
 * {
@@ -54,7 +64,7 @@ header .navigation-item :hover {
 }
 
 .banner {
-    background-image: url("img/banner-bg.png");
+    background-image: url("../img/banner-bg.png");
     height: 560px;
 }
 
@@ -71,14 +81,14 @@ header .navigation-item :hover {
 
 .banner .cir-left {
     float: left;
-    background: url("img/banner-cir-left.png") no-repeat;
+    background: url("../img/banner-cir-left.png") no-repeat;
     height: 70px;
     width: 34px;
 }
 
 .banner .cir-right {
     float: right;
-    background: url("img/banner-cir-right.png") no-repeat;
+    background: url("../img/banner-cir-right.png") no-repeat;
     height: 70px;
     width: 34px;
 }
@@ -180,7 +190,7 @@ header .navigation-item :hover {
 }
 
 .main .column-info-description {
-    font-family: Lato;
+    font-family: Lato-Regular;
     font-size: 14px;
     color: #666666;
     padding: 24px 0px 0px 0px;
@@ -194,4 +204,82 @@ header .navigation-item :hover {
     color: #e84c3d;
     content: "=> more";
 }
+
+.main .row-2 {
+    padding: 80px 0px 80px 0px;
+    height: 354px;
+    width: 100%;
+}
+
+.row-2 .info {
+    width: 800px;
+    height: 354px;
+    float: left;
+}
+
+.row-2 .photo {
+    width: 354px;
+    height: 354px;
+    padding-left: 16px;
+    float: right;
+}
+
+.row-2 .info-title {
+    color: #000;
+    font-size: 21px;
+    font-family: Fjalla;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding-bottom: 28px;
+}
+
+.row-2 .info-line {
+    background-color: #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+}
+
+.row-2 .info-subtitle {
+    padding: 12px 0px 12px 0px;
+    color: #e84c3d;
+    font-family: Lato-Regular;
+    font-size: 20px;
+}
+
+.row-2 .info-columns {
+    padding-top: 29px;
+}
+
+.row-2 .info-column{
+    display: inline-block;
+    float: left;
+    width: 46%;
+    padding-right: 30px;
+}
+
+.row-2 .info-column .info-column-title {
+    font-family: Lato-Bold;
+    font-size: 16px;
+    color: #000;
+}
+
+.row-2 .info-column .info-column-description {
+    padding-top: 26px;
+    font-family: Lato-Regular;
+    font-size: 14px;
+    color: #666666;
+}
+
+.row-2 .info-column .info-column-button {
+    background-color: #e84c3d;
+    border: none;
+    border-radius: 50%;
+    height: 35px;
+    width: 70px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: Oswald-Regular;
+    font-size: 14px;
+    margin-top: 27px;
+}
+
 
