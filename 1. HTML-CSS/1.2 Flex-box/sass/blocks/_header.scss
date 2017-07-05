@@ -1,0 +1,40 @@
+header {
+  width: 100%;
+  height: 80px;
+  background: #202628;
+}
+
+header .container {
+  @extend .container
+}
+
+header .site-name {
+  float: left;
+  color: $primaryColor;
+  font-size: 25px;
+  font-family: $primaryFont;
+  padding: 28px 0px 28px 0px;
+}
+
+header .navigation {
+  float: right;
+  width: 421px;
+}
+
+header .navigation-item {
+  display: inline;
+}
+
+header .navigation-item-link {
+  display: inline-block;
+  padding: 32px 20px 32px 20px;
+  font-family: $primaryFont;
+  color: $primaryColor;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+header .navigation-item :hover {
+  background: $secondaryColor;
+  transition: background 0.5s;
+}
