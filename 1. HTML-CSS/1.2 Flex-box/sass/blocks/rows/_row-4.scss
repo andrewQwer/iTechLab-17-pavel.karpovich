@@ -1,54 +1,71 @@
 .row-4 .container {
   @extend .container;
-  height: 440px;
-  padding-bottom: 60px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 568px;
+  justify-content: space-between;
 }
 
 .row-4 .column {
-  width: 30.5%;
   height: 440px;
-  padding: 0px 30px 0px 0px;
-  float: left;
+  width: 370px;
 }
 
 .row-4 .column .article-title {
-  font-size: 21px;
   font-family: $primaryFont;
+  font-size: 21px;
   padding-bottom: 26px;
 }
 
-.row-4 .column .article-block {
+.article-box {
+  display: flex;
+  flex-direction: column;
+  height: 391px;
+  justify-content: space-between;
   width: 370px;
+}
+
+.row-4 .column .article-block {
+  display: flex;
+  flex-direction: column;
   height: 102px;
-  padding-bottom: 30px;
+  justify-content: space-between;
+  width: 370px;
+}
+
+.article-block-main {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .row-4 .column .article-block-line {
-  margin-bottom: 30px;
   background-color: $primaryColor;
   border-top: 1px solid $primaryColor;
 }
 
 .row-4 .column .article-block-photo {
-  width: 70px;
   height: 70px;
-  float: left;
-  padding-right: 30px;
+  width: 70px;
 }
 
 .row-4 .column .article-block-description {
+  color: $primaryFontColor;
   font-family: $secondaryFont;
   font-size: 14px;
-  color: $primaryFontColor;
-  padding-top: 11px;
+  height: 61px;
   line-height: 23px;
+  padding-top: 11px;
+  width: 270px;
 }
 
 .row-4 .feedback-form {
-  height: 393px;
-  width: 370px;
   background: $primaryColor;
   border-radius: 10px;
+  height: 393px;
+  width: 370px;
 }
 
 .row-4 .feedback-form-block {
@@ -56,49 +73,49 @@
 }
 
 .row-4 .feedback-form-description {
-  padding-bottom: 16px;
+  color: $primaryFontColor;
   font-family: $secondaryFont;
   font-size: 14px;
-  color: $primaryFontColor;
   line-height: 26px;
+  padding-bottom: 16px;
 }
 
 .row-4 .feedback-form-block .input-contact {
   border: none;
-  width: 313px;
-  height: 41px;
   border-radius: 25px;
+  color: #9faaad;
   font-family: Lato-Italic;
   font-size: 14px;
-  padding-left: 18px;
-  color: #9faaad;
+  height: 41px;
   margin-bottom: 21px;
+  padding-left: 18px;
+  width: 313px;
 }
 
 .row-4 .feedback-form-block .input-query {
   border: none;
-  width: 313px;
-  height: 81px;
   border-radius: 10px;
+  color: #9faaad;
   font-family: Lato-Italic;
   font-size: 14px;
-  padding-left: 18px;
-  color: #9faaad;
+  height: 81px;
   line-height: 30px;
+  padding-left: 18px;
   resize: none;
+  width: 313px;
 }
 
 .row-4 .feedback-form-block .input-submit {
-  width: 101px;
-  height: 42px;
+  background: $secondaryColor;
   border: none;
   border-radius: 25px;
-  background: $secondaryColor;
-  text-transform: uppercase;
-  font-size: 15px;
-  font-family: Fjalla;
   color: #ffffff;
+  font-family: Fjalla;
+  font-size: 15px;
+  height: 42px;
   margin-top: 19px;
+  text-transform: uppercase;
+  width: 101px;
 }
 
 .row-4 .input-submit-arrow {
@@ -107,13 +124,13 @@
 
 .row-4 .contact-block {
   height: 122px;
-  width: 300px;
   margin-bottom: 26px;
+  width: 300px;
 }
 
 .row-4 .contact-block-icon {
-  width: 50px;
   float: left;
+  width: 50px;
 }
 
 .row-4 .contact-block-main {
@@ -122,15 +139,15 @@
 }
 
 .row-4 .contact-block-main-title {
+  color: $secondaryColor;
+  font-family: Lato-Bold;
   font-size: 16px;
   line-height: 24px;
-  font-family: Lato-Bold;
-  color: $secondaryColor;
 }
 
 .row-4 .contact-block-main-description {
-  font-size: 14px;
-  font-family: $secondaryFont;
-  line-height: 24px;
   color: $primaryFontColor;
+  font-family: $secondaryFont;
+  font-size: 14px;
+  line-height: 24px;
 }

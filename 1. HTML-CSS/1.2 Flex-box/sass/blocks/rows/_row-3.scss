@@ -1,68 +1,65 @@
 
 .row-3{
-  height: 188px;
+  height: 187px;
   width: 100%;
 }
 
 .row-3 .container {
-  @extend .container;
+  align-items: center;
   background: $secondaryColor;
   border-radius: 25px;
-  height: 188px;
+  display: flex;
+  flex-direction: row;
+  height: 187px;
+  justify-content: center;
+  width: 1170px;
 }
 
 .row-3 .review {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 540px;
-  height: 100%;
-  float: left;
-  padding: 48px 30px 48px 30px;
-}
-
-.row-3 .review-form {
-  width: 510px;
-  height: 100%;
-  float: right;
-  padding: 48px 30px 48px 30px;
 }
 
 .row-3 .review-photo{
   width: 70px;
-  float: left;
 }
 
-.row-3 .review-photo .review-photo-substrate {
-  display: table;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+.row-3 .review-photo-substrate {
+  align-items: center;
   background: #000;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: center;
+  width: 70px;
 }
 
-.row-3 .review-photo .review-photo-icon {
+.row-3 .review-photo-icon {
   color: #fff;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
 }
 
 .row-3 .review-info {
+  display: flex;
+  flex-direction: column;
+  height: 84px;
+  justify-content: space-between;
   width: 442px;
-  float: right;
-  margin-left: 28px;
 }
 
 .row-3 .review-info .review-info-title {
-  font-size: 21px;
-  font-family: $primaryFont;
   color: #ffffff;
+  font-family: $primaryFont;
+  font-size: 21px;
   text-transform: uppercase;
 }
 
 .row-3 .review-info .review-info-description {
-  padding-top: 22px;
+  color: #ffffff;
   font-family: $secondaryFont;
   font-size: 16px;
-  color: #ffffff;
 }
 
 .row-3 .review-info .review-info-description span {
@@ -70,41 +67,48 @@
   font-size: 14px;
 }
 
+.row-3 .review-form {
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  justify-content: space-between;
+  width: 510px;
+}
+
 .row-3 .review-form .review-form-title {
+  color: #ffffff;
   font-family: $primaryFont;
   font-size: 21px;
-  padding-bottom: 22px;
   text-transform: uppercase;
-  color: #ffffff;
 }
 
 .row-3 .review-form .review-form-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 510px;
 }
 
 .row-3 .review-form .review-form-input {
-  width: 360px;
-  height: 42px;
+  background: #ffffff;
   border: none;
   border-radius: 25px;
-  background: #ffffff;
-  padding-left: 21px;
-  margin-right: 8px;
+  color: #999999;
   font-family: Lato-Italic;
   font-size: 14px;
-  color: #999999;
-  float: left;
+  height: 42px;
+  padding-left: 21px;
+  width: 360px;
 }
 
 .row-3 .review-form .review-form-submit {
-  width: 120px;
-  height: 44px;
   background: #000000;
-  text-transform: uppercase;
-  color: #ffffff;
-  font-size: 15px;
-  font-family: $primaryFont;
   border: none;
   border-radius: 25px;
-  float: right;
+  color: #ffffff;
+  font-family: $primaryFont;
+  font-size: 15px;
+  height: 44px;
+  text-transform: uppercase;
+  width: 120px;
 }

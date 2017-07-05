@@ -1,67 +1,73 @@
 .main {
   height: 1590px;
   width: 100%;
+
 }
 
 .main .row-1 {
+  background: $primaryColor;
   height: 277px;
   width: 100%;
-  background: $primaryColor;
 }
 
-.main .container {
+.row-1 .container {
   @extend .container;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 276px;
+  justify-content: flex-start;
 }
 
-.main .column {
-  display: inline-block;
-  width: 33%;
+.row-1 .column {
+  display: flex;
+  flex-direction: row;
   height: 121px;
-  padding: 80px 0px 76px 0px;
+  justify-content: space-around;
+  width: 370px;
 }
 
-.main .icon-substrate {
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
+.row-1 .icon-substrate {
+  align-items: center;
   background: $secondaryColor;
-  display: table;
-  float: left;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: center;
+  width: 70px;
 }
 
-.main .icon {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
+.row-1 .icon {
   color: #fff;
 }
 
-.main .column-info {
-  margin: 0px 24px 0px 24px;
-  float: right;
+.row-1 .column-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 268px;
 }
 
-.main .column-info-name {
+.row-1 .column-info-name {
+  color: #000;
   font-family: $primaryFont;
   font-size: 21px;
-  color: #000;
   letter-spacing: 2.8px;
   text-transform: uppercase;
 }
 
-.main .column-info-description {
+.row-1 .column-info-description {
+  color: #666666;
   font-family: $secondaryFont;
   font-size: 14px;
-  color: #666666;
-  padding: 24px 0px 0px;
 }
 
-.main .column-info-link {
+.row-1 .column-info-link {
   text-decoration: none;
 }
 
-.main .column-info-link:after {
+.row-1 .column-info-link:after {
   color: $secondaryColor;
   content: "=> more";
 }

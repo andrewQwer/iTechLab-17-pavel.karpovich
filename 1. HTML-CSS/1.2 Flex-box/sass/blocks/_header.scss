@@ -1,23 +1,26 @@
 header {
-  width: 100%;
-  height: 80px;
   background: #202628;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  width: 100%;
 }
 
 header .container {
-  @extend .container
+  @extend .container;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 header .site-name {
-  float: left;
   color: $primaryColor;
-  font-size: 25px;
   font-family: $primaryFont;
+  font-size: 25px;
   padding: 28px 0px 28px 0px;
 }
 
 header .navigation {
-  float: right;
   width: 421px;
 }
 
@@ -26,11 +29,11 @@ header .navigation-item {
 }
 
 header .navigation-item-link {
-  display: inline-block;
-  padding: 32px 20px 32px 20px;
-  font-family: $primaryFont;
   color: $primaryColor;
+  display: inline-block;
+  font-family: $primaryFont;
   font-size: 13px;
+  padding: 32px 20px 32px 20px;
   text-decoration: none;
 }
 
