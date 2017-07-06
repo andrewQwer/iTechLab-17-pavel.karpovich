@@ -1,17 +1,22 @@
 footer {
   background: #202628;
   height: 205px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 footer .container {
   @extend .container;
-  height: 81px;
-  padding: 80px 0px 44px 0px;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 footer .footer-navigation-box{
   width: 856px;
-  float: left;
+  height: 44px;
 }
 
 footer .footer-navigation {
@@ -38,7 +43,6 @@ footer .footer-navigation-item-marker:before {
 
 footer .footer-right {
   display: block;
-  margin-top: 15px;
 }
 
 footer .footer-right-item {
@@ -74,11 +78,14 @@ footer .footer-right-item-design:after {
 }
 
 .footer-navigation-social{
-  float: right;
+  height: 44px;
+  width: 150px;
 }
 
 .footer-navigation-social-items {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .footer-navigation-social-item {
@@ -91,13 +98,13 @@ footer .footer-right-item-design:after {
   border-radius: 50%;
   background: $secondaryColor;
   margin-left: 9px;
-  display: table;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-navigation-social-icon{
   color: #ffffff;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
   font-size: 19px;
 }
