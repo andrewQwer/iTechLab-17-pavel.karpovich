@@ -1,0 +1,36 @@
+$es: 540px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$el: 1200px;
+
+$primaryColor: #e7e7e7;
+$secondaryColor: #e84c3d;
+
+$primaryFont: Fjalla;
+$secondaryFont: Lato-Regular;
+
+$primaryFontColor: #767c7e;
+
+* {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  @include respond-to($el) {
+    width: 1140px;
+  }
+  @include respond-to($lg) {
+    width: 960px;
+  }
+  @include respond-to($md) {
+    width: 720px;
+  }
+  @include respond-to($sm) {
+    width: 540px;
+  }
+  @include respond-to($es) {
+    width: 100%;
+  }
+}

@@ -1,0 +1,76 @@
+.main .row-2 {
+  padding: 80px 0px;
+  height: 354px;
+  width: 100%;
+}
+
+.row-2 .info {
+  width: 800px;
+  height: 354px;
+  float: left;
+}
+
+.row-2 .photo {
+  width: 354px;
+  height: 354px;
+  padding-left: 16px;
+  float: right;
+}
+
+.row-2 .info-title {
+  color: #000;
+  font-size: 21px;
+  font-family: $primaryFont;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding-bottom: 28px;
+}
+
+.row-2 .info-line {
+  background-color: $primaryColor;
+  border-top: 1px solid $primaryColor;
+}
+
+.row-2 .info-subtitle {
+  padding: 12px 0px 12px 0px;
+  color: #e84c3d;
+  font-family: $secondaryFont;
+  font-size: 20px;
+}
+
+.row-2 .info-columns {
+  padding-top: 29px;
+}
+
+.row-2 .info-column{
+  display: inline-block;
+  float: left;
+  width: 46%;
+  padding-right: 30px;
+}
+
+.row-2 .info-column .info-column-title {
+  font-family: Lato-Bold;
+  font-size: 16px;
+  color: #000;
+}
+
+.row-2 .info-column .info-column-description {
+  padding-top: 26px;
+  font-family: $secondaryFont;
+  font-size: 14px;
+  color: #666666;
+}
+
+.row-2 .info-column .info-column-button {
+  background-color: $secondaryColor;
+  border: none;
+  border-radius: 25px;
+  height: 35px;
+  width: 70px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: Oswald-Regular;
+  font-size: 14px;
+  margin-top: 27px;
+}

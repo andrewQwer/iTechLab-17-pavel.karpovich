@@ -1,0 +1,73 @@
+.main {
+  height: 1590px;
+  width: 100%;
+
+}
+
+.main .row-1 {
+  background: $primaryColor;
+  height: 277px;
+  width: 100%;
+}
+
+.row-1 .container {
+  @extend .container;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 276px;
+  justify-content: flex-start;
+}
+
+.row-1 .column {
+  display: flex;
+  flex-direction: row;
+  height: 121px;
+  justify-content: space-around;
+  width: 370px;
+}
+
+.row-1 .icon-substrate {
+  align-items: center;
+  background: $secondaryColor;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: center;
+  width: 70px;
+}
+
+.row-1 .icon {
+  color: #fff;
+}
+
+.row-1 .column-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 268px;
+}
+
+.row-1 .column-info-name {
+  color: #000;
+  font-family: $primaryFont;
+  font-size: 21px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+
+.row-1 .column-info-description {
+  color: #666666;
+  font-family: $secondaryFont;
+  font-size: 14px;
+}
+
+.row-1 .column-info-link {
+  text-decoration: none;
+}
+
+.row-1 .column-info-link:after {
+  color: $secondaryColor;
+  content: "=> more";
+}
