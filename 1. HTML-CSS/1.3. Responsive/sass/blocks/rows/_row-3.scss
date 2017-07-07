@@ -101,7 +101,7 @@
   justify-content: space-between;
   width: 510px;
   @include respond-to($md, $sm, $es){
-    padding: 20px;
+    padding: 20px 0px;
   }
   @include respond-to($es) {
     width: 95%;
@@ -140,6 +140,9 @@
   width: 360px;
   @include respond-to($lg, $md, $sm, $es){
     margin-right: 10px;
+  }
+  @include respond-to($es) {
+    padding-left: 16px;
   }
 }
 

@@ -37,7 +37,7 @@
   height: 270px;
   width: 470px;
   @include respond-to($es) {
-    width: 100%;
+    width: 95%;
     height: auto;
     padding: 5px;
   }
