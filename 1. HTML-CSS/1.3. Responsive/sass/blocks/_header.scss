@@ -1,0 +1,71 @@
+header {
+  background: #202628;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  @include respond-to($es) {
+    height: auto;
+  }
+  width: 100%;
+}
+
+header .container {
+  @extend .container;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @include respond-to($sm) {
+    flex-direction: column;
+  }
+  @include respond-to($es) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+header .site-name {
+  color: $primaryColor;
+  font-family: $primaryFont;
+  font-size: 25px;
+  padding: 28px 0px;
+}
+
+header .navigation {
+  width: 421px;
+  padding: 0px;
+  @include respond-to($es) {
+    width: 100%;
+    list-style-type: none;
+  }
+}
+
+header .navigation-item {
+  display: inline;
+  @include respond-to($es) {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+header .navigation-item-link {
+  color: $primaryColor;
+  display: inline-block;
+  font-family: $primaryFont;
+  font-size: 13px;
+  padding: 32px 20px 32px 20px;
+  text-decoration: none;
+  @include respond-to($es){
+    width: 100%;
+    padding: 32px 0px;
+  }
+}
+
+header .navigation-item :hover {
+  background: $secondaryColor;
+  transition: background 0.5s;
+  @include respond-to($es) {
+    width: 100%;
+  }
+}
