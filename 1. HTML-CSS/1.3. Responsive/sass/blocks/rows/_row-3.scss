@@ -2,9 +2,13 @@
 .row-3{
   height: 187px;
   width: 100%;
+  @include respond-to($md, $sm, $es){
+    height: auto;
+  }
 }
 
 .row-3 .container {
+  @extend .container;
   align-items: center;
   background: $secondaryColor;
   border-radius: 25px;
@@ -12,7 +16,10 @@
   flex-direction: row;
   height: 187px;
   justify-content: center;
-  width: 1170px;
+  @include respond-to($md, $sm, $es){
+    flex-direction: column;
+    height: auto;
+  }
 }
 
 .row-3 .review {
@@ -20,10 +27,24 @@
   flex-direction: row;
   justify-content: space-between;
   width: 540px;
+  @include respond-to($lg, $md, $sm, $es) {
+    justify-content: space-around;
+  }
+  @include respond-to($md, $sm, $es){
+    padding: 20px 20px 0px 20px;
+  }
+  @include respond-to($es){
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+  }
 }
 
 .row-3 .review-photo{
   width: 70px;
+  @include respond-to($es) {
+    margin-bottom: 20px;
+  }
 }
 
 .row-3 .review-photo-substrate {
@@ -47,6 +68,12 @@
   height: 84px;
   justify-content: space-between;
   width: 442px;
+  @include respond-to($lg, $md, $sm, $es) {
+    width: 80%;
+  }
+  @include respond-to($es) {
+    height: auto;
+  }
 }
 
 .row-3 .review-info .review-info-title {
@@ -73,6 +100,12 @@
   height: 90px;
   justify-content: space-between;
   width: 510px;
+  @include respond-to($md, $sm, $es){
+    padding: 20px;
+  }
+  @include respond-to($es) {
+    width: 95%;
+  }
 }
 
 .row-3 .review-form .review-form-title {
@@ -80,6 +113,9 @@
   font-family: $primaryFont;
   font-size: 21px;
   text-transform: uppercase;
+  @include respond-to($md, $sm, $es){
+    text-align: center;
+  }
 }
 
 .row-3 .review-form .review-form-block {
@@ -87,6 +123,9 @@
   flex-direction: row;
   justify-content: space-between;
   width: 510px;
+  @include respond-to($lg, $md, $sm, $es){
+    width: 95%;
+  }
 }
 
 .row-3 .review-form .review-form-input {
@@ -99,6 +138,9 @@
   height: 42px;
   padding-left: 21px;
   width: 360px;
+  @include respond-to($lg, $md, $sm, $es){
+    margin-right: 10px;
+  }
 }
 
 .row-3 .review-form .review-form-submit {
@@ -111,4 +153,10 @@
   height: 44px;
   text-transform: uppercase;
   width: 120px;
+}
+
+.row-3 .input-submit-arrow{
+  @include respond-to($es) {
+    display: none;
+  }
 }
