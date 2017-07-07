@@ -1,0 +1,43 @@
+header {
+  background: #202628;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  width: 100%;
+}
+
+header .container {
+  @extend .container;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header .site-name {
+  color: $primaryColor;
+  font-family: $primaryFont;
+  font-size: 25px;
+  padding: 28px 0px 28px 0px;
+}
+
+header .navigation {
+  width: 421px;
+}
+
+header .navigation-item {
+  display: inline;
+}
+
+header .navigation-item-link {
+  color: $primaryColor;
+  display: inline-block;
+  font-family: $primaryFont;
+  font-size: 13px;
+  padding: 32px 20px 32px 20px;
+  text-decoration: none;
+}
+
+header .navigation-item :hover {
+  background: $secondaryColor;
+  transition: background 0.5s;
+}

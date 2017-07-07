@@ -1,0 +1,81 @@
+.banner {
+  background-image: url("../img/banner-bg.png");
+  height: 560px;
+}
+
+.banner .container {
+  @extend .container;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 560px;
+}
+
+.banner .cir {
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: space-between;
+  width: 70px;
+}
+
+.banner .cir-left {
+  background: url("../img/banner-cir-left.png") no-repeat;
+  height: 70px;
+  width: 34px;
+}
+
+.banner .cir-right {
+  background: url("../img/banner-cir-right.png") no-repeat;
+  height: 70px;
+  width: 34px;
+}
+
+.banner .info {
+  display: flex;
+  flex-direction: column;
+  height: 270px;
+  width: 470px;
+}
+
+.banner .title {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 27px;
+  justify-content: space-between;
+  margin: 29px 0px 20px;
+  width: 470px;
+}
+
+.banner .title-main {
+  color: $primaryColor;
+  font-family: Fjalla;
+  font-size: 31px;
+  letter-spacing: inherit;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  width: 200px;
+}
+
+.banner .title-line {
+  background-color: $primaryColor;
+  border-top: 1px solid $primaryColor;
+  height: 1px;
+  width: 268px;
+}
+
+.banner .description {
+  color: $primaryColor;
+  font-family: $primaryFont;
+  font-size: 31px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+
+.banner .web-site {
+  color: $secondaryColor;
+  font-family: $primaryFont;
+  font-size: 15px;
+  letter-spacing: 2.8px;
+  padding: 23px 0px;
+}

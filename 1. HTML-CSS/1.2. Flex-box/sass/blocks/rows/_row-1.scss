@@ -8,9 +8,6 @@
   background: $primaryColor;
   height: 277px;
   width: 100%;
-  @include respond-to($lg, $md, $sm, $es) {
-    height: auto;
-  }
 }
 
 .row-1 .container {
@@ -20,21 +17,6 @@
   flex-direction: row;
   height: 276px;
   justify-content: flex-start;
-  flex-wrap: wrap;
-  @include respond-to($lg, $md, $sm, $es) {
-    height: auto;
-  }
-  @include respond-to($es) {
-    flex-direction: column;
-  }
-  @include respond-to($md, $sm, $es) {
-    height: auto;
-  }
-  @include respond-to($lg, $md, $sm, $es){
-    justify-content: center;
-  }
-
-
 }
 
 .row-1 .column {
@@ -43,9 +25,6 @@
   height: 121px;
   justify-content: space-around;
   width: 370px;
-  @include respond-to($lg, $md, $sm, $es){
-    padding: 20px 0px;
-  }
 }
 
 .row-1 .icon-substrate {

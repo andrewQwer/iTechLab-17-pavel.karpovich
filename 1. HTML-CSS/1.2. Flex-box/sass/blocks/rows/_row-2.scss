@@ -1,0 +1,86 @@
+.main .row-2 {
+  width: 100%;
+}
+
+.row-2 .container {
+  @extend .container;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 514px;
+}
+
+.row-2 .info {
+  display: flex;
+  flex-direction: column;
+  height: 354px;
+  justify-content: flex-start;
+  width: 800px;
+}
+
+.row-2 .photo {
+  height: 354px;
+  padding-left: 16px;
+  width: 354px;
+}
+
+.row-2 .info-title {
+  color: #000;
+  font-family: $primaryFont;
+  font-size: 21px;
+  letter-spacing: 1.2px;
+  padding-bottom: 28px;
+  text-transform: uppercase;
+}
+
+.row-2 .info-line {
+  background-color: $primaryColor;
+  border-top: 1px solid $primaryColor;
+}
+
+.row-2 .info-subtitle {
+  color: #e84c3d;
+  font-family: $secondaryFont;
+  font-size: 20px;
+  padding: 12px 0px 12px 0px;
+}
+
+.row-2 .info-columns {
+  display: flex;
+  flex-direction: row;
+  height: 240px;
+  justify-content: space-between;
+  padding-top: 28px;
+  width: 770px;
+}
+
+.row-2 .info-column {
+  height: 240px;
+  width: 370px;
+}
+
+.row-2 .info-column .info-column-title {
+  color: #000;
+  font-family: Lato-Bold;
+  font-size: 16px;
+}
+
+.row-2 .info-column .info-column-description {
+  color: #666666;
+  font-family: $secondaryFont;
+  font-size: 14px;
+  padding-top: 26px;
+}
+
+.row-2 .info-column .info-column-button {
+  background-color: $secondaryColor;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-family: Oswald-Regular;
+  font-size: 14px;
+  height: 35px;
+  margin-top: 27px;
+  text-transform: uppercase;
+  width: 70px;
+}

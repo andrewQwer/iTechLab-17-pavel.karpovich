@@ -1,0 +1,114 @@
+
+.row-3{
+  height: 187px;
+  width: 100%;
+}
+
+.row-3 .container {
+  align-items: center;
+  background: $secondaryColor;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: row;
+  height: 187px;
+  justify-content: center;
+  width: 1170px;
+}
+
+.row-3 .review {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 540px;
+}
+
+.row-3 .review-photo{
+  width: 70px;
+}
+
+.row-3 .review-photo-substrate {
+  align-items: center;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  justify-content: center;
+  width: 70px;
+}
+
+.row-3 .review-photo-icon {
+  color: #fff;
+}
+
+.row-3 .review-info {
+  display: flex;
+  flex-direction: column;
+  height: 84px;
+  justify-content: space-between;
+  width: 442px;
+}
+
+.row-3 .review-info .review-info-title {
+  color: #ffffff;
+  font-family: $primaryFont;
+  font-size: 21px;
+  text-transform: uppercase;
+}
+
+.row-3 .review-info .review-info-description {
+  color: #ffffff;
+  font-family: $secondaryFont;
+  font-size: 16px;
+}
+
+.row-3 .review-info .review-info-description span {
+  font-family: Lato-Italic;
+  font-size: 14px;
+}
+
+.row-3 .review-form {
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  justify-content: space-between;
+  width: 510px;
+}
+
+.row-3 .review-form .review-form-title {
+  color: #ffffff;
+  font-family: $primaryFont;
+  font-size: 21px;
+  text-transform: uppercase;
+}
+
+.row-3 .review-form .review-form-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 510px;
+}
+
+.row-3 .review-form .review-form-input {
+  background: #ffffff;
+  border: none;
+  border-radius: 25px;
+  color: #999999;
+  font-family: Lato-Italic;
+  font-size: 14px;
+  height: 42px;
+  padding-left: 21px;
+  width: 360px;
+}
+
+.row-3 .review-form .review-form-submit {
+  background: #000000;
+  border: none;
+  border-radius: 25px;
+  color: #ffffff;
+  font-family: $primaryFont;
+  font-size: 15px;
+  height: 44px;
+  text-transform: uppercase;
+  width: 120px;
+}
