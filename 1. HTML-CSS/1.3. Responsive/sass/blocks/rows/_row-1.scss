@@ -46,6 +46,10 @@
   @include respond-to($lg, $md, $sm, $es){
     padding: 20px 0px;
   }
+  @include respond-to($es){
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .row-1 .icon-substrate {
