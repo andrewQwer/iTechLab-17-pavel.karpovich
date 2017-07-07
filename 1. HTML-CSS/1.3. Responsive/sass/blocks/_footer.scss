@@ -32,6 +32,14 @@ footer .footer-navigation-box{
     height: auto;
     width: auto;
   }
+  @include respond-to($md) {
+    display: flex;
+    justify-content: center;
+  }
+  @include respond-to($sm) {
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 
 footer .footer-navigation {
@@ -115,7 +123,11 @@ footer .footer-navigation-social{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @include respond-to($lg, $md, $sm, $es){
+  @include respond-to($lg, $md){
+    margin-top: 20px;
+    justify-content: center;
+  }
+  @include respond-to($sm, $es){
     margin-top: 20px;
     justify-content: flex-start;
   }
