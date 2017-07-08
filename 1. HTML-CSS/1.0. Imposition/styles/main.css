@@ -1,6 +1,6 @@
 @font-face {
     font-family: Fjalla;
-    src: url(../fonts/FjallaOne-Regular.otf);
+    src: url(../fonts/FjallaOne-Regular.ttf);
 }
 
 @font-face {
@@ -24,7 +24,13 @@
 }
 
 * {
-    margin: 0;
+    margin: 0px;
+    padding: 0px;
+}
+
+.reset {
+    margin: 0px!important;
+    padding: 0px!important;
 }
 
 header {
@@ -36,6 +42,7 @@ header {
 header .container {
     margin: 0 auto;
     width: 1170px;
+    height:100%;
 }
 
 header .site-name {
@@ -43,25 +50,17 @@ header .site-name {
     color: #e7e7e7;
     font-size: 25px;
     font-family: Fjalla;
-    padding: 28px 0px 28px 0px;
+    padding: 27px 0px;
 }
 
 header .navigation {
     float: right;
-    width: 421px;
+    width: auto;
+    height: 100%;
 }
 
 header .navigation-item {
     display: inline;
-}
-
-header .navigation-item-link {
-    display: inline-block;
-    padding: 32px 20px 32px 20px;
-    font-family: Fjalla;
-    color: #e7e7e7;
-    font-size: 13px;
-    text-decoration: none;
 }
 
 header .navigation-item :hover {
@@ -69,8 +68,17 @@ header .navigation-item :hover {
     transition: background 0.5s;
 }
 
+header .navigation-item-link {
+    display: inline-block;
+    padding: 32px 20px;
+    font-family: Fjalla;
+    color: #e7e7e7;
+    font-size: 13px;
+    text-decoration: none;
+}
+
 .banner {
-    background-image: url("../img/banner-bg.png");
+    background: url("../img/banner-bg.png") center center no-repeat;
     height: 560px;
 }
 
@@ -106,28 +114,35 @@ header .navigation-item :hover {
 }
 
 .banner .title {
-    width: 470px;
-    height: 75px;
+    width: 455px;
+    height: 32px;
+    margin: 25px 0px 14px;
 }
 
-.banner .title-main {
+.banner .title-text {
     float: left;
-    width: 200px;
-    padding: 25px 0px 18px 0px;
+    width: auto;
+    height: auto;
     text-transform: uppercase;
     font-size: 31px;
     font-family: Fjalla;
     color: #e7e7e7;
-    letter-spacing: inherit;
-    letter-spacing: 2.8px;
+    letter-spacing: 2.4px;
+}
+
+.banner .title-line-box {
+    float: right;
+    width: 254px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .banner .title-line {
-    float: right;
-    size: 1px;
-    width: 268px;
-    color: #e7e7e7;
-    margin: 40px 0px 30px 0px;
+    background-color: #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+    width: 100%;
 }
 
 .banner .description {
@@ -136,19 +151,19 @@ header .navigation-item :hover {
     font-family: Fjalla;
     color: #e7e7e7;
     display: inline-block;
-    letter-spacing: 2.8px;
+    letter-spacing: 2.4px;
+    margin-bottom: 12px;
 }
 
 .banner .web-site {
     font-size: 15px;
     color: #e84c3d;
     font-family: Fjalla;
-    padding: 23px 0px 0px 0px;
-    letter-spacing: 2.8px;
+    letter-spacing: 1.2px;
 }
 
 .main {
-    height: 1590px;
+    height: auto;
     width: 100%;
 }
 
@@ -158,68 +173,78 @@ header .navigation-item :hover {
     background: #e7e7e7;
 }
 
-.main .container {
+.row-1 .container {
     margin: 0 auto;
     width: 1170px;
 }
 
-.main .column {
+.row-1 .column {
     display: inline-block;
-    width: 33%;
+    width: auto;
     height: 121px;
-    padding: 80px 0px 76px 0px;
+    padding: 77px 0px 76px 0px;
 }
 
-.main .icon-substrate {
+.row-1 .icon-substrate {
     height: 70px;
     width: 70px;
     border-radius: 50%;
     background: #e84c3d;
     display: table;
     float: left;
+    margin: 4px 30px 0px 0px;
 }
 
-.main .icon {
+.row-1 .icon {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     color: #fff;
 }
 
-.main .column-info {
-    margin: 0px 24px 0px 24px;
+.row-1 .column-info {
     float: right;
-    width: 268px;
+    width: auto;
+    margin-right: 30px;
 }
 
-.main .column-info-name {
+.row-1 .column-info-name {
     font-family: Fjalla;
     font-size: 21px;
     color: #000;
-    letter-spacing: 2.8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    width: auto;
 }
 
-.main .column-info-description {
+.row-1 .column-info-description {
     font-family: Lato-Regular;
+    line-height: 24px;
     font-size: 14px;
     color: #666666;
-    padding: 24px 0px 0px 0px;
+    margin: 19px 0px;
+    width: 266px;
 }
 
-.main .column-info-link {
+.row-1 .column-info-link {
     text-decoration: none;
 }
 
-.main .column-info-link:after {
+.row-1 .column-info-link:after {
     color: #e84c3d;
     content: "=> more";
 }
 
 .main .row-2 {
-    padding: 80px 0px 80px 0px;
+    margin: 76px 0px;
     height: 354px;
     width: 100%;
+}
+
+.row-2 .container {
+    width: 1170px;
+    margin: 0 auto;
+    height: 100%;
 }
 
 .row-2 .info {
@@ -229,42 +254,45 @@ header .navigation-item :hover {
 }
 
 .row-2 .photo {
+    background: url("../img/row-2-img.png") center center no-repeat;
     width: 354px;
-    height: 354px;
-    padding-left: 16px;
+    height: 355px;
+    margin-top: 5px;
     float: right;
 }
 
 .row-2 .info-title {
+    width: 635px;
     color: #000;
     font-size: 21px;
     font-family: Fjalla;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.9px;
     text-transform: uppercase;
-    padding-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .row-2 .info-line {
+    width: 768px;
     background-color: #e7e7e7;
     border-top: 1px solid #e7e7e7;
 }
 
 .row-2 .info-subtitle {
-    padding: 12px 0px 12px 0px;
+    margin: 7px 0px;
     color: #e84c3d;
     font-family: Lato-Regular;
     font-size: 20px;
 }
 
 .row-2 .info-columns {
-    padding-top: 29px;
+    padding-top: 24px;
 }
 
 .row-2 .info-column{
     display: inline-block;
     float: left;
-    width: 46%;
-    padding-right: 30px;
+    width: 366px;
+    margin-right: 34px;
 }
 
 .row-2 .info-column .info-column-title {
@@ -274,9 +302,10 @@ header .navigation-item :hover {
 }
 
 .row-2 .info-column .info-column-description {
-    padding-top: 26px;
+    margin: 8px 0px 33px;
     font-family: Lato-Regular;
     font-size: 14px;
+    line-height: 24px;
     color: #666666;
 }
 
@@ -290,7 +319,6 @@ header .navigation-item :hover {
     text-transform: uppercase;
     font-family: Oswald-Regular;
     font-size: 14px;
-    margin-top: 27px;
 }
 
 .row-3{
