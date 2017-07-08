@@ -236,9 +236,15 @@ header .navigation-item-link {
 }
 
 .main .row-2 {
-    padding: 80px 0px 80px 0px;
+    margin: 76px 0px;
     height: 354px;
     width: 100%;
+}
+
+.row-2 .container {
+    width: 1170px;
+    margin: 0 auto;
+    height: 100%;
 }
 
 .row-2 .info {
@@ -248,42 +254,45 @@ header .navigation-item-link {
 }
 
 .row-2 .photo {
+    background: url("../img/row-2-img.png") center center no-repeat;
     width: 354px;
-    height: 354px;
-    padding-left: 16px;
+    height: 355px;
+    margin-top: 5px;
     float: right;
 }
 
 .row-2 .info-title {
+    width: 635px;
     color: #000;
     font-size: 21px;
     font-family: Fjalla;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.9px;
     text-transform: uppercase;
-    padding-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .row-2 .info-line {
+    width: 768px;
     background-color: #e7e7e7;
     border-top: 1px solid #e7e7e7;
 }
 
 .row-2 .info-subtitle {
-    padding: 12px 0px 12px 0px;
+    margin: 7px 0px;
     color: #e84c3d;
     font-family: Lato-Regular;
     font-size: 20px;
 }
 
 .row-2 .info-columns {
-    padding-top: 29px;
+    padding-top: 24px;
 }
 
 .row-2 .info-column{
     display: inline-block;
     float: left;
-    width: 46%;
-    padding-right: 30px;
+    width: 366px;
+    margin-right: 34px;
 }
 
 .row-2 .info-column .info-column-title {
@@ -293,9 +302,10 @@ header .navigation-item-link {
 }
 
 .row-2 .info-column .info-column-description {
-    padding-top: 26px;
+    margin: 8px 0px 33px;
     font-family: Lato-Regular;
     font-size: 14px;
+    line-height: 24px;
     color: #666666;
 }
 
@@ -309,7 +319,6 @@ header .navigation-item-link {
     text-transform: uppercase;
     font-family: Oswald-Regular;
     font-size: 14px;
-    margin-top: 27px;
 }
 
 .row-3{
