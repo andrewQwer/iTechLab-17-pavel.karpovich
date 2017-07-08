@@ -28,6 +28,11 @@
     padding: 0px;
 }
 
+.reset {
+    margin: 0px!important;
+    padding: 0px!important;
+}
+
 header {
     width: 100%;
     height: 80px;
@@ -158,7 +163,7 @@ header .navigation-item-link {
 }
 
 .main {
-    height: 1590px;
+    height: auto;
     width: 100%;
 }
 
@@ -168,60 +173,64 @@ header .navigation-item-link {
     background: #e7e7e7;
 }
 
-.main .container {
+.row-1 .container {
     margin: 0 auto;
     width: 1170px;
 }
 
-.main .column {
+.row-1 .column {
     display: inline-block;
-    width: 33%;
+    width: auto;
     height: 121px;
-    padding: 80px 0px 76px 0px;
+    padding: 77px 0px 76px 0px;
 }
 
-.main .icon-substrate {
+.row-1 .icon-substrate {
     height: 70px;
     width: 70px;
     border-radius: 50%;
     background: #e84c3d;
     display: table;
     float: left;
+    margin: 4px 30px 0px 0px;
 }
 
-.main .icon {
+.row-1 .icon {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     color: #fff;
 }
 
-.main .column-info {
-    margin: 0px 24px 0px 24px;
+.row-1 .column-info {
     float: right;
-    width: 268px;
+    width: auto;
+    margin-right: 30px;
 }
 
-.main .column-info-name {
+.row-1 .column-info-name {
     font-family: Fjalla;
     font-size: 21px;
     color: #000;
-    letter-spacing: 2.8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    width: auto;
 }
 
-.main .column-info-description {
+.row-1 .column-info-description {
     font-family: Lato-Regular;
+    line-height: 24px;
     font-size: 14px;
     color: #666666;
-    padding: 24px 0px 0px 0px;
+    margin: 19px 0px;
+    width: 266px;
 }
 
-.main .column-info-link {
+.row-1 .column-info-link {
     text-decoration: none;
 }
 
-.main .column-info-link:after {
+.row-1 .column-info-link:after {
     color: #e84c3d;
     content: "=> more";
 }
