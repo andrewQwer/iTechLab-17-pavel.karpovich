@@ -1,6 +1,6 @@
 @font-face {
     font-family: Fjalla;
-    src: url(../fonts/FjallaOne-Regular.otf);
+    src: url(../fonts/FjallaOne-Regular.ttf);
 }
 
 @font-face {
@@ -24,7 +24,8 @@
 }
 
 * {
-    margin: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 header {
@@ -36,6 +37,7 @@ header {
 header .container {
     margin: 0 auto;
     width: 1170px;
+    height:100%;
 }
 
 header .site-name {
@@ -43,25 +45,17 @@ header .site-name {
     color: #e7e7e7;
     font-size: 25px;
     font-family: Fjalla;
-    padding: 28px 0px 28px 0px;
+    padding: 27px 0px;
 }
 
 header .navigation {
     float: right;
-    width: 421px;
+    width: auto;
+    height: 100%;
 }
 
 header .navigation-item {
     display: inline;
-}
-
-header .navigation-item-link {
-    display: inline-block;
-    padding: 32px 20px 32px 20px;
-    font-family: Fjalla;
-    color: #e7e7e7;
-    font-size: 13px;
-    text-decoration: none;
 }
 
 header .navigation-item :hover {
@@ -69,8 +63,17 @@ header .navigation-item :hover {
     transition: background 0.5s;
 }
 
+header .navigation-item-link {
+    display: inline-block;
+    padding: 32px 20px;
+    font-family: Fjalla;
+    color: #e7e7e7;
+    font-size: 13px;
+    text-decoration: none;
+}
+
 .banner {
-    background-image: url("../img/banner-bg.png");
+    background: url("../img/banner-bg.png") center center no-repeat;
     height: 560px;
 }
 
