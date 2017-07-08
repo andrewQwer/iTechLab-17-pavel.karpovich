@@ -19,7 +19,7 @@ $primaryFontColor: #767c7e;
 .container {
   margin: 0 auto;
   @include respond-to($el) {
-    width: 1140px;
+    width: 1170px;
   }
   @include respond-to($lg) {
     width: 960px;
