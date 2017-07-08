@@ -336,16 +336,16 @@ header .navigation-item-link {
 
 .row-3 .review {
     width: 540px;
-    height: 100%;
+    height: auto;
     float: left;
-    margin: 45px 30px 48px 30px;
+    margin: 45px 30px 0px 30px;
 }
 
 .row-3 .review-form {
     width: 510px;
-    height: 100%;
+    height: auto;
     float: right;
-    margin: 45px 30px 48px 30px;
+    margin: 45px 30px 0px 30px;
 }
 
 .row-3 .review-photo{
@@ -438,16 +438,15 @@ header .navigation-item-link {
 }
 
 .row-4 .container {
-    margin: 0 auto;
+    margin: 65px auto 60px auto;
     width: 1170px;
     height: 440px;
-    padding-bottom: 60px;
 }
 
 .row-4 .column {
-    width: 30.5%;
+    width: 358px;
     height: 440px;
-    padding: 0px 30px 0px 0px;
+    padding: 0px 43px 0px 0px;
     float: left;
 }
 
@@ -455,11 +454,13 @@ header .navigation-item-link {
     font-size: 21px;
     font-family: Fjalla;
     padding-bottom: 26px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .row-4 .column .article-block {
     width: 370px;
-    height: 102px;
+    height: 100px;
     padding-bottom: 30px;
 }
 
@@ -480,8 +481,22 @@ header .navigation-item-link {
     font-family: Lato-Regular;
     font-size: 14px;
     color: #767c7e;
-    padding-top: 11px;
-    line-height: 23px;
+    padding-top: 3px;
+    line-height: 24px;
+    float: right;
+    width: 270px;
+}
+
+.article-block-description-link{
+    text-decoration: none;
+}
+
+.article-block-description-link:after {
+    content: "more  =>";
+    font-size: 14px;
+    color: #e84c3d;
+    font-family: Lato-Regular;
+    text-decoration: none;
 }
 
 .row-4 .feedback-form {
@@ -492,37 +507,37 @@ header .navigation-item-link {
 }
 
 .row-4 .feedback-form-block {
-    padding: 32px 35px 29px 22px;
+    padding: 23px 35px 29px 29px;
 }
 
 .row-4 .feedback-form-description {
-    padding-bottom: 16px;
+    padding-bottom: 24px;
     font-family: Lato-Regular;
     font-size: 14px;
     color: #767c7e;
-    line-height: 26px;
+    line-height: 24px;
 }
 
 .row-4 .feedback-form-block .input-contact {
     border: none;
-    width: 313px;
+    width: 293px;
     height: 41px;
     border-radius: 25px;
     font-family: Lato-Italic;
     font-size: 14px;
     padding-left: 18px;
     color: #9faaad;
-    margin-bottom: 21px;
+    margin-bottom: 20px;
 }
 
 .row-4 .feedback-form-block .input-query {
     border: none;
-    width: 313px;
-    height: 81px;
+    width: 292px;
+    height: 78px;
     border-radius: 10px;
     font-family: Lato-Italic;
     font-size: 14px;
-    padding-left: 18px;
+    padding: 6px 0px 0px 18px;
     color: #9faaad;
     line-height: 30px;
     resize: none;
@@ -538,7 +553,7 @@ header .navigation-item-link {
     font-size: 15px;
     font-family: Fjalla;
     color: #ffffff;
-    margin-top: 19px;
+    margin-top: 14px;
 }
 
 .row-4 .input-submit-arrow {
@@ -547,17 +562,26 @@ header .navigation-item-link {
 
 .row-4 .contact-block {
     height: 122px;
-    width: 300px;
-    margin-bottom: 26px;
+    width: 370px;
 }
 
-.row-4 .contact-block-icon {
+.row-4 .contact-block-icon-box {
     width: 50px;
     float: left;
 }
 
+contact-block-icon{
+    width:10px;
+}
+
+.row-4 .contact-block-line{
+    background-color: #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+    margin-bottom: 22px;
+}
+
 .row-4 .contact-block-main {
-    float: right;
+    margin-left: 47px;
     width: 250px;
 }
 
