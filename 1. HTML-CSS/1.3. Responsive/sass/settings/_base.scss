@@ -21,6 +21,12 @@ $primaryFontColor: #767c7e;
   padding: 0px!important;
 }
 
+.show-lg{
+  @include respond-to($lg, $md, $sm, $es){
+    display: none;
+  }
+}
+
 .container {
   margin: 0 auto;
   @include respond-to($el) {

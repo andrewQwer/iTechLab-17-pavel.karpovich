@@ -242,11 +242,12 @@
   height: auto;
   line-height: 24px;
   width: 277px;
-  @include respond-to($lg, $md, $sm, $es) {
-    width: 70%;
-  }
+  //@include respond-to($lg, $md, $sm, $es) {
+  //  width: 70%;
+  //}
   @include respond-to($es) {
     width: auto;
+    justify-content: flex-start;
   }
 }
 
@@ -260,9 +261,9 @@
   height: 392px;
   line-height: 24px;
   width: 270px;
-  @include respond-to($lg, $md, $sm, $es) {
-    width: 70%;
-  }
+  //@include respond-to($lg, $md, $sm, $es) {
+  //  width: 70%;
+  //}
   @include respond-to($es) {
     width: auto;
   }
@@ -272,7 +273,7 @@
   background-color: $primaryColor;
   border-top: 1px solid $primaryColor;
   width: 368px;
-  @include respond-to($lg, $md, $sm, $es) {
+  @include respond-to($md, $sm, $es) {
     width: 99%;
   }
 }
@@ -291,6 +292,9 @@
 
 .row-4 .contact-block-icon-box {
   width: 57px;
+  @include respond-to($es) {
+    width: auto;
+  }
 }
 
 .row-4 .contact-block-icon {
@@ -325,6 +329,9 @@
   font-size: 14px;
   line-height: 24px;
   width: 227px;
+  @include respond-to($es) {
+    width: auto;
+  }
   @include respond-to($lg, $md, $sm, $es) {
     padding-bottom: 20px;
   }

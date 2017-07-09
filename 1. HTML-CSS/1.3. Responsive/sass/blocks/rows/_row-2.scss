@@ -51,6 +51,9 @@
   letter-spacing: 0.9px;
   margin-bottom: 23px;
   text-transform: uppercase;
+  @include respond-to($md, $sm, $es){
+    width: 100%;
+  }
   @include respond-to($es) {
     padding-top: 20px;
   }
