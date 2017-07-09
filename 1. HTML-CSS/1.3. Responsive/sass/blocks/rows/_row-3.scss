@@ -1,6 +1,7 @@
 
 .row-3{
   height: 187px;
+  margin-top: 6px;
   width: 100%;
   @include respond-to($md, $sm, $es){
     height: auto;
@@ -11,11 +12,11 @@
   @extend .container;
   align-items: center;
   background: $secondaryColor;
-  border-radius: 25px;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   height: 187px;
-  justify-content: center;
+  justify-content: space-around;
   @include respond-to($md, $sm, $es){
     flex-direction: column;
     height: auto;
@@ -34,8 +35,8 @@
     padding: 20px 0px 0px 20px;
   }
   @include respond-to($es){
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     width: auto;
   }
 }
@@ -56,6 +57,7 @@
   height: 70px;
   justify-content: center;
   width: 70px;
+  margin-top: 4px;
 }
 
 .row-3 .review-photo-icon {
@@ -65,7 +67,7 @@
 .row-3 .review-info {
   display: flex;
   flex-direction: column;
-  height: 84px;
+  height: 96px;
   justify-content: space-between;
   width: 442px;
   @include respond-to($lg, $md, $sm, $es) {
@@ -81,23 +83,27 @@
   font-family: $primaryFont;
   font-size: 21px;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .row-3 .review-info .review-info-description {
+  height: 56px;
   color: #ffffff;
   font-family: $secondaryFont;
-  font-size: 16px;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  line-height: 24px;
 }
 
 .row-3 .review-info .review-info-description span {
   font-family: Lato-Italic;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .row-3 .review-form {
   display: flex;
   flex-direction: column;
-  height: 90px;
+  height: 97px;
   justify-content: space-between;
   width: 510px;
   @include respond-to($md, $sm, $es){
@@ -113,6 +119,7 @@
   font-family: $primaryFont;
   font-size: 21px;
   text-transform: uppercase;
+  letter-spacing: 1px;
   @include respond-to($md, $sm, $es){
     text-align: center;
   }
@@ -123,6 +130,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 510px;
+  margin-bottom: 3px;
   @include respond-to($lg, $md, $sm, $es){
     width: 95%;
   }
@@ -135,8 +143,9 @@
   color: #999999;
   font-family: Lato-Italic;
   font-size: 14px;
-  height: 42px;
+  height: 39px;
   padding-left: 21px;
+  padding-bottom: 3px;
   width: 360px;
   @include respond-to($lg, $md, $sm, $es){
     margin-right: 10px;
@@ -153,9 +162,10 @@
   color: #ffffff;
   font-family: $primaryFont;
   font-size: 15px;
-  height: 44px;
+  height: 39px;
   text-transform: uppercase;
   width: 120px;
+  padding-top: 6px;
 }
 
 .row-3 .input-submit-arrow{
