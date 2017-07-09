@@ -16,10 +16,21 @@ $primaryFontColor: #767c7e;
   margin: 0;
 }
 
+.reset {
+  margin: 0px!important;
+  padding: 0px!important;
+}
+
+.show-lg{
+  @include respond-to($lg, $md, $sm, $es){
+    display: none;
+  }
+}
+
 .container {
   margin: 0 auto;
   @include respond-to($el) {
-    width: 1140px;
+    width: 1170px;
   }
   @include respond-to($lg) {
     width: 960px;
