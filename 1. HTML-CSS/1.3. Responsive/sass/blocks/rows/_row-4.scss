@@ -13,7 +13,7 @@
 }
 
 .row-4 .column {
-  height: 440px;
+  height: 436px;
   width: 370px;
   @include respond-to($lg, $md, $sm, $es){
     width: auto;
@@ -43,6 +43,8 @@
   font-family: $primaryFont;
   font-size: 21px;
   padding-bottom: 26px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   @include respond-to($lg, $md, $sm, $es) {
     text-align: center;
     padding: 20px 0px;
@@ -73,6 +75,7 @@
   height: 102px;
   justify-content: space-between;
   width: 370px;
+  margin-bottom: 30px;
   @include respond-to($lg, $md, $sm, $es) {
     width: auto;
   }
@@ -115,8 +118,7 @@
   font-family: $secondaryFont;
   font-size: 14px;
   height: 61px;
-  line-height: 23px;
-  padding-top: 11px;
+  line-height: 24px;
   width: 270px;
   @include respond-to($lg, $md, $sm, $es) {
     width: 70%;
@@ -124,6 +126,18 @@
   @include respond-to($es) {
     width: auto;
   }
+}
+
+.article-block-description-link{
+  text-decoration: none;
+}
+
+.article-block-description-link:after {
+  content: "more  =>";
+  font-size: 14px;
+  color: #e84c3d;
+  font-family: Lato-Regular;
+  text-decoration: none;
 }
 
 .row-4 .feedback-form {
@@ -134,7 +148,7 @@
   flex-direction: column;
   height: 332px;
   width: 312px;
-  padding: 29px 29px 29px 29px;
+  padding: 25px 29px 29px 29px;
   @include respond-to($es) {
     width: auto;
   }
@@ -145,6 +159,7 @@
   font-family: $secondaryFont;
   font-size: 14px;
   line-height: 24px;
+  height: 54px;
   width: 312px;
   @include respond-to($es) {
     width: auto;
@@ -159,6 +174,7 @@
   font-size: 14px;
   height: 41px;
   padding-left: 18px;
+  padding-bottom: 3px;
   width: 294px;
   @include respond-to($es) {
     width: auto;
@@ -172,7 +188,7 @@
   font-family: Lato-Italic;
   font-size: 14px;
   height: 81px;
-  line-height: 30px;
+  line-height: 36px;
   padding-left: 18px;
   resize: none;
   width: 294px;
@@ -199,11 +215,67 @@
 }
 
 .row-4 .contact-box {
-  @extend .article-box;
+  display: flex;
+  flex-direction: column;
+  height: 391px;
+  justify-content: space-around;
+  width: 370px;
+  @include respond-to($lg) {
+    width: auto;
+    height: auto;
+    flex-direction: row;
+  }
+  @include respond-to($md, $sm, $es) {
+    width: auto;
+    height: auto;
+    flex-direction: column;
+  }
+}
+
+.row-4 .contact-block-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: $primaryFontColor;
+  font-family: $secondaryFont;
+  font-size: 14px;
+  height: auto;
+  line-height: 24px;
+  width: 277px;
+  //@include respond-to($lg, $md, $sm, $es) {
+  //  width: 70%;
+  //}
+  @include respond-to($es) {
+    width: auto;
+    justify-content: flex-start;
+  }
 }
 
 .row-4 .contact-block {
-  @extend .article-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $primaryFontColor;
+  font-family: $secondaryFont;
+  font-size: 14px;
+  height: 392px;
+  line-height: 24px;
+  width: 270px;
+  //@include respond-to($lg, $md, $sm, $es) {
+  //  width: 70%;
+  //}
+  @include respond-to($es) {
+    width: auto;
+  }
+}
+
+.row-4 .contact-block-line {
+  background-color: $primaryColor;
+  border-top: 1px solid $primaryColor;
+  width: 368px;
+  @include respond-to($md, $sm, $es) {
+    width: 99%;
+  }
 }
 
 .row-4 .contact-block-main-part {
@@ -214,6 +286,13 @@
   @include respond-to($es){
     flex-direction: column;
     align-items: center;
+    width: auto;
+  }
+}
+
+.row-4 .contact-block-icon-box {
+  width: 57px;
+  @include respond-to($es) {
     width: auto;
   }
 }
@@ -249,6 +328,10 @@
   font-family: $secondaryFont;
   font-size: 14px;
   line-height: 24px;
+  width: 227px;
+  @include respond-to($es) {
+    width: auto;
+  }
   @include respond-to($lg, $md, $sm, $es) {
     padding-bottom: 20px;
   }
