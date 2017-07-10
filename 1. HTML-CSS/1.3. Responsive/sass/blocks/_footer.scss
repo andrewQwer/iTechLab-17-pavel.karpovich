@@ -15,7 +15,7 @@ footer {
 
 footer .container {
   @extend .container;
-  height: 52px;
+  height: 66px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -27,7 +27,7 @@ footer .container {
 
 footer .footer-navigation-box{
   width: 856px;
-  height: 52px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -115,6 +115,7 @@
   }
   @include respond-to($es) {
     width: 95%;
+    height: 125px;
   }
 }
 
@@ -136,7 +137,12 @@
   width: 510px;
   margin-bottom: 3px;
   @include respond-to($lg, $md, $sm, $es){
-    width: 95%;
+    width: 99%;
+  }
+  @include respond-to($es) {
+    flex-direction: column;
+    align-items: center;
+    height: 80px;
   }
 }
 
@@ -148,14 +154,15 @@
   font-family: Lato-Italic;
   font-size: 14px;
   height: 39px;
-  padding-left: 21px;
-  padding-bottom: 3px;
+  padding: 0px 0px 3px 21px;
   width: 360px;
   @include respond-to($lg, $md, $sm, $es){
     margin-right: 10px;
   }
   @include respond-to($es) {
-    padding-left: 16px;
+    padding: 0px 16px 3px;
+    width: auto;
+    box-sizing: content-box;
   }
 }
 
@@ -170,6 +177,9 @@
   text-transform: uppercase;
   width: 120px;
   padding-top: 6px;
+  @include respond-to($es) {
+    margin-top: 10px;
+  }
 }
 
 .row-3 .input-submit-arrow{
