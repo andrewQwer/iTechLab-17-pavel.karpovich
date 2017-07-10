@@ -1,6 +1,6 @@
 @font-face {
     font-family: Fjalla;
-    src: url(../fonts/FjallaOne-Regular.otf);
+    src: url(../fonts/FjallaOne-Regular.ttf);
 }
 
 @font-face {
@@ -24,7 +24,13 @@
 }
 
 * {
-    margin: 0;
+    margin: 0px;
+    padding: 0px;
+}
+
+.reset {
+    margin: 0px!important;
+    padding: 0px!important;
 }
 
 header {
@@ -36,6 +42,7 @@ header {
 header .container {
     margin: 0 auto;
     width: 1170px;
+    height:100%;
 }
 
 header .site-name {
@@ -43,25 +50,17 @@ header .site-name {
     color: #e7e7e7;
     font-size: 25px;
     font-family: Fjalla;
-    padding: 28px 0px 28px 0px;
+    padding: 27px 0px;
 }
 
 header .navigation {
     float: right;
-    width: 421px;
+    width: auto;
+    height: 100%;
 }
 
 header .navigation-item {
     display: inline;
-}
-
-header .navigation-item-link {
-    display: inline-block;
-    padding: 32px 20px 32px 20px;
-    font-family: Fjalla;
-    color: #e7e7e7;
-    font-size: 13px;
-    text-decoration: none;
 }
 
 header .navigation-item :hover {
@@ -69,8 +68,17 @@ header .navigation-item :hover {
     transition: background 0.5s;
 }
 
+header .navigation-item-link {
+    display: inline-block;
+    padding: 32px 20px;
+    font-family: Fjalla;
+    color: #e7e7e7;
+    font-size: 13px;
+    text-decoration: none;
+}
+
 .banner {
-    background-image: url("../img/banner-bg.png");
+    background: url("../img/banner-bg.png") center center no-repeat;
     height: 560px;
 }
 
@@ -106,28 +114,35 @@ header .navigation-item :hover {
 }
 
 .banner .title {
-    width: 470px;
-    height: 75px;
+    width: 455px;
+    height: 32px;
+    margin: 25px 0px 14px;
 }
 
-.banner .title-main {
+.banner .title-text {
     float: left;
-    width: 200px;
-    padding: 25px 0px 18px 0px;
+    width: auto;
+    height: auto;
     text-transform: uppercase;
     font-size: 31px;
     font-family: Fjalla;
     color: #e7e7e7;
-    letter-spacing: inherit;
-    letter-spacing: 2.8px;
+    letter-spacing: 2.4px;
+}
+
+.banner .title-line-box {
+    float: right;
+    width: 254px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .banner .title-line {
-    float: right;
-    size: 1px;
-    width: 268px;
-    color: #e7e7e7;
-    margin: 40px 0px 30px 0px;
+    background-color: #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+    width: 100%;
 }
 
 .banner .description {
@@ -136,19 +151,19 @@ header .navigation-item :hover {
     font-family: Fjalla;
     color: #e7e7e7;
     display: inline-block;
-    letter-spacing: 2.8px;
+    letter-spacing: 2.4px;
+    margin-bottom: 12px;
 }
 
 .banner .web-site {
     font-size: 15px;
     color: #e84c3d;
     font-family: Fjalla;
-    padding: 23px 0px 0px 0px;
-    letter-spacing: 2.8px;
+    letter-spacing: 1.2px;
 }
 
 .main {
-    height: 1590px;
+    height: auto;
     width: 100%;
 }
 
@@ -158,68 +173,78 @@ header .navigation-item :hover {
     background: #e7e7e7;
 }
 
-.main .container {
+.row-1 .container {
     margin: 0 auto;
     width: 1170px;
 }
 
-.main .column {
+.row-1 .column {
     display: inline-block;
-    width: 33%;
+    width: auto;
     height: 121px;
-    padding: 80px 0px 76px 0px;
+    padding: 77px 0px 76px 0px;
 }
 
-.main .icon-substrate {
+.row-1 .icon-substrate {
     height: 70px;
     width: 70px;
     border-radius: 50%;
     background: #e84c3d;
     display: table;
     float: left;
+    margin: 4px 30px 0px 0px;
 }
 
-.main .icon {
+.row-1 .icon {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     color: #fff;
 }
 
-.main .column-info {
-    margin: 0px 24px 0px 24px;
+.row-1 .column-info {
     float: right;
-    width: 268px;
+    width: auto;
+    margin-right: 30px;
 }
 
-.main .column-info-name {
+.row-1 .column-info-name {
     font-family: Fjalla;
     font-size: 21px;
     color: #000;
-    letter-spacing: 2.8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    width: auto;
 }
 
-.main .column-info-description {
+.row-1 .column-info-description {
     font-family: Lato-Regular;
+    line-height: 24px;
     font-size: 14px;
     color: #666666;
-    padding: 24px 0px 0px 0px;
+    margin: 19px 0px;
+    width: 266px;
 }
 
-.main .column-info-link {
+.row-1 .column-info-link {
     text-decoration: none;
 }
 
-.main .column-info-link:after {
+.row-1 .column-info-link:after {
     color: #e84c3d;
     content: "=> more";
 }
 
 .main .row-2 {
-    padding: 80px 0px 80px 0px;
+    margin: 76px 0px 84px;
     height: 354px;
     width: 100%;
+}
+
+.row-2 .container {
+    width: 1170px;
+    margin: 0 auto;
+    height: 100%;
 }
 
 .row-2 .info {
@@ -229,42 +254,45 @@ header .navigation-item :hover {
 }
 
 .row-2 .photo {
+    background: url("../img/row-2-img.png") center center no-repeat;
     width: 354px;
-    height: 354px;
-    padding-left: 16px;
+    height: 355px;
+    margin-top: 5px;
     float: right;
 }
 
 .row-2 .info-title {
+    width: 635px;
     color: #000;
     font-size: 21px;
     font-family: Fjalla;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.9px;
     text-transform: uppercase;
-    padding-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .row-2 .info-line {
+    width: 768px;
     background-color: #e7e7e7;
     border-top: 1px solid #e7e7e7;
 }
 
 .row-2 .info-subtitle {
-    padding: 12px 0px 12px 0px;
+    margin: 7px 0px;
     color: #e84c3d;
     font-family: Lato-Regular;
     font-size: 20px;
 }
 
 .row-2 .info-columns {
-    padding-top: 29px;
+    padding-top: 24px;
 }
 
 .row-2 .info-column{
     display: inline-block;
     float: left;
-    width: 46%;
-    padding-right: 30px;
+    width: 366px;
+    margin-right: 34px;
 }
 
 .row-2 .info-column .info-column-title {
@@ -274,9 +302,10 @@ header .navigation-item :hover {
 }
 
 .row-2 .info-column .info-column-description {
-    padding-top: 26px;
+    margin: 8px 0px 33px;
     font-family: Lato-Regular;
     font-size: 14px;
+    line-height: 24px;
     color: #666666;
 }
 
@@ -290,7 +319,6 @@ header .navigation-item :hover {
     text-transform: uppercase;
     font-family: Oswald-Regular;
     font-size: 14px;
-    margin-top: 27px;
 }
 
 .row-3{
@@ -302,27 +330,28 @@ header .navigation-item :hover {
     margin: 0 auto;
     width: 1170px;
     background: #e84c3d;
-    border-radius: 25px;
+    border-radius: 10px;
     height: 188px;
 }
 
 .row-3 .review {
     width: 540px;
-    height: 100%;
+    height: auto;
     float: left;
-    padding: 48px 30px 48px 30px;
+    margin: 45px 30px 0px 30px;
 }
 
 .row-3 .review-form {
     width: 510px;
-    height: 100%;
+    height: auto;
     float: right;
-    padding: 48px 30px 48px 30px;
+    margin: 45px 30px 0px 30px;
 }
 
 .row-3 .review-photo{
     width: 70px;
     float: left;
+    margin-top: 5px;
 }
 
 .row-3 .review-photo .review-photo-substrate {
@@ -344,6 +373,7 @@ header .navigation-item :hover {
     width: 442px;
     float: right;
     margin-left: 28px;
+    letter-spacing: 1px;
 }
 
 .row-3 .review-info .review-info-title {
@@ -354,22 +384,25 @@ header .navigation-item :hover {
 }
 
 .row-3 .review-info .review-info-description {
-    padding-top: 22px;
+    margin-top: 16px;
     font-family: Lato-Regular;
-    font-size: 16px;
+    line-height: 24px;
+    font-size: 14px;
+    letter-spacing: 0.7px;
     color: #ffffff;
 }
 
 .row-3 .review-info .review-info-description span {
     font-family: Lato-Italic;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .row-3 .review-form .review-form-title {
     font-family: Fjalla;
     font-size: 21px;
-    padding-bottom: 22px;
+    margin-bottom: 24px;
     text-transform: uppercase;
+    letter-spacing: 1px;
     color: #ffffff;
 }
 
@@ -383,7 +416,7 @@ header .navigation-item :hover {
     border: none;
     border-radius: 25px;
     background: #ffffff;
-    padding-left: 21px;
+    padding-left: 19px;
     margin-right: 8px;
     font-family: Lato-Italic;
     font-size: 14px;
@@ -405,16 +438,15 @@ header .navigation-item :hover {
 }
 
 .row-4 .container {
-    margin: 0 auto;
+    margin: 65px auto 60px auto;
     width: 1170px;
     height: 440px;
-    padding-bottom: 60px;
 }
 
 .row-4 .column {
-    width: 30.5%;
+    width: 358px;
     height: 440px;
-    padding: 0px 30px 0px 0px;
+    padding: 0px 43px 0px 0px;
     float: left;
 }
 
@@ -422,11 +454,13 @@ header .navigation-item :hover {
     font-size: 21px;
     font-family: Fjalla;
     padding-bottom: 26px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .row-4 .column .article-block {
     width: 370px;
-    height: 102px;
+    height: 100px;
     padding-bottom: 30px;
 }
 
@@ -447,8 +481,22 @@ header .navigation-item :hover {
     font-family: Lato-Regular;
     font-size: 14px;
     color: #767c7e;
-    padding-top: 11px;
-    line-height: 23px;
+    padding-top: 3px;
+    line-height: 24px;
+    float: right;
+    width: 270px;
+}
+
+.article-block-description-link{
+    text-decoration: none;
+}
+
+.article-block-description-link:after {
+    content: "more  =>";
+    font-size: 14px;
+    color: #e84c3d;
+    font-family: Lato-Regular;
+    text-decoration: none;
 }
 
 .row-4 .feedback-form {
@@ -459,37 +507,37 @@ header .navigation-item :hover {
 }
 
 .row-4 .feedback-form-block {
-    padding: 32px 35px 29px 22px;
+    padding: 23px 35px 29px 29px;
 }
 
 .row-4 .feedback-form-description {
-    padding-bottom: 16px;
+    padding-bottom: 24px;
     font-family: Lato-Regular;
     font-size: 14px;
     color: #767c7e;
-    line-height: 26px;
+    line-height: 24px;
 }
 
 .row-4 .feedback-form-block .input-contact {
     border: none;
-    width: 313px;
+    width: 293px;
     height: 41px;
     border-radius: 25px;
     font-family: Lato-Italic;
     font-size: 14px;
     padding-left: 18px;
     color: #9faaad;
-    margin-bottom: 21px;
+    margin-bottom: 20px;
 }
 
 .row-4 .feedback-form-block .input-query {
     border: none;
-    width: 313px;
-    height: 81px;
+    width: 292px;
+    height: 78px;
     border-radius: 10px;
     font-family: Lato-Italic;
     font-size: 14px;
-    padding-left: 18px;
+    padding: 6px 0px 0px 18px;
     color: #9faaad;
     line-height: 30px;
     resize: none;
@@ -505,7 +553,7 @@ header .navigation-item :hover {
     font-size: 15px;
     font-family: Fjalla;
     color: #ffffff;
-    margin-top: 19px;
+    margin-top: 14px;
 }
 
 .row-4 .input-submit-arrow {
@@ -514,17 +562,26 @@ header .navigation-item :hover {
 
 .row-4 .contact-block {
     height: 122px;
-    width: 300px;
-    margin-bottom: 26px;
+    width: 370px;
 }
 
-.row-4 .contact-block-icon {
+.row-4 .contact-block-icon-box {
     width: 50px;
     float: left;
 }
 
+contact-block-icon{
+    width:10px;
+}
+
+.row-4 .contact-block-line{
+    background-color: #e7e7e7;
+    border-top: 1px solid #e7e7e7;
+    margin-bottom: 22px;
+}
+
 .row-4 .contact-block-main {
-    float: right;
+    margin-left: 47px;
     width: 250px;
 }
 
@@ -540,6 +597,13 @@ header .navigation-item :hover {
     font-family: Lato-Regular;
     line-height: 24px;
     color: #767c7e;
+}
+
+.row-4 .contact-line {
+    width:364px;
+    float: right;
+    background-color: #e7e7e7;
+    border-top: 1px solid #e7e7e7
 }
 
 footer {
@@ -565,7 +629,7 @@ footer .footer-navigation {
 
 footer .footer-navigation-item {
     display: inline-block;
-    padding-right: 19.5px;
+    padding-right: 16.5px;
 }
 
 footer .footer-navigation-item a {
@@ -577,13 +641,13 @@ footer .footer-navigation-item a {
 
 footer .footer-navigation-item-marker:before {
     content: "/";
-    padding-right: 19.5px;
+    padding-right: 15.5px;
     color: #767c7e;
 }
 
 footer .footer-right {
     display: block;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 footer .footer-right-item {
@@ -597,7 +661,7 @@ footer .footer-right-item a {
 footer .footer-right-item-design,
 footer .footer-right-item-design a{
     font-family: Lato-Regular;
-    font-feature-settings: 14px;
+    font-size: 13px;
     line-height: 24px;
     color: #e84c3d;
 }
@@ -606,7 +670,7 @@ footer .footer-right-item-images,
 footer .footer-right-item-images a,
 footer .footer-right-item-website{
     font-family: Lato-Regular;
-    font-feature-settings: 14px;
+    font-size: 13px;
     line-height: 24px;
     color: #767c7e;
 }
@@ -620,6 +684,8 @@ footer .footer-right-item-design:after {
 
 .footer-navigation-social{
     float: right;
+    margin-left: 8px;
+    margin-top: 2px;
 }
 
 .footer-navigation-social-items {

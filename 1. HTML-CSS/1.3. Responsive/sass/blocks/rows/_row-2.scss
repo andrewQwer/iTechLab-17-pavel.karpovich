@@ -5,9 +5,10 @@
 .row-2 .container {
   @extend .container;
   align-items: center;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
-  height: 514px;
+  height: 508px;
   @include respond-to($lg, $md, $sm, $es){
     height: auto;
     flex-direction: column;
@@ -19,7 +20,7 @@
   flex-direction: column;
   height: 354px;
   justify-content: flex-start;
-  width: 800px;
+  width: 770px;
   @include respond-to($lg, $md, $sm, $es){
     height: auto;
     order: 1;
@@ -32,7 +33,6 @@
 .row-2 .photo {
   background: url("../img/row-2-img.png") center center no-repeat;
   height: 354px;
-  padding-left: 16px;
   width: 354px;
   @include respond-to($lg, $md, $sm, $es){
     order: 0;
@@ -44,12 +44,16 @@
 }
 
 .row-2 .info-title {
+  width: 635px;
   color: #000;
   font-family: $primaryFont;
   font-size: 21px;
-  letter-spacing: 1.2px;
-  padding-bottom: 28px;
+  letter-spacing: 0.9px;
+  margin-bottom: 23px;
   text-transform: uppercase;
+  @include respond-to($md, $sm, $es){
+    width: 100%;
+  }
   @include respond-to($es) {
     padding-top: 20px;
   }
@@ -64,7 +68,7 @@
   color: #e84c3d;
   font-family: $secondaryFont;
   font-size: 20px;
-  padding: 12px 0px 12px 0px;
+  padding: 6px 0px 8px 0px;
 }
 
 .row-2 .info-columns {
@@ -72,7 +76,7 @@
   flex-direction: row;
   height: 240px;
   justify-content: space-between;
-  padding-top: 28px;
+  margin-top: 24px;
   width: 770px;
   @include respond-to($md, $sm, $es) {
     width: 100%;
@@ -108,7 +112,8 @@
   color: #666666;
   font-family: $secondaryFont;
   font-size: 14px;
-  padding-top: 26px;
+  margin-top: 8px;
+  line-height: 24px;
 }
 
 .row-2 .info-column .info-column-button {
@@ -119,7 +124,7 @@
   font-family: Oswald-Regular;
   font-size: 14px;
   height: 35px;
-  margin-top: 27px;
+  margin-top: 33px;
   text-transform: uppercase;
   width: 70px;
 }
