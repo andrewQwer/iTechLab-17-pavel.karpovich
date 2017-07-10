@@ -49,8 +49,9 @@
   font-family: $primaryFont;
   font-size: 21px;
   letter-spacing: 0.9px;
-  margin-bottom: 23px;
+  margin-bottom: 15px;
   text-transform: uppercase;
+  line-height: 26px;
   @include respond-to($md, $sm, $es){
     width: 100%;
   }
@@ -62,13 +63,14 @@
 .row-2 .info-line {
   background-color: $primaryColor;
   border-top: 1px solid $primaryColor;
+  width: 100%;
 }
 
 .row-2 .info-subtitle {
   color: #e84c3d;
   font-family: $secondaryFont;
   font-size: 20px;
-  padding: 6px 0px 8px 0px;
+  padding-bottom: 2px;
 }
 
 .row-2 .info-columns {
@@ -76,7 +78,7 @@
   flex-direction: row;
   height: 240px;
   justify-content: space-between;
-  margin-top: 24px;
+  margin-top: 19px;
   width: 770px;
   @include respond-to($md, $sm, $es) {
     width: 100%;
