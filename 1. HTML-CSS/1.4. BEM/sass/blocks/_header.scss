@@ -1,7 +1,7 @@
 .page-header {
   width: 100%;
   height: 80px;
-  background: #202628;
+  background: $headerColor;
   display: flex;
   flex-direction: column;
   @include respond-to($es) {
@@ -24,7 +24,7 @@
   }
 
   &__logo {
-    color: $primaryColor;
+    color: $primaryColorLight;
     font-family: $primaryFont;
     font-size: 25px;
     padding: 28px 0px;
@@ -49,7 +49,7 @@
     }
 
     &--link {
-      color: $primaryColor;
+      color: $primaryColorLight;
       display: inline-block;
       font-family: $primaryFont;
       font-size: 13px;
@@ -57,6 +57,7 @@
       text-decoration: none;
       box-sizing: content-box;
       text-transform: uppercase;
+      outline: none;
       @include respond-to($es) {
         width: 100%;
         padding: 32px 0px;
@@ -64,6 +65,7 @@
     }
 
     &--link:hover {
+      outline: none;
       background: $secondaryColor;
       transition: background 0.5s;
       @include respond-to($es) {

@@ -58,20 +58,15 @@
     height: 410px;
     justify-content: space-between;
     width: 370px;
-    @include respond-to($lg) {
-      width: auto;
-      height: auto;
-      flex-direction: row;
-    }
-    @include respond-to($md, $sm, $es) {
+    @include respond-to($lg, $md, $sm, $es) {
       width: auto;
       height: auto;
       flex-direction: column;
     }
 
     &--line {
-      background-color: $primaryColor;
-      border-top: 1px solid $primaryColor;
+      background-color: $primaryColorLight;
+      border-top: 1px solid $primaryColorLight;
       width: 100%;
       @include respond-to($lg, $md, $sm, $es) {
         width: 99%;
@@ -111,7 +106,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      @include respond-to($md, $sm, $es) {
+      @include respond-to($lg, $md, $sm, $es) {
         padding-bottom: 20px;
       }
       @include respond-to($es) {
@@ -143,20 +138,16 @@
     }
 
     &--link {
-      text-decoration: none;
-    }
-
-    &--link:after {
-      content: "more  =>";
       font-size: 14px;
       color: #e84c3d;
-      font-family: Lato-Regular;
+      font-family: $secondaryFont;
       text-decoration: none;
+      outline: none;
     }
   }
 
   &__form {
-    background: $primaryColor;
+    background: $primaryColorLight;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -184,13 +175,14 @@
     &--contact {
       border: none;
       border-radius: 25px;
-      color: #9faaad;
-      font-family: Lato-Italic;
+      color: $inputColor;
+      font-family: $secondaryFontItalic;
       font-size: 14px;
       height: 41px;
       padding-left: 18px;
       padding-bottom: 3px;
       width: 294px;
+      outline: none;
       @include respond-to($es) {
         width: auto;
       }
@@ -199,14 +191,16 @@
     &--query {
       border: none;
       border-radius: 10px;
-      color: #9faaad;
-      font-family: Lato-Italic;
+      color: $inputColor;
+      // #9faaad
+      font-family: $secondaryFontItalic;
       font-size: 14px;
       height: 81px;
       line-height: 36px;
       padding-left: 18px;
       resize: none;
       width: 294px;
+      outline: none;
       @include respond-to($es) {
         width: auto;
       }
@@ -216,13 +210,14 @@
       background: $secondaryColor;
       border: none;
       border-radius: 25px;
-      color: #ffffff;
-      font-family: Fjalla;
+      color: white;
+      font-family: $primaryFont;
       font-size: 15px;
       height: 42px;
       text-transform: uppercase;
       width: 101px;
       align-self: flex-start;
+      outline:none;
     }
 
     &--arrow {
@@ -246,8 +241,8 @@
     }
 
     &--line {
-      background-color: $primaryColor;
-      border-top: 1px solid $primaryColor;
+      background-color: $primaryColorLight;
+      border-top: 1px solid $primaryColorLight;
       width: 368px;
       margin: 0px;
       padding: 0px;
@@ -265,9 +260,6 @@
       font-size: 14px;
       height: auto;
       width: 277px;
-      //@include respond-to($lg, $md, $sm, $es) {
-      //  width: 70%;
-      //}
       @include respond-to($es) {
         width: auto;
         justify-content: flex-start;
@@ -296,7 +288,7 @@
 
     &--title {
       color: $secondaryColor;
-      font-family: Lato-Bold;
+      font-family: $secondaryFontBold;
       font-size: 16px;
       line-height: 24px;
       height: auto;
@@ -318,15 +310,3 @@
     }
   }
 }
-//
-//.row-4 .contact-block-main-part {
-//  width: 300px;
-//  display: flex;
-//  flex-direction: row;
-//  justify-content: space-around;
-//  @include respond-to($es){
-//    flex-direction: column;
-//    align-items: center;
-//    width: auto;
-//  }
-//}
