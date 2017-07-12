@@ -1,0 +1,157 @@
+.page-footer {
+  background: #202628;
+  height: 205px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  @include respond-to($lg, $md, $sm, $es) {
+    margin-top: 20px;
+  }
+
+  @include respond-to($md, $sm, $es) {
+    height: auto;
+  }
+
+  &__inner {
+    @extend .container;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @include respond-to($md, $sm, $es) {
+      height: auto;
+      flex-direction: column;
+    }
+  }
+
+  &__navigation {
+    width: 856px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include respond-to($md, $sm, $es) {
+      height: auto;
+      width: auto;
+    }
+    @include respond-to($md) {
+      display: flex;
+      justify-content: center;
+    }
+    @include respond-to($sm) {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &--box {
+      display: inline;
+      @include respond-to($md, $sm, $es) {
+        margin-top: 20px;
+        display: grid;
+      }
+    }
+
+    &--item {
+      display: inline-block;
+      padding-right: 17.5px;
+    }
+
+    &--link {
+      text-decoration: none;
+      font-family: $secondaryFont;
+      font-size: 13px;
+      color: #e7e7e7;
+    }
+
+    &--marker:before {
+      @include respond-to($el) {
+        content: "/";
+        padding-right: 15.5px;
+        color: $primaryFontColor;
+      }
+    }
+  }
+
+  &__right {
+    display: block;
+    @include respond-to($lg, $md, $sm, $es) {
+      margin-top: 20px;
+      display: grid;
+    }
+
+    &--item {
+      display: inline-block;
+    }
+
+    &--design,
+    &--design a {
+      font-family: $secondaryFont;
+      font-size: 13px;
+      line-height: 24px;
+      color: $secondaryColor;
+      text-decoration: none;
+    }
+
+    &--images,
+    &--images a,
+    &--website {
+      font-size: 13px;
+      font-family: $secondaryFont;
+      line-height: 24px;
+      color: $primaryFontColor;
+      text-decoration: none;
+    }
+
+    &--images:after,
+    &--design:after {
+      @include respond-to($el) {
+        content: "/";
+        margin-left: 7.5px;
+        margin-right: 6.5px;
+      }
+    }
+  }
+
+  &__social {
+    height: 44px;
+    width: auto;
+    @include respond-to($lg, $md, $sm, $es){
+      height: auto;
+    }
+
+    &--items {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      @include respond-to($lg, $md){
+        margin-top: 20px;
+        justify-content: center;
+      }
+      @include respond-to($sm, $es){
+        margin-top: 20px;
+        justify-content: flex-start;
+      }
+    }
+
+    &--item {
+      display: inline-block;
+    }
+
+    &--substrate {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: $secondaryColor;
+      margin-left: 9px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--icon {
+      color: #ffffff;
+      font-size: 19px;
+    }
+  }
+}
