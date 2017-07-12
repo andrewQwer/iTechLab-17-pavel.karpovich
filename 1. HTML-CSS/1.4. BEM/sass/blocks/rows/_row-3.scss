@@ -49,7 +49,7 @@
 
     &--icon {
       align-items: center;
-      background: #000;
+      background: black;
       border-radius: 50%;
       display: flex;
       flex-direction: row;
@@ -84,7 +84,7 @@
 
     &--description {
       height: 56px;
-      color: #ffffff;
+      color: white;
       font-family: $secondaryFont;
       font-size: 14px;
       letter-spacing: 0.7px;
@@ -95,7 +95,7 @@
     }
 
     &--author {
-      font-family: Lato-Italic;
+      font-family: $secondaryFontItalic;
       font-size: 12px;
     }
   }
@@ -142,15 +142,16 @@
     }
 
     &--email {
-      background: #ffffff;
+      background: white;
       border: none;
       border-radius: 25px;
-      color: #999999;
-      font-family: Lato-Italic;
+      color: $inputColor;
+      font-family: $secondaryFontItalic;
       font-size: 14px;
       height: 39px;
       padding: 0px 0px 3px 21px;
       width: 360px;
+      outline: none;
       @include respond-to($lg, $md, $sm, $es){
         margin-right: 10px;
       }
@@ -162,16 +163,17 @@
     }
 
     &--submit {
-      background: #000000;
+      background: black;
       border: none;
       border-radius: 25px;
-      color: #ffffff;
+      color: white;
       font-family: $primaryFont;
       font-size: 15px;
       height: 39px;
       text-transform: uppercase;
       width: 120px;
       padding-top: 6px;
+      outline: none;
       @include respond-to($es) {
         margin-top: 10px;
       }
