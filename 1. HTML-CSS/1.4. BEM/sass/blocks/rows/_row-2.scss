@@ -1,0 +1,132 @@
+.row-2 {
+  width: 100%;
+
+  &__inner {
+    @extend .container;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    height: 508px;
+    @include respond-to($lg, $md, $sm, $es){
+      height: auto;
+      flex-direction: column;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    height: 354px;
+    justify-content: flex-start;
+    width: 770px;
+    @include respond-to($lg, $md, $sm, $es){
+      height: auto;
+      order: 1;
+    }
+    @include respond-to($md, $sm, $es){
+      width: 90%;
+    }
+
+    &--title {
+      width: 635px;
+      color: #000;
+      font-family: $primaryFont;
+      font-size: 21px;
+      letter-spacing: 0.9px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      line-height: 26px;
+      @include respond-to($md, $sm, $es){
+        width: 100%;
+      }
+      @include respond-to($es) {
+        padding-top: 20px;
+      }
+    }
+
+    &--description {
+      color: #e84c3d;
+      font-family: $secondaryFont;
+      font-size: 20px;
+      padding-bottom: 2px;
+    }
+
+    &--line {
+      background-color: $primaryColor;
+      border-top: 1px solid $primaryColor;
+      width: 100%;
+    }
+
+    &--articles {
+      display: flex;
+      flex-direction: row;
+      height: 240px;
+      justify-content: space-between;
+      margin-top: 19px;
+      width: 770px;
+      @include respond-to($md, $sm, $es) {
+        width: 100%;
+      }
+      @include respond-to($sm, $es){
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  &__article {
+    height: 240px;
+    width: 370px;
+    @include respond-to($md) {
+      padding-left: 20px;
+    }
+    @include respond-to($md, $sm, $es){
+      width: auto;
+      padding-bottom: 20px;
+      height: auto;
+    }
+
+    &--title {
+      color: #000;
+      font-family: Lato-Bold;
+      font-size: 16px;
+    }
+
+    &--description {
+      color: #666666;
+      font-family: $secondaryFont;
+      font-size: 14px;
+      margin-top: 8px;
+      line-height: 24px;
+    }
+
+    &--button {
+      background-color: $secondaryColor;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-family: Oswald-Regular;
+      font-size: 14px;
+      height: 35px;
+      margin-top: 33px;
+      text-transform: uppercase;
+      width: 70px;
+    }
+  }
+
+  &__photo {
+    background: url("../img/row-2-img.png") center center no-repeat;
+    height: 354px;
+    width: 354px;
+    @include respond-to($lg, $md, $sm, $es){
+      order: 0;
+      padding: 20px 0px;
+    }
+    @include respond-to($es) {
+      display: none;
+    }
+  }
+}
