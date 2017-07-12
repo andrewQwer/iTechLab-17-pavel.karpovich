@@ -55,7 +55,7 @@
     }
 
     &-main {
-      color: $primaryColor;
+      color: $primaryColorLight;
       font-family: $primaryFont;
       font-size: 31px;
       letter-spacing: 2.4px;
@@ -68,8 +68,8 @@
     }
 
     &-line {
-      background-color: $primaryColor;
-      border-top: 1px solid $primaryColor;
+      background-color: $primaryColorLight;
+      border-top: 1px solid $primaryColorLight;
       height: 1px;
       width: 100%;
       max-width: 250px;
@@ -80,7 +80,7 @@
   }
 
   &__description {
-    color: $primaryColor;
+    color: $primaryColorLight;
     font-family: $primaryFont;
     font-size: 31px;
     letter-spacing: 2.4px;
