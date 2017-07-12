@@ -1,344 +1,332 @@
-.row-4 .container {
-  @extend .container;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  height: 574px;
-  justify-content: space-between;
-  @include respond-to($lg, $md, $sm, $es) {
-    flex-direction: column;
+.row-4 {
+  &__group-1 {
+    @include respond-to($lg, $md, $sm, $es){
+      order: 1;
+    }
+  }
+
+  &__group-2 {
+    @include respond-to($lg, $md, $sm, $es){
+      order: 2;
+    }
+  }
+
+  &__group-3 {
+    @include respond-to($lg, $md, $sm, $es){
+      order: 3;
+    }
+  }
+
+  &__inner {
+    @extend .container;
     align-items: center;
-    height: auto;
-  }
-}
-
-.row-4 .column {
-  height: 436px;
-  width: 370px;
-  @include respond-to($lg, $md, $sm, $es){
-    width: auto;
-    height: auto;
-  }
-}
-
-.group-1{
-  @include respond-to($lg, $md, $sm, $es){
-    order: 1;
-  }
-}
-
-.group-2{
-  @include respond-to($lg, $md, $sm, $es){
-    order: 2;
-  }
-}
-
-.group-3{
-  @include respond-to($lg, $md, $sm, $es){
-    order: 3;
-  }
-}
-
-.row-4 .column .article-title {
-  font-family: $primaryFont;
-  font-size: 21px;
-  padding-bottom: 19px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  @include respond-to($lg, $md, $sm, $es) {
-    text-align: center;
-    padding: 20px 0px;
-  }
-}
-
-.article-box {
-  display: flex;
-  flex-direction: column;
-  height: 410px;
-  justify-content: space-between;
-  width: 370px;
-  @include respond-to($lg) {
-    width: auto;
-    height: auto;
+    display: flex;
     flex-direction: row;
+    height: 574px;
+    justify-content: space-between;
+    @include respond-to($lg, $md, $sm, $es) {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+    }
   }
-  @include respond-to($md, $sm, $es) {
-    width: auto;
-    height: auto;
+
+  &__column {
+    height: 436px;
+    width: 370px;
+    @include respond-to($lg, $md, $sm, $es){
+      width: auto;
+      height: auto;
+    }
+
+    &--title {
+      font-family: $primaryFont;
+      font-size: 21px;
+      padding-bottom: 19px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      @include respond-to($lg, $md, $sm, $es) {
+        text-align: center;
+        padding: 20px 0px;
+      }
+    }
+  }
+
+  &__box {
+    display: flex;
     flex-direction: column;
-  }
-}
+    height: 410px;
+    justify-content: space-between;
+    width: 370px;
+    @include respond-to($lg) {
+      width: auto;
+      height: auto;
+      flex-direction: row;
+    }
+    @include respond-to($md, $sm, $es) {
+      width: auto;
+      height: auto;
+      flex-direction: column;
+    }
 
-.row-4 .column .article-block {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  justify-content: space-between;
-  width: 370px;
-  @include respond-to($lg, $md, $sm, $es) {
-    width: auto;
-  }
-  @include respond-to($es) {
-    height: auto;
-  }
-}
+    &--line {
+      background-color: $primaryColor;
+      border-top: 1px solid $primaryColor;
+      width: 100%;
+      @include respond-to($lg, $md, $sm, $es) {
+        width: 99%;
+      }
+    }
 
-.article-block-main {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  @include respond-to($md, $sm, $es) {
-    padding-bottom: 20px;
+    &--article {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      justify-content: space-between;
+      width: 370px;
+      @include respond-to($lg, $md, $sm, $es) {
+        width: auto;
+      }
+      @include respond-to($es) {
+        height: auto;
+      }
+    }
   }
-  @include respond-to($es) {
+
+  &__article {
+    display: flex;
     flex-direction: column;
-  }
-}
-
-.row-4 .column .article-line {
-  background-color: $primaryColor;
-  border-top: 1px solid $primaryColor;
-  width: 100%;
-  @include respond-to($lg, $md, $sm, $es) {
-    width: 99%;
-  }
-}
-
-.row-4 .column .article-block-photo {
-  height: 70px;
-  width: 70px;
-  @include respond-to($es) {
-    padding:20px 0px;
-  }
-}
-
-.row-4 .column .article-block-description {
-  color: $primaryFontColor;
-  font-family: $secondaryFont;
-  font-size: 14px;
-  height: 61px;
-  line-height: 24px;
-  width: 270px;
-  @include respond-to($lg, $md, $sm, $es) {
-    width: 70%;
-  }
-  @include respond-to($es) {
-    width: auto;
-  }
-}
-
-.article-block-description-link{
-  text-decoration: none;
-}
-
-.article-block-description-link:after {
-  content: "more  =>";
-  font-size: 14px;
-  color: #e84c3d;
-  font-family: Lato-Regular;
-  text-decoration: none;
-}
-
-.row-4 .feedback-form {
-  background: $primaryColor;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  height: 332px;
-  width: 312px;
-  padding: 28px 29px 29px 29px;
-  margin-top: 6px;
-  @include respond-to($es) {
-    width: auto;
-  }
-}
-
-.row-4 .feedback-form-description {
-  color: $primaryFontColor;
-  font-family: $secondaryFont;
-  font-size: 14px;
-  line-height: 24px;
-  height: 54px;
-  width: 312px;
-  @include respond-to($es) {
-    width: auto;
-  }
-}
-
-.row-4 .input-contact {
-  border: none;
-  border-radius: 25px;
-  color: #9faaad;
-  font-family: Lato-Italic;
-  font-size: 14px;
-  height: 41px;
-  padding-left: 18px;
-  padding-bottom: 3px;
-  width: 294px;
-  @include respond-to($es) {
-    width: auto;
-  }
-}
-
-.row-4 .input-query {
-  border: none;
-  border-radius: 10px;
-  color: #9faaad;
-  font-family: Lato-Italic;
-  font-size: 14px;
-  height: 81px;
-  line-height: 36px;
-  padding-left: 18px;
-  resize: none;
-  width: 294px;
-  @include respond-to($es) {
-    width: auto;
-  }
-}
-
-.row-4 .input-submit {
-  background: $secondaryColor;
-  border: none;
-  border-radius: 25px;
-  color: #ffffff;
-  font-family: Fjalla;
-  font-size: 15px;
-  height: 42px;
-  text-transform: uppercase;
-  width: 101px;
-  align-self: flex-start;
-}
-
-.row-4 .input-submit-arrow {
-  padding-left: 12px;
-}
-
-.row-4 .contact-box {
-  display: flex;
-  flex-direction: column;
-  height: 391px;
-  justify-content: space-around;
-  width: 370px;
-  @include respond-to($lg) {
-    width: auto;
     height: auto;
-    flex-direction: row;
+    justify-content: space-between;
+    width: 370px;
+    @include respond-to($lg, $md, $sm, $es) {
+      width: auto;
+    }
+    @include respond-to($es) {
+      height: auto;
+    }
+
+    &--block {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      @include respond-to($md, $sm, $es) {
+        padding-bottom: 20px;
+      }
+      @include respond-to($es) {
+        flex-direction: column;
+      }
+    }
+
+    &--photo {
+      height: 70px;
+      width: 70px;
+      @include respond-to($es) {
+        padding:20px 0px;
+      }
+    }
+
+    &--description {
+      color: $primaryFontColor;
+      font-family: $secondaryFont;
+      font-size: 14px;
+      height: 61px;
+      line-height: 24px;
+      width: 270px;
+      @include respond-to($lg, $md, $sm, $es) {
+        width: 70%;
+      }
+      @include respond-to($es) {
+        width: auto;
+      }
+    }
+
+    &--link {
+      text-decoration: none;
+    }
+
+    &--link:after {
+      content: "more  =>";
+      font-size: 14px;
+      color: #e84c3d;
+      font-family: Lato-Regular;
+      text-decoration: none;
+    }
   }
-  @include respond-to($md, $sm, $es) {
-    width: auto;
-    height: auto;
+
+  &__form {
+    background: $primaryColor;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
     flex-direction: column;
-  }
-}
+    height: 332px;
+    width: 312px;
+    padding: 28px 29px 29px 29px;
+    margin-top: 6px;
+    @include respond-to($es) {
+      width: auto;
+    }
 
-.row-4 .contact-block-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  color: $primaryFontColor;
-  font-family: $secondaryFont;
-  font-size: 14px;
-  height: auto;
-  width: 277px;
-  //@include respond-to($lg, $md, $sm, $es) {
-  //  width: 70%;
-  //}
-  @include respond-to($es) {
-    width: auto;
-    justify-content: flex-start;
-  }
-}
+    &--description {
+      color: $primaryFontColor;
+      font-family: $secondaryFont;
+      font-size: 14px;
+      line-height: 24px;
+      height: 54px;
+      width: 312px;
+      @include respond-to($es) {
+        width: auto;
+      }
+    }
 
-.row-4 .contact-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: $primaryFontColor;
-  font-family: $secondaryFont;
-  font-size: 14px;
-  height: 392px;
-  line-height: 24px;
-  width: 270px;
-  margin-top: 6px;
-  //@include respond-to($lg, $md, $sm, $es) {
-  //  width: 70%;
-  //}
-  @include respond-to($es) {
-    width: auto;
-  }
-}
+    &--contact {
+      border: none;
+      border-radius: 25px;
+      color: #9faaad;
+      font-family: Lato-Italic;
+      font-size: 14px;
+      height: 41px;
+      padding-left: 18px;
+      padding-bottom: 3px;
+      width: 294px;
+      @include respond-to($es) {
+        width: auto;
+      }
+    }
 
-.row-4 .contact-block-line {
-  background-color: $primaryColor;
-  border-top: 1px solid $primaryColor;
-  width: 368px;
-  margin: 0px;
-  padding: 0px;
-  @include respond-to($md, $sm, $es) {
-    width: 99%;
-  }
-}
+    &--query {
+      border: none;
+      border-radius: 10px;
+      color: #9faaad;
+      font-family: Lato-Italic;
+      font-size: 14px;
+      height: 81px;
+      line-height: 36px;
+      padding-left: 18px;
+      resize: none;
+      width: 294px;
+      @include respond-to($es) {
+        width: auto;
+      }
+    }
 
-.row-4 .contact-block-main-part {
-  width: 300px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  @include respond-to($es){
+    &--submit {
+      background: $secondaryColor;
+      border: none;
+      border-radius: 25px;
+      color: #ffffff;
+      font-family: Fjalla;
+      font-size: 15px;
+      height: 42px;
+      text-transform: uppercase;
+      width: 101px;
+      align-self: flex-start;
+    }
+
+    &--arrow {
+      padding-left: 12px;
+    }
+  }
+
+  &__contact {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: auto;
-  }
-}
+    justify-content: space-between;
+    color: $primaryFontColor;
+    font-family: $secondaryFont;
+    font-size: 14px;
+    height: 392px;
+    line-height: 24px;
+    width: 270px;
+    margin-top: 6px;
+    @include respond-to($es) {
+      width: auto;
+    }
 
-.row-4 .contact-block-icon-box {
-  width: 57px;
-  @include respond-to($es) {
-    width: auto;
-  }
-}
+    &--line {
+      background-color: $primaryColor;
+      border-top: 1px solid $primaryColor;
+      width: 368px;
+      margin: 0px;
+      padding: 0px;
+      @include respond-to($md, $sm, $es) {
+        width: 99%;
+      }
+    }
 
-.row-4 .contact-block-icon {
-  width: 50px;
-  @include respond-to($es) {
-    width: auto;
-    padding-top: 20px;
-  }
-}
+    &--box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: $primaryFontColor;
+      font-family: $secondaryFont;
+      font-size: 14px;
+      height: auto;
+      width: 277px;
+      //@include respond-to($lg, $md, $sm, $es) {
+      //  width: 70%;
+      //}
+      @include respond-to($es) {
+        width: auto;
+        justify-content: flex-start;
+      }
+    }
 
-.row-4 .contact-block-main {
-  width: 250px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @include respond-to($es) {
-    width: auto;
-    align-items: center;
-  }
-}
+    &--icon {
+      width: 50px;
+      @include respond-to($es) {
+        width: auto;
+        padding-top: 20px;
+      }
+    }
 
-.row-4 .contact-block-main-title {
-  color: $secondaryColor;
-  font-family: Lato-Bold;
-  font-size: 16px;
-  line-height: 24px;
-  height: auto;
-}
+    &--article {
+      width: 250px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include respond-to($es) {
+        width: auto;
+        align-items: center;
+      }
+    }
 
-.row-4 .contact-block-main-description {
-  color: $primaryFontColor;
-  font-family: $secondaryFont;
-  font-size: 14px;
-  line-height: 24px;
-  width: 227px;
-  height: auto;
-  @include respond-to($es) {
-    width: auto;
-  }
-  @include respond-to($lg, $md, $sm, $es) {
-    padding-bottom: 20px;
+    &--title {
+      color: $secondaryColor;
+      font-family: Lato-Bold;
+      font-size: 16px;
+      line-height: 24px;
+      height: auto;
+    }
+
+    &--description {
+      color: $primaryFontColor;
+      font-family: $secondaryFont;
+      font-size: 14px;
+      line-height: 24px;
+      width: 227px;
+      height: auto;
+      @include respond-to($es) {
+        width: auto;
+      }
+      @include respond-to($lg, $md, $sm, $es) {
+        padding-bottom: 20px;
+      }
+    }
   }
 }
+//
+//.row-4 .contact-block-main-part {
+//  width: 300px;
+//  display: flex;
+//  flex-direction: row;
+//  justify-content: space-around;
+//  @include respond-to($es){
+//    flex-direction: column;
+//    align-items: center;
+//    width: auto;
+//  }
+//}
