@@ -2,11 +2,11 @@
  * Created by pavel.karpovich on 7/14/2017.
  */
 (function () {
-    function ArrayProcessingTool() {
+    function ArrayProcessingTool(inputArray) {
         var array = [];
 
-        for (var i = 0; i < arguments.length; i++) {
-            array.push(parseInt(arguments[i]));
+        for (var i = 0; i < inputArray.length; i++) {
+            array.push(parseInt(inputArray[i]));
         }
 
         this.getArray = function () {
@@ -72,14 +72,86 @@
         };
     }
 
-    var array = new ArrayProcessingTool(2, -1, "2", 3, -9);
-    console.log("Array: " + array.getArray());
-    console.log("Max:" + array.getMax());
-    console.log("Min: " + array.getMin());
-    console.log("Median: " + array.getMedian());
-    console.log("MaxSubSum: " + array.getMaxSubSumFast());
-    console.log("MaxSubSum: " + array.getMaxSubSumSlow());
-    console.log("MaxSequence: " + array.getMaxIncreasingSequence());
-    console.log("Array: " + array.getArray());
+    var checkInputString = function (str) {
+        var exp = /^(\d|\s|,|-)+$/gi;
+        return exp.test(str);
+    };
 
+    var splitInputStringToArray = function (str) {
+        var exp = /\s|,/;
+        return str.split(exp);
+    };
+
+    var buttonGetMaxValue = function() {
+        var inputString = document.getElementById("arrayInput").value;
+        if(!checkInputString(inputString)) {
+            alert("Please, check input string...")
+        } else {
+            var inputArray = splitInputStringToArray(inputString);
+            document.querySelector("#result").innerHTML = "Max array value: " +
+                    new ArrayProcessingTool(inputArray).getMax();
+        }
+    };
+
+    var buttonGetMinValue = function() {
+        var inputString = document.getElementById("arrayInput").value;
+        if(!checkInputString(inputString)) {
+            alert("Please, check input string...")
+        } else {
+            var inputArray = splitInputStringToArray(inputString);
+            document.querySelector("#result").innerHTML = "Min array value: " +
+                new ArrayProcessingTool(inputArray).getMin();
+        }
+    };
+
+    var buttonGetMedianValue = function() {
+        var inputString = document.getElementById("arrayInput").value;
+        if(!checkInputString(inputString)) {
+            alert("Please, check input string...")
+        } else {
+            var inputArray = splitInputStringToArray(inputString);
+            document.querySelector("#result").innerHTML = "Median array value: " +
+                new ArrayProcessingTool(inputArray).getMedian();
+        }
+    };
+
+    var buttonGetSubSumFast = function() {
+        var inputString = document.getElementById("arrayInput").value;
+        if(!checkInputString(inputString)) {
+            alert("Please, check input string...")
+        } else {
+            var inputArray = splitInputStringToArray(inputString);
+            document.querySelector("#result").innerHTML = "Max sub sum value(fast): " +
+                new ArrayProcessingTool(inputArray).getMaxSubSumFast();
+        }
+    };
+
+    var buttonGetSubSumSlow = function() {
+        var inputString = document.getElementById("arrayInput").value;
+        if(!checkInputString(inputString)) {
+            alert("Please, check input string...")
+        } else {
+            var inputArray = splitInputStringToArray(inputString);
+            document.querySelector("#result").innerHTML = "Max sub sum value(slow): " +
+                new ArrayProcessingTool(inputArray).getMaxSubSumSlow();
+        }
+    };
+
+    var buttonGetMaxIncreasingSequence = function() {
+        var inputString = document.getElementById("arrayInput").value;
+        if(!checkInputString(inputString)) {
+            alert("Please, check input string...")
+        } else {
+            var inputArray = splitInputStringToArray(inputString);
+            document.querySelector("#result").innerHTML = "Max Increasing value: " +
+                new ArrayProcessingTool(inputArray).getMaxIncreasingSequence();
+        }
+    };
+
+    document.querySelector("#arrayMax").addEventListener("click", buttonGetMaxValue);
+    document.querySelector("#arrayMin").addEventListener("click", buttonGetMinValue);
+    document.querySelector("#arrayMedian").addEventListener("click", buttonGetMedianValue);
+    document.querySelector("#arraySubSumSlow").addEventListener("click", buttonGetSubSumSlow);
+    document.querySelector("#arraySubSumFast").addEventListener("click", buttonGetSubSumFast);
+    document.querySelector("#arrayMaxSequence").addEventListener("click", buttonGetMaxIncreasingSequence);
 })();
