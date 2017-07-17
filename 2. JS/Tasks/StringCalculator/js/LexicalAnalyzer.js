@@ -6,6 +6,17 @@ function LexicalAnalyzer(input) {
         return (/(\d|\.)/).test(char);
     };
 
+    var BracketCheck = function () {
+        var bracketCount = 0;
+        for(var i = 0; i < _inputString.length; i++) {
+            if(_inputString[i] === '(')
+                bracketCount++;
+            if(_inputString[i] === ')')
+                bracketCount--;
+        }
+        return bracketCount === 0;
+    } 
+
     var GetFirstNumFromPosition = function (startPosition) {
         var searchString = _inputString.substring(startPosition, _inputString.length);
         var result = searchString.match(/-?(\d|\.)+/)[0];
@@ -24,13 +35,15 @@ function LexicalAnalyzer(input) {
     };
 
     this.Analyz = function () {
+        if(!BracketCheck())
+            throw "Please, check count of bracket";
         for (var i = 0; i < _inputString.length; i++) {
             var lexema;
             if (IsNum(_inputString[i])) {
                 lexema = CreateNumLexem(i);
                 i += --lexema.GetValue().length;
             } else {
-                if (i === 0 || _inputString[i - 1] === '(') {   // check to negative value
+                if ((i === 0 || _inputString[i - 1] === '(') && _inputString[i] === '-') {   // check to negative value
                     lexema = CreateNumLexem(i);
                     i += --lexema.GetValue().length;
                 } else {
