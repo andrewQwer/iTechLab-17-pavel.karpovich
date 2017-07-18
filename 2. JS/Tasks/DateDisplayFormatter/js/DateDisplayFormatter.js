@@ -1,11 +1,11 @@
 function DateDisplayFormatter(date) {
-	_inputDate = date;
-	this.Parse = function() {
-		var day = _inputDate.slice(0,2);
-		var month = _inputDate.slice(3, 5);
-		var year = _inputDate.slice(6,9);
-		console.log(day + " " + month + " " + year);
-		var inputDate = new Date("22-10-2018");
-		console.log(inputDate);
-	}
+	var _inputDate = date;
+	var _day;
+	this.Parse = function () {
+		_day = parseInt(_inputDate.slice(0, 2));
+		_month = parseInt(_inputDate.slice(2, 4));
+		_year = parseInt(_inputDate.slice(4, 9));
+		var inputDate = new Date(_year, _month, _day);
+		console.log(inputDate.format("dd-MM-yyyy"));
+	};
 }
