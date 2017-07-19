@@ -28,6 +28,17 @@
     else if (_from == 2 && _to == 10) {
       CheckBinaryNumber(_number);
       result = new BinaryConvert().FromBinaryToDecimal(_number);
+    } else if(_from == 10 && _to == 8) {
+      result = new BinaryConvert().FromDecimalToOctal(_number);
+    } else if(_from == 8 && _to == 10) {
+      result = new BinaryConvert().FromOctalToDecimal(_number);
+    } else if(_from == 8 && _to == 2) {
+      result = new BinaryConvert().FromOctalToBinary(_number);
+    } else if(_from == 2 && _to == 8) {
+      CheckBinaryNumber(_number);
+      result = new BinaryConvert().FromBinaryToOctal(_number);
+    } else if(_from == 10 && _to == 16) {
+      result = new BinaryConvert().FromDecimalToHexadecimal(_number);
     }
     return result;
   };
