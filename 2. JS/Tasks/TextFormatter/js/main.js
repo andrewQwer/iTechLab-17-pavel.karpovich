@@ -9,12 +9,12 @@
 	}
 
 	var format = function () {
-		var sentense = document.querySelector("#inputText").value;
-		var sentenseSize = parseInt(document.querySelector("#sentenseSize").value);
+		var sentence = document.querySelector("#inputText").value;
+		var sentenceSize = parseInt(document.querySelector("#sentenceSize").value);
 		var symbolSize = parseInt(document.querySelector("#symbolSize").value);
 		var type = selectType();
-		var textFormater = new TextFormatter(sentense).Format(symbolSize, sentenseSize, type);
-		outResult(textFormater);
+		var textFormatter = new TextFormatter(sentence).Format(symbolSize, sentenceSize, type);
+		outResult(textFormatter);
 	}
 
 	var selectType = function () {
@@ -28,8 +28,8 @@
 
 	document.querySelector("#inputText").addEventListener("keyup", format);
 
-	document.querySelector("#sentenseSize").addEventListener("mousemove", function (event) {
-		document.querySelector("#sentenseValue").innerHTML = event.target.value;
+	document.querySelector("#sentenceSize").addEventListener("mousemove", function (event) {
+		document.querySelector("#sentenceValue").innerHTML = event.target.value;
 		format();
 	});
 

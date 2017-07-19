@@ -1,32 +1,32 @@
-function TextFormatter(sentense) {
-	var _sentense = sentense;
+function TextFormatter(sentence) {
+	var sentence = sentence;
 
 	var wordType = function (endPosition) {
-		while (_sentense[endPosition] != '\t' && _sentense[endPosition] != '\n' &&
-			_sentense[endPosition] != ' ' && _sentense[endPosition] != undefined) {
+		while (sentence[endPosition] != '\t' && sentence[endPosition] != '\n' &&
+			sentence[endPosition] != ' ' && sentence[endPosition] != undefined) {
 			endPosition++;
 		}
 		return endPosition;
 	}
 
-	var sentenseType = function (endPosition) {
-		while (_sentense[endPosition] != '.' && _sentense[endPosition] != undefined) {
+	var sentenceType = function (endPosition) {
+		while (sentence[endPosition] != '.' && sentence[endPosition] != undefined) {
 			endPosition++;
 		}
 		return endPosition + 1;
 	}
 
-	this.Format = function (symbolSize, sentenseSize, type) {
-		var sentenses = []
+	this.Format = function (symbolSize, sentenceSize, type) {
+		var sentences = []
 		var startPosition = 0;
 		var endPosition = symbolSize - 1; // because, string length start with zero
-		while (endPosition <= _sentense.length && sentenses.length < sentenseSize) {
+		while (endPosition <= sentence.length && sentences.length < sentenceSize) {
 			endPosition = (type === "word") ? wordType(endPosition) :
-				(type === "sentense") ? sentenseType(endPosition) : endPosition;
-			sentenses.push(_sentense.slice(startPosition, endPosition).trim());
+				(type === "sentence") ? sentenceType(endPosition) : endPosition;
+			sentences.push(sentence.slice(startPosition, endPosition).trim());
 			startPosition = endPosition;
 			endPosition += symbolSize;
 		}
-		return sentenses;
+		return sentences;
 	}
 }
