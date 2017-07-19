@@ -8,7 +8,12 @@ function DateDisplayFormatter(date, inputFormat, outputFormat) {
   var Constructor = function() {
     _inputFormat = (inputFormat == "") ? "ddMMyyyy" : inputFormat;
     _outputFormat = (outputFormat == "") ? "dd-MM-yyyy" : outputFormat;
-    ParseDateFromFormat();
+    if(_inputDate.length >= 12) {
+      _date = new Date(parseInt(_inputDate));
+    } else {
+      ParseDateFromFormat();
+    }
+    
   };
 
   var CheckDate = function(day, month) {
