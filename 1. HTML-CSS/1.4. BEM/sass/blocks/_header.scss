@@ -1,0 +1,76 @@
+.page-header {
+  width: 100%;
+  height: 80px;
+  background: $headerColor;
+  display: flex;
+  flex-direction: column;
+  @include respond-to($es) {
+    height: auto;
+  }
+
+  &__inner {
+    @extend .container;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include respond-to($sm) {
+      flex-direction: column;
+    }
+    @include respond-to($es) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    color: $primaryColorLight;
+    font-family: $primaryFont;
+    font-size: 25px;
+    padding: 28px 0px;
+    text-transform: uppercase;
+  }
+
+  &__navigation {
+    width: auto;
+    padding: 0px;
+    @include respond-to($es) {
+      width: 100%;
+      list-style-type: none;
+    }
+  }
+
+  &__item {
+    display: inline;
+    @include respond-to($es) {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    &--link {
+      color: $primaryColorLight;
+      display: inline-block;
+      font-family: $primaryFont;
+      font-size: 13px;
+      padding: 35px 20px 34px 20px;
+      text-decoration: none;
+      box-sizing: content-box;
+      text-transform: uppercase;
+      outline: none;
+      @include respond-to($es) {
+        width: 100%;
+        padding: 32px 0px;
+      }
+    }
+
+    &--link:hover {
+      outline: none;
+      background: $secondaryColor;
+      transition: background 0.5s;
+      @include respond-to($es) {
+        width: 100%;
+      }
+    }
+  }
+}

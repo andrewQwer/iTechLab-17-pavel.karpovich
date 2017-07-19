@@ -1,0 +1,97 @@
+.banner {
+  background: url("../img/banner-bg.png") center center no-repeat;
+  height: 560px;
+  width: 100%;
+
+  &__inner {
+    @extend .container;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 560px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+    width: 470px;
+    @include respond-to($es) {
+      width: 95%;
+      height: auto;
+      padding: 5px;
+    }
+  }
+
+  &__cir {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    justify-content: space-between;
+    width: 70px;
+
+    &-left {
+      background: url("../img/banner-cir-left.png") no-repeat;
+      height: 70px;
+      width: 34px;
+    }
+
+    &-right {
+      background: url("../img/banner-cir-right.png") no-repeat;
+      height: 70px;
+      width: 34px;
+    }
+  }
+
+  &__title {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 27px;
+    justify-content: flex-start;
+    margin: 29px 0px 18px;
+    width: 470px;
+    @include respond-to($es) {
+      width: 100%;
+    }
+
+    &-main {
+      color: $primaryColorLight;
+      font-family: $primaryFont;
+      font-size: 31px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      width: 190px;
+      max-width: 190px;
+      @include respond-to($es) {
+        width: 100%;
+      }
+    }
+
+    &-line {
+      background-color: $primaryColorLight;
+      border-top: 1px solid $primaryColorLight;
+      height: 1px;
+      width: 100%;
+      max-width: 250px;
+      @include respond-to($es) {
+        display: none;
+      }
+    }
+  }
+
+  &__description {
+    color: $primaryColorLight;
+    font-family: $primaryFont;
+    font-size: 31px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+  }
+
+  &__website {
+    color: $secondaryColor;
+    font-family: $primaryFont;
+    font-size: 15px;
+    letter-spacing: 1.2px;
+    padding: 18px 0px;
+  }
+}

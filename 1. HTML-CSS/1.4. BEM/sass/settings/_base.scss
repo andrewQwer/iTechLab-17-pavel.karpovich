@@ -1,0 +1,49 @@
+$es: 540px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$el: 1200px;
+
+$headerColor: #202628;
+$primaryColorLight: #e7e7e7;
+$primaryColorDark: #666666;
+$inputColor: #999999;
+$secondaryColor: #e84c3d;
+
+$primaryFont: Fjalla;
+$secondaryFont: Lato-Regular;
+$secondaryFontBold: Lato-Bold;
+$secondaryFontItalic: Lato-Italic;
+$buttonFont: Oswald-Regular;
+
+$primaryFontColor: #767c7e;
+
+.reset {
+  margin: 0px!important;
+  padding: 0px!important;
+}
+
+.show-lg{
+  @include respond-to($lg, $md, $sm, $es){
+    display: none;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  @include respond-to($el) {
+    width: 1170px;
+  }
+  @include respond-to($lg) {
+    width: 960px;
+  }
+  @include respond-to($md) {
+    width: 720px;
+  }
+  @include respond-to($sm) {
+    width: 540px;
+  }
+  @include respond-to($es) {
+    width: 100%;
+  }
+}
