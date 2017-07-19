@@ -1,15 +1,10 @@
-var CheckInputNumber = function (value) {
-	var ext = /^\d+$/;
-	number = value;
-	if (!ext.test(number)) throw "Please, check input number !";
-};
+var CheckInputValue = function (value, from) {
+	var ext = /^[\w\d]+$/gi;
+	if (!ext.test(value))
+		throw "Please, check input value!";
 
-var CheckBinaryNumber = function (value) {
-	var ext = /^[01]+$/;
-	number = value;
-	if (!ext.test(number)) throw "Please, check input binary number";
+	for (var i = 0; i < value.length; i++) {
+		if (from < convertibleArray.indexOf(value[i]) + 1)
+			throw "Please, check system number!";
+	}
 };
-
-var CheckFromAndTo = function (from, to) {
-	if (from === to) throw "Number systems must be different";
-}
