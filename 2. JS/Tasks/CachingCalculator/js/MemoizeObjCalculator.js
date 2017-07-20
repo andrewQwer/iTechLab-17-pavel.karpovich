@@ -9,17 +9,17 @@ function MemoizeObjCalculator(polishNotation) {
 					toString: a + " + " + b + "=" + result
 				}
 			}));
-		return parseFloat(a) + parseFloat(b);
+		return result;
 	});
 
 	var Sub = memoize(function sub(a, b) {
-		result = parseFloat(a) - parseFloat(b);
+		result = parseFloat(b) - parseFloat(a);
 		this.dispatchEvent(new CustomEvent("SubEvent",{
 				detail: {
-					toString: a + " - " + b + "=" + result
+					toString: b + " - " + a + "=" + result
 				}
 			}));
-		return parseFloat(a) - parseFloat(b);
+		return result;
 	});
 
 	var Div = memoize(function div(a, b) {
