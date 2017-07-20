@@ -42,11 +42,11 @@ var Sum = (function() {
 				detail: {
 					a : a,
 					b : b,
-					sum: a - b,
-					toString: a + " - " + b + "=" + a - b
+					sum: b - a,
+					toString: b + " - " + a + "=" + b - a
 				}
 			}));
-			cache[key] = a - b;
+			cache[key] = b - a;
 			return cache[key];
 		}
 		return f;
