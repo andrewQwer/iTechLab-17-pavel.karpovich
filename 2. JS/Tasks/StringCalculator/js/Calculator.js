@@ -1,4 +1,4 @@
-function Calcuator(polishNotation) {
+function Calculator(polishNotation) {
 	var lexems = polishNotation;
 	var result = 0;
 

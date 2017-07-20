@@ -15,6 +15,14 @@
 		if(!checkOperator(expression))
 			throw "Please, check operator in input expression";
 	}
+
+	var OutResult = function(expression, result) {
+		document.querySelector("#result").innerHTML = expression + " = " + result;
+	}
+
+	var OutCache = function(event) {
+		document.querySelector("#cache").innerHTML += " </br> " + event.detail.toString;
+	}
 	
 	var calc = function() {
 		try {
@@ -22,8 +30,8 @@
 			checkInputExpression(expression);	
 			var lexicalTable = new LexicalAnalyzer(expression).Analyz();
 			var polishNotation = new PolishNotation(lexicalTable).CreateNotation();
-			var result = new Calculator(polishNotation).Calc();
-			document.querySelector("#result").innerHTML = expression + " = " + result;
+			var result = new MemoizeObjCalculator(polishNotation).Calc();
+			OutResult(expression, result);
 		} catch (error) {
 			alert("Error! " + error);
 			return;
@@ -32,4 +40,8 @@
 	}
 	
 	document.querySelector("#calcButton").addEventListener("click", calc);
+	addEventListener("SumEvent", OutCache);
+	addEventListener("SubEvent", OutCache);
+	addEventListener("MulEvent", OutCache);
+	addEventListener("DivEvent", OutCache);
 }());
