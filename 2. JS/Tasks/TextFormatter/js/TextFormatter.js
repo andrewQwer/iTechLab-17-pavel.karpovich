@@ -19,7 +19,7 @@ function TextFormatter(sentence) {
 	this.Format = function (symbolSize, sentenceSize, type) {
 		var sentences = []
 		var startPosition = 0;
-		var endPosition = symbolSize - 1; // because, string length start with zero
+		var endPosition = symbolSize; // because, string length start with zero
 		while (endPosition <= sentence.length && sentences.length < sentenceSize) {
 			endPosition = (type === "word") ? wordType(endPosition) :
 				(type === "sentence") ? sentenceType(endPosition) : endPosition;
