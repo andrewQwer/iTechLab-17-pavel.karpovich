@@ -7,11 +7,11 @@ function Calculator(polishNotation) {
 	};
 
 	var Sub = function (a, b) {
-		return parseFloat(a) - parseFloat(b);
+		return parseFloat(b) - parseFloat(a);
 	};
 
 	var Div = function (a, b) {
-		return parseFloat(a) / parseFloat(b);
+		return parseFloat(b) / parseFloat(a);
 	};
 
 	var Mul = function (a, b) {
