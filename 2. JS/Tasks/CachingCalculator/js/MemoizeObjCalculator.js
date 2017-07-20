@@ -1,22 +1,43 @@
-function Calcuator(polishNotation) {
+function MemoizeObjCalculator(polishNotation) {
 	var lexems = polishNotation;
 	var result = 0;
 
-	var Sum = function (a, b) {
+	var Sum = memoize(function sum(a, b) {
+		var result = a+b;
+		this.dispatchEvent(new CustomEvent("SumEvent",{
+				detail: {
+					toString: a + " + " + b + "=" + result
+				}
+			}));
 		return parseFloat(a) + parseFloat(b);
-	};
+	});
 
-	var Sub = function (a, b) {
+	var Sub = memoize(function sub(a, b) {
+		this.dispatchEvent(new CustomEvent("SubEvent",{
+				detail: {
+					toString: a + " - " + b + "=" + a-b
+				}
+			}));
 		return parseFloat(a) - parseFloat(b);
-	};
+	});
 
-	var Div = function (a, b) {
+	var Div = memoize(function div(a, b) {
+		this.dispatchEvent(new CustomEvent("DivEvent",{
+				detail: {
+					toString: b + " / " + a + "=" + b/a
+				}
+			}));
 		return parseFloat(b) / parseFloat(a);
-	};
+	});
 
-	var Mul = function (a, b) {
+	var Mul = memoize(function mul(a, b) {
+		this.dispatchEvent(new CustomEvent("MulEvent",{
+				detail: {
+					toString: a + " * " + b + "=" + a*b
+				}
+			}));
 		return parseFloat(a) * parseFloat(b);
-	};
+	});
 
 	this.Calc = function () {
 		var stack = [];

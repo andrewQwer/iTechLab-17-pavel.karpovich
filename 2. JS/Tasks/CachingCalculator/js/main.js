@@ -30,7 +30,7 @@
 			checkInputExpression(expression);	
 			var lexicalTable = new LexicalAnalyzer(expression).Analyz();
 			var polishNotation = new PolishNotation(lexicalTable).CreateNotation();
-			var result = new Calculator(polishNotation).Calc();
+			var result = new MemoizeObjCalculator(polishNotation).Calc();
 			OutResult(expression, result);
 		} catch (error) {
 			alert("Error! " + error);
