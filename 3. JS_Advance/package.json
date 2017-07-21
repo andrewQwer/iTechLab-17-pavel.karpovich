@@ -1,0 +1,10 @@
+{
+  "name": "js_advance",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^3.3.0"
+  }
+}

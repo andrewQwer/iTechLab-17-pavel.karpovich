@@ -113,3 +113,9 @@ typings/
 1\. HTML-CSS/1\.4\. BEM/styles/main\.css
 
 \.vscode/
+
+3\. JS_Advance/\.eslintrc\.json
+
+3\. JS_Advance/bundle\.js
+
+3\. JS_Advance/package-lock\.json
