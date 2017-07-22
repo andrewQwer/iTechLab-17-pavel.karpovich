@@ -2,9 +2,10 @@
   "name": "js_advance",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack"
+    "start": "lite-server"
   },
   "devDependencies": {
+    "lite-server": "^2.2.2",
     "webpack": "^3.3.0"
   }
 }
