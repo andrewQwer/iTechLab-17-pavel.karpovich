@@ -119,3 +119,7 @@ typings/
 3\. JS_Advance/bundle\.js
 
 3\. JS_Advance/package-lock\.json
+
+3\. JS_Advance/dist/bundle\.js
+
+3\. JS_Advance/dist/
