@@ -114,6 +114,12 @@ typings/
 
 \.vscode/
 
-3\. JS_Advance/dist/
+3\. JS_Advance/\.eslintrc\.json
 
 3\. JS_Advance/bundle\.js
+
+3\. JS_Advance/package-lock\.json
+
+3\. JS_Advance/dist/bundle\.js
+
+3\. JS_Advance/dist/
