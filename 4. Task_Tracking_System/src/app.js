@@ -1,2 +1,6 @@
+import "jquery";
+import "bootstrap/dist/js/bootstrap";
 
-console.log("test2dfdsf");
+$("body").append("<h1>Hello world!</h1>");
+
+console.log("10");
