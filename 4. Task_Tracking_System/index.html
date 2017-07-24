@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,102 @@
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="./dist/main.bundle.css">
 </head>
+
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">One</div>
-			<div class="col-md-3">Two</div>
-			<div class="col-md-3">Three</div>
-			<div class="col-md-3">Four</div>
+			<div class="col-md-4 widget__add">
+				<div class="container">
+					<div class="row">
+						<button type="button" name="" id="" class="btn btn-primary">Add new widget</button>
+					</div>
+					<div class="row">
+						<select class="custom-select" name="" id="" aria-placeholder="bla">
+							<option value="" selected disabled>Select type...</option>
+							<option value="">List</option>
+							<option value="">Pie chart</option>
+							<option value="">Bar chart</option>
+						</select>
+					</div>
+					<div class="row">
+						<label for="">Border width:</label>
+						<input type="text"
+						class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="width">
+					</div>
+					<div class="row">
+						<label for="">Border color:</label>
+						<input type="text"
+						class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
+					</div>
+					<div class="row">
+						<label for="">Text color:</label>
+						<input type="text"
+						class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
+					</div>
+					<div class="row">
+						<div class="offset-md-4 col-md-4">
+							<a name="" id="" class="btn btn-warning" href="#" role="button">Cancel</a>
+						</div>
+						<div class="col-md-4">
+							<a name="" id="" class="btn btn-success" href="#" role="button">Save</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 widget__show">
+				<div class="container">
+					<div class="row">
+						<a name="" id="" class="btn btn-primary" href="#" role="button">Dashboard</a>
+					</div>
+					<div class="row">
+						<label for="">Widgets</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 ticket__show">
+				<div class="row justify-content-end">
+					<a name="" id="" class="btn btn-success" href="#" role="button">Add new ticket</a>
+				</div>
+				<div class="row">
+					<div class="col-md-6">Title</div>
+					<div class="col-md-3">Due time</div>
+					<div class="col-md-3">Status</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">Title</div>
+					<div class="col-md-3">Due time</div>
+					<div class="col-md-3">Status</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">Title</div>
+					<div class="col-md-3">Due time</div>
+					<div class="col-md-3">Status</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<a name="" id="" class="btn btn-danger" href="#" role="button">Danger button</a>
+	<div class="container" style="display:none">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="">Title</label>
+					<input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Input title...">
+					<label for="">Due data</label>
+					<input type="datetime-local"
+					class="form-control form-control" name="" id="" aria-describedby="helpId" placeholder="Select data...">
+					<select class="custom-select" name="" id="" aria-placeholder="bla">
+						<option value="" selected disabled>Select type...</option>
+						<option value="">Open</option>
+						<option value="">In progress</option>
+						<option value="">Closed</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script src="./dist/main.bundle.js"></script>
 </body>
+
 </html>
