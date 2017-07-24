@@ -2,10 +2,11 @@ function Unfold(callback, initialValue) {
 	let sequence = [],
 		nextElement,
 		currentState = (nextElement = initialValue);
-	do {
-		sequence.push(nextElement);
+	while (currentState) {
 		[nextElement, currentState] = callback.call(null, currentState);
-	} while (currentState);
+		if (!currentState) break;
+		sequence.push(nextElement);
+	}
 	return sequence;
 }
 
