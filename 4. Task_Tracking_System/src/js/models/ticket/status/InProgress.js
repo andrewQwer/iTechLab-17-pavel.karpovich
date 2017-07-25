@@ -1,7 +1,7 @@
 import IStatus from "./IStatus";
 
 class InProgressStatus extends IStatus {
-	GetType() {
+	GetStatus() {
 		return "InProgress";
 	}
 }

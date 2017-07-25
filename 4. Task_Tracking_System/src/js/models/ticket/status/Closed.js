@@ -1,7 +1,7 @@
 import IStatus from "./IStatus";
 
 class ClosedStatus extends IStatus {
-	GetType(){
+	GetStatus(){
 		return "Closed";
 	}
 }

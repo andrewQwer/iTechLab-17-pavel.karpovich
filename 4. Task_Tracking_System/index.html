@@ -27,18 +27,15 @@
 					</div>
 					<div class="row">
 						<label for="">Border width:</label>
-						<input type="text"
-						class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="width">
+						<input type="text" class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="width">
 					</div>
 					<div class="row">
 						<label for="">Border color:</label>
-						<input type="text"
-						class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
+						<input type="text" class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
 					</div>
 					<div class="row">
 						<label for="">Text color:</label>
-						<input type="text"
-						class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
+						<input type="text" class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
 					</div>
 					<div class="row">
 						<div class="offset-md-4 col-md-4">
@@ -64,41 +61,30 @@
 		<div class="row">
 			<div class="col-md-12 ticket__show">
 				<div class="row justify-content-end">
-					<a name="" id="" class="btn btn-success" href="#" role="button">Add new ticket</a>
+					<a name="" id="addTicketButton" class="btn btn-success" href="#" role="button">Add new ticket</a>
 				</div>
-				<div class="row">
-					<div class="col-md-6">Title</div>
-					<div class="col-md-3">Due time</div>
-					<div class="col-md-3">Status</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">Title</div>
-					<div class="col-md-3">Due time</div>
-					<div class="col-md-3">Status</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">Title</div>
-					<div class="col-md-3">Due time</div>
-					<div class="col-md-3">Status</div>
+				<div class="ticket__list" id="ticketList">
+
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container" style="display:none">
+	<div class="container" id="addTicketMenu" style="display:none">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group">
 					<label for="">Title</label>
-					<input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Input title...">
+					<input type="text" class="form-control" name="" id="ticketTitle" aria-describedby="helpId" placeholder="Input title...">
 					<label for="">Due data</label>
-					<input type="datetime-local"
-					class="form-control form-control" name="" id="" aria-describedby="helpId" placeholder="Select data...">
-					<select class="custom-select" name="" id="" aria-placeholder="bla">
-						<option value="" selected disabled>Select type...</option>
-						<option value="">Open</option>
-						<option value="">In progress</option>
-						<option value="">Closed</option>
+					<input type="date" class="form-control form-control" name="" id="ticketDueDate" aria-describedby="helpId" placeholder="Select data...">
+					<select class="custom-select" name="" id="ticketStatus" aria-placeholder="bla">
+						<option value="default" selected disabled>Select type...</option>
+						<option value="Open">Open</option>
+						<option value="InProgress">In progress</option>
+						<option value="Closed">Closed</option>
 					</select>
+					<a name="" id="saveTicketButton" class="btn btn-success" role="button">Save</a>
+					<a name="" id="editTicketButton" class="btn btn-danger " role="button">Edit</a>
 				</div>
 			</div>
 		</div>

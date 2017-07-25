@@ -1,5 +1,5 @@
 class IObserver {
-	Update(){
+	Update(obj) {
 		throw "NotImplementedException";
 	}
 }

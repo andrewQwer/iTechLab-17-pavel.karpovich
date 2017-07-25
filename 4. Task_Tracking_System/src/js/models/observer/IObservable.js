@@ -1,13 +1,13 @@
 class IOservable {
-	Register(observer) {
+	RegisterObserver(observer) {
 		throw "NotImplementedException";
 	}
 
-	Remove(observer) {
+	RemoveObserver(observer) {
 		throw "NotImplementedException";
 	}
 
-	Notify() {
+	NotifyObserver(item) {
 		throw "NotImplementedException";
 	}
 }

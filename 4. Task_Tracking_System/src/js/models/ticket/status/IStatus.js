@@ -1,5 +1,5 @@
 class IStatus {
-	GetType() {
+	GetStatus() {
 		throw "NowImplementedException";
 	};
 }
