@@ -1,5 +1,6 @@
 import IObservable from "../models/observer/IObservable";
-import UIController from "./UIController";
+import TicketUIController from "./UI/TicketUIController";
+import WidgetUIController from "./UI/WidgetUIController";
 let instance = null;
 let observerList = [];
 
@@ -11,7 +12,12 @@ class TicketController extends IObservable {
 		}
 		instance = this;
 		this.ticketList = ticketList;
-		this.RegisterObserver(new UIController());
+		this.RegisterObserver(new TicketUIController());
+		this.RegisterObserver(new WidgetUIController());
+	}
+
+	get Tickets() {
+		return this.ticketList;
 	}
 
 	Add(ticket) {

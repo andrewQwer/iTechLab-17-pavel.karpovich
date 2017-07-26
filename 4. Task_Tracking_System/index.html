@@ -15,34 +15,36 @@
 			<div class="col-md-4 widget__add">
 				<div class="container">
 					<div class="row">
-						<button type="button" name="" id="" class="btn btn-primary">Add new widget</button>
+						<button type="button" name="" id="showWidgetMenuButton" class="btn btn-primary">Add new widget</button>
 					</div>
-					<div class="row">
-						<select class="custom-select" name="" id="" aria-placeholder="bla">
-							<option value="" selected disabled>Select type...</option>
-							<option value="">List</option>
-							<option value="">Pie chart</option>
-							<option value="">Bar chart</option>
-						</select>
-					</div>
-					<div class="row">
-						<label for="">Border width:</label>
-						<input type="text" class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="width">
-					</div>
-					<div class="row">
-						<label for="">Border color:</label>
-						<input type="text" class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
-					</div>
-					<div class="row">
-						<label for="">Text color:</label>
-						<input type="text" class="form-control form-control-sm" name="" id="" aria-describedby="helpId" placeholder="color">
-					</div>
-					<div class="row">
-						<div class="offset-md-4 col-md-4">
-							<a name="" id="" class="btn btn-warning" href="#" role="button">Cancel</a>
+					<div id="addWidgetMenu">
+						<div class="row">
+							<select class="custom-select" name="" id="widgetTypeInput" aria-placeholder="bla">
+								<option value="default" selected disabled>Select type...</option>
+								<option value="List">List</option>
+								<option value="PieChart">Pie chart</option>
+								<option value="BarChart">Bar chart</option>
+							</select>
 						</div>
-						<div class="col-md-4">
-							<a name="" id="" class="btn btn-success" href="#" role="button">Save</a>
+						<div class="row">
+							<label for="">Border width:</label>
+							<input type="text" class="form-control form-control-sm" name="" id="borderWidthInput" aria-describedby="helpId" placeholder="width">
+						</div>
+						<div class="row">
+							<label for="">Border color:</label>
+							<input type="text" class="form-control form-control-sm" name="" id="borderColorInput" aria-describedby="helpId" placeholder="color">
+						</div>
+						<div class="row">
+							<label for="">Text color:</label>
+							<input type="text" class="form-control form-control-sm" name="" id="textColorInput" aria-describedby="helpId" placeholder="color">
+						</div>
+						<div class="row">
+							<div class="offset-md-4 col-md-4">
+								<a name="" id="clearWidgetButton" class="btn btn-warning" href="#" role="button">Cancel</a>
+							</div>
+							<div class="col-md-4">
+								<a name="" id="addNewWidgetButton" class="btn btn-success" href="#" role="button">Save</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -53,7 +55,9 @@
 						<a name="" id="" class="btn btn-primary" href="#" role="button">Dashboard</a>
 					</div>
 					<div class="row">
-						<label for="">Widgets</label>
+						<ul id="widgetList">
+							
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -64,7 +68,7 @@
 					<a name="" id="addTicketButton" class="btn btn-success" href="#" role="button">Add new ticket</a>
 				</div>
 				<div class="ticket__list" id="ticketList">
-
+					
 				</div>
 			</div>
 		</div>

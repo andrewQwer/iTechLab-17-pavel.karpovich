@@ -1,6 +1,6 @@
-import TicketController from "./TicketController";
-import SimpleTicket from "../models/ticket/SimpleTicket";
-import IObserver from "../models/observer/IObserver";
+import TicketController from "../TicketController";
+import SimpleTicket from "../../models/ticket/SimpleTicket";
+import IObserver from "../../models/observer/IObserver";
 
 let instance;
 
@@ -18,7 +18,7 @@ let $ticketEditButton = $("#ticketEditButton");
 let ticketsId = 0;
 let editId = 0;
 
-class UIController extends IObserver {
+class TicketUIController extends IObserver {
 	constructor() {
 		super();
 		if (instance) {
@@ -105,4 +105,4 @@ class UIController extends IObserver {
 	}
 }
 
-export default UIController;
+export default TicketUIController;

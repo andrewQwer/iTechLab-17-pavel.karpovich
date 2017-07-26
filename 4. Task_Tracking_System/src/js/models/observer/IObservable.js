@@ -1,4 +1,4 @@
-class IOservable {
+class IObservable {
 	RegisterObserver(observer) {
 		throw "NotImplementedException";
 	}
@@ -12,4 +12,4 @@ class IOservable {
 	}
 }
 
-export default IOservable;
+export default IObservable;

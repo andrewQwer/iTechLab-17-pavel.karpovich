@@ -1,8 +1,12 @@
 import Widget from "./Widget";
 
 class SimpleWidget extends Widget {
-	constructor(type, ticketList){
-		super(type, ticketList);
+	constructor(id, type, borderWidth, borderColor, textColor, ticketList = []) {
+		super(id, type, borderWidth, borderColor, textColor, ticketList);
+	}
+
+	toString() {
+		return this._type.GetGraphic(this.CalculatePercent());
 	}
 }
 
