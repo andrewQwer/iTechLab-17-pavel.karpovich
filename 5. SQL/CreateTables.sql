@@ -41,7 +41,3 @@ CREATE TABLE Salary (
   Year       SMALLINT NOT NULL CHECK (Year BETWEEN 2002 AND 2017),
   Salary     MONEY    NOT NULL
 );
-
-SELECT *
-FROM Job
-
