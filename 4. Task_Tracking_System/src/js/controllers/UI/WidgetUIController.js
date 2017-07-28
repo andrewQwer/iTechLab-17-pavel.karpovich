@@ -29,7 +29,7 @@ class WidgetUIController extends IObserver {
 	get WidgetMenuValue() {
 		return {
 			widgetType: $("#widgetTypeInput option:selected").val(),
-			borderColor: $borderWidthInput.val(),
+			borderColor: $borderColorInput.val(),
 			borderWidth: $borderWidthInput.val(),
 			textColor: $textColorInput.val()
 		};
@@ -72,11 +72,25 @@ class WidgetUIController extends IObserver {
 	}
 
 	Update() {
-		let result = "";
-		for(let item of this._widgetController.Widgets) {
-			result += item.toString();
+		$widgetList.empty();
+		for (let i = 0; i < this._widgetController.Widgets.length; i++) {
+			let $current = this._widgetController.Widgets[i];
+			$widgetList.append(`<li id="widget${i}"></li>`).children().last().attr({
+				style: `border-color: ${$current.BorderColor};
+				border-width: ${$current.BorderWidth}px;
+					border-style:solid`
+			});
+			this._widgetController.Widgets[i]
+				.toString(`#widget${i}`)
+				.on("draw", context => {
+					// fill label
+					if (context.type == "label") {
+						context.element.attr({
+							style: `fill: ${$current.TextColor}; color: ${$current.TextColor};`
+						});
+					}
+				});
 		}
-		$widgetList.html(result);
 	}
 }
 

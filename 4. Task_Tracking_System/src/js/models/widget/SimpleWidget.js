@@ -5,8 +5,8 @@ class SimpleWidget extends Widget {
 		super(id, type, borderWidth, borderColor, textColor, ticketList);
 	}
 
-	toString() {
-		return this._type.GetGraphic(this.CalculatePercent());
+	toString(div) {
+		return this._type.GetGraphic(div, this.CalculatePercent());
 	}
 }
 

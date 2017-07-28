@@ -39,7 +39,7 @@ class Widget extends IObserver {
 	}
 
 	get BorderWidth() {
-		return this._borderWidth;
+		return  parseInt(this._borderWidth);
 	}
 
 	get BorderColor() {

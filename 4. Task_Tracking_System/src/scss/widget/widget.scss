@@ -3,4 +3,13 @@
 		border: 2px solid black;
 		padding: 25px;
 	}
+
+	&__list {
+		list-style-type: none;
+		display: flex;
+		flex-wrap: wrap;
+		li {
+			margin: 2px;
+		}
+	}
 }

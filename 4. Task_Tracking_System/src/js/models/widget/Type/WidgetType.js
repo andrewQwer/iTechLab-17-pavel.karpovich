@@ -1,4 +1,8 @@
 class WidgetType {
+	construstor(){
+		this.$graphicText = $(".ct-label");
+	}
+
 	GetType(){
 		throw "Not implemented exception";
 	}

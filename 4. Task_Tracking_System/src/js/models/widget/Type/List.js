@@ -1,20 +1,18 @@
 import WidgetType from "./WidgetType";
-import CanvasJS from "../../../../../node_modules/canvasjs/dist/canvasjs.min";
-
 
 class List extends WidgetType {
 	GetType() {
 		return "List";
 	}
 
-	GetGraphic(percents) {
-		return `<li>
-							type: ${this.GetType()} 
-							count: ${percents.count} 
-							open: ${percents.openPercent}% 
-							closed: ${percents.closedPercent}% 
-							inProgress: ${percents.inProgressPercent}%
-						</li>`
+	GetGraphic(div, percents) {
+		return $(div).append(`<li>
+							Type: ${this.GetType()}, 
+							Count: <span class="widget__list">${percents.count}</span>, 
+							Open: <span class="widget__list">${percents.openPercent}%</span>, 
+							Closed: <span class="widget__list">${percents.closedPercent}%</span>, 
+							InProgress: <span class="widget__list">${percents.inProgressPercent}%</span>
+						</li>`);
 	}
 }
 

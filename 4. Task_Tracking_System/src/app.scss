@@ -1,3 +1,8 @@
 @import "./node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/chartist/dist/scss/chartist.scss";
 @import "scss/widget/widget.scss";
 @import "scss/ticket/ticket.scss";
+
+.ct-label{
+	color:inherit;
+}
