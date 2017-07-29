@@ -1,0 +1,8 @@
+.block {
+	&__ticket, &__widget {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		height: 390px;
+	}
+}

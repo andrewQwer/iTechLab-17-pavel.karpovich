@@ -44,15 +44,9 @@ class TicketController extends IObservable {
 	GetTicketById(id) {
 		let result;
 		for (let item of this.ticketList) {
-			result = item.Id == parseInt(id) ? item : null;
+			result = item.Id == parseInt(id) ? item : result;
 		}
 		return result;
-	}
-
-	Display() {
-		for (let item of this.ticketList) {
-			console.log(item);
-		}
 	}
 
 	RegisterObserver(observer) {

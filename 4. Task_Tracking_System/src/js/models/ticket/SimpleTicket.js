@@ -7,17 +7,17 @@ class SimpleTicket extends Ticket {
 	}
 	
 	toString() {
-		return `<div class="row ticket__item" guid="${this.Id}">
+		return `<li class="row ticket__item" guid="${this.Id}">
 		<div class="col-md-4">${this.Title}</div>
 		<div class="col-md-3">${DateTime.GetFullDate(this.DueDate)}</div>
 		<div class="col-md-3">${this.Status}</div>
 		<div class="col-md-1">
-			<a class="btn btn-danger ticketDeleteButton" role="button">delete</a>
+			<button class="btn btn-danger ticketDeleteButton">Delete</button>
 		</div>
 		<div class="col-md-1">
-			<a class="btn btn-info ticketEditButton" role="button">edit</a>
+			<button class="btn btn-info ticketEditButton">Edit</button>
 		</div>
-		</div>`;
+		</li>`;
 	}
 }
 

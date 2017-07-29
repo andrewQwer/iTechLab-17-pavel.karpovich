@@ -1,7 +1,12 @@
 import "jquery";
 import "bootstrap/dist/js/bootstrap";
-import TicketUIController from "./js/controllers/UI/TicketUIController";
-import WidgetUIController from "./js/controllers/UI/WidgetUIController";
+import UI from "./js/controllers/UI/UI";
 
-let ticketUIController = new TicketUIController();
-let widgetUIController = new WidgetUIController();
+(function() {
+	try {
+		new UI();
+	} catch (exception) {
+		alert(exception);
+		return;
+	}
+})();

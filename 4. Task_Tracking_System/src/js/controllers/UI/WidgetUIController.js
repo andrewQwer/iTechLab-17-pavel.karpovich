@@ -1,11 +1,11 @@
 import IObserver from "../../models/observer/IObserver";
 import WidgetController from "../WidgetController";
 import SimpleWidget from "../../models/widget/SimpleWidget";
+import UI from "./UI";
 
 let instance;
 let widgetId = 0;
 
-let $addWidgetMenu = $("#addWidgetMenu");
 let $showWidgetMenuButton = $("#showWidgetMenuButton");
 let $addNewWidgetButton = $("#addNewWidgetButton");
 let $clearWidgetButton = $("#clearWidgetButton");
@@ -43,19 +43,13 @@ class WidgetUIController extends IObserver {
 	}
 
 	PlugEvent() {
-		//TODO show/hide widget menu
-		$showWidgetMenuButton.click(() => console.log("showWidgetMenu!"));
+		$showWidgetMenuButton.click(() => UI.ShowBlackout("widget"));
 		$addNewWidgetButton.click(() => this.AddNewWidget());
 		$clearWidgetButton.click(() => this.ClearWidgetMenu());
 	}
 
 	ClearWidgetMenu() {
-		this.WidgetMenuValue = {
-			widgetType: "default",
-			borderColor: "",
-			borderWidth: "",
-			textColor: ""
-		};
+		UI.HideBlackout();
 	}
 
 	AddNewWidget() {
