@@ -3,6 +3,7 @@ const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WriteFilePlugin = require("write-file-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const PATHS = {
 	source: path.join(__dirname, "./src"),
@@ -38,6 +39,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		//new UglifyJSPlugin({}),	// minify js file
 		new WriteFilePlugin(),
 		new HtmlWebpackPlugin({
 			template: "./index.html"

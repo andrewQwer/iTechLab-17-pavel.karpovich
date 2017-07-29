@@ -1,12 +1,14 @@
 import TicketController from "../TicketController";
 import SimpleTicket from "../../models/ticket/SimpleTicket";
 import IObserver from "../../models/observer/IObserver";
+import DateTime from "../../helpers/DateTime";
 
 let instance;
 
 let $ticketList = $("#ticketList");
 let $ticketInputTitle = $("#ticketTitle");
 let $ticketInputDueDate = $("#ticketDueDate");
+let $ticketInputDueTime = $("#ticketDueTime");
 let $ticketInputStatus = $("#ticketStatus");
 let $addTicketMenu = $("#addTicketMenu");
 let $ticketAddButton = $("#addTicketButton");
@@ -45,14 +47,17 @@ class TicketUIController extends IObserver {
 	get TicketMenuValue() {
 		return {
 			title: $ticketInputTitle.val(),
-			dueData: new Date($ticketInputDueDate.value),
+			dueDate: new Date(
+				$ticketInputDueDate.val() + " " + $ticketInputDueTime.val()
+			),
 			status: $("#ticketStatus option:selected").val()
 		};
 	}
 
-	set TicketMenuValue({ title, dueData, status }) {
+	set TicketMenuValue({ title, dueDate, status }) {
 		$ticketInputTitle.val(title);
-		$ticketInputDueDate.val(dueData);
+		$ticketInputDueDate.val(dueDate != null ? DateTime.GetDate(dueDate) : "");
+		$ticketInputDueTime.val(dueDate != null ? DateTime.GetTime(dueDate) : "");
 		$ticketInputStatus.val(status);
 	}
 
@@ -60,18 +65,31 @@ class TicketUIController extends IObserver {
 		return event.target.closest(".ticket__item").attributes["guid"].value;
 	}
 
+	CheckInputData() {
+		let ext = /[\w\d]+/;
+		let ticketMenuValue = this.TicketMenuValue;
+		if (!ext.test(ticketMenuValue.title)) throw "Please, check title";
+		if (DateTime.CompareDate(ticketMenuValue.dueDate, Date.now()) == -1)
+			throw "Please, select correct date";
+	}
+
 	AddTicket() {
+		this.CheckInputData();
 		let ticketMenuValue = this.TicketMenuValue;
 		this.ticketController.Add(
 			new SimpleTicket(
 				ticketsId++,
 				ticketMenuValue.title,
-				ticketMenuValue.dueData,
+				ticketMenuValue.dueDate,
 				ticketMenuValue.status
 			)
 		);
 		alert("Ticket successfully added !");
-		this.TicketMenuValue = { title: "", dueData: "", status: "default" };
+		this.TicketMenuValue = {
+			title: "",
+			dueDate: null,
+			status: "default"
+		};
 		$addTicketMenu.hide();
 	}
 
@@ -84,7 +102,7 @@ class TicketUIController extends IObserver {
 		let editTicket = this.ticketController.GetTicketById(id);
 		this.TicketMenuValue = {
 			title: editTicket.Title,
-			dueData: editTicket.DueDate,
+			dueDate: editTicket.DueDate,
 			status: editTicket.Status
 		};
 		$addTicketMenu.show();

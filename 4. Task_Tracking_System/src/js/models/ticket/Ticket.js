@@ -3,10 +3,10 @@ import ClosedStatus from "./status/Closed";
 import InProgressStatus from "./status/InProgress";
 
 class Ticket {
-	constructor(id, title, dueData, status) {
+	constructor(id, title, dueDate, status) {
 		this._id = id;
 		this._title = title;
-		this._dueData = dueData;
+		this._dueDate = dueDate;
 		this._status = this.switchStatus(status);
 	}
 
@@ -30,12 +30,12 @@ class Ticket {
 		this._status = this.switchStatus(status);
 	}
 
-	get DueData() {
-		return this._dueData;
+	get DueDate() {
+		return this._dueDate;
 	}
 
-	set DueData(dueData) {
-		this._dueData = dueData;
+	set DueDate(dueDate) {
+		this._dueDate = dueDate;
 	}
 
 	switchStatus(statusString) {
