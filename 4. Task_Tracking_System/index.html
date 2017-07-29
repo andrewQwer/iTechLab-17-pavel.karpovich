@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Task Traking System</title>
+</head>
+
+<body>
+	<div class="blackout" style="display:none">
+		<div class="blackout__block">
+			<div class="form-group block__ticket">
+				<label for="">Title:</label>
+				<input type="text" class="form-control" id="ticketTitle" placeholder="Input title...">
+				<label for="">Due data:</label>
+				<input type="date" class="form-control form-control" id="ticketDueDate" placeholder="Select data...">
+				<input type="time" class="form-control form-control" id="ticketDueTime" placeholder="Select time...">
+				<label for="">Ticket status:</label>
+				<select class="custom-select" id="ticketStatus">
+					<option value="Open">Open</option>
+					<option value="InProgress">In progress</option>
+					<option value="Closed">Closed</option>
+				</select>
+				<button id="saveTicketButton" class="btn btn-primary" role="button">Save</button>
+				<button id="editTicketButton" class="btn btn-primary " style="display:none" role="button">Edit</button>
+				<button id="cancelTicketButton" class="btn btn-primary">Cancel</button>
+			</div>
+			<div id="addWidgetMenu" class=" form-group block__widget">
+				<label for="">Widget type:</label>
+				<select class="custom-select" id="widgetTypeInput">
+					<option value="List">List</option>
+					<option value="PieChart">Pie chart</option>
+					<option value="BarChart">Bar chart</option>
+				</select>
+				<label for="">Border width:</label>
+				<input type="number" class="form-control form-control-sm" id="borderWidthInput" value="1">
+				<label for="">Border color:</label>
+				<select class="custom-select" id="borderColorInput">
+					<option value="Black">Black</option>
+					<option value="Blue">Blue</option>
+					<option value="Green">Green</option>
+					<option value="Yellow">Yellow</option>
+					<option value="Red">Red</option>
+				</select>
+				<label for="">Text color:</label>
+				<select id="textColorInput" class="custom-select">
+					<option value="Black">Black</option>
+					<option value="Blue">Blue</option>
+					<option value="Green">Green</option>
+					<option value="Yellow">Yellow</option>
+					<option value="Red">Red</option>
+				</select>
+				<button id="addNewWidgetButton" class="btn btn-primary" >Save</button>
+				<button id="clearWidgetButton" class="btn btn-primary" >Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container main">
+	<div class="row">
+		<div class="col-md-12">
+			<button type="button" id="showWidgetMenuButton" class="btn btn-primary">Add new widget</button>
+			<button name="" id="addTicketButton" class="btn btn-primary" >Add new ticket</button>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<ul id="widgetList" class="widget__list"></ul>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="ticket__list">
+				<li class="row ticket__item">
+					<div class="col-md-4">Title</div>
+					<div class="col-md-3">DueDate</div>
+					<div class="col-md-3">Status</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-1"></div>
+				</li>
+			</ul>
+			<ul class="ticket__list" id="ticketList"></ul>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>

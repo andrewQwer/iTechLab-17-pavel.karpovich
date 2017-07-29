@@ -1,0 +1,20 @@
+.blackout {
+	display: none;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.9);
+	z-index: 10;
+
+	&__block {
+		height: auto;
+		width: 550px;
+		background: #fff;
+		border-radius: 25px;
+		z-index: 11;
+		padding: 25px;
+	}
+}

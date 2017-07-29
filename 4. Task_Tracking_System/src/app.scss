@@ -1,0 +1,36 @@
+@import "./node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/chartist/dist/scss/chartist.scss";
+@import "scss/widget/widget.scss";
+@import "scss/ticket/ticket.scss";
+@import "scss/blackout/blackout.scss";
+@import "scss/blackout/block/block.scss";
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	overflow: hidden;
+}
+
+body::before {
+	content: "";
+	position: absolute;
+	background: url("/img/bg.jpeg") no-repeat fixed center center transparent;
+	background-size: cover;
+	transform: scale(1.2);
+	filter: blur(35px);
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+}
+
+.main{
+	background-color: rgb(255, 255, 255);
+	padding: 30px;
+	border-radius: 25px;
+}
+
+.ct-label{
+	color:inherit;
+}

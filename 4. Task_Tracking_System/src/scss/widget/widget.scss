@@ -1,0 +1,24 @@
+.widget {
+	&__add, &__show {
+		border: 2px solid black;
+		padding: 25px;
+	}
+
+	&__list {
+		list-style-type: none;
+		display: flex;
+		flex-wrap: wrap;
+		li {
+			margin: 2px;
+		}
+	}
+
+	&__input {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__buttons {
+		margin-top: 15px;
+	}
+}
