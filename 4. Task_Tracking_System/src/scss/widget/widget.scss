@@ -12,4 +12,13 @@
 			margin: 2px;
 		}
 	}
+
+	&__input {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__buttons {
+		margin-top: 15px;
+	}
 }

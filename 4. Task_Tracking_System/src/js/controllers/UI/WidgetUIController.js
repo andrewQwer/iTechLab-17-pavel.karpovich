@@ -78,7 +78,7 @@ class WidgetUIController extends IObserver {
 			$widgetList.append(`<li id="widget${i}"></li>`).children().last().attr({
 				style: `border-color: ${$current.BorderColor};
 				border-width: ${$current.BorderWidth}px;
-					border-style:solid`
+				border-style:solid`
 			});
 			this._widgetController.Widgets[i]
 				.toString(`#widget${i}`)
@@ -90,6 +90,8 @@ class WidgetUIController extends IObserver {
 						});
 					}
 				});
+			if ($current.Type === "List")
+				$(`#widget${i} .widget__item`).css({ color: `${$current.TextColor}` });
 		}
 	}
 }

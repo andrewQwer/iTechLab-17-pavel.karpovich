@@ -16,33 +16,45 @@
 					<div class="row">
 						<button type="button" name="" id="showWidgetMenuButton" class="btn btn-primary">Add new widget</button>
 					</div>
-					<div id="addWidgetMenu">
-						<div class="row">
-							<select class="custom-select" name="" id="widgetTypeInput" aria-placeholder="bla">
-								<option value="default" selected disabled>Select type...</option>
+					<div id="addWidgetMenu" class="widget__menu">
+						<div class="row widget__input">
+							<label for="">Widget type:</label>
+							<select class="custom-select" id="widgetTypeInput">
 								<option value="List">List</option>
 								<option value="PieChart">Pie chart</option>
 								<option value="BarChart">Bar chart</option>
 							</select>
 						</div>
-						<div class="row">
+						<div class="row widget__input">
 							<label for="">Border width:</label>
-							<input type="text" class="form-control form-control-sm" name="" id="borderWidthInput" aria-describedby="helpId" placeholder="width">
+							<input type="number" class="form-control form-control-sm" id="borderWidthInput" value="1">
 						</div>
-						<div class="row">
+						<div class="row widget__input">
 							<label for="">Border color:</label>
-							<input type="text" class="form-control form-control-sm" name="" id="borderColorInput" aria-describedby="helpId" placeholder="color">
+							<select class="custom-select" id="borderColorInput">
+								<option value="Black">Black</option>
+								<option value="Blue">Blue</option>
+								<option value="Green">Green</option>
+								<option value="Yellow">Yellow</option>
+								<option value="Red">Red</option>
+							</select>
 						</div>
-						<div class="row">
+						<div class="row widget__input">
 							<label for="">Text color:</label>
-							<input type="text" class="form-control form-control-sm" name="" id="textColorInput" aria-describedby="helpId" placeholder="color">
+							<select id="textColorInput" class="custom-select">
+								<option value="Black">Black</option>
+								<option value="Blue">Blue</option>
+								<option value="Green">Green</option>
+								<option value="Yellow">Yellow</option>
+								<option value="Red">Red</option>
+							</select>
 						</div>
-						<div class="row">
-							<div class="offset-md-4 col-md-4">
-								<a name="" id="clearWidgetButton" class="btn btn-warning" href="#" role="button">Cancel</a>
+						<div class="row widget__buttons">
+							<div class="col-md-6 align-self-center">
+								<a name="" id="clearWidgetButton" class="btn btn-warning" role="button">Cancel</a>
 							</div>
-							<div class="col-md-4">
-								<a name="" id="addNewWidgetButton" class="btn btn-success" href="#" role="button">Save</a>
+							<div class="col-md-auto align-self-center">
+								<a name="" id="addNewWidgetButton" class="btn btn-success" role="button">Save</a>
 							</div>
 						</div>
 					</div>
@@ -51,7 +63,7 @@
 			<div class="col-md-8 widget__show">
 				<div class="container">
 					<div class="row">
-						<a name="" id="" class="btn btn-primary" href="#" role="button">Dashboard</a>
+						<a name="" id="" class="btn btn-primary" role="button">Dashboard</a>
 					</div>
 					<div class="row">
 						<ul id="widgetList" class="widget__list">
@@ -64,7 +76,7 @@
 		<div class="row">
 			<div class="col-md-12 ticket__show">
 				<div class="row justify-content-end">
-					<a name="" id="addTicketButton" class="btn btn-success" href="#" role="button">Add new ticket</a>
+					<a name="" id="addTicketButton" class="btn btn-success" role="button">Add new ticket</a>
 				</div>
 				<div class="ticket__list" id="ticketList">
 					
@@ -77,17 +89,18 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label for="">Title</label>
-					<input type="text" class="form-control" name="" id="ticketTitle" aria-describedby="helpId" placeholder="Input title...">
+					<input type="text" class="form-control" id="ticketTitle" placeholder="Input title...">
 					<label for="">Due data</label>
-					<input type="date" class="form-control form-control" name="" id="ticketDueDate" aria-describedby="helpId" placeholder="Select data...">
-					<select class="custom-select" name="" id="ticketStatus" aria-placeholder="bla">
+					<input type="date" class="form-control form-control" id="ticketDueDate" placeholder="Select data...">
+					<input type="time" class="form-control form-control" id="ticketDueTime" placeholder="Select time...">
+					<select class="custom-select" id="ticketStatus">
 						<option value="default" selected disabled>Select type...</option>
 						<option value="Open">Open</option>
 						<option value="InProgress">In progress</option>
 						<option value="Closed">Closed</option>
 					</select>
-					<a name="" id="saveTicketButton" class="btn btn-success" role="button">Save</a>
-					<a name="" id="editTicketButton" class="btn btn-danger " role="button">Edit</a>
+					<a id="saveTicketButton" class="btn btn-success" role="button">Save</a>
+					<a id="editTicketButton" class="btn btn-danger " role="button">Edit</a>
 				</div>
 			</div>
 		</div>
