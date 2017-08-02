@@ -37,10 +37,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.25.0",
     "bootstrap": "^4.0.0-alpha.6",
+    "crypto": "0.0.3",
     "html-webpack-plugin": "^2.30.0",
     "jquery": "^3.2.1",
     "prop-types": "^15.5.10",
     "react-redux": "^5.0.5",
+    "react-router": "^4.1.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6"
   }

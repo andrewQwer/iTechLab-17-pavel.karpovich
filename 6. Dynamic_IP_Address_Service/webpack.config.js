@@ -9,8 +9,13 @@ const PATHS = {
 	dist: path.resolve(__dirname, "./dist")
 };
 
+const devServer = {
+	historyApiFallback: true,
+}
+
 module.exports = {
 	devtool: "source-map",
+	devServer: devServer,
 	entry: ["babel-polyfill", `${PATHS.source}/index.js`, `${PATHS.source}/index.scss`],
 	output: {
 		path: PATHS.dist,
