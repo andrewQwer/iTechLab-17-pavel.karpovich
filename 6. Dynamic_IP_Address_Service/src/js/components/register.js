@@ -5,14 +5,15 @@ export default class register extends Component {
 		super(props);
 	}
 
+	//TODO: delete default value from form
 	render() {
 		return (
 			<div>
-				<input ref="login" placeholder="Please, input login..." />
-				<input type="password" ref="pass" placeholder="Please, input pass..." />
-				<input type="email" ref="email" placeholder="Please, input email..." />
-				<input ref="firstName" placeholder="Please, input first name" />
-				<input ref="lastName" placeholder="Please, input last name" />
+				<input ref="login" defaultValue="taller" placeholder="Please, input login..." />
+				<input type="password" defaultValue="123456789" ref="pass" placeholder="Please, input pass..." />
+				<input type="email" defaultValue="tallerstk97@gmail.com" ref="email" placeholder="Please, input email..." />
+				<input ref="firstName" defaultValue="Pavel" placeholder="Please, input first name" />
+				<input ref="lastName" defaultValue="Karpovich" placeholder="Please, input last name" />
 				<button
 					onClick={() =>
 						this.props.actions.registerUser(

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Register from "../components/register";
+import LoginIn from "../components/loginIn";
+import LoginOut from "../components/loginOut";
 import * as UserActions from "../actions/userActions";
 
 class App extends Component {
@@ -13,6 +15,8 @@ class App extends Component {
 		return (
 			<div>
 				<Register actions={this.props.userActions} />
+				<LoginIn actions={this.props.userActions} />
+				<LoginOut actions={this.props.userActions} />
 			</div>
 		);
 	}

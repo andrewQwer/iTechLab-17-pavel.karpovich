@@ -1,8 +1,13 @@
-import { REGISTER_USER } from "../constants/user";
+import {
+	REGISTER_USER,
+	LOGIN_IN_USER,
+	LOGIN_OUT_USER
+} from "../constants/user";
 import SaltedHash from "../Helpers/Hashing/saltedHash";
+import { GenUUID } from "../Helpers/uuid";
 
 const initialState = {
-	id: -1,
+	uuid: null,
 	isLoginIn: false,
 	users: []
 };
@@ -17,11 +22,7 @@ export default function users(state = initialState, action) {
 				users: [
 					...state.users,
 					{
-						id:
-							state.users.reduce(
-								(maxId, item) => Math.max(maxId, item.id),
-								-1
-							) + 1,
+						uuid: GenUUID(),
 						login: action.login,
 						hash: saltedHash.GetHash(),
 						salt: saltedHash.GetSalt(),
@@ -31,6 +32,25 @@ export default function users(state = initialState, action) {
 						lastName: action.lastName
 					}
 				]
+			};
+		case LOGIN_IN_USER:
+			let user = state.users.find(
+				item =>
+					item.login == action.login &&
+					SaltedHash.Verify(action.pass, item.hash, item.salt)
+			);
+			return user
+				? {
+						uuid: user.uuid,
+						isLoginIn: true,
+						users: [...state.users]
+					}
+				: state;
+		case LOGIN_OUT_USER:
+			return {
+				uuid: null,
+				isLoginIn: false,
+				users: [...state.users]
 			};
 		default:
 			return state;
