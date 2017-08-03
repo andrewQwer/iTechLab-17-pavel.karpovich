@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as UserActions from "../actions/userActions";
 
-export default class Login extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -9,11 +13,15 @@ export default class Login extends Component {
 	render() {
 		return (
 			<div>
+				<Link to="/register">Registration</Link>
 				<input ref="login" defaultValue="taller" />
 				<input type="password" ref="pass" defaultValue="123456789" />
 				<button
 					onClick={() => {
-						this.props.actions.loginInUser(this.refs.login.value, this.refs.pass.value);
+						this.props.userActions.loginInUser(
+							this.refs.login.value,
+							this.refs.pass.value
+						);
 					}}
 				>
 					Send
@@ -22,3 +30,14 @@ export default class Login extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	users: state.user.users,
+	user: state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+	userActions: bindActionCreators(UserActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

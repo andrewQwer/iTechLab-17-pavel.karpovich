@@ -5,6 +5,7 @@ import Register from "../components/register";
 import LoginIn from "../components/loginIn";
 import LoginOut from "../components/loginOut";
 import * as UserActions from "../actions/userActions";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
 	constructor(props) {
@@ -14,9 +15,15 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Register actions={this.props.userActions} />
+				{/* <Register actions={this.props.userActions} />
 				<LoginIn actions={this.props.userActions} />
-				<LoginOut actions={this.props.userActions} />
+				<LoginOut actions={this.props.userActions} /> */}
+				<BrowserRouter>
+					<Switch>
+						<Route exact path="/" component={LoginIn} />
+						<Route path="/register" component={Register} />
+					</Switch>
+				</BrowserRouter>
 			</div>
 		);
 	}
