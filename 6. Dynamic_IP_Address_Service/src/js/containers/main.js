@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "../components/pages/home";
 import Registration from "../components/pages/registration";
 import Login from "../components/pages/login";
+import Profile from "../components/pages/profile"
 import NotFound from "../components/pages/notFound";
 
 export default class Main extends Component {
@@ -15,6 +16,7 @@ export default class Main extends Component {
 					<Route exact path="/" component={Home} />
 					<Route path="/registration" component={Registration} />
 					<Route path="/login" component={Login} />
+					<Route path="/profile/:login" component={Profile} />
 					<Route path="*" component={NotFound} />
 				</Switch>
 			</div>

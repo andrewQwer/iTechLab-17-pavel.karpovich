@@ -6,29 +6,39 @@ import LogOut from "./logOut";
 import * as UserActions from "../actions/userActions";
 
 class Navbar extends Component {
-	render() {
-		//TODO: move find user code to function
-		const navigationButtons = !this.props.user.uuid
-			? <div className="navigation__buttons">
-					<div className="navigation_item">
-						<Link to="/login">Login</Link>
-					</div>
-					<div className="navigation_item">
-						<Link to="/registration">Registration</Link>
-					</div>
+	getUserNavButton() {
+		let user = this.props.users.find(
+			item => item.uuid === this.props.user.uuid
+		);
+		return (
+			<div className="navigation__buttons">
+				<div className="navigation_item">
+					Welcome, <Link to={`/profile/${user.login}`}>{user.login}</Link>!
 				</div>
-			: <div className="navigation__buttons">
-					<div className="navigation_item">
-						Welcome,
-						{
-							this.props.users.find(item => item.uuid === this.props.user.uuid)
-								.login
-						}!
-					</div>
-					<div className="navigation_item">
-						<LogOut actions={this.props.userActions} />
-					</div>
-				</div>;
+				<div className="navigation_item">
+					<LogOut actions={this.props.userActions} />
+				</div>
+			</div>
+		);
+	}
+
+	getGuestNavButton() {
+		return (
+			<div className="navigation__buttons">
+				<div className="navigation_item">
+					<Link to="/login">Login</Link>
+				</div>
+				<div className="navigation_item">
+					<Link to="/registration">Registration</Link>
+				</div>
+			</div>
+		);
+	}
+
+	render() {
+		const navigationButtons = !this.props.user.uuid
+			? this.getGuestNavButton()
+			: this.getUserNavButton();
 
 		return (
 			<div className="navigation">

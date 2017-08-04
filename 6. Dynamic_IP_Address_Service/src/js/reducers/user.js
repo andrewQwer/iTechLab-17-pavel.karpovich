@@ -5,7 +5,6 @@ import {
 } from "../constants/user";
 import SaltedHash from "../helpers/Hashing/saltedHash";
 import { GenUUID } from "../helpers/uuid";
-import { browserHistory } from "react-router"
 
 const initialState = {
 	uuid: null,
