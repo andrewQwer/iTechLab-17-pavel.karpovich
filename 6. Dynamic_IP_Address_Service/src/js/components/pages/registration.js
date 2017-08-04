@@ -2,16 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as UserActions from "../actions/userActions";
+import * as UserActions from "../../actions/userActions";
 
-class register extends Component {
-	constructor(props) {
-		super(props);
-	}
-
+class Registration extends Component {
 	//TODO: delete default value from form
 	render() {
-		return (
+		const registrationPage = !this.props.user.uuid ? (
 			<div>
 				<input
 					ref="login"
@@ -54,9 +50,14 @@ class register extends Component {
 				>
 					Register
 				</button>
-				<Link to="/">login</Link>
 			</div>
-		);
+		) : (
+			<div>
+					<h4>This page available only for guest</h4>
+				</div>
+		)
+
+		return registrationPage;
 	}
 }
 
@@ -69,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 	userActions: bindActionCreators(UserActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(register);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
-import LogOut from "../logOut"
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import * as UserActions from "../../actions/userActions";
-import Navbar from "../navbar";
+import * as UserActions from "../actions/userActions";
+import Navbar from "../components/navbar";
 
 class Home extends Component {
 	render() {
 		return (
-			<div className="container">
-				<div className="row">
-					<h1>Home page</h1>
-				</div>
+			<div className="row main__header">
+				<Navbar />
 			</div>
-		)
+		);
 	}
 }
 

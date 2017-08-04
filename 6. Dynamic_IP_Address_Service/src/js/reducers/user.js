@@ -1,22 +1,22 @@
 import {
 	REGISTER_USER,
 	LOGIN_IN_USER,
-	LOGIN_OUT_USER
+	LOG_OUT_USER
 } from "../constants/user";
-import SaltedHash from "../Helpers/Hashing/saltedHash";
-import { GenUUID } from "../Helpers/uuid";
+import SaltedHash from "../helpers/Hashing/saltedHash";
+import { GenUUID } from "../helpers/uuid";
 import { browserHistory } from "react-router"
 
 const initialState = {
 	uuid: null,
-	isLoginIn: false,
+	isLogin: true,
 	users: []
 };
 
 export default function users(state = initialState, action) {
 	switch (action.type) {
 		case REGISTER_USER:
-			//TODO: check for uniqueness, check fields
+			//TODO: check for uniqueness and fields
 			let saltedHash = new SaltedHash(action.pass);
 			return {
 				...state,
@@ -43,14 +43,14 @@ export default function users(state = initialState, action) {
 			return user
 				? {
 						uuid: user.uuid,
-						isLoginIn: true,
+						isLogin: true,
 						users: [...state.users]
 					}
 				: state;
-		case LOGIN_OUT_USER:
+		case LOG_OUT_USER:
 			return {
 				uuid: null,
-				isLoginIn: false,
+				isLogin: false,
 				users: [...state.users]
 			};
 		default:

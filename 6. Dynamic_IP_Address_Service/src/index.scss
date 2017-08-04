@@ -1,4 +1,6 @@
 @import "./node_modules/bootstrap/scss/bootstrap";
+@import "./sass/main/main.scss";
+@import "./sass/main/header/navigation/navigation.scss";
 
 body {
 	background: lightgray;

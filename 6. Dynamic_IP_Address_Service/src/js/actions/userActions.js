@@ -1,7 +1,7 @@
 import {
 	REGISTER_USER,
 	LOGIN_IN_USER,
-	LOGIN_OUT_USER
+	LOG_OUT_USER
 } from "../constants/user";
 
 export const registerUser = (login, pass, firstName, lastName, email) => ({
@@ -19,6 +19,6 @@ export const loginInUser = (login, pass) => ({
 	pass: pass
 });
 
-export const loginOutUser = () => ({
-	type: LOGIN_OUT_USER
+export const logOutUser = () => ({
+	type: LOG_OUT_USER
 });

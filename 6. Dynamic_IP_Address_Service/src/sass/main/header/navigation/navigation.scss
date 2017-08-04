@@ -1,0 +1,15 @@
+.navigation {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+	&__logo {
+		width: auto;
+	}
+
+	&__buttons {
+		width:200px;
+		display: flex;
+		justify-content: space-between;
+	}
+}

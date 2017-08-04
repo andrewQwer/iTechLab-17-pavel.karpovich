@@ -1,41 +1,20 @@
 import React, { Component } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import Register from "../components/register";
-import LoginIn from "../components/loginIn";
-import LoginOut from "../components/loginOut";
-import * as UserActions from "../actions/userActions";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
+import Main from "./main";
+import Header from "./header";
+import Footer from "./footer";
 
-class App extends Component {
-	constructor(props) {
-		super(props);
-	}
-
+//TODO: add footer
+export default class App extends Component {
 	render() {
 		return (
-			<div>
-				{/* <Register actions={this.props.userActions} />
-				<LoginIn actions={this.props.userActions} />
-				<LoginOut actions={this.props.userActions} /> */}
-				<BrowserRouter>
-					<Switch>
-						<Route exact path="/" component={LoginIn} />
-						<Route path="/register" component={Register} />
-					</Switch>
-				</BrowserRouter>
-			</div>
+			<BrowserRouter>
+				<div className="container main">
+					<Header />
+					<Main />
+					<Footer />
+				</div>
+			</BrowserRouter>
 		);
 	}
 }
-
-const mapStateToProps = state => ({
-	users: state.user.users,
-	user: state.user
-});
-
-const mapDispatchToProps = dispatch => ({
-	userActions: bindActionCreators(UserActions, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
