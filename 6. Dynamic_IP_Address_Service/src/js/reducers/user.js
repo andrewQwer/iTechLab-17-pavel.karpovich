@@ -4,6 +4,7 @@ import {
 	LOG_OUT_USER,
 	ADD_IP_TO_USER,
 } from "../constants/user";
+import SimpleUser from "../models/userType/SimpleUser";
 import SaltedHash from "../helpers/Hashing/saltedHash";
 import { GenUUID } from "../helpers/uuid";
 
@@ -27,7 +28,7 @@ export default function users(state = initialState, action) {
 						login: action.login,
 						hash: saltedHash.GetHash(),
 						salt: saltedHash.GetSalt(),
-						type: "user", //TODO: change to class
+						type: new SimpleUser(),
 						email: action.email,
 						firstName: action.firstName,
 						lastName: action.lastName,
@@ -57,4 +58,8 @@ export default function users(state = initialState, action) {
 		default:
 			return state;
 	}
+}
+
+export function GetUserById(state, id) {
+	return state.users.find((item) => item.uuid === id);
 }

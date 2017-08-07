@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+
 class IpForm extends Component {
 	constructor(props) {
 		super(props);
 	}
+
+	
 
 	addButtonClick() {
 		this.props.hideForm(true);
@@ -45,7 +48,7 @@ class IpForm extends Component {
 						value={this.props.ip}
 						onChange={::this.props.handler}
 					/>
-					<p>Remain 5</p>
+					<p>Remain {this.props.domainRemainingCount}</p>
 					{this.props.isEdit
 						? <button onClick={::this.editButtonClick}>Edit address</button>
 						: <button onClick={::this.addButtonClick}>Add address</button>}
@@ -56,7 +59,9 @@ class IpForm extends Component {
 }
 
 const mapStateToProps = state => ({
-	user: state.user
+	user: state.user,
+	users: state.user.users,
+	ips: state.ip.ips
 });
 
 export default connect(mapStateToProps)(IpForm);

@@ -17,7 +17,7 @@ class Profile extends Component {
 		return (
 			this.props.user.uuid ||
 			this.props.match.params.login === user.login ||
-			user.type === "admin"
+			user.type.GetType() === new Admin().GetType()
 		);
 	}
 
@@ -40,7 +40,7 @@ class Profile extends Component {
 					Last name: {currentUser.lastName}
 				</p>
 				<p>
-					Type: {currentUser.type}
+					Type: {currentUser.type.GetType()}
 				</p>
 				<p>
 					<Link to="/ip">Ip control</Link>

@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux";
 import * as IpActions from "../../actions/ipActions";
 import IpForm from "../ip/ipForm";
 import IpList from "../ip/ipList";
+import { GetUserDomainCount } from "../../reducers/ip";
+import { GetUserById } from "../../reducers/user";
 
 class Ip extends Component {
 	constructor(props) {
@@ -12,9 +14,17 @@ class Ip extends Component {
 			uuid: null,
 			isEditForm: false,
 			isHideForm: true,
+			domainRemainingCount: this.getDomainRemainingCount(),
 			ip: "192.168.100.1",
 			domain: "belstu"
 		};
+	}
+
+	getDomainRemainingCount() {
+		return (
+			GetUserById(this.props.user, this.props.user.uuid).type.GetDomainCount() -
+			GetUserDomainCount(this.props.ips, this.props.user.uuid)
+		);
 	}
 
 	editButtonClick(uuid, ip, domain, isEditForm, isHideForm) {
@@ -23,7 +33,8 @@ class Ip extends Component {
 			ip: ip,
 			domain: domain,
 			isEditForm: isEditForm,
-			isHideForm: isHideForm
+			isHideForm: isHideForm,
+			domainRemainingCount: this.getDomainRemainingCount()
 		});
 	}
 
@@ -36,12 +47,17 @@ class Ip extends Component {
 	}
 
 	addButtonClick() {
-		this.setState({
-			ip: "",
-			domain: "",
-			isEditForm: false,
-			isHideForm: false
-		});
+		if (this.getDomainRemainingCount() !== 0) {
+			this.setState({
+				ip: "",
+				domain: "",
+				isEditForm: false,
+				isHideForm: false,
+				domainRemainingCount: this.getDomainRemainingCount()
+			});
+		} else {
+			alert(`Exceeded domain count limit!`);
+		}
 	}
 
 	hideForm(state) {
@@ -56,6 +72,7 @@ class Ip extends Component {
 				<button onClick={::this.addButtonClick}>+</button>
 				<IpList editButtonClick={::this.editButtonClick} />
 				<IpForm
+					domainRemainingCount={this.state.domainRemainingCount}
 					hideForm={::this.hideForm}
 					isHideForm={this.state.isHideForm}
 					isEdit={this.state.isEditForm}
@@ -73,7 +90,8 @@ class Ip extends Component {
 
 const mapStateToProps = state => ({
 	user: state.user,
-	ips: state.ips
+	users: state.user.users,
+	ips: state.ip.ips
 });
 
 const mapDispatchToProps = dispatch => ({
