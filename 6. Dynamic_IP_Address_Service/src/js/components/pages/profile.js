@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as UserActions from "../../actions/userActions";
 import PropTypes from "prop-types";
@@ -10,7 +11,9 @@ class Profile extends Component {
 	}
 
 	permissionCheck() {
-		let user = this.props.users.find(item => item.uuid === this.props.user.uuid);
+		let user = this.props.users.find(
+			item => item.uuid === this.props.user.uuid
+		);
 		return (
 			this.props.user.uuid ||
 			this.props.match.params.login === user.login ||
@@ -39,6 +42,9 @@ class Profile extends Component {
 				<p>
 					Type: {currentUser.type}
 				</p>
+				<p>
+					<Link to="/ip">Ip control</Link>
+				</p>
 			</div>
 		);
 	}
@@ -63,8 +69,7 @@ Profile.propTypes = {};
 
 const mapStateToProps = state => ({
 	users: state.user.users,
-	user: state.user,
-	currentUser: state.currentUser
+	user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({

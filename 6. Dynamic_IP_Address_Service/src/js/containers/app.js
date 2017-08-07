@@ -4,7 +4,6 @@ import Main from "./main";
 import Header from "./header";
 import Footer from "./footer";
 
-//TODO: add footer
 export default class App extends Component {
 	render() {
 		return (

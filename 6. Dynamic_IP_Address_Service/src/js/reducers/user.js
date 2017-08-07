@@ -1,14 +1,15 @@
 import {
 	REGISTER_USER,
 	LOGIN_IN_USER,
-	LOG_OUT_USER
+	LOG_OUT_USER,
+	ADD_IP_TO_USER,
 } from "../constants/user";
 import SaltedHash from "../helpers/Hashing/saltedHash";
 import { GenUUID } from "../helpers/uuid";
 
 const initialState = {
 	uuid: null,
-	isLogin: true,
+	isLogin: false,
 	users: []
 };
 
@@ -29,7 +30,8 @@ export default function users(state = initialState, action) {
 						type: "user", //TODO: change to class
 						email: action.email,
 						firstName: action.firstName,
-						lastName: action.lastName
+						lastName: action.lastName,
+						ip: []
 					}
 				]
 			};

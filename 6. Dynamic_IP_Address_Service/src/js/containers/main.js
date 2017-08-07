@@ -7,6 +7,7 @@ import Registration from "../components/pages/registration";
 import Login from "../components/pages/login";
 import Profile from "../components/pages/profile"
 import NotFound from "../components/pages/notFound";
+import IP from "../components/pages/ip";
 
 export default class Main extends Component {
 	render() {
@@ -17,6 +18,7 @@ export default class Main extends Component {
 					<Route path="/registration" component={Registration} />
 					<Route path="/login" component={Login} />
 					<Route path="/profile/:login" component={Profile} />
+					<Route path="/ip" component={IP} />
 					<Route path="*" component={NotFound} />
 				</Switch>
 			</div>

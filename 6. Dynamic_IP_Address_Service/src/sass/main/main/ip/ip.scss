@@ -1,0 +1,12 @@
+.ip{
+	display: flex;
+	width: 100%;
+
+	&__table {
+		width: 70%;
+	}
+
+	&__form {
+		width: auto;
+	}
+}
