@@ -26,8 +26,8 @@ export const logOutUser = () => ({
 	type: LOG_OUT_USER
 });
 
-export const addUserToBasket = (uuid) => ({
+export const addUserToBasket = (uuids) => ({
 	type: ADD_USER_TO_BASKET,
-	uuid
+	uuids
 })
 

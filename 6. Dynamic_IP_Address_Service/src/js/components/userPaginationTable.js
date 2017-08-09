@@ -8,7 +8,7 @@ import UserTableItem from "./userTableItem";
 class UserPaginationTable extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { currentPage: 1 };
+		this.state = { currentPage: 1, sortType: "Login", isReverse: false };
 	}
 
 	set currentPage(pageNumber) {
@@ -17,6 +17,22 @@ class UserPaginationTable extends Component {
 
 	get currentPage() {
 		return this.state.currentPage;
+	}
+
+	set sortType(type) {
+		this.setState({sortType: type})
+	}
+
+	get sortType() {
+		return this.state.sortType;
+	}
+
+	set isReverse(reverse) {
+		this.setState({isReverse: reverse})
+	}
+
+	get isReverse() {
+		return this.state.isReverse;
 	}
 
 	calculatePaginationProps() {
@@ -38,8 +54,31 @@ class UserPaginationTable extends Component {
 		this.currentPage = pageNumber;
 	}
 
+	clickOnSortHandler(event) {
+		let type = event.target.textContent;
+		this.isReverse = (this.sortType == type) ? !this.isReverse : false;
+		this.sortType = type;
+	}
+
+	sortUser() {
+		let sortType = this.state.sortType;
+		let outputArray = this.currentUsers.slice() || [];
+		if (sortType === "Login") {
+			outputArray = outputArray.sort((a, b) => a.login.localeCompare(b.login));
+		} else if (sortType === "Email") {
+			outputArray = outputArray.sort((a, b) => a.email.localeCompare(b.email));
+		} else if (sortType === "First Name") {
+			outputArray = outputArray.sort((a, b) => a.firstName.localeCompare(b.firstName));
+		} else if (sortType === "Last Name") {
+			outputArray.sort((a, b) => a.lastName.localeCompare(b.lastName));
+		}
+		return (this.isReverse) ? outputArray.reverse() : outputArray;
+	}
+
 	clickOnUserHandler(event) {
-		this.props.userActions.addUserToBasket(item.uuid);
+		let loginValue = $(event.target.closest("td")).siblings("#login").get(0)
+			.innerText;
+		this.props.navigate(`/profile/${loginValue}`);
 	}
 
 	//BUG: pageNumber > pageCount
@@ -93,18 +132,26 @@ class UserPaginationTable extends Component {
 			: null;
 	}
 
+	//BUG: highlighting selected item after page changed
+	//BUG: delete highlight selected after removing
 	renderUsersTable() {
 		const renderUsers = (
 			<table className="table table-hover">
 				<tbody>
 					<tr className="thead">
-						<td>Login</td>
-						<td>Email</td>
-						<td>First name</td>
-						<td>Last name</td>
+						<td />
+						<td onClick={::this.clickOnSortHandler}>Login</td>
+						<td onClick={::this.clickOnSortHandler}>Email</td>
+						<td onClick={::this.clickOnSortHandler}>First name</td>
+						<td onClick={::this.clickOnSortHandler}>Last name</td>
 					</tr>
-					{this.currentUsers.map((item, index) =>
-						<UserTableItem key={index} user={item} />
+					{this.sortUser().map((item, index) =>
+						<UserTableItem
+							key={index}
+							user={item}
+							clickOnUserHandler={::this.clickOnUserHandler}
+							selectUserHandler={::this.props.selectUser}
+						/>
 					)}
 				</tbody>
 			</table>

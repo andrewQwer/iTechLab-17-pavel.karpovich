@@ -9,13 +9,26 @@ class AdminPanel extends Component {
 		super(props);
 
 		this.state = {
-			users: this.props.users,
+			toDelete: [],
 			userPerPage: 3
 		};
 	}
 
+	
+	set toDeleteArray(array) {
+		this.setState({ toDelete: array });
+	}
+
+	get toDeleteArray() {
+		return this.state.toDelete;
+	}
+
 	handlerClick(event) {
 		this.setState({ currentPage: event.target.textContent });
+	}
+
+	deleteButtonClickHandler(event) {
+		this.props.userActions.addUserToBasket(this.toDeleteArray)
 	}
 
 	// TODO: change output count
@@ -27,8 +40,28 @@ class AdminPanel extends Component {
 		this.setState({ userPerPage: value });
 	}
 
-	render() {
+	navigate(to) {
+		this.props.history.push(to);
+	}
 
+	selectUserHandler(event) {
+		let $tr = $(event.target.closest("tr"));
+		let styleName = "table-danger";
+		$tr.hasClass(styleName)
+			? $tr.removeClass(styleName)
+			: $tr.addClass(styleName);
+		let uuidValue = $(event.target.closest("td")).siblings("#uuid").get(0)
+			.innerText;
+		let original = this.toDeleteArray;
+		original.includes(uuidValue)
+			? original.splice(original.indexOf(uuidValue), 1)
+			: original.push(uuidValue);
+		this.toDeleteArray = original;
+		event.stopPropagation();
+	}
+
+	render() {
+		//BUG: highlight item count
 		return (
 			<div>
 				<ul className="pagination">
@@ -54,7 +87,8 @@ class AdminPanel extends Component {
 					</li>
 				</ul>
 				<h1>Admin Panel</h1>
-				<UserPaginationTable userPerPage={this.state.userPerPage} />
+				<button onClick={::this.deleteButtonClickHandler}>Delete</button>
+				<UserPaginationTable navigate={::this.navigate} selectUser={::this.selectUserHandler} userPerPage={this.state.userPerPage} />
 			</div>
 		);
 	}

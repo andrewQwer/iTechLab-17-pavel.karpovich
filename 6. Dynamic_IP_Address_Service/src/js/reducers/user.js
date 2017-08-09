@@ -57,11 +57,11 @@ export default function users(state = initialState, action) {
 				users: [...state.users]
 			};
 		case ADD_USER_TO_BASKET:
-			let addedUser = GetUserById(state, action.uuid);
+			let addedUser = state.users.filter(item => action.uuids.includes(item.uuid))
 			return {
 				...state,
-				users: state.users.filter(item => item.uuid !== action.uuid),
-				basket: [...state.basket, addedUser]
+				users: state.users.filter(item => !action.uuids.includes(item.uuid)),
+				basket: state.basket.concat(addedUser)
 			};
 		default:
 			return state;

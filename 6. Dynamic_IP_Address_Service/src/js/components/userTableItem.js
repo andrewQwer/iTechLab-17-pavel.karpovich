@@ -2,10 +2,16 @@ import React, { Component } from "react";
 
 class componentName extends Component {
 	render() {
-		const { login, email, firstName, lastName } = this.props.user;
+		const { uuid, login, email, firstName, lastName } = this.props.user;
 		return (
-			<tr>
+			<tr onClick={::this.props.clickOnUserHandler}>
 				<td>
+					<input type="checkbox" onClick={::this.props.selectUserHandler} />
+				</td>
+				<td id="uuid" style={{ display: "none" }}>
+					{uuid}
+				</td>
+				<td id="login"> 
 					{login}
 				</td>
 				<td>
