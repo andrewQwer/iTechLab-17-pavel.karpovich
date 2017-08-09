@@ -39,7 +39,7 @@ class UserPaginationTable extends Component {
 		const { currentPage } = this.state;
 		let indexOfLastUser = currentPage * this.props.userPerPage;
 		let indexOfFirstUser = indexOfLastUser - this.props.userPerPage;
-		this.currentUsers = this.props.users.slice(
+		this.currentUsers = this.props.items.slice(
 			indexOfFirstUser,
 			indexOfLastUser
 		);
@@ -85,7 +85,7 @@ class UserPaginationTable extends Component {
 	renderPageNumbers() {
 		const { currentPage } = this.state;
 		this.pageCount = Math.ceil(
-			this.props.users.length / this.props.userPerPage
+			this.props.items.length / this.props.userPerPage
 		);
 		let pageNumbers = [...new Array(this.pageCount).keys()].map(item => ++item);
 		const renderPageNumbers = pageNumbers.map((item, index) =>
@@ -172,7 +172,6 @@ class UserPaginationTable extends Component {
 
 const mapStateToProps = state => ({
 	user: state.user,
-	users: state.user.users,
 	ips: state.ip.ips
 });
 

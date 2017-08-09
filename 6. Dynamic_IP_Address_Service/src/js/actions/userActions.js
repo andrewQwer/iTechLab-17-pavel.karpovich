@@ -4,7 +4,9 @@ import {
 	LOG_OUT_USER,
 	ADD_IP_TO_USER,
 	EDIT_USER_IP,
-	ADD_USER_TO_BASKET
+	ADD_USER_TO_BASKET,
+	DELETE_USER_FROM_BIN,
+	RESTORE_USER_FROM_BIN
 } from "../constants/user";
 
 export const registerUser = (login, pass, firstName, lastName, email) => ({
@@ -31,3 +33,12 @@ export const addUserToBasket = (uuids) => ({
 	uuids
 })
 
+export const deleteUserFromBin = (uuids) => ({
+	type: DELETE_USER_FROM_BIN,
+	uuids
+}) 
+
+export const restoreUserFromBin = (uuids) => ({
+	type: RESTORE_USER_FROM_BIN,
+	uuids
+})

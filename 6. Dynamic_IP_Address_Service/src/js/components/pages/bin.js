@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as UserActions from "../../actions/userActions";
 import UserPaginationTable from "../userPaginationTable";
 
-class AdminPanel extends Component {
+class RecycleBin extends Component {
 	constructor(props) {
 		super(props);
 
@@ -28,7 +28,13 @@ class AdminPanel extends Component {
 	}
 
 	deleteButtonClickHandler(event) {
-		this.props.userActions.addUserToBasket(this.toDeleteArray)
+		confirm("Do you really want to delete these users?") 
+			? this.props.userActions.deleteUserFromBin(this.toDeleteArray)
+			: null
+	}
+
+	restoreButtonClickHandler(event) {
+		this.props.userActions.restoreUserFromBin(this.toDeleteArray)
 	}
 
 	// TODO: change output count
@@ -61,34 +67,12 @@ class AdminPanel extends Component {
 	}
 
 	render() {
-		//BUG: highlight item count
 		return (
 			<div>
-				<ul className="pagination">
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							1
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							2
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							3
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							all
-						</a>
-					</li>
-				</ul>
-				<h1>Admin Panel</h1>
-				<button onClick={::this.deleteButtonClickHandler}>Delete</button>
-				<UserPaginationTable items={this.props.users} navigate={::this.navigate} selectUser={::this.selectUserHandler} userPerPage={this.state.userPerPage} />
+				<h4>RecycleBin</h4>
+				<button onClick={::this.deleteButtonClickHandler}>Delete users</button>
+				<button onClick={::this.restoreButtonClickHandler}>Restore users</button>
+				<UserPaginationTable items={this.props.bin} navigate={::this.navigate} selectUser={::this.selectUserHandler} userPerPage={this.state.userPerPage} />
 			</div>
 		);
 	}
@@ -97,6 +81,7 @@ class AdminPanel extends Component {
 const mapStateToProps = state => ({
 	user: state.user,
 	users: state.user.users,
+	bin: state.user.basket,
 	ips: state.ip.ips
 });
 
@@ -104,4 +89,4 @@ const mapDispatchToProps = dispatch => ({
 	userActions: bindActionCreators(UserActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(RecycleBin);

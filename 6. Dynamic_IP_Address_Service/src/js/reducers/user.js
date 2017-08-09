@@ -2,7 +2,9 @@ import {
 	REGISTER_USER,
 	LOGIN_IN_USER,
 	LOG_OUT_USER,
-	ADD_USER_TO_BASKET
+	ADD_USER_TO_BASKET,
+	DELETE_USER_FROM_BIN,
+	RESTORE_USER_FROM_BIN
 } from "../constants/user";
 import SimpleUser from "../models/userType/SimpleUser";
 import SaltedHash from "../helpers/Hashing/saltedHash";
@@ -57,11 +59,27 @@ export default function users(state = initialState, action) {
 				users: [...state.users]
 			};
 		case ADD_USER_TO_BASKET:
-			let addedUser = state.users.filter(item => action.uuids.includes(item.uuid))
+			let addedUser = state.users.filter(item =>
+				action.uuids.includes(item.uuid)
+			);
 			return {
 				...state,
 				users: state.users.filter(item => !action.uuids.includes(item.uuid)),
 				basket: state.basket.concat(addedUser)
+			};
+		case DELETE_USER_FROM_BIN:
+			return {
+				...state,
+				basket: state.basket.filter(item => !action.uuids.includes(item.uuid))
+			};
+		case RESTORE_USER_FROM_BIN:
+			let restoredUsers = state.basket.filter(item =>
+				action.uuids.includes(item.uuid)
+			);
+			return {
+				...state,
+				users: state.users.concat(restoredUsers),
+				basket: state.basket.filter(item => !action.uuids.includes(item.uuid))
 			};
 		default:
 			return state;
