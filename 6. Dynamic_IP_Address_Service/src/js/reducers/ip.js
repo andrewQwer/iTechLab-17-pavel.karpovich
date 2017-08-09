@@ -34,7 +34,8 @@ export default function users(state = initialState, action) {
 							uuid: GenUUID(),
 							ownerUuid: action.ownerId,
 							ip: action.ip,
-							domain: action.domain
+							domain: action.domain,
+							updateDate: new Date()
 						}
 					]
 				};
@@ -51,7 +52,8 @@ export default function users(state = initialState, action) {
 							return {
 								...item,
 								ip: action.ip,
-								domain: action.domain
+								domain: action.domain,
+								updateDate: new Date()
 							};
 						return item;
 					})

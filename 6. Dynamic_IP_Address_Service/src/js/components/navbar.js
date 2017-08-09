@@ -45,6 +45,9 @@ class Navbar extends Component {
 				<div className="navigation__logo">
 					<Link to="/">Home</Link>
 				</div>
+				<div className="navigation__logo">
+					<Link to="/admin">Admin</Link>
+				</div>
 				{navigationButtons}
 			</div>
 		);

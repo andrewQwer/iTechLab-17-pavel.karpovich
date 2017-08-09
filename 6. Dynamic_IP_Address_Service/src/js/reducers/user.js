@@ -2,7 +2,7 @@ import {
 	REGISTER_USER,
 	LOGIN_IN_USER,
 	LOG_OUT_USER,
-	ADD_IP_TO_USER,
+	ADD_USER_TO_BASKET
 } from "../constants/user";
 import SimpleUser from "../models/userType/SimpleUser";
 import SaltedHash from "../helpers/Hashing/saltedHash";
@@ -11,7 +11,8 @@ import { GenUUID } from "../helpers/uuid";
 const initialState = {
 	uuid: null,
 	isLogin: false,
-	users: []
+	users: [],
+	basket: []
 };
 
 export default function users(state = initialState, action) {
@@ -55,11 +56,18 @@ export default function users(state = initialState, action) {
 				isLogin: false,
 				users: [...state.users]
 			};
+		case ADD_USER_TO_BASKET:
+			let addedUser = GetUserById(state, action.uuid);
+			return {
+				...state,
+				users: state.users.filter(item => item.uuid !== action.uuid),
+				basket: [...state.basket, addedUser]
+			};
 		default:
 			return state;
 	}
 }
 
 export function GetUserById(state, id) {
-	return state.users.find((item) => item.uuid === id);
+	return state.users.find(item => item.uuid === id);
 }

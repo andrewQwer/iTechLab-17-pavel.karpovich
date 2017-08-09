@@ -3,7 +3,8 @@ import {
 	LOGIN_IN_USER,
 	LOG_OUT_USER,
 	ADD_IP_TO_USER,
-	EDIT_USER_IP
+	EDIT_USER_IP,
+	ADD_USER_TO_BASKET
 } from "../constants/user";
 
 export const registerUser = (login, pass, firstName, lastName, email) => ({
@@ -24,4 +25,9 @@ export const loginInUser = (login, pass) => ({
 export const logOutUser = () => ({
 	type: LOG_OUT_USER
 });
+
+export const addUserToBasket = (uuid) => ({
+	type: ADD_USER_TO_BASKET,
+	uuid
+})
 

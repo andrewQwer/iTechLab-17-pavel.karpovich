@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import LogOut from "../logOut"
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import * as UserActions from "../../actions/userActions";
 import Navbar from "../navbar";
 
