@@ -3,15 +3,23 @@ import React, { Component } from "react";
 class componentName extends Component {
 	render() {
 		const { uuid, login, email, firstName, lastName } = this.props.user;
+		let isInArray = this.props.deleteArray.includes(uuid);
 		return (
-			<tr onClick={::this.props.clickOnUserHandler}>
+			<tr
+				onClick={::this.props.clickOnUserHandler}
+				className={isInArray ? "table-danger" : ""}
+			>
 				<td>
-					<input type="checkbox" onClick={::this.props.selectUserHandler} />
+					<input
+						type="checkbox"
+						onClick={::this.props.selectUserHandler}
+						checked={isInArray}
+					/>
 				</td>
 				<td id="uuid" style={{ display: "none" }}>
 					{uuid}
 				</td>
-				<td id="login"> 
+				<td id="login">
 					{login}
 				</td>
 				<td>

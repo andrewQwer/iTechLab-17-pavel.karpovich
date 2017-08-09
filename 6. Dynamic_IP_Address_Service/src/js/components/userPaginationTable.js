@@ -132,9 +132,10 @@ class UserPaginationTable extends Component {
 			: null;
 	}
 
-	//BUG: highlighting selected item after page changed
-	//BUG: delete highlight selected after removing
+	//BUG: highlighting selected item after page changed in all mode
 	renderUsersTable() {
+		this.props.disableAllHighlights();
+		this.props.uncheckedAllCheckBoxes();
 		const renderUsers = (
 			<table className="table table-hover">
 				<tbody>
@@ -149,6 +150,7 @@ class UserPaginationTable extends Component {
 						<UserTableItem
 							key={index}
 							user={item}
+							deleteArray={this.props.deleteUserArray}
 							clickOnUserHandler={::this.clickOnUserHandler}
 							selectUserHandler={::this.props.selectUser}
 						/>

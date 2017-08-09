@@ -14,7 +14,6 @@ class AdminPanel extends Component {
 		};
 	}
 
-	
 	set toDeleteArray(array) {
 		this.setState({ toDelete: array });
 	}
@@ -28,7 +27,27 @@ class AdminPanel extends Component {
 	}
 
 	deleteButtonClickHandler(event) {
-		this.props.userActions.addUserToBasket(this.toDeleteArray)
+		this.props.userActions.addUserToBasket(this.toDeleteArray);
+		this.disableAllHighlights();
+		this.uncheckedAllCheckBoxes();
+	}
+
+	disableAllHighlights() {
+		let trs = document.querySelectorAll("tr");
+		for (let item of trs) {
+			if ($(item).hasClass("table-danger")) {
+				$(item).removeClass("table-danger");
+			}
+		}
+	}
+
+	uncheckedAllCheckBoxes() {
+		let checkBoxes = document.querySelectorAll("input[type=checkbox]");
+		for (let item of checkBoxes) {
+			if ($(item).get(0).checked) {
+				$(item).prop("checked", false);
+			}
+		}
 	}
 
 	// TODO: change output count
@@ -88,7 +107,15 @@ class AdminPanel extends Component {
 				</ul>
 				<h1>Admin Panel</h1>
 				<button onClick={::this.deleteButtonClickHandler}>Delete</button>
-				<UserPaginationTable items={this.props.users} navigate={::this.navigate} selectUser={::this.selectUserHandler} userPerPage={this.state.userPerPage} />
+				<UserPaginationTable
+					disableAllHighlights={::this.disableAllHighlights}
+					uncheckedAllCheckBoxes={::this.uncheckedAllCheckBoxes}
+					deleteUserArray={this.state.toDelete}
+					items={this.props.users}
+					navigate={::this.navigate}
+					selectUser={::this.selectUserHandler}
+					userPerPage={this.state.userPerPage}
+				/>
 			</div>
 		);
 	}

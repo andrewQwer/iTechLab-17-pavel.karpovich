@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as UserActions from "../../actions/userActions";
@@ -14,7 +14,6 @@ class RecycleBin extends Component {
 		};
 	}
 
-	
 	set toDeleteArray(array) {
 		this.setState({ toDelete: array });
 	}
@@ -28,13 +27,35 @@ class RecycleBin extends Component {
 	}
 
 	deleteButtonClickHandler(event) {
-		confirm("Do you really want to delete these users?") 
-			? this.props.userActions.deleteUserFromBin(this.toDeleteArray)
-			: null
+		if (confirm("Do you really want to delete these users?")) {
+			this.props.userActions.deleteUserFromBin(this.toDeleteArray);
+			this.disableAllHighlights();
+			this.uncheckedAllCheckBoxes();
+		}
 	}
 
 	restoreButtonClickHandler(event) {
-		this.props.userActions.restoreUserFromBin(this.toDeleteArray)
+		this.props.userActions.restoreUserFromBin(this.toDeleteArray);
+		this.disableAllHighlights();
+		this.uncheckedAllCheckBoxes();
+	}
+
+	disableAllHighlights() {
+		let trs = document.querySelectorAll("tr");
+		for (let item of trs) {
+			if ($(item).hasClass("table-danger")) {
+				$(item).removeClass("table-danger");
+			}
+		}
+	}
+
+	uncheckedAllCheckBoxes() {
+		let checkBoxes = document.querySelectorAll("input[type=checkbox]");
+		for (let item of checkBoxes) {
+			if ($(item).get(0).checked) {
+				$(item).prop("checked", false);
+			}
+		}
 	}
 
 	// TODO: change output count
@@ -71,8 +92,40 @@ class RecycleBin extends Component {
 			<div>
 				<h4>RecycleBin</h4>
 				<button onClick={::this.deleteButtonClickHandler}>Delete users</button>
-				<button onClick={::this.restoreButtonClickHandler}>Restore users</button>
-				<UserPaginationTable items={this.props.bin} navigate={::this.navigate} selectUser={::this.selectUserHandler} userPerPage={this.state.userPerPage} />
+				<button onClick={::this.restoreButtonClickHandler}>
+					Restore users
+				</button>
+				<ul className="pagination">
+					<li>
+						<a className="page-link" onClick={::this.setItemCount}>
+							1
+						</a>
+					</li>
+					<li>
+						<a className="page-link" onClick={::this.setItemCount}>
+							2
+						</a>
+					</li>
+					<li>
+						<a className="page-link" onClick={::this.setItemCount}>
+							3
+						</a>
+					</li>
+					<li>
+						<a className="page-link" onClick={::this.setItemCount}>
+							all
+						</a>
+					</li>
+				</ul>
+				<UserPaginationTable
+					items={this.props.bin}
+					disableAllHighlights={::this.disableAllHighlights}
+					uncheckedAllCheckBoxes={::this.uncheckedAllCheckBoxes}
+					deleteUserArray={this.state.toDelete}
+					navigate={::this.navigate}
+					selectUser={::this.selectUserHandler}
+					userPerPage={this.state.userPerPage}
+				/>
 			</div>
 		);
 	}
