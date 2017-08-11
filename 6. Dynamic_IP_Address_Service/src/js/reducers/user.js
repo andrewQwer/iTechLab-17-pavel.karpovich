@@ -17,41 +17,52 @@ const initialState = {
 	basket: []
 };
 
+const checkUserForUniq = (users, login, email) => {
+	return !!!users.find(item => item.login === login || item.email == email);
+};
+
 export default function users(state = initialState, action) {
 	switch (action.type) {
 		case REGISTER_USER:
-			//TODO: check for uniqueness and fields
-			let saltedHash = new SaltedHash(action.pass);
-			return {
-				...state,
-				users: [
-					...state.users,
-					{
-						uuid: GenUUID(),
-						login: action.login,
-						hash: saltedHash.GetHash(),
-						salt: saltedHash.GetSalt(),
-						type: new SimpleUser(),
-						email: action.email,
-						firstName: action.firstName,
-						lastName: action.lastName,
-						ip: []
-					}
-				]
-			};
+			if (checkUserForUniq(state.users, action.login, action.email)) {
+				let saltedHash = new SaltedHash(action.pass);
+				return {
+					...state,
+					users: [
+						...state.users,
+						{
+							uuid: GenUUID(),
+							login: action.login,
+							hash: saltedHash.GetHash(),
+							salt: saltedHash.GetSalt(),
+							type: new SimpleUser(),
+							email: action.email,
+							firstName: action.firstName,
+							lastName: action.lastName,
+							ip: []
+						}
+					]
+				};
+			} else {
+				alert("This user already registered!");
+				return state;
+			}
 		case LOGIN_IN_USER:
 			let user = state.users.find(
 				item =>
 					item.login == action.login &&
 					SaltedHash.Verify(action.pass, item.hash, item.salt)
 			);
-			return user
-				? {
-						uuid: user.uuid,
-						isLogin: true,
-						users: [...state.users]
-					}
-				: state;
+			console.log(user)
+			if (!!!user) {
+				alert("Incorrect login or password!");
+				return state;
+			}
+			return {
+				uuid: user.uuid,
+				isLogin: true,
+				users: [...state.users]
+			};
 		case LOG_OUT_USER:
 			return {
 				uuid: null,

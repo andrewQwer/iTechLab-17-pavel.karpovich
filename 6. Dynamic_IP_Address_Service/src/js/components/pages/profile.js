@@ -4,47 +4,66 @@ import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as UserActions from "../../actions/userActions";
 import PropTypes from "prop-types";
+import { GetUserById } from "../../reducers/user";
 
 class Profile extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	permissionCheck() {
-		let user = this.props.users.find(
-			item => item.uuid === this.props.user.uuid
-		);
+		const { uuid } = this.props.user;
+		let user = GetUserById(this.props.user, uuid);
 		return (
-			this.props.user.uuid ||
 			this.props.match.params.login === user.login ||
 			user.type.GetType() === new Admin().GetType()
 		);
 	}
 
 	getProfilePage() {
-		let currentUser = this.props.users.find(
-			item => item.login === this.props.match.params.login
-		);
+		const { uuid } = this.props.user;
+		let currentUser = GetUserById(this.props.user, uuid);
 		return (
-			<div className="container">
-				<p>
-					Login: {currentUser.login}
-				</p>
-				<p>
-					Email: {currentUser.email}
-				</p>
-				<p>
-					First name: {currentUser.firstName}
-				</p>
-				<p>
-					Last name: {currentUser.lastName}
-				</p>
-				<p>
-					Type: {currentUser.type.GetType()}
-				</p>
-				<p>
-					<Link to="/ip">Ip control</Link>
-				</p>
+			<div className="login__form">
+				<div className="login__row">
+					<label htmlFor="" className="login__label">
+						Login:
+					</label>
+					<p className="login__input">
+						{currentUser.login}
+					</p>
+				</div>
+				<div className="login__row">
+					<label htmlFor="" className="login__label">
+						Email:
+					</label>
+					<p className="login__input">
+						{currentUser.email}
+					</p>
+				</div>
+				<div className="login__row">
+					<label htmlFor="" className="login__label">
+						First name:
+					</label>
+					<p className="login__input">
+						{currentUser.firstName}
+					</p>
+				</div>
+				<div className="login__row">
+					<label htmlFor="" className="login__label">
+						Last name
+					</label>
+					<p className="login__input">
+						{currentUser.lastName}
+					</p>
+				</div>
+				<div className="login__row">
+					<label htmlFor="" className="login__label">
+						Type:
+					</label>
+					<p className="login__input">{currentUser.type.GetType()}</p>
+				</div>
+				<div className="login__row">
+					<label htmlFor="" className="login__label">
+						<Link to="/ip">Ip control</Link>
+					</label>
+				</div>
 			</div>
 		);
 	}

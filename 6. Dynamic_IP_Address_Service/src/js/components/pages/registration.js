@@ -5,59 +5,111 @@ import { bindActionCreators } from "redux";
 import * as UserActions from "../../actions/userActions";
 
 class Registration extends Component {
-	//TODO: delete default value from form
-	render() {
-		const registrationPage = !this.props.user.uuid ? (
-			<div>
-				<input
-					ref="login"
-					defaultValue="taller"
-					placeholder="Please, input login..."
-				/>
-				<input
-					type="password"
-					defaultValue="123456789"
-					ref="pass"
-					placeholder="Please, input pass..."
-				/>
-				<input
-					type="email"
-					defaultValue="tallerstk97@gmail.com"
-					ref="email"
-					placeholder="Please, input email..."
-				/>
-				<input
-					ref="firstName"
-					defaultValue="Pavel"
-					placeholder="Please, input first name"
-				/>
-				<input
-					ref="lastName"
-					defaultValue="Karpovich"
-					placeholder="Please, input last name"
-				/>
+	registerClickHandler = () => {
+		if (
+			this.checkStringFiled(this.loginInput.value) &&
+			this.checkStringFiled(this.passInput.value) &&
+			this.checkStringFiled(this.firstNameInput.value) &&
+			this.checkStringFiled(this.lastNameInput.value) &&
+			this.checkEmailField(this.emailInput.value)
+		) {
+			this.props.userActions.registerUser(
+				this.loginInput.value,
+				this.passInput.value,
+				this.firstNameInput.value,
+				this.lastNameInput.value,
+				this.emailInput.value
+			);
+			this.props.history.push("/");
+		}
+	};
+
+	checkStringFiled = str => {
+		let check = false;
+		let ext = /^[A-z]|\d{3,}$/;
+		if (!ext.test(str)) {
+			alert("Incorrect filed!");
+		} else {
+			check = true;
+		}
+		return check;
+	};
+
+	checkEmailField = email => {
+		let check = false;
+		let ext = /^\w+@\w+\.\w{2,3}$/;
+		if (!ext.test(email)) {
+			alert("Incorrect email!");
+		} else {
+			check = true;
+		}
+		return check;
+	};
+
+	renderRegisterPage = () => {
+		return (
+			<div className="login__form">
+				<div className="login__row">
+					<label className="login__label">Login:</label>
+					<input
+						className="login__input"
+						ref={input => (this.loginInput = input)}
+						defaultValue="taller"
+						placeholder="Please, input login..."
+					/>
+				</div>
+				<div className="login__row">
+					<label className="login__label">Password:</label>
+					<input
+						className="login__input"
+						type="password"
+						defaultValue="123456789"
+						ref={input => (this.passInput = input)}
+						placeholder="Please, input pass..."
+					/>
+				</div>
+				<div className="login__row">
+					<label className="login__label">Email</label>
+					<input
+						className="login__input"
+						type="email"
+						defaultValue="tallerstk97@gmail.com"
+						ref={input => (this.emailInput = input)}
+						placeholder="Please, input email..."
+					/>
+				</div>
+				<div className="login__row">
+					<label className="login__label">First name:</label>
+					<input
+						className="login__input"
+						ref={input => (this.firstNameInput = input)}
+						defaultValue="Pavel"
+						placeholder="Please, input first name"
+					/>
+				</div>
+				<div className="login__row">
+					<label className="login__label">Last name</label>
+					<input
+						className="login__input"
+						ref={input => (this.lastNameInput = input)}
+						defaultValue="Karpovich"
+						placeholder="Please, input last name"
+					/>
+				</div>
+
 				<button
-					onClick={() => {
-						this.props.userActions.registerUser(
-							this.refs.login.value,
-							this.refs.pass.value,
-							this.refs.firstName.value,
-							this.refs.lastName.value,
-							this.refs.email.value
-						);
-						this.props.history.push("/");
-					}}
+					className="login__button btn btn-success"
+					onClick={::this.registerClickHandler}
 				>
 					Register
 				</button>
 			</div>
-		) : (
-			<div>
-					<h4>This page available only for guest</h4>
-				</div>
-		)
+		);
+	};
 
-		return registrationPage;
+	//TODO: delete default value from form
+	render() {
+		return this.renderRegisterPage();
 	}
 }
 

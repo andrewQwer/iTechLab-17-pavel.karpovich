@@ -5,32 +5,46 @@ import { bindActionCreators } from "redux";
 import * as UserActions from "../../actions/userActions";
 
 class Login extends Component {
-	constructor(props) {
-		super(props);
-	}
+	submitClickHandler = () => {
+		this.props.userActions.loginInUser(this.loginInput.value, this.passInput.value);
+		this.props.history.push("/");
+	};
 
 	//TODO: delete default value from form
-	render() {
-		const loginPage = !this.props.user.uuid
-			? <div>
-					<input ref="login" defaultValue="taller" />
-					<input type="password" ref="pass" defaultValue="123456789" />
-					<button
-						onClick={() => {
-							this.props.userActions.loginInUser(
-								this.refs.login.value,
-								this.refs.pass.value
-							);
-							this.props.history.push("/");
-						}}
-					>
-						Send
-					</button>
+	renderLoginPage = () => {
+		return (
+			<div className="login__form">
+				<div className="login__row">
+					<label className="login__label">Login:</label>
+					<input
+						className="login__input"
+						ref={input => (this.loginInput = input)}
+						defaultValue="taller"
+						placeholder="Please, input login..."
+					/>
 				</div>
-			: <div>
-					<h4>This page available only for guest</h4>
-				</div>;
-		return loginPage;
+				<div className="login__row">
+					<div className="login__label">Password:</div>
+					<input
+						className="login__input"
+						type="password"
+						ref={input => (this.passInput = input)}
+						defaultValue="123456789"
+						placeholder="Please, input pass..."
+					/>
+				</div>
+				<button
+					className="label__submit btn btn-success"
+					onClick={::this.submitClickHandler}
+				>
+					Send
+				</button>
+			</div>
+		);
+	};
+
+	render = () => {
+		return this.renderLoginPage();
 	}
 }
 

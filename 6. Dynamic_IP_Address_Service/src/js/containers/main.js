@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import PermissionRoute from "../components/permissionRoute";
 import { Route, Switch } from "react-router-dom";
 import Home from "../components/pages/home";
 import Registration from "../components/pages/registration";
@@ -17,12 +18,12 @@ export default class Main extends Component {
 			<div className="row main__main">
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<Route path="/registration" component={Registration} />
-					<Route path="/login" component={Login} />
-					<Route path="/profile/:login" component={Profile} />
-					<Route path="/ip" component={IP} />
-					<Route path="/admin" component={AdminPanel} />
-					<Route path="/bin" component={RecycleBin} />
+					<PermissionRoute path="/registration" component={Registration} />
+					<PermissionRoute path="/login" component={Login} />
+					<PermissionRoute isAuth path="/profile/:login" component={Profile} />
+					<PermissionRoute isAuth path="/ip" component={IP} />
+					<PermissionRoute isAdmin path="/admin" component={AdminPanel} />
+					<PermissionRoute isAdmin path="/bin" component={RecycleBin} />
 					<Route path="*" component={NotFound} />
 				</Switch>
 			</div>
