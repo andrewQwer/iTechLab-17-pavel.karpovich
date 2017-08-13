@@ -1,0 +1,15 @@
+.login {
+	width: auto;
+
+	&__form {
+		width: 340px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		margin: 20px;
+	}
+}
