@@ -1,4 +1,4 @@
-import { ADD_IP_TO_USER, EDIT_USER_IP } from "../constants/ip";
+import { ADD_IP_TO_USER, EDIT_USER_IP, DELETE_USER_IP } from "../constants/ip";
 import SaltedHash from "../helpers/Hashing/saltedHash";
 import { GenUUID } from "../helpers/uuid";
 
@@ -6,7 +6,7 @@ const initialState = {
 	ips: []
 };
 
-//BUG: save edit item without changing 
+//BUG: save edit item without changing
 function CheckOnDuplicate(array, domain) {
 	let isDuplicate = array.find(item => item.domain === domain) !== undefined;
 	if (isDuplicate) alert("This domain is not available!");
@@ -42,10 +42,7 @@ export default function users(state = initialState, action) {
 			}
 			break;
 		case EDIT_USER_IP:
-			if (
-				!CheckOnDuplicate(state.ips, action.domain) &&
-				CheckIpAddress(action.ip)
-			) {
+			if (CheckIpAddress(action.ip)) {
 				return {
 					ips: state.ips.map(item => {
 						if (item.uuid === action.uuid)
@@ -59,16 +56,17 @@ export default function users(state = initialState, action) {
 					})
 				};
 			}
+		case DELETE_USER_IP:
+			return {
+				ips: state.ips.filter(item => item.uuid !== action.uuid)
+			};
 		default:
 			return state;
 	}
 }
 
 export function GetUserDomainCount(state, uuid) {
-	return state.reduce(
-		(count, current) => {
-			return (current.ownerUuid == uuid ? ++count : count)
-		},
-		0
-	);
+	return state.reduce((count, current) => {
+		return current.ownerUuid == uuid ? ++count : count;
+	}, 0);
 }

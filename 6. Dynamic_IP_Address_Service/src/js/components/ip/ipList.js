@@ -2,40 +2,49 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import IpItem from "./ipItem";
+import PropTypes from "prop-types";
 
 class IpTable extends Component {
-	constructor(props) {
-		super(props);
-	}
+	static propTypes = {
+		editClick: PropTypes.func.isRequired
+	};
 
-	findUserItems() {
-		return this.props.ips.filter(
-			item => item.ownerUuid === this.props.user.uuid
-		);
-	}
+	findUserItems = () => {
+		const { ips, user } = this.props;
+		return ips.filter(item => item.ownerUuid === user.uuid);
+	};
 
-	createComponentList(items) {
+	createComponentList = items => {
 		return items.length !== 0
-			? items.map(item =>
+			? items.map((item, index) =>
 					<IpItem
-						editButtonClick={::this.props.editButtonClick}
+						key={index}
+						editClick={::this.props.editClick}
+						deleteClick={::this.props.deleteClick}
 						domain={item.domain}
 						ip={item.ip}
 						uuid={item.uuid}
+						updateDate={item.updateDate.format("dd.MM.yyyy")}
 					/>
 				)
 			: null;
-	}
+	};
 
 	render() {
 		return (
-			<table className="ip__table">
-				<tr>
-					<td>IP</td>
-					<td>Domain</td>
-					<td>Button</td>
-				</tr>
-				{this.createComponentList(this.findUserItems())}
+			<table className="ip__table table">
+				<thead className="thead-inverse">
+					<tr>
+						<td>IP</td>
+						<td>Domain</td>
+						<td>Button edit</td>
+						<td>Button delete</td>
+						<td>Last update</td>
+					</tr>
+				</thead>
+				<tbody>
+					{this.createComponentList(this.findUserItems())}
+				</tbody>
 			</table>
 		);
 	}

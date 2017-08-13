@@ -8,81 +8,134 @@ import { GetUserDomainCount } from "../../reducers/ip";
 import { GetUserById } from "../../reducers/user";
 
 class Ip extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			uuid: null,
-			isEditForm: false,
-			isHideForm: true,
-			domainRemainingCount: this.getDomainRemainingCount(),
-			ip: "192.168.100.1",
-			domain: "belstu"
-		};
+	state = {
+		uuid: null,
+		isEditForm: false,
+		isHideForm: true,
+		domainRemainingCount: this.calculateDomainRemainingCount,
+		ip: "192.168.100.1",
+		domain: "belstu"
+	};
+
+	set uuid(value) {
+		this.setState({ uuid: value });
 	}
 
-	getDomainRemainingCount() {
+	get uuid() {
+		return this.state.uuid;
+	}
+
+	setEditForm = value => {
+		this.setState({ isEditForm: value });
+	};
+
+	get isEditForm() {
+		return this.state.isEditForm;
+	}
+
+	setHideForm = value => {
+		this.setState({ isHideForm: value });
+	};
+
+	get isHideForm() {
+		return this.state.isHideForm;
+	}
+
+	set domainRemainingCount(value) {
+		this.setState({ domainRemainingCount: value });
+	}
+
+	get domainRemainingCount() {
+		return this.state.domainRemainingCount;
+	}
+
+	set ip(value) {
+		this.setState({ ip: value });
+	}
+
+	get ip() {
+		return this.state.ip;
+	}
+
+	set domain(value) {
+		this.setState({ domain: value });
+	}
+
+	get domain() {
+		return this.state.domain;
+	}
+
+	calculateDomainRemainingCount = () => {
+		const { user, ips } = this.props;
 		return (
-			GetUserById(this.props.user, this.props.user.uuid).type.GetDomainCount() -
-			GetUserDomainCount(this.props.ips, this.props.user.uuid)
+			GetUserById(user, user.uuid).type.GetDomainCount() -
+			GetUserDomainCount(ips, user.uuid)
 		);
-	}
+	};
 
-	editButtonClick(uuid, ip, domain, isEditForm, isHideForm) {
-		this.setState({
-			uuid: uuid,
-			ip: ip,
-			domain: domain,
-			isEditForm: isEditForm,
-			isHideForm: isHideForm,
-			domainRemainingCount: this.getDomainRemainingCount()
-		});
-	}
+	editClickHandler = (uuid, ip, domain, isEditForm, isHideForm) => {
+		this.uuid = uuid;
+		this.ip = ip;
+		this.domain = domain;
+		this.setEditForm(isEditForm);
+		this.setHideForm(isHideForm);
+		this.domainRemainingCount = this.calculateDomainRemainingCount();
+	};
 
-	handlerInputChange(event) {
-		const value = event.target.value;
-		const name = event.target.name;
+	deleteClickHandler = uuid => {
+		this.setHideForm(true);
+		this.props.ipActions.deleteUserIp(uuid);
+	};
+
+	inputChangeHandler = event => {
+		const { value, name } = event.target;
 		this.setState({
 			[name]: value
 		});
-	}
+	};
 
-	addButtonClick() {
-		if (this.getDomainRemainingCount() !== 0) {
-			this.setState({
-				ip: "",
-				domain: "",
-				isEditForm: false,
-				isHideForm: false,
-				domainRemainingCount: this.getDomainRemainingCount()
-			});
+	addClickHandler = () => {
+		if (this.calculateDomainRemainingCount() !== 0) {
+			this.ip = "";
+			this.domain = "";
+			this.setEditForm(false);
+			this.setHideForm(false);
+			this.domainRemainingCount = this.calculateDomainRemainingCount();
 		} else {
 			alert(`Exceeded domain count limit!`);
 		}
-	}
-
-	hideForm(state) {
-		this.setState({
-			isHideForm: state
-		});
-	}
+	};
 
 	render() {
 		return (
 			<div className="ip">
-				<button onClick={::this.addButtonClick}>+</button>
-				<IpList editButtonClick={::this.editButtonClick} />
-				<IpForm
-					domainRemainingCount={this.state.domainRemainingCount}
-					hideForm={::this.hideForm}
-					isHideForm={this.state.isHideForm}
-					isEdit={this.state.isEditForm}
-					addIpToUser={::this.props.ipActions.addIpToUser}
-					editIpUser={::this.props.ipActions.editUserIp}
-					uuid={this.state.uuid}
-					ip={this.state.ip}
-					domain={this.state.domain}
-					handler={::this.handlerInputChange}
-				/>
+				<div className="ip__toolbar">
+					<button className="ip__button" onClick={::this.addClickHandler}>
+						+
+					</button>
+					<label>
+						Remain {this.calculateDomainRemainingCount()} domain
+					</label>
+				</div>
+				<div className="ip__main">
+					<IpList
+						editClick={::this.editClickHandler}
+						deleteClick={::this.deleteClickHandler}
+					/>
+					<IpForm
+						domainRemainingCount={this.state.domainRemainingCount}
+						isHideForm={this.isHideForm}
+						setHideForm={::this.setHideForm}
+						isEdit={this.isEditForm}
+						setEdit={::this.setEditForm}
+						inputChange={::this.inputChangeHandler}
+						addIpToUser={::this.props.ipActions.addIpToUser}
+						editUserIp={::this.props.ipActions.editUserIp}
+						uuid={this.state.uuid}
+						ip={this.ip}
+						domain={this.domain}
+					/>
+				</div>
 			</div>
 		);
 	}

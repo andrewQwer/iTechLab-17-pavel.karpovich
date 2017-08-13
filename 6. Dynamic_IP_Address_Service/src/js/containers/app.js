@@ -8,7 +8,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div className="container main">
+				<div className="main">
 					<Header />
 					<Main />
 					<Footer />

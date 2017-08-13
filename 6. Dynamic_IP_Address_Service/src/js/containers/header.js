@@ -7,8 +7,10 @@ import Navbar from "../components/navbar";
 class Home extends Component {
 	render() {
 		return (
-			<div className="row main__header">
-				<Navbar />
+			<div className="main__header">
+				<div className="container">
+					<Navbar />
+				</div>
 			</div>
 		);
 	}

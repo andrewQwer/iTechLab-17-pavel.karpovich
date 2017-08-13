@@ -1,12 +1,42 @@
-.ip{
+.ip {
 	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
 	width: 100%;
+	min-height: 300px;
+
+	&__toolbar {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__main {
+		display: flex;
+	}
 
 	&__table {
-		width: 70%;
+		width: 60%;
 	}
 
 	&__form {
-		width: auto;
+		width: 450px;
+	}
+
+	.form {
+		&__row {
+			display: flex;
+			justify-content: space-between;
+			margin: 20px;
+		}
+
+		&__input {
+			width: 300px;
+		}
+
+		&__buttons {
+			@extend .form__row;
+			display: flex;
+			justify-content: space-between;
+		}
 	}
 }

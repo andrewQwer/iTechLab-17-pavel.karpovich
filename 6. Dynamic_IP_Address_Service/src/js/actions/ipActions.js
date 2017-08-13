@@ -1,4 +1,4 @@
-import {ADD_IP_TO_USER, EDIT_USER_IP} from "../constants/ip"
+import {ADD_IP_TO_USER, EDIT_USER_IP, DELETE_USER_IP} from "../constants/ip"
 
 export const addIpToUser = (ownerId ,ip, domain) => ({
 	type: ADD_IP_TO_USER,
@@ -13,3 +13,8 @@ export const editUserIp = (uuid, ip, domain) => ({
 	ip,
 	domain
 });
+
+export const deleteUserIp = (uuid) => ({
+	type: DELETE_USER_IP,
+	uuid
+})
