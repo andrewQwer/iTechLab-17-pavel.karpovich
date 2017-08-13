@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import * as UserActions from "../../actions/userActions";
 import PropTypes from "prop-types";
 import { GetUserById } from "../../reducers/user";
+import Admin from "../../models/userType/Admin"
 
 class Profile extends Component {
 	permissionCheck() {
@@ -17,8 +18,9 @@ class Profile extends Component {
 	}
 
 	getProfilePage() {
-		const { uuid } = this.props.user;
-		let currentUser = GetUserById(this.props.user, uuid);
+		const { uuid, users } = this.props.user;
+		let login = this.props.match.params.login;
+		let currentUser = users.find(item => item.login === login);
 		return (
 			<div className="login__form">
 				<div className="login__row">
@@ -61,7 +63,7 @@ class Profile extends Component {
 				</div>
 				<div className="login__row">
 					<label htmlFor="" className="login__label">
-						<Link to="/ip">Ip control</Link>
+						<Link to={`/ip/${currentUser.login}`}>Ip control</Link>
 					</label>
 				</div>
 			</div>

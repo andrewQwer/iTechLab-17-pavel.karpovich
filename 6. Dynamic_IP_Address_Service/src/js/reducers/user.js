@@ -4,9 +4,12 @@ import {
 	LOG_OUT_USER,
 	ADD_USER_TO_BASKET,
 	DELETE_USER_FROM_BIN,
-	RESTORE_USER_FROM_BIN
+	RESTORE_USER_FROM_BIN,
+	GET_PREMIUM_ACCESS
 } from "../constants/user";
 import SimpleUser from "../models/userType/SimpleUser";
+import PremiumUser from "../models/userType/PremiumUser";
+import Admin from "../models/userType/Admin.js";
 import SaltedHash from "../helpers/Hashing/saltedHash";
 import { GenUUID } from "../helpers/uuid";
 
@@ -41,7 +44,8 @@ export default function users(state = initialState, action) {
 							lastName: action.lastName,
 							ip: []
 						}
-					]
+					],
+					basket: [...state.basket]
 				};
 			} else {
 				alert("This user already registered!");
@@ -53,7 +57,6 @@ export default function users(state = initialState, action) {
 					item.login == action.login &&
 					SaltedHash.Verify(action.pass, item.hash, item.salt)
 			);
-			console.log(user)
 			if (!!!user) {
 				alert("Incorrect login or password!");
 				return state;
@@ -61,13 +64,15 @@ export default function users(state = initialState, action) {
 			return {
 				uuid: user.uuid,
 				isLogin: true,
-				users: [...state.users]
+				users: [...state.users],
+				basket: [...state.basket]
 			};
 		case LOG_OUT_USER:
 			return {
 				uuid: null,
 				isLogin: false,
-				users: [...state.users]
+				users: [...state.users],
+				basket: [...state.basket]
 			};
 		case ADD_USER_TO_BASKET:
 			let addedUser = state.users.filter(item =>
@@ -91,6 +96,22 @@ export default function users(state = initialState, action) {
 				...state,
 				users: state.users.concat(restoredUsers),
 				basket: state.basket.filter(item => !action.uuids.includes(item.uuid))
+			};
+		case GET_PREMIUM_ACCESS:
+			return {
+				...state,
+				users: state.users.map(item => {
+					if (action.uuids.includes(item.uuid)) {
+						item.type =
+							item.type.GetType() === new SimpleUser().GetType()
+								? new PremiumUser()
+								: new SimpleUser();
+						return item;
+					} else {
+						return item;
+					}
+				basket: [...state.basket];
+				})
 			};
 		default:
 			return state;

@@ -67,9 +67,10 @@ class Ip extends Component {
 
 	calculateDomainRemainingCount = () => {
 		const { user, ips } = this.props;
+		const currentUser = user.users.find(item => item.login === this.props.match.params.login)
 		return (
-			GetUserById(user, user.uuid).type.GetDomainCount() -
-			GetUserDomainCount(ips, user.uuid)
+			currentUser.type.GetDomainCount() -
+			GetUserDomainCount(ips, currentUser.uuid)
 		);
 	};
 
@@ -121,6 +122,7 @@ class Ip extends Component {
 					<IpList
 						editClick={::this.editClickHandler}
 						deleteClick={::this.deleteClickHandler}
+						login={this.props.match.params.login}
 					/>
 					<IpForm
 						domainRemainingCount={this.state.domainRemainingCount}
@@ -134,6 +136,7 @@ class Ip extends Component {
 						uuid={this.state.uuid}
 						ip={this.ip}
 						domain={this.domain}
+						login={this.props.match.params.login}
 					/>
 				</div>
 			</div>

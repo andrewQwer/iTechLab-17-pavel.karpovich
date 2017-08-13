@@ -26,7 +26,7 @@ export default class Main extends Component {
 							path="/profile/:login"
 							component={Profile}
 						/>
-						<PermissionRoute isAuth path="/ip" component={IP} />
+						<PermissionRoute isAuth path="/ip/:login" component={IP} />
 						<PermissionRoute isAdmin path="/admin" component={AdminPanel} />
 						<PermissionRoute isAdmin path="/bin" component={RecycleBin} />
 						<Route path="*" component={NotFound} />

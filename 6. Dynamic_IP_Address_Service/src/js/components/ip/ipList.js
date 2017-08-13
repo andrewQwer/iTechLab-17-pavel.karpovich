@@ -11,7 +11,8 @@ class IpTable extends Component {
 
 	findUserItems = () => {
 		const { ips, user } = this.props;
-		return ips.filter(item => item.ownerUuid === user.uuid);
+		const currentUser = user.users.find(item => item.login === this.props.login)
+		return ips.filter(item => item.ownerUuid === currentUser.uuid);
 	};
 
 	createComponentList = items => {

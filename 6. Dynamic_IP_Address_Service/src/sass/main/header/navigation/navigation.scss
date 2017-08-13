@@ -7,6 +7,12 @@
 		width: auto;
 	}
 
+	&__admin {
+		width: 180px;
+		display: flex;
+		justify-content: space-between;
+	}
+
 	&__buttons {
 		width:200px;
 		display: flex;

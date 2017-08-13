@@ -71,6 +71,8 @@ class UserPaginationTable extends Component {
 			outputArray = outputArray.sort((a, b) => a.firstName.localeCompare(b.firstName));
 		} else if (sortType === "Last Name") {
 			outputArray.sort((a, b) => a.lastName.localeCompare(b.lastName));
+		} else if (sortType === "Type") {
+			outputArray.sort((a, b) => a.type.GetType().localeCompare(b.type.GetType()));
 		}
 		return (this.isReverse) ? outputArray.reverse() : outputArray;
 	}
@@ -143,6 +145,7 @@ class UserPaginationTable extends Component {
 						<td />
 						<td onClick={::this.clickOnSortHandler}>Login</td>
 						<td onClick={::this.clickOnSortHandler}>Email</td>
+						<td onClick={::this.clickOnSortHandler}>Type</td>
 						<td onClick={::this.clickOnSortHandler}>First name</td>
 						<td onClick={::this.clickOnSortHandler}>Last name</td>
 					</tr>

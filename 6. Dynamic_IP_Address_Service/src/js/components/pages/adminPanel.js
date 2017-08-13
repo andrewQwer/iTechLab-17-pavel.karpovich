@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as UserActions from "../../actions/userActions";
 import UserPaginationTable from "../userPaginationTable";
+import ItemPerPage from "./itemPerPage"
 
 class AdminPanel extends Component {
 	constructor(props) {
@@ -10,7 +11,7 @@ class AdminPanel extends Component {
 
 		this.state = {
 			toDelete: [],
-			userPerPage: 3
+			userPerPage: 20
 		};
 	}
 
@@ -28,6 +29,12 @@ class AdminPanel extends Component {
 
 	deleteButtonClickHandler(event) {
 		this.props.userActions.addUserToBasket(this.toDeleteArray);
+		this.disableAllHighlights();
+		this.uncheckedAllCheckBoxes();
+	}
+
+	getPremiumClickHandler(event) {
+		this.props.userActions.getPremiumAccess(this.toDeleteArray);
 		this.disableAllHighlights();
 		this.uncheckedAllCheckBoxes();
 	}
@@ -50,10 +57,9 @@ class AdminPanel extends Component {
 		}
 	}
 
-	// TODO: change output count
 	setItemCount(event) {
 		let value =
-			event.target.textContent == "all"
+			event.target.textContent == "ALL"
 				? this.props.users.length
 				: parseInt(event.target.textContent);
 		this.setState({ userPerPage: value });
@@ -82,31 +88,11 @@ class AdminPanel extends Component {
 	render() {
 		//BUG: highlight item count
 		return (
-			<div>
-				<ul className="pagination">
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							1
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							2
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							3
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							all
-						</a>
-					</li>
-				</ul>
+			<div className="admin">
+				<ItemPerPage setItemCount={::this.setItemCount} />
 				<h1>Admin Panel</h1>
 				<button onClick={::this.deleteButtonClickHandler}>Delete</button>
+				<button onClick={::this.getPremiumClickHandler}>Get premium access</button>
 				<UserPaginationTable
 					disableAllHighlights={::this.disableAllHighlights}
 					uncheckedAllCheckBoxes={::this.uncheckedAllCheckBoxes}

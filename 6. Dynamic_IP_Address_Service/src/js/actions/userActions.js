@@ -6,7 +6,8 @@ import {
 	EDIT_USER_IP,
 	ADD_USER_TO_BASKET,
 	DELETE_USER_FROM_BIN,
-	RESTORE_USER_FROM_BIN
+	RESTORE_USER_FROM_BIN,
+	GET_PREMIUM_ACCESS
 } from "../constants/user";
 
 export const registerUser = (login, pass, firstName, lastName, email) => ({
@@ -40,5 +41,10 @@ export const deleteUserFromBin = (uuids) => ({
 
 export const restoreUserFromBin = (uuids) => ({
 	type: RESTORE_USER_FROM_BIN,
+	uuids
+})
+
+export const getPremiumAccess = (uuids) => ({
+	type: GET_PREMIUM_ACCESS,
 	uuids
 })

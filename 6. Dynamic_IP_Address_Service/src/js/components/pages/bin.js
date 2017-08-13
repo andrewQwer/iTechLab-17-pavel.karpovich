@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as UserActions from "../../actions/userActions";
 import UserPaginationTable from "../userPaginationTable";
+import UserPerPage from "./itemPerPage"
 
 class RecycleBin extends Component {
 	constructor(props) {
@@ -89,34 +90,13 @@ class RecycleBin extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="admin">
 				<h4>RecycleBin</h4>
 				<button onClick={::this.deleteButtonClickHandler}>Delete users</button>
 				<button onClick={::this.restoreButtonClickHandler}>
 					Restore users
 				</button>
-				<ul className="pagination">
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							1
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							2
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							3
-						</a>
-					</li>
-					<li>
-						<a className="page-link" onClick={::this.setItemCount}>
-							all
-						</a>
-					</li>
-				</ul>
+			<UserPerPage setItemCount={::this.setItemCount} />
 				<UserPaginationTable
 					items={this.props.bin}
 					disableAllHighlights={::this.disableAllHighlights}

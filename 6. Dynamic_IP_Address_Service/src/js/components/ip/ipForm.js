@@ -16,9 +16,10 @@ class IpForm extends Component {
 	};
 
 	addButtonClick = () => {
+		let currentUser = this.props.users.find(item => item.login === this.props.login);
 		this.props.setHideForm(true);
 		this.props.addIpToUser(
-			this.props.user.uuid,
+			currentUser.uuid,
 			this.ipInput.value,
 			this.domainInput.value
 		);
@@ -70,7 +71,7 @@ class IpForm extends Component {
 							onChange={::this.props.inputChange}
 						/>
 					</div>
-					<div className="form__buttons">
+					<div className="form__row">
 						{isEdit
 							? <button
 									className="btn btn-success"

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-class componentName extends Component {
+class userTableItem extends Component {
 	render() {
-		const { uuid, login, email, firstName, lastName } = this.props.user;
+		const { uuid, login, email, firstName, lastName, type } = this.props.user;
 		let isInArray = this.props.deleteArray.includes(uuid);
 		return (
 			<tr
@@ -26,6 +26,9 @@ class componentName extends Component {
 					{email}
 				</td>
 				<td>
+					{type.GetType()}
+				</td>
+				<td>
 					{firstName}
 				</td>
 				<td>
@@ -36,4 +39,4 @@ class componentName extends Component {
 	}
 }
 
-export default componentName;
+export default userTableItem;

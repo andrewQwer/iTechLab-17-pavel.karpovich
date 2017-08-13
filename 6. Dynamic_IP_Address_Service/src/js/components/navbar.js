@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import LogOut from "./logOut";
 import * as UserActions from "../actions/userActions";
+import { GetUserById } from "../reducers/user";
+import Admin from "../models/userType/Admin";
 
 class Navbar extends Component {
 	getUserNavButton() {
@@ -35,8 +37,25 @@ class Navbar extends Component {
 		);
 	}
 
+	getAdminMenuButton() {
+		const { user } = this.props;
+		const type =
+			user.uuid != null ? GetUserById(user, user.uuid).type.GetType() : "";
+		return type === new Admin().GetType()
+			? <div className="navigation__admin">
+					<div className="navigation__logo">
+						<Link to="/admin">Admin</Link>
+					</div>
+					<div className="navigation__logo">
+						<Link to="/bin">RecycleBin</Link>
+					</div>
+				</div>
+			: "";
+	}
+
 	render() {
-		const navigationButtons = !this.props.user.uuid
+		const { user } = this.props;
+		const navigationButtons = !user.uuid
 			? this.getGuestNavButton()
 			: this.getUserNavButton();
 
@@ -45,12 +64,7 @@ class Navbar extends Component {
 				<div className="navigation__logo">
 					<Link to="/">Home</Link>
 				</div>
-				<div className="navigation__logo">
-					<Link to="/admin">Admin</Link>
-				</div>
-				<div className="navigation__logo">
-					<Link to="/bin">RecycleBin</Link>
-				</div>
+				{this.getAdminMenuButton()}
 				{navigationButtons}
 			</div>
 		);
