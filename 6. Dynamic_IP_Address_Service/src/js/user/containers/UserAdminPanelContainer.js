@@ -93,8 +93,8 @@ class AdminPanelContainer extends Component {
 			<div className="admin">
 				<UserSelectItemPerPage setItemCount={::this.setItemCount} />
 				<h1>Admin Panel</h1>
-				<button onClick={::this.deleteButtonClickHandler}>Delete</button>
-				<button onClick={::this.getPremiumClickHandler}>
+				<button className="btn btn-success navigation__item" onClick={::this.deleteButtonClickHandler}>Delete</button>
+				<button className="btn btn-success navigation__item" onClick={::this.getPremiumClickHandler}>
 					Get premium access
 				</button>
 				<UserPaginationTable

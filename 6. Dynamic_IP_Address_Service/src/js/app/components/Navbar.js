@@ -11,10 +11,10 @@ class Navbar extends Component {
 		);
 		return (
 			<div className="navigation__buttons">
-				<div className="navigation_item">
+				<div className="navigation__item">
 					Welcome, <Link to={`/profile/${user.login}`}>{user.login}</Link>!
 				</div>
-				<div className="navigation_item">
+				<div className="navigation__item">
 					<UserLogOut actions={this.props.userActions} />
 				</div>
 			</div>
@@ -24,10 +24,10 @@ class Navbar extends Component {
 	getGuestNavButton() {
 		return (
 			<div className="navigation__buttons">
-				<div className="navigation_item">
+				<div className="navigation__item">
 					<Link to="/login">Login</Link>
 				</div>
-				<div className="navigation_item">
+				<div className="navigation__item">
 					<Link to="/registration">Registration</Link>
 				</div>
 			</div>

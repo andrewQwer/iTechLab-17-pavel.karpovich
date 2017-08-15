@@ -2,6 +2,7 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 
 	&__logo {
 		width: auto;
@@ -14,8 +15,13 @@
 	}
 
 	&__buttons {
-		width:200px;
+		width: auto;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__item {
+		margin-left: 15px;
 	}
 }

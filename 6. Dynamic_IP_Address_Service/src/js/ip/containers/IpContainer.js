@@ -110,7 +110,7 @@ class IpContainer extends Component {
 		return (
 			<div className="ip">
 				<div className="ip__toolbar">
-					<button className="ip__button" onClick={::this.addClickHandler}>
+					<button className="ip__button btn btn-success" onClick={::this.addClickHandler}>
 						+
 					</button>
 					<label>

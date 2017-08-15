@@ -9,7 +9,6 @@ class LoginContainer extends Component {
 			this.loginInput.value,
 			this.passInput.value
 		);
-		this.props.history.push("/");
 	};
 
 	//TODO: delete default value from form

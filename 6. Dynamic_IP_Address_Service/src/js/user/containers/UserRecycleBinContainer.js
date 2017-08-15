@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {UserActionCreators, UserPaginationTable, UserSelectItemPerPage} from "../index"
+import {
+	UserActionCreators,
+	UserPaginationTable,
+	UserSelectItemPerPage
+} from "../index";
 
 class RecycleBinContainer extends Component {
 	constructor(props) {
@@ -90,8 +94,16 @@ class RecycleBinContainer extends Component {
 		return (
 			<div className="admin">
 				<h4>RecycleBin</h4>
-				<button onClick={::this.deleteButtonClickHandler}>Delete users</button>
-				<button onClick={::this.restoreButtonClickHandler}>
+				<button
+					className="btn btn-success"
+					onClick={::this.deleteButtonClickHandler}
+				>
+					Delete users
+				</button>
+				<button
+					className="btn btn-success navigation__item"
+					onClick={::this.restoreButtonClickHandler}
+				>
 					Restore users
 				</button>
 				<UserSelectItemPerPage setItemCount={::this.setItemCount} />

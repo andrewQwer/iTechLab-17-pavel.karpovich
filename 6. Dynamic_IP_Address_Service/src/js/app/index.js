@@ -1,4 +1,5 @@
 import { ConfigureStore } from "./ConfigureStore";
+import initial from "./Initial"
 import RootReducer from "./RootReducer";
 
 import NotFoundContainer from "./containers/NotFoundContainer";
@@ -16,6 +17,7 @@ import { GenUUID } from "./Helpers/Uuid";
 export {
 	ConfigureStore,
 	RootReducer,
+	initial,
 	NotFoundContainer,
 	MainContainer,
 	HomeContainer,

@@ -20,7 +20,6 @@ class RegistrationContainer extends Component {
 				this.lastNameInput.value,
 				this.emailInput.value
 			);
-			this.props.history.push("/");
 		}
 	};
 
