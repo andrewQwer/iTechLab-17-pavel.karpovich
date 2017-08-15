@@ -1,10 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import App from "./js/containers/app";
-import { configureStore } from "./js/store/configureStore";
-import Admin from "./js/models/userType/Admin";
-import PremiumUser from "./js/models/userType/PremiumUser";
+import App from "./js";
+import { ConfigureStore } from "./js/app";
+import { Admin, PremiumUser } from "./js/user";
 
 var month = [
 	"January",
@@ -126,11 +125,11 @@ let initial = {
 				ip: "192.168.5.1",
 				domain: "taller4",
 				updateDate: new Date()
-			},
+			}
 		]
 	}
 };
-const store = configureStore(initial);
+const store = ConfigureStore(initial);
 
 render(
 	<Provider store={store}>
