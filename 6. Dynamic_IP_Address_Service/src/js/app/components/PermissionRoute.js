@@ -30,7 +30,7 @@ class PermissionRoute extends Component {
 		return this.checkAuth()
 			? <div>
 					<h4>This page available only for guest!</h4>
-					<Link to="/profile">Profile</Link>
+					<Link to="/">Home</Link>
 				</div>
 			: <div>
 					<h4>This page available only for users!</h4>
@@ -44,7 +44,7 @@ class PermissionRoute extends Component {
 		return (
 			<div>
 				<h4>This page available only for administrators!</h4>
-				<Link to="/">Profile</Link>
+				<Link to="/">Home</Link>
 			</div>
 		);
 	};
