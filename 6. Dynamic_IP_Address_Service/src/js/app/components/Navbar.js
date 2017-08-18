@@ -6,13 +6,13 @@ import { Admin, GetUserById, UserActionCreators, UserLogOut } from "../../user";
 
 class Navbar extends Component {
 	getUserNavButton() {
-		let user = this.props.users.find(
-			item => item.uuid === this.props.user.uuid
-		);
 		return (
 			<div className="navigation__buttons">
 				<div className="navigation__item">
-					Welcome, <Link to={`/profile/${user.login}`}>{user.login}</Link>!
+					Welcome,{" "}
+					<Link to={`/profile/${this.props.user.login}`}>
+						{this.props.user.login}
+					</Link>!
 				</div>
 				<div className="navigation__item">
 					<UserLogOut actions={this.props.userActions} />
@@ -36,8 +36,7 @@ class Navbar extends Component {
 
 	getAdminMenuButton() {
 		const { user } = this.props;
-		const type =
-			user.uuid != null ? GetUserById(user, user.uuid).type.GetType() : "";
+		const type = user.uuid != null ? user.type : "";
 		return type === new Admin().GetType()
 			? <div className="navigation__admin">
 					<div className="navigation__logo">

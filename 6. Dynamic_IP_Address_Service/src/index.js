@@ -47,7 +47,7 @@ Date.prototype.format = function(format) {
 	return format;
 };
 
-window.store = ConfigureStore(initial);
+window.store = ConfigureStore();
 
 render(
 	<Provider store={store}>

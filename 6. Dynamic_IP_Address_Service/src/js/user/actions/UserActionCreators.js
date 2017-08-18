@@ -1,6 +1,8 @@
+import axios from "axios";
 import { UserActionTypes } from "../index";
 import { SaltedHash, GenUUID } from "../../app";
-import { ErrorActionCreators, ErrorCodes } from "../../error";
+import { SimpleUser, Admin } from "../../user";
+import { UIActionCreators, ErrorCodes, NotificationConst } from "../../ui";
 
 const checkUserForUniq = (users, login, email) => {
 	return !!!users.find(item => item.login === login || item.email == email);
@@ -9,57 +11,105 @@ const checkUserForUniq = (users, login, email) => {
 export const registerUser = (login, pass, firstName, lastName, email) => {
 	let users = store.getState().user.users;
 	return dispatch => {
-		if (checkUserForUniq(users, login, email)) {
-			let saltHash = new SaltedHash(pass);
-			dispatch({
-				type: UserActionTypes.REGISTER_USER,
-				payload: {
-					uuid: GenUUID(),
-					login,
-					hash: saltHash.GetHash(),
-					salt: saltHash.GetSalt(),
+		dispatch(UIActionCreators.showLoading());
+		axios
+			.post("http://localhost:3000/checkUserForUniq", {
+				params: {
 					email,
-					firstName,
-					lastName
+					login
 				}
-			});
-		} else {
-			dispatch(
-				ErrorActionCreators.showError(
-					ErrorCodes.REGISTER_LOGIN_OR_EMAIL_UNAVAILABLE
-				)
+			})
+			.then(
+				result => {
+					let saltHash = new SaltedHash(pass);
+					axios
+						.post("http://localhost:3000/register", {
+							params: {
+								user: {
+									uuid: GenUUID(),
+									login,
+									hash: saltHash.GetHash(),
+									salt: saltHash.GetSalt(),
+									email,
+									type: new SimpleUser().GetType(),
+									firstName,
+									lastName
+								}
+							}
+						})
+						.then(result => {
+							dispatch(UIActionCreators.hideLoading());
+							dispatch(
+								UIActionCreators.showNotification(
+									NotificationConst.SUCCESS_REGISTRATION
+								)
+							);
+						});
+				},
+				error => {
+					dispatch(UIActionCreators.hideLoading());
+					dispatch(
+						UIActionCreators.showError(
+							ErrorCodes.REGISTER_LOGIN_OR_EMAIL_UNAVAILABLE
+						)
+					);
+				}
 			);
-		}
 	};
 };
 
 export const loginInUser = (login, pass) => {
-	let user = store
-		.getState()
-		.user.users.find(
-			item =>
-				item.login === login && SaltedHash.Verify(pass, item.hash, item.salt)
-		);
 	return dispatch => {
-		if (!!user) {
-			dispatch({
-				type: UserActionTypes.LOGIN_IN_USER,
-				payload: {
-					uuid: user.uuid
+		dispatch(UIActionCreators.showLoading());
+		axios
+			.post("http://localhost:3000/login", {
+				params: {
+					login,
+					pass
 				}
-			});
-		} else {
-			dispatch(
-				ErrorActionCreators.showError(ErrorCodes.INCORRECT_LOGIN_OR_PASSWORD)
+			})
+			.then(
+				result => {
+					const {
+						uuid,
+						login,
+						email,
+						firstName,
+						lastName,
+						type
+					} = result.data.user;
+					dispatch(UIActionCreators.hideLoading());
+					dispatch({
+						type: UserActionTypes.LOGIN_IN_USER,
+						payload: {
+							uuid,
+							login,
+							email,
+							firstName,
+							type,
+							lastName
+						}
+					});
+				},
+				error => {
+					dispatch(UIActionCreators.hideLoading());
+					dispatch(
+						UIActionCreators.showError(ErrorCodes.INCORRECT_LOGIN_OR_PASSWORD)
+					);
+				}
 			);
-		}
 	};
 };
 
 export const logOutUser = () => {
+	
 	return dispatch => {
-		dispatch({
-			type: UserActionTypes.LOG_OUT_USER
+		dispatch(UIActionCreators.showLoading());
+		axios.post("http://localhost:3000/logOut").then(result => {
+			dispatch(UIActionCreators.hideLoading());
+			dispatch({
+				type: UserActionTypes.LOG_OUT_USER
+			});
 		});
 	};
 };

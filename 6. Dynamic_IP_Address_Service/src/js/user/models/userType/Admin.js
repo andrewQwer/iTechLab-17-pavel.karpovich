@@ -1,11 +1,5 @@
-import IType from "./IType";
-
-export default class Admin extends IType {
-	constructor(){
-		super(null)
-	}
-
-	GetDomainCount() {
+export default class Admin {
+	GetDomainCount(type) {
 		return 999;
 	}
 

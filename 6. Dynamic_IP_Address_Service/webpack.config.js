@@ -6,17 +6,23 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const PATHS = {
 	source: path.join(__dirname, "./src"),
-	dist: path.resolve(__dirname, "./dist")
+	dist: path.resolve(__dirname, "./dist"),
+	server: path.join(__dirname, "./server")
 };
 
 const devServer = {
-	historyApiFallback: true,
-}
+	historyApiFallback: true
+};
 
 module.exports = {
+	name: "client",
 	devtool: "source-map",
 	devServer: devServer,
-	entry: ["babel-polyfill", `${PATHS.source}/index.js`, `${PATHS.source}/index.scss`],
+	entry: [
+		"babel-polyfill",
+		`${PATHS.source}/index.js`,
+		`${PATHS.source}/index.scss`
+	],
 	output: {
 		path: PATHS.dist,
 		filename: "[name].bundle.js"

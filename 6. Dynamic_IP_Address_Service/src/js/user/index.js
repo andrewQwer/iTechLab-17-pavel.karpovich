@@ -11,7 +11,6 @@ import SimpleUser from "./models/userType/SimpleUser";
 import UserAdminPanelContainer from "./containers/UserAdminPanelContainer";
 import UserRecycleBinContainer from "./containers/UserRecycleBinContainer";
 import UserLoginContainer from "./containers/UserLoginContainer";
-import UserProfileContainer from "./containers/UserProfileContainer";
 import UserRegistrationContainer from "./containers/UserRegistrationContainer";
 
 import UserLogOut from "./components/UserLogOut";
@@ -32,7 +31,6 @@ export {
 	UserAdminPanelContainer,
 	UserRecycleBinContainer,
 	UserLoginContainer,
-	UserProfileContainer,
 	UserRegistrationContainer,
 	UserLogOut,
 	UserPaginationItem,

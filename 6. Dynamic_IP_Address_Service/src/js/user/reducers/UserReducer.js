@@ -4,6 +4,10 @@ import Immutable from "immutable";
 
 const initialState = Immutable.fromJS({
 	uuid: null,
+	login: null,
+	email: null,
+	firstName: null,
+	lastName: null,
 	users: [],
 	basket: []
 });
@@ -28,9 +32,24 @@ export default function users(state = initialState, action) {
 				)
 				.toJS();
 		case UserActionTypes.LOGIN_IN_USER:
-			return Immutable.fromJS(state).set("uuid", action.payload.uuid).toJS();
+			const { uuid, login, email, firstName, lastName, type } = action.payload;
+			return Immutable.fromJS(state)
+				.set("uuid", uuid)
+				.set("login", login)
+				.set("email", email)
+				.set("firstName", firstName)
+				.set("lastName", lastName)
+				.set("type", type)
+				.toJS();
 		case UserActionTypes.LOG_OUT_USER:
-			return Immutable.fromJS(state).set("uuid", null).toJS();
+			return Immutable.fromJS(state)
+				.set("uuid", null)
+				.set("login", null)
+				.set("email", null)
+				.set("firstName", null)
+				.set("lastName", null)
+				.set("type", null)
+				.toJS();
 		case UserActionTypes.ADD_USER_TO_BASKET:
 			let addedUser = state.users.filter(item =>
 				action.payload.uuids.includes(item.uuid)

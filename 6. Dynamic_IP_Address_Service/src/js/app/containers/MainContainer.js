@@ -6,11 +6,10 @@ import { PermissionRoute, HomeContainer, NotFoundContainer } from "../index";
 import {
 	UserRegistrationContainer,
 	UserLoginContainer,
-	UserProfileContainer,
 	UserAdminPanelContainer,
 	UserRecycleBinContainer
 } from "../../user";
-import { IpContainer } from "../../ip";
+import { ProfileContainer, ProfileIpContainer } from "../../profile";
 
 export default class MainContainer extends Component {
 	render() {
@@ -27,9 +26,9 @@ export default class MainContainer extends Component {
 						<PermissionRoute
 							isAuth
 							path="/profile/:login"
-							component={UserProfileContainer}
+							component={ProfileContainer}
 						/>
-						<PermissionRoute isAuth path="/ip/:login" component={IpContainer} />
+						<PermissionRoute isAuth path="/ip/:login" component={ProfileIpContainer} />
 						<PermissionRoute
 							isAdmin
 							path="/admin"

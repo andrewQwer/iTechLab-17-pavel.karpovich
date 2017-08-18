@@ -1,7 +1,5 @@
-import IType from "./IType";
-
-export default class PremiumUser extends IType {
-	GetDomainCount() {
+export default class PremiumUser {
+	GetDomainCount(type) {
 		return 5;
 	}
 
