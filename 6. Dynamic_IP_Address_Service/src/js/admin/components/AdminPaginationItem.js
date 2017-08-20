@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class paginationItem extends Component {
+class AdminPaginationItem extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -18,4 +18,4 @@ class paginationItem extends Component {
 	}
 }
 
-export default paginationItem;
+export default AdminPaginationItem;

@@ -18,7 +18,8 @@ class RegistrationContainer extends Component {
 				this.passInput.value,
 				this.firstNameInput.value,
 				this.lastNameInput.value,
-				this.emailInput.value
+				this.emailInput.value,
+				this.props.history
 			);
 		}
 	};

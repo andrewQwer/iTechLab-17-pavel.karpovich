@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ItemPerPage extends Component {
+class AdminSelectItemPerPage extends Component {
 	renderItems() {
 		return (
 			<ul className="pagination">
@@ -33,4 +33,4 @@ class ItemPerPage extends Component {
 	}
 }
 
-export default ItemPerPage;
+export default AdminSelectItemPerPage;

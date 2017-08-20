@@ -22,7 +22,7 @@ class PermissionRoute extends Component {
 		const { user } = this.props;
 		return (
 			this.checkAuth() &&
-			GetUserById(user, user.uuid).type.GetType() === new Admin().GetType()
+			user.type === new Admin().GetType()
 		);
 	};
 

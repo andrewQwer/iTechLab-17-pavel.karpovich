@@ -7,7 +7,8 @@ class LoginContainer extends Component {
 	submitClickHandler = () => {
 		this.props.UserActionCreators.loginInUser(
 			this.loginInput.value,
-			this.passInput.value
+			this.passInput.value,
+			this.props.history
 		);
 	};
 

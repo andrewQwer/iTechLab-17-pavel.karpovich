@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { UserActionCreators, UserPaginationItem, UserTableItem } from "../index";
+import {
+	AdminActionCreators,
+	AdminPaginationItem,
+	AdminTableItem
+} from "../index";
 
-class UserPaginationTable extends Component {
+export default class AdminPaginationTable extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { currentPage: 1, sortType: "Login", isReverse: false };
@@ -61,20 +65,26 @@ class UserPaginationTable extends Component {
 	sortUser() {
 		let sortType = this.state.sortType;
 		let outputArray = this.currentUsers.slice() || [];
-		if (sortType === "Login") {
-			outputArray = outputArray.sort((a, b) => a.login.localeCompare(b.login));
-		} else if (sortType === "Email") {
-			outputArray = outputArray.sort((a, b) => a.email.localeCompare(b.email));
-		} else if (sortType === "First Name") {
-			outputArray = outputArray.sort((a, b) =>
-				a.firstName.localeCompare(b.firstName)
-			);
-		} else if (sortType === "Last Name") {
-			outputArray.sort((a, b) => a.lastName.localeCompare(b.lastName));
-		} else if (sortType === "Type") {
-			outputArray.sort((a, b) =>
-				a.type.GetType().localeCompare(b.type.GetType())
-			);
+		if (outputArray.length != 0) {
+			if (sortType === "Login") {
+				outputArray = outputArray.sort((a, b) =>
+					a.login.localeCompare(b.login)
+				);
+			} else if (sortType === "Email") {
+				outputArray = outputArray.sort((a, b) =>
+					a.email.localeCompare(b.email)
+				);
+			} else if (sortType === "First Name") {
+				outputArray = outputArray.sort((a, b) =>
+					a.firstName.localeCompare(b.firstName)
+				);
+			} else if (sortType === "Last Name") {
+				outputArray.sort((a, b) => a.lastName.localeCompare(b.lastName));
+			} else if (sortType === "Type") {
+				outputArray.sort((a, b) =>
+					a.type.GetType().localeCompare(b.type.GetType())
+				);
+			}
 		}
 		return this.isReverse ? outputArray.reverse() : outputArray;
 	}
@@ -85,7 +95,6 @@ class UserPaginationTable extends Component {
 		this.props.navigate(`/profile/${loginValue}`);
 	}
 
-	//BUG: pageNumber > pageCount
 	renderPageNumbers() {
 		const { currentPage } = this.state;
 		this.pageCount = Math.ceil(
@@ -93,7 +102,7 @@ class UserPaginationTable extends Component {
 		);
 		let pageNumbers = [...new Array(this.pageCount).keys()].map(item => ++item);
 		const renderPageNumbers = pageNumbers.map((item, index) =>
-			<UserPaginationItem
+			<AdminPaginationItem
 				label={item}
 				currentPage={this.currentPage}
 				limitation={item}
@@ -103,14 +112,14 @@ class UserPaginationTable extends Component {
 		);
 		return ![0, 1].includes(this.pageCount)
 			? <ul className="pagination">
-					<UserPaginationItem
+					<AdminPaginationItem
 						label="First"
 						currentPage={this.currentPage}
 						limitation={1}
 						changePageHandler={::this.changePageHandler}
 						style="disabled"
 					/>
-					<UserPaginationItem
+					<AdminPaginationItem
 						label="Previous"
 						currentPage={this.currentPage}
 						limitation={1}
@@ -118,14 +127,14 @@ class UserPaginationTable extends Component {
 						style="disabled"
 					/>
 					{renderPageNumbers}
-					<UserPaginationItem
+					<AdminPaginationItem
 						label="Next"
 						currentPage={this.currentPage}
 						limitation={this.pageCount}
 						changePageHandler={::this.changePageHandler}
 						style="disabled"
 					/>
-					<UserPaginationItem
+					<AdminPaginationItem
 						label="Last"
 						currentPage={this.currentPage}
 						limitation={this.pageCount}
@@ -136,7 +145,6 @@ class UserPaginationTable extends Component {
 			: null;
 	}
 
-	//BUG: highlighting selected item after page changed in all mode
 	renderUsersTable() {
 		this.props.disableAllHighlights();
 		this.props.uncheckedAllCheckBoxes();
@@ -152,7 +160,7 @@ class UserPaginationTable extends Component {
 						<td onClick={::this.clickOnSortHandler}>Last name</td>
 					</tr>
 					{this.sortUser().map((item, index) =>
-						<UserTableItem
+						<AdminTableItem
 							key={index}
 							user={item}
 							deleteArray={this.props.deleteUserArray}
@@ -176,16 +184,3 @@ class UserPaginationTable extends Component {
 		);
 	}
 }
-
-const mapStateToProps = state => ({
-	user: state.user,
-	ips: state.ip.ips
-});
-
-const mapDispatchToProps = dispatch => ({
-	userActions: bindActionCreators(UserActionCreators, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-	UserPaginationTable
-);

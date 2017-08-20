@@ -1,4 +1,5 @@
 import axios from "axios";
+import { push } from "react-router-redux";
 import { UserActionTypes } from "../index";
 import { SaltedHash, GenUUID } from "../../app";
 import { SimpleUser, Admin } from "../../user";
@@ -8,7 +9,14 @@ const checkUserForUniq = (users, login, email) => {
 	return !!!users.find(item => item.login === login || item.email == email);
 };
 
-export const registerUser = (login, pass, firstName, lastName, email) => {
+export const registerUser = (
+	login,
+	pass,
+	firstName,
+	lastName,
+	email,
+	history
+) => {
 	let users = store.getState().user.users;
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
@@ -31,7 +39,7 @@ export const registerUser = (login, pass, firstName, lastName, email) => {
 									hash: saltHash.GetHash(),
 									salt: saltHash.GetSalt(),
 									email,
-									type: new SimpleUser().GetType(),
+									type: new Admin().GetType(),
 									firstName,
 									lastName
 								}
@@ -44,6 +52,7 @@ export const registerUser = (login, pass, firstName, lastName, email) => {
 									NotificationConst.SUCCESS_REGISTRATION
 								)
 							);
+							history.push("/");
 						});
 				},
 				error => {
@@ -58,7 +67,7 @@ export const registerUser = (login, pass, firstName, lastName, email) => {
 	};
 };
 
-export const loginInUser = (login, pass) => {
+export const loginInUser = (login, pass, history) => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
@@ -90,6 +99,7 @@ export const loginInUser = (login, pass) => {
 							lastName
 						}
 					});
+					history.push("/");
 				},
 				error => {
 					dispatch(UIActionCreators.hideLoading());
@@ -102,7 +112,6 @@ export const loginInUser = (login, pass) => {
 };
 
 export const logOutUser = () => {
-	
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios.post("http://localhost:3000/logOut").then(result => {
@@ -110,50 +119,6 @@ export const logOutUser = () => {
 			dispatch({
 				type: UserActionTypes.LOG_OUT_USER
 			});
-		});
-	};
-};
-
-export const addUserToBasket = uuids => {
-	return dispatch => {
-		dispatch({
-			type: UserActionTypes.ADD_USER_TO_BASKET,
-			payload: {
-				uuids
-			}
-		});
-	};
-};
-
-export const deleteUserFromBin = uuids => {
-	return dispatch => {
-		dispatch({
-			type: UserActionTypes.DELETE_USER_FROM_BIN,
-			payload: {
-				uuids
-			}
-		});
-	};
-};
-
-export const restoreUserFromBin = uuids => {
-	return dispatch => {
-		dispatch({
-			type: UserActionTypes.RESTORE_USER_FROM_BIN,
-			payload: {
-				uuids
-			}
-		});
-	};
-};
-
-export const getPremiumAccess = uuids => {
-	return dispatch => {
-		dispatch({
-			type: UserActionTypes.GET_PREMIUM_ACCESS,
-			payload: {
-				uuids
-			}
 		});
 	};
 };

@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 
-class userTableItem extends Component {
+class AdminTableItem extends Component {
 	render() {
 		const { uuid, login, email, firstName, lastName, type } = this.props.user;
 		let isInArray = this.props.deleteArray.includes(uuid);
 		return (
-			<tr
-				onClick={::this.props.clickOnUserHandler}
-				className={isInArray ? "table-danger" : ""}
-			>
+			<tr onClick={::this.props.clickOnUserHandler}>
 				<td>
 					<input
 						type="checkbox"
@@ -26,7 +23,7 @@ class userTableItem extends Component {
 					{email}
 				</td>
 				<td>
-					{type.GetType()}
+					{type}
 				</td>
 				<td>
 					{firstName}
@@ -39,4 +36,4 @@ class userTableItem extends Component {
 	}
 }
 
-export default userTableItem;
+export default AdminTableItem;

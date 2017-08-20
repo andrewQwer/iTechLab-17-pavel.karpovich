@@ -8,16 +8,10 @@ import Admin from "./models/userType/Admin";
 import PremiumUser from "./models/userType/PremiumUser";
 import SimpleUser from "./models/userType/SimpleUser";
 
-import UserAdminPanelContainer from "./containers/UserAdminPanelContainer";
-import UserRecycleBinContainer from "./containers/UserRecycleBinContainer";
 import UserLoginContainer from "./containers/UserLoginContainer";
 import UserRegistrationContainer from "./containers/UserRegistrationContainer";
 
 import UserLogOut from "./components/UserLogOut";
-import UserPaginationItem from "./components/UserPaginationItem";
-import UserPaginationTable from "./components/UserPaginationTable";
-import UserSelectItemPerPage from "./components/UserSelectItemPerPage";
-import UserTableItem from "./components/UserTableItem";
 
 export {
 	UserReducer,
@@ -28,13 +22,7 @@ export {
 	Admin,
 	PremiumUser,
 	SimpleUser,
-	UserAdminPanelContainer,
-	UserRecycleBinContainer,
 	UserLoginContainer,
 	UserRegistrationContainer,
-	UserLogOut,
-	UserPaginationItem,
-	UserPaginationTable,
-	UserSelectItemPerPage,
-	UserTableItem
+	UserLogOut
 };

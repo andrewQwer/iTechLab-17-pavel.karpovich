@@ -28,7 +28,7 @@ class UIContainer extends Component {
 
 	renderContainer = () => {
 		return (
-			<div className="ui" style={this.showUIElement()}>
+			<div className="ui">
 				<UIBlackout
 					hideClick={::this.props.UIActionCreators.hideError}
 					code={this.props.ui.errorCode}

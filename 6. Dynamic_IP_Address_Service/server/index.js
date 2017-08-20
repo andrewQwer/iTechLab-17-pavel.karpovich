@@ -16,6 +16,8 @@ let users = [];
 
 let ips = [];
 
+let bin = [];
+
 app.get("/", (req, resp) => {
 	resp.send("hello from express server");
 });
@@ -70,7 +72,9 @@ app.post("/logOut", (req, resp) => {
 });
 
 app.get("/getAllUsers", (req, resp) => {
-	resp.send(JSON.stringify(users));
+	resp.json({
+		users
+	});
 });
 
 app.get("/getUserInfoByLogin", (req, resp) => {
@@ -92,9 +96,9 @@ app.get("/getUserIpByLogin", (req, resp) => {
 		if (ips.length !== 0) {
 			if (item.ownerId === userUuid) {
 				arr.push(item);
-				return [...arr];
 			}
 		}
+		return [...arr];
 	}, []);
 	if (!!userIps) {
 		resp.json({
@@ -153,6 +157,53 @@ app.post("/checkIpOnDuplicate", (req, resp) => {
 			error: "This domain already used"
 		});
 	}
+});
+
+app.post("/getPremiumAccess", (req, resp) => {
+	let uuids = req.body.params.uuids;
+	users.map(item => {
+		if (uuids.includes(item.uuid)) {
+			item.type = item.type == "SimpleUser" ? "PremiumUser" : "SimpleUser";
+		}
+		return item;
+	});
+	resp.json({
+		success: true
+	});
+});
+
+app.get("/getAllUserInBin", (req, resp) => {
+	resp.json({
+		users: bin
+	});
+});
+
+app.post("/moveToBin", (req, resp) => {
+	let uuids = req.body.params.uuids;
+	let binUsers = users.filter(item => uuids.includes(item.uuid));
+	bin = bin.concat(binUsers);
+	users = users.filter(item => !uuids.includes(item.uuid));
+	resp.json({
+		success: true
+	});
+});
+
+app.post("/deleteUserFromBin", (req, resp) => {
+	let uuids = req.body.params.uuids;
+	bin = bin.filter(item => !uuids.includes(item.uuid));
+	resp.json({
+		success: true
+	});
+});
+
+app.post("/restoreUserFromBin", (req, resp) => {
+	let uuids = req.body.params.uuids;
+	let restoreUsers = bin.filter(item => uuids.includes(item.uuid));
+	bin = bin.filter(item => !uuids.includes(item.uuid));
+	users = users.concat(restoreUsers);
+	resp.json({
+		success: true
+	});
 });
 
 app.listen(3000);

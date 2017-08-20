@@ -3,13 +3,9 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { PermissionRoute, HomeContainer, NotFoundContainer } from "../index";
-import {
-	UserRegistrationContainer,
-	UserLoginContainer,
-	UserAdminPanelContainer,
-	UserRecycleBinContainer
-} from "../../user";
+import { UserRegistrationContainer, UserLoginContainer } from "../../user";
 import { ProfileContainer, ProfileIpContainer } from "../../profile";
+import { AdminRecycleBinContainer, AdminPanelContainer } from "../../admin";
 
 export default class MainContainer extends Component {
 	render() {
@@ -28,16 +24,20 @@ export default class MainContainer extends Component {
 							path="/profile/:login"
 							component={ProfileContainer}
 						/>
-						<PermissionRoute isAuth path="/ip/:login" component={ProfileIpContainer} />
+						<PermissionRoute
+							isAuth
+							path="/ip/:login"
+							component={ProfileIpContainer}
+						/>
 						<PermissionRoute
 							isAdmin
 							path="/admin"
-							component={UserAdminPanelContainer}
+							component={AdminPanelContainer}
 						/>
 						<PermissionRoute
 							isAdmin
 							path="/bin"
-							component={UserRecycleBinContainer}
+							component={AdminRecycleBinContainer}
 						/>
 						<Route path="*" component={NotFoundContainer} />
 					</Switch>

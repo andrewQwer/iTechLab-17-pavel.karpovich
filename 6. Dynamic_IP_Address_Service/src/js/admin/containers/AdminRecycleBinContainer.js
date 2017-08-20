@@ -2,19 +2,23 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {
-	UserActionCreators,
-	UserPaginationTable,
-	UserSelectItemPerPage
+	AdminActionCreators,
+	AdminPaginationTable,
+	AdminSelectItemPerPage
 } from "../index";
 
-class AdminPanelContainer extends Component {
+class AdminRecycleBinContainer extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			toDelete: [],
-			userPerPage: 20
+			userPerPage: 3
 		};
+	}
+
+	componentWillMount() {
+		this.props.AdminActionCreators.getAllUserInBin();
 	}
 
 	set toDeleteArray(array) {
@@ -30,13 +34,15 @@ class AdminPanelContainer extends Component {
 	}
 
 	deleteButtonClickHandler(event) {
-		this.props.UserActionCreators.addUserToBasket(this.toDeleteArray);
-		this.disableAllHighlights();
-		this.uncheckedAllCheckBoxes();
+		if (confirm("Do you really want to delete these users?")) {
+			this.props.AdminActionCreators.deleteUserFromBin(this.toDeleteArray);
+			this.disableAllHighlights();
+			this.uncheckedAllCheckBoxes();
+		}
 	}
 
-	getPremiumClickHandler(event) {
-		this.props.UserActionCreators.getPremiumAccess(this.toDeleteArray);
+	restoreButtonClickHandler(event) {
+		this.props.AdminActionCreators.restoreUserFromBin(this.toDeleteArray);
 		this.disableAllHighlights();
 		this.uncheckedAllCheckBoxes();
 	}
@@ -61,7 +67,7 @@ class AdminPanelContainer extends Component {
 
 	setItemCount(event) {
 		let value =
-			event.target.textContent == "ALL"
+			event.target.textContent == "all"
 				? this.props.users.length
 				: parseInt(event.target.textContent);
 		this.setState({ userPerPage: value });
@@ -73,10 +79,6 @@ class AdminPanelContainer extends Component {
 
 	selectUserHandler(event) {
 		let $tr = $(event.target.closest("tr"));
-		let styleName = "table-danger";
-		$tr.hasClass(styleName)
-			? $tr.removeClass(styleName)
-			: $tr.addClass(styleName);
 		let uuidValue = $(event.target.closest("td")).siblings("#uuid").get(0)
 			.innerText;
 		let original = this.toDeleteArray;
@@ -88,20 +90,27 @@ class AdminPanelContainer extends Component {
 	}
 
 	render() {
-		//BUG: highlight item count
 		return (
 			<div className="admin">
-				<UserSelectItemPerPage setItemCount={::this.setItemCount} />
-				<h1>Admin Panel</h1>
-				<button className="btn btn-success navigation__item" onClick={::this.deleteButtonClickHandler}>Delete</button>
-				<button className="btn btn-success navigation__item" onClick={::this.getPremiumClickHandler}>
-					Get premium access
+				<h4>RecycleBin</h4>
+				<button
+					className="btn btn-success"
+					onClick={::this.deleteButtonClickHandler}
+				>
+					Delete users
 				</button>
-				<UserPaginationTable
+				<button
+					className="btn btn-success navigation__item"
+					onClick={::this.restoreButtonClickHandler}
+				>
+					Restore users
+				</button>
+				<AdminSelectItemPerPage setItemCount={::this.setItemCount} />
+				<AdminPaginationTable
+					items={this.props.admin.bin}
 					disableAllHighlights={::this.disableAllHighlights}
 					uncheckedAllCheckBoxes={::this.uncheckedAllCheckBoxes}
 					deleteUserArray={this.state.toDelete}
-					items={this.props.users}
 					navigate={::this.navigate}
 					selectUser={::this.selectUserHandler}
 					userPerPage={this.state.userPerPage}
@@ -112,15 +121,13 @@ class AdminPanelContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-	user: state.user,
-	users: state.user.users,
-	ips: state.ip.ips
+	admin: state.admin
 });
 
 const mapDispatchToProps = dispatch => ({
-	UserActionCreators: bindActionCreators(UserActionCreators, dispatch)
+	AdminActionCreators: bindActionCreators(AdminActionCreators, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-	AdminPanelContainer
+	AdminRecycleBinContainer
 );
