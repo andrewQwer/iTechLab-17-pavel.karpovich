@@ -1,0 +1,14 @@
+.notification {
+	&__block{
+		&--show {
+			display: block;
+			position: absolute;
+			bottom: 40px;
+			left: 20px;
+		}
+
+		&--hide {
+			display: none;
+		}
+	}
+}
