@@ -21,7 +21,7 @@ export const registerUser = (
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post("http://localhost:3000/checkUserForUniq", {
+			.get("http://localhost:20791/api/user/getall/", {
 				params: {
 					email,
 					login

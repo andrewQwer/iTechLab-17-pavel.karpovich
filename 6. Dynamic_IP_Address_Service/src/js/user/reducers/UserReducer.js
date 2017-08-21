@@ -7,9 +7,7 @@ const initialState = Immutable.fromJS({
 	login: null,
 	email: null,
 	firstName: null,
-	lastName: null,
-	users: [],
-	basket: []
+	lastName: null
 });
 
 export default function users(state = initialState, action) {
