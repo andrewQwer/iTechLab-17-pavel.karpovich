@@ -60,5 +60,9 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Models
             Salt = saltedHash.Salt;
             Hash = saltedHash.Hash;
         }
+
+        public User()
+        {
+        }
     }
 }

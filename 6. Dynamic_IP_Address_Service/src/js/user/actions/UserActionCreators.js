@@ -1,12 +1,20 @@
 import axios from "axios";
 import { push } from "react-router-redux";
 import { UserActionTypes } from "../index";
-import { SaltedHash, GenUUID } from "../../app";
+import { SaltedHash, GenUUID, User } from "../../app";
 import { SimpleUser, Admin } from "../../user";
 import { UIActionCreators, ErrorCodes, NotificationConst } from "../../ui";
 
 const checkUserForUniq = (users, login, email) => {
 	return !!!users.find(item => item.login === login || item.email == email);
+};
+
+const headers = {
+	headers: {
+		Accept: "application/json",
+		"Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*"
+	}
 };
 
 export const registerUser = (
@@ -18,42 +26,30 @@ export const registerUser = (
 	history
 ) => {
 	let users = store.getState().user.users;
+	let user = {
+		login: "taller",
+		pass: "123456789"
+	};
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
+		let saltHash = new SaltedHash(pass);
+		let newUser = new User(login, email, firstName, lastName, pass);
+		let dataFrom = JSON.stringify(user);
 		axios
-			.get("http://localhost:20791/api/user/getall/", {
-				params: {
-					email,
-					login
-				}
-			})
+			.post(
+				"http://localhost:20791/api/user/Registration/",
+				JSON.stringify(newUser),
+				headers
+			)
 			.then(
 				result => {
-					let saltHash = new SaltedHash(pass);
-					axios
-						.post("http://localhost:3000/register", {
-							params: {
-								user: {
-									uuid: GenUUID(),
-									login,
-									hash: saltHash.GetHash(),
-									salt: saltHash.GetSalt(),
-									email,
-									type: new Admin().GetType(),
-									firstName,
-									lastName
-								}
-							}
-						})
-						.then(result => {
-							dispatch(UIActionCreators.hideLoading());
-							dispatch(
-								UIActionCreators.showNotification(
-									NotificationConst.SUCCESS_REGISTRATION
-								)
-							);
-							history.push("/");
-						});
+					dispatch(UIActionCreators.hideLoading());
+					dispatch(
+						UIActionCreators.showNotification(
+							NotificationConst.SUCCESS_REGISTRATION
+						)
+					);
+					history.push("/");
 				},
 				error => {
 					dispatch(UIActionCreators.hideLoading());

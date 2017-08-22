@@ -85,5 +85,16 @@ namespace Dynamic_IP_Address_Service_Server.Test.DAL.Repositories
             _uow.Commit();
         }
 
+        [Test()]
+        public void CheckUserForUniqTest()
+        {
+            _uow.UserRepository.Insert(fakeUser1);
+            _uow.Commit();
+            Assert.AreEqual(false, _uow.UserRepository.CheckForUniq(fakeUser1));
+            Assert.AreEqual(true, _uow.UserRepository.CheckForUniq(fakeUser2));
+            _uow.UserRepository.Delete(fakeUser1);
+            _uow.Commit();
+        }
+
     }
 }

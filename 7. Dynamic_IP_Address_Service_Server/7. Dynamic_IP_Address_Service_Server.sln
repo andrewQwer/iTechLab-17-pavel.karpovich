@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_Server.BLL", "Dynamic_IP_Address_Service_Server.BLL\Dynamic_IP_Address_Service_Server.BLL.csproj", "{8D915722-04F4-4A2F-9D09-588A1B54C9A7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9D77940A-6849-4EF2-9246-3A3E582027CE} = {9D77940A-6849-4EF2-9246-3A3E582027CE}
+		{F60BAFC2-6C7B-4056-9676-F4E50F287340} = {F60BAFC2-6C7B-4056-9676-F4E50F287340}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_Server.DAL", "Dynamic_IP_Address_Service_Server.DAL\Dynamic_IP_Address_Service_Server.DAL.csproj", "{F60BAFC2-6C7B-4056-9676-F4E50F287340}"
 EndProject

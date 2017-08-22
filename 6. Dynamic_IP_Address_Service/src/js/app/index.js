@@ -14,6 +14,8 @@ import PermissionRoute from "./components/PermissionRoute";
 import SaltedHash from "./Helpers/Hashing/SaltedHash";
 import { GenUUID } from "./Helpers/Uuid";
 
+import User from "./models/User"
+
 export {
 	ConfigureStore,
 	RootReducer,
@@ -26,5 +28,6 @@ export {
 	Navbar,
 	PermissionRoute,
 	SaltedHash,
-	GenUUID
+	GenUUID,
+	User
 };
