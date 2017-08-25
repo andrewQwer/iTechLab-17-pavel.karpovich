@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Data.Entity.Core.Objects;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Cors;
-using System.Web.Http.Results;
 using AutoMapper;
 using Dynamic_IP_Address_Service_Server.BLL.DTO;
 using Dynamic_IP_Address_Service_Server.DAL.Context;
 using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
 using Dynamic_IP_Address_Service_Server.DAL.Models;
+using Dynamic_IP_Address_Service_Server.DAL.Repositories;
+using System.Web.Http;
+using System.Web.Http.Results;
+using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 
 namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
 {
     public class UserController : ApiController
     {
+        private IUnitOfWork _uow;
+
         [HttpPost]
-        public string GetAll([FromBody]UserDTO userDto)
+        public string GetAll([FromBody] UserDTO userDto)
         {
             User user = Mapper.Map<User>(userDto);
             return "text";
@@ -28,19 +30,39 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         {
             IHttpActionResult result = Unauthorized();
             var user = Mapper.Map<User>(userDto);
-            UnitOfWork uow = new UnitOfWork(new EntityContext());
-            if (uow.UserRepository.CheckForUniq(user))
+
+            using (_uow = new UnitOfWork(new EntityContext()))
             {
-                uow.UserRepository.Insert(user);
-                uow.Commit();
-                result = Ok();
+                user.Role = _uow.RoleRepository.GetByName("SimpleUser");
+                if (_uow.UserRepository.CheckForUniq(user))
+                {
+                    _uow.UserRepository.Insert(user);
+                    _uow.Commit();
+                    result = Ok();
+                }
             }
             return result;
         }
 
-        public IHttpActionResult Register()
+        [HttpPost]
+        public IHttpActionResult Login(LoginDTO loginDTO)
         {
-            return Ok("success");
+            IHttpActionResult result = Unauthorized();
+            using (_uow = new UnitOfWork(new EntityContext()))
+            {
+                var user = _uow.UserRepository.CheckUserAuthentication(loginDTO.Login, loginDTO.Pass);
+                if (user != null)
+                {
+                    return Ok(JsonConvert.SerializeObject(user));
+                }
+            }
+            return result;
+        }
+
+        [HttpPost]
+        public IHttpActionResult LogOut()
+        {
+            return Ok();
         }
     }
 }

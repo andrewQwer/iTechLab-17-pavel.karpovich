@@ -13,7 +13,7 @@ namespace Dynamic_IP_Address_Service_Server.BLL
             // Конфигурация и службы веб-API
 
             // Маршруты веб-API
-            config.EnableCors(new EnableCorsAttribute("http://localhost:8081", "*", "*"));
+            //config.EnableCors(new EnableCorsAttribute("http://localhost:8080", "*", "*"));
 
             config.MapHttpAttributeRoutes();
 

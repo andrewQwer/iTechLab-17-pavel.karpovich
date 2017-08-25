@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
 using Dynamic_IP_Address_Service_Server.DAL.Models;
+using Dynamic_IP_Address_Service_Server.Helpers.Hashing;
+using System.Linq;
 
 namespace Dynamic_IP_Address_Service_Server.DAL.Repositories
 {
     public interface IUserRepository
     {
         bool CheckForUniq(User user);
+
+        User CheckUserAuthentication(string login, string pass);
+
+        User GetByLogin(string login);
     }
 
     public class UserRepository : GenericRepository<User>, IUserRepository
@@ -19,10 +20,20 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Repositories
         {
         }
 
-
         public bool CheckForUniq(User user)
         {
             return GetAll().Count(i => i.Login == user.Login || i.Email == user.Email) == 0;
+        }
+
+        public User GetByLogin(string login)
+        {
+            return DbSet.FirstOrDefault(i => i.Login == login);
+        }
+
+        public User CheckUserAuthentication(string login, string pass)
+        {
+            User userAttempt = GetByLogin(login);
+            return SaltedHash.Verify(pass, userAttempt.Hash, userAttempt.Salt) ? userAttempt : null;
         }
     }
 }

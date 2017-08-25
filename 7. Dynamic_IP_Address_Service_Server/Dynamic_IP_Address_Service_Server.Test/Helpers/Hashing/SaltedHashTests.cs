@@ -23,8 +23,8 @@ namespace Dynamic_IP_Address_Service_Server.Helpers.Hashing.DAL.Tests
         public void VerifyTest()
         {
             SaltedHash saltedHash = new SaltedHash("123456789");
-            Assert.AreEqual(SaltedHash.Verify("987654321", saltedHash.Hash, saltedHash.Salt), false);
-            Assert.AreEqual(SaltedHash.Verify("123456789", saltedHash.Hash, saltedHash.Salt), false);
+            Assert.AreEqual(false, SaltedHash.Verify("987654321", saltedHash.Hash, saltedHash.Salt));
+            Assert.AreEqual(true, SaltedHash.Verify("123456789", saltedHash.Hash, saltedHash.Salt));
         }
     }
 }

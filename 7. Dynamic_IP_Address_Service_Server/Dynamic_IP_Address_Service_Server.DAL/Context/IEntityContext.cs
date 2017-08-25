@@ -14,9 +14,12 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Context
         DbChangeTracker ChangeTracker { get; }
         DbSet<User> Users { get; set; }
         DbSet<Domain> Domains { get; set; }
+        DbSet<Role> Roles { get; set; }
 
         int SaveChanges();
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
+
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
     }
 }

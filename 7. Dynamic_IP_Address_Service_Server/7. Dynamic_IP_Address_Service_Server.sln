@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_Server.BLL", "Dynamic_IP_Address_Service_Server.BLL\Dynamic_IP_Address_Service_Server.BLL.csproj", "{8D915722-04F4-4A2F-9D09-588A1B54C9A7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -10,10 +10,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_Server.DAL", "Dynamic_IP_Address_Service_Server.DAL\Dynamic_IP_Address_Service_Server.DAL.csproj", "{F60BAFC2-6C7B-4056-9676-F4E50F287340}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9D77940A-6849-4EF2-9246-3A3E582027CE} = {9D77940A-6849-4EF2-9246-3A3E582027CE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_Server.Test", "Dynamic_IP_Address_Service_Server.Test\Dynamic_IP_Address_Service_Server.Test.csproj", "{E6DA8820-5283-4BC3-8DC4-27B0CB0332CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9D77940A-6849-4EF2-9246-3A3E582027CE} = {9D77940A-6849-4EF2-9246-3A3E582027CE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_Server.Helpers", "Dynamic_IP_Address_Service_Server.Helpers\Dynamic_IP_Address_Service_Server.Helpers.csproj", "{9D77940A-6849-4EF2-9246-3A3E582027CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic_IP_Address_Service_Server.UI", "Dynamic_IP_Address_Service_Server.UI\Dynamic_IP_Address_Service_Server.UI.csproj", "{F093818D-A909-4434-A35B-D778E1F69B21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,8 +45,15 @@ Global
 		{9D77940A-6849-4EF2-9246-3A3E582027CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D77940A-6849-4EF2-9246-3A3E582027CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D77940A-6849-4EF2-9246-3A3E582027CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F093818D-A909-4434-A35B-D778E1F69B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F093818D-A909-4434-A35B-D778E1F69B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F093818D-A909-4434-A35B-D778E1F69B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F093818D-A909-4434-A35B-D778E1F69B21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F80AD06-AA03-4CF4-B72A-135E75CD90E8}
 	EndGlobalSection
 EndGlobal

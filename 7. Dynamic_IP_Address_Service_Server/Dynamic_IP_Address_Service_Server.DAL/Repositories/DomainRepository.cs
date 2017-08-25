@@ -10,10 +10,9 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Repositories
 {
     public interface IDomainRepository
     {
-    
     }
 
-    public class DomainRepository : GenericRepository<Domain>
+    public class DomainRepository : GenericRepository<Domain>, IDomainRepository
     {
         public DomainRepository(IEntityContext dbContext) : base(dbContext)
         {

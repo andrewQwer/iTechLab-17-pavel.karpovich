@@ -204,3 +204,11 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 *.ide
+
+*.map
+
+7\. Dynamic_IP_Address_Service_Server/Dynamic_IP_Address_Service_Server\.UI/dist/
+
+7\. Dynamic_IP_Address_Service_Server/Dynamic_IP_Address_Service_Server\.BLL/Scripts/
+
+7\. Dynamic_IP_Address_Service_Server/Dynamic_IP_Address_Service_Server\.BLL/Content/

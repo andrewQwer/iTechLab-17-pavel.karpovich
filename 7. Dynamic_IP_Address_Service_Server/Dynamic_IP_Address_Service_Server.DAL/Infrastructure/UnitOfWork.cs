@@ -15,6 +15,7 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
     {
         private UserRepository _userRepository;
         private DomainRepository _domainRepository;
+        private RoleRepository _roleRepository;
 
         private readonly IEntityContext _dbContext;
 
@@ -27,14 +28,15 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
 
         public UserRepository UserRepository => _userRepository ?? (_userRepository = new UserRepository(_dbContext));
 
-        public DomainRepository DomainRepository => _domainRepository ??
-                                                     (_domainRepository = new DomainRepository(_dbContext));
+        public DomainRepository DomainRepository => _domainRepository ?? (_domainRepository = new DomainRepository(_dbContext));
+
+        public RoleRepository RoleRepository => _roleRepository ?? (_roleRepository = new RoleRepository(_dbContext));
 
         public void Commit()
         {
             try
             {
-                EntityState[] states = {EntityState.Added, EntityState.Modified};
+                EntityState[] states = { EntityState.Added, EntityState.Modified };
                 var entities = _dbContext.ChangeTracker.Entries()
                     .Where(i => i.Entity is Entity && states.Contains(i.State));
 
@@ -42,11 +44,11 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
                 {
                     if (entity.State == EntityState.Added)
                     {
-                        ((Entity) entity.Entity).CreatedAt = DateTime.UtcNow;
-                        ((Entity) entity.Entity).CreatedBy = UserName;
+                        ((Entity)entity.Entity).CreatedAt = DateTime.UtcNow;
+                        ((Entity)entity.Entity).CreatedBy = UserName;
                     }
-                    ((Entity) entity.Entity).ModifiedAt = DateTime.UtcNow;
-                    ((Entity) entity.Entity).ModifiedBy = UserName;
+                    ((Entity)entity.Entity).ModifiedAt = DateTime.UtcNow;
+                    ((Entity)entity.Entity).ModifiedBy = UserName;
                 }
 
                 _dbContext.SaveChanges();
@@ -74,7 +76,7 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
 
         private void Rollback()
         {
-            EntityState[] states = {EntityState.Added, EntityState.Modified};
+            EntityState[] states = { EntityState.Added, EntityState.Modified };
 
             foreach (var entity in _dbContext.ChangeTracker.Entries().Where(i => states.Contains(i.State)))
             {

@@ -20,11 +20,11 @@ namespace Dynamic_IP_Address_Service_Server.Helpers.Hashing
 
         public static bool Verify(string pass, string hash, string salt)
         {
-            var hashAttempt = ComputeHash(pass, hash);
+            var hashAttempt = ComputeHash(pass, salt);
             return hashAttempt == hash;
         }
 
-        static string ComputeHash(string pass, string saltBase64)
+        private static string ComputeHash(string pass, string saltBase64)
         {
             var passBytes = Encoding.UTF8.GetBytes(pass);
             var saltBytes = Convert.FromBase64String(saltBase64);
@@ -36,7 +36,7 @@ namespace Dynamic_IP_Address_Service_Server.Helpers.Hashing
             }
         }
 
-        string GenerateSalt(uint length)
+        private string GenerateSalt(uint length)
         {
             var saltBytes = new byte[length];
             new Random().NextBytes(saltBytes);

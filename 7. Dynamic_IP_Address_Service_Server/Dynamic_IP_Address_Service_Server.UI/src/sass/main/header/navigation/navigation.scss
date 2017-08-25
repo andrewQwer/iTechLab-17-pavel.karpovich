@@ -1,0 +1,27 @@
+.navigation {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__logo {
+		width: auto;
+	}
+
+	&__admin {
+		width: 180px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__buttons {
+		width: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__item {
+		margin-left: 15px;
+	}
+}

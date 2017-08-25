@@ -15,15 +15,14 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Context
 
         public EntityContext() : base(ConnectionStringName)
         {
-            
         }
 
         public EntityContext(DbConnection connection) : base(connection, true)
         {
-            
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Domain> Domains { get; set; }
     }
 }

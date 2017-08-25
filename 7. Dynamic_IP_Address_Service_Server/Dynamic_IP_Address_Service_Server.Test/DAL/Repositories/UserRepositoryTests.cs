@@ -96,5 +96,26 @@ namespace Dynamic_IP_Address_Service_Server.Test.DAL.Repositories
             _uow.Commit();
         }
 
+        [Test()]
+        public void GetByLoginTest()
+        {
+            _uow.UserRepository.Insert(fakeUser1);
+            _uow.Commit();
+            Assert.AreEqual(null, _uow.UserRepository.GetByLogin(fakeUser2.Login));
+            Assert.AreEqual(fakeUser1, _uow.UserRepository.GetByLogin(fakeUser1.Login));
+            _uow.UserRepository.Delete(fakeUser1);
+            _uow.Commit();
+        }
+
+        [Test()]
+        public void CheckUserAuthenticationTest()
+        {
+            _uow.UserRepository.Insert(fakeUser1);
+            _uow.Commit();
+            Assert.AreEqual(fakeUser1, _uow.UserRepository.CheckUserAuthentication(fakeUser1.Login, "123456789"));
+            Assert.AreEqual(null, _uow.UserRepository.CheckUserAuthentication(fakeUser1.Login, "987654321"));
+            _uow.UserRepository.Delete(fakeUser1);
+            _uow.Commit();
+        }
     }
 }

@@ -49,14 +49,17 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Models
         [MaxLength(1024)]
         public string Hash { get; set; }
 
+        [JsonProperty("role")]
+        public virtual Role Role { get; set; }
+
         public User(string login, string email, string firstName, string lastName, string pass)
         {
+            SaltedHash saltedHash = new SaltedHash(pass);
             Login = login;
             Email = email;
             FirstName = firstName;
             LastName = lastName;
             IsInBin = false;
-            SaltedHash saltedHash = new SaltedHash(pass);
             Salt = saltedHash.Salt;
             Hash = saltedHash.Hash;
         }
