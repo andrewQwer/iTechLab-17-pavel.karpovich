@@ -1,41 +1,45 @@
 import axios from "axios";
 import { ProfileActionTypes } from "../index";
 import { UIActionCreators, ErrorCodes } from "../../ui";
-import { GenUUID } from "../../app";
+import { GenUUID, AppConsts } from "../../app";
+import { Role } from "../../user";
 
 function CheckIpAddress(ip) {
 	let ext = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 	return ext.test(ip);
 }
 
+const headers = {
+	headers: {
+		Accept: "application/json",
+		"Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*"
+	}
+};
+
 export const getUserByLogin = login => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.get("http://localhost:20791/api/user/getUserInfoByLogin", {
+			.get(`${AppConsts.SERVER_ADDRESS}/api/user/getUserInfo`, {
 				params: {
 					login
 				}
 			})
 			.then(result => {
-				const {
-					uuid,
-					login,
-					email,
-					firstName,
-					lastName,
-					type
-				} = result.data.user;
+				const { id, login, email, firstName, lastName, role } = JSON.parse(
+					result.data
+				);
 				dispatch({
 					type: ProfileActionTypes.GET_USER_INFO_BY_LOGIN,
 					payload: {
 						user: {
-							uuid,
+							uuid: id,
 							login,
 							email,
 							firstName,
-							lastName,
-							type
+							role: new Role(role.name, role.domainCount),
+							lastName
 						}
 					}
 				});
@@ -56,22 +60,18 @@ export const getUserIpByLogin = login => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.get("http://localhost:3000/getUserIpByLogin", {
+			.get(`${AppConsts.SERVER_ADDRESS}/api/user/GetUserDomains`, {
 				params: {
 					login
 				}
 			})
 			.then(result => {
+				let domains = result.data != "null" ? JSON.parse(result.data) : [];
 				dispatch({
 					type: ProfileActionTypes.GET_USER_IP_BY_LOGIN,
-					payload:
-						result.data.userIps.length !== 0
-							? {
-									userIps: result.data.userIps
-								}
-							: {
-									userIps: []
-								}
+					payload: {
+						userIps: domains
+					}
 				});
 				dispatch(UIActionCreators.hideLoading());
 			});
@@ -85,43 +85,30 @@ export const addIp = (ip, domain) => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		if (CheckIpAddress(ip)) {
+			let domainDto = JSON.stringify({
+				Ip: ip,
+				Domain: domain,
+				Login: user.login
+			});
 			axios
-				.post("http://localhost:3000/checkIpOnDuplicate", {
-					params: {
-						domain
-					}
-				})
+				.post(`${AppConsts.SERVER_ADDRESS}/api/domain/add/`, domainDto, headers)
 				.then(
 					result => {
-						let uuid = GenUUID();
-						let updateDate = new Date();
-						axios
-							.post("http://localhost:3000/addIp", {
-								params: {
-									ip: {
-										uuid,
-										ownerId,
-										ip,
-										domain,
-										updateDate
-									}
+						let obj = JSON.parse(result.data);
+						const { domain, ip, updateDate, owner: owner } = obj;
+						dispatch({
+							type: ProfileActionTypes.ADD_IP,
+							payload: {
+								ip: {
+									id: obj.id,
+									ownerId: owner.id,
+									ip,
+									domain,
+									updateDate
 								}
-							})
-							.then(result => {
-								dispatch({
-									type: ProfileActionTypes.ADD_IP,
-									payload: {
-										ip: {
-											uuid,
-											ownerId,
-											ip,
-											domain,
-											updateDate
-										}
-									}
-								});
-								dispatch(UIActionCreators.hideLoading());
-							});
+							}
+						});
+						dispatch(UIActionCreators.hideLoading());
 					},
 					error => {
 						dispatch(UIActionCreators.hideLoading());
@@ -140,14 +127,15 @@ export const editIp = (uuid, domain, ip) => {
 		dispatch(UIActionCreators.showLoading());
 		if (CheckIpAddress(ip)) {
 			axios
-				.post("http://localhost:3000/editIp", {
-					params: {
-						uuid,
+				.post(
+					`${AppConsts.SERVER_ADDRESS}/api/domain/edit`,
+					JSON.stringify({
+						id: uuid,
 						domain,
-						ip,
-						updateDate: new Date()
-					}
-				})
+						ip
+					}),
+					headers
+				)
 				.then(result => {
 					dispatch({
 						type: ProfileActionTypes.EDIT_IP,
@@ -171,9 +159,9 @@ export const deleteIp = uuid => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post("http://localhost:3000/deleteIp", {
+			.delete(`${AppConsts.SERVER_ADDRESS}/api/domain/delete`, {
 				params: {
-					uuid
+					id: uuid
 				}
 			})
 			.then(result => {

@@ -23,7 +23,23 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Models
         public string DomainName { get; set; }
 
         [JsonProperty("owner")]
-        [Required]
-        public Guid OwnerId { get; set; }
+        public virtual User User { get; set; }
+
+        public Domain(string ip, string domainName, User user)
+        {
+            Ip = ip;
+            DomainName = domainName;
+            User = user;
+        }
+
+        public Domain(string ip, string domainName)
+        {
+            Ip = ip;
+            DomainName = domainName;
+        }
+
+        public Domain()
+        {
+        }
     }
 }

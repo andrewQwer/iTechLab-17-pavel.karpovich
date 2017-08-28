@@ -61,7 +61,7 @@ class ProfileContainer extends Component {
 							Type:
 						</label>
 						<p className="login__input">
-							{profile.type}
+							{profile.role.Name}
 						</p>
 					</div>
 					<div className="login__row">

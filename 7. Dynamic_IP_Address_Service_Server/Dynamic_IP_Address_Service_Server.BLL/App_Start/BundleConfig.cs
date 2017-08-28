@@ -9,10 +9,10 @@ namespace Dynamic_IP_Address_Service_Server.BLL
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                        "~/Scripts/main.bundle.js"));
+                        "~/Scripts/main.bundle.js", "~/Scripts/main.bundle.js.map"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/main.bundle.css"));
+                      "~/Content/main.bundle.css", "~/Content/main.bundle.css.map"));
         }
     }
 }

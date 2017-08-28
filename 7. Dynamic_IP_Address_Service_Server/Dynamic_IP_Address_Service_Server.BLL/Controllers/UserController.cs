@@ -16,28 +16,19 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
 {
     public class UserController : ApiController
     {
-        private IUnitOfWork _uow;
-
-        [HttpPost]
-        public string GetAll([FromBody] UserDTO userDto)
-        {
-            User user = Mapper.Map<User>(userDto);
-            return "text";
-        }
-
         [HttpPost]
         public IHttpActionResult Registration(UserDTO userDto)
         {
             IHttpActionResult result = Unauthorized();
             var user = Mapper.Map<User>(userDto);
 
-            using (_uow = new UnitOfWork(new EntityContext()))
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
             {
-                user.Role = _uow.RoleRepository.GetByName("SimpleUser");
-                if (_uow.UserRepository.CheckForUniq(user))
+                user.Role = uow.RoleRepository.GetByName("SimpleUser");
+                if (uow.UserRepository.CheckForUniq(user))
                 {
-                    _uow.UserRepository.Insert(user);
-                    _uow.Commit();
+                    uow.UserRepository.Insert(user);
+                    uow.Commit();
                     result = Ok();
                 }
             }
@@ -48,9 +39,9 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         public IHttpActionResult Login(LoginDTO loginDTO)
         {
             IHttpActionResult result = Unauthorized();
-            using (_uow = new UnitOfWork(new EntityContext()))
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
             {
-                var user = _uow.UserRepository.CheckUserAuthentication(loginDTO.Login, loginDTO.Pass);
+                var user = uow.UserRepository.CheckUserAuthentication(loginDTO.Login, loginDTO.Pass);
                 if (user != null)
                 {
                     return Ok(JsonConvert.SerializeObject(user));
@@ -63,6 +54,31 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         public IHttpActionResult LogOut()
         {
             return Ok();
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetUserInfo(string login)
+        {
+            IHttpActionResult result = NotFound();
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                var user = uow.UserRepository.GetByLogin(login);
+                if (user != null)
+                    result = Ok(JsonConvert.SerializeObject(user));
+            }
+            return result;
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetUserDomains(string login)
+        {
+            IHttpActionResult result;
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                var domains = uow.DomainRepository.GetDomainsByLogin(login);
+                result = Ok(JsonConvert.SerializeObject(domains));
+            }
+            return result;
         }
     }
 }

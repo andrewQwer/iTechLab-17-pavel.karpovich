@@ -26,10 +26,6 @@ export const registerUser = (
 	history
 ) => {
 	let users = store.getState().user.users;
-	let user = {
-		login: "taller",
-		pass: "123456789"
-	};
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		let saltHash = new SaltedHash(pass);

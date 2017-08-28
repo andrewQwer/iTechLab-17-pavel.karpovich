@@ -29,63 +29,6 @@ namespace Dynamic_IP_Address_Service_Server.Test.DAL.Repositories
         }
 
         [Test()]
-        public void InsertTest()
-        {
-            _uow.UserRepository.Insert(fakeUser1);
-            _uow.Commit();
-            Assert.AreEqual(_uow.UserRepository.GetAll().Count(), 1);
-        }
-
-        [Test()]
-        public void UpdateTest()
-        {
-            fakeUser1.FirstName = "test";
-            _uow.UserRepository.Update(fakeUser1);
-            Assert.AreEqual(_uow.UserRepository.GetById(fakeUser1.Id).FirstName, "test");
-        }
-
-        [Test()]
-        public void DeleteTest()
-        {
-            _uow.UserRepository.Insert(fakeUser1);
-            _uow.UserRepository.Delete(fakeUser1);
-            _uow.Commit();
-            Assert.AreEqual(_uow.UserRepository.GetAll().Count(), 0);
-        }
-
-        [Test()]
-        public void DeleteByIdTest()
-        {
-            _uow.UserRepository.Insert(fakeUser1);
-            _uow.UserRepository.DeleteById(fakeUser1.Id);
-            _uow.Commit();
-            Assert.AreEqual(_uow.UserRepository.GetAll().Count(), 0);
-        }
-
-        [Test()]
-        public void GetByIdTest()
-        {
-            _uow.UserRepository.Insert(fakeUser1);
-            _uow.Commit();
-            var user = _uow.UserRepository.GetById(fakeUser1.Id);
-            Assert.AreEqual(user, fakeUser1);
-            _uow.UserRepository.Delete(user);
-            _uow.Commit();
-        }
-
-        [Test()]
-        public void GetAllTest()
-        {
-            _uow.UserRepository.Insert(fakeUser1);
-            _uow.UserRepository.Insert(fakeUser2);
-            _uow.Commit();
-            Assert.AreEqual(_uow.UserRepository.GetAll().Count(), 2);
-            _uow.UserRepository.DeleteById(fakeUser1.Id);
-            _uow.UserRepository.DeleteById(fakeUser2.Id);
-            _uow.Commit();
-        }
-
-        [Test()]
         public void CheckUserForUniqTest()
         {
             _uow.UserRepository.Insert(fakeUser1);

@@ -28,7 +28,7 @@ export default function ProfileReducer(state = initialState, action) {
 				.set(
 					"ips",
 					state.ips.map(item => {
-						if (item.uuid === action.payload.uuid)
+						if (item.id === action.payload.uuid)
 							return {
 								...item,
 								ip: action.payload.ip,
@@ -41,7 +41,7 @@ export default function ProfileReducer(state = initialState, action) {
 				.toJS();
 		case ProfileActionTypes.DELETE_IP:
 			return Immutable.fromJS(state)
-				.set("ips", state.ips.filter(item => item.uuid !== action.payload.uuid))
+				.set("ips", state.ips.filter(item => item.id !== action.payload.uuid))
 				.toJS();
 		default:
 			return state;

@@ -23,7 +23,7 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Models.Common
         [MaxLength(128)]
         public string CreatedBy { get; set; }
 
-        [JsonIgnore]
+        [JsonProperty("updateDate")]
         public DateTime? ModifiedAt { get; set; }
 
         [JsonIgnore]

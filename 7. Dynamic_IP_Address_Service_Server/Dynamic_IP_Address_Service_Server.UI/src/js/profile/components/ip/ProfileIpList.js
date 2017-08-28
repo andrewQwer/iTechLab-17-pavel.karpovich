@@ -18,7 +18,7 @@ export default class ProfileIpList extends Component {
 						deleteClick={::this.props.deleteClick}
 						domain={item.domain}
 						ip={item.ip}
-						uuid={item.uuid}
+						uuid={item.id}
 						updateDate={new Date(item.updateDate).format("dd.MM.yyyy")}
 					/>
 				)

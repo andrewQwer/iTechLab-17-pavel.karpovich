@@ -52,6 +52,9 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Models
         [JsonProperty("role")]
         public virtual Role Role { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<Domain> Domains { get; set; }
+
         public User(string login, string email, string firstName, string lastName, string pass)
         {
             SaltedHash saltedHash = new SaltedHash(pass);
