@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 class AdminTableItem extends Component {
 	render() {
-		const { uuid, login, email, firstName, lastName, type } = this.props.user;
-		let isInArray = this.props.deleteArray.includes(uuid);
+		const { id, login, email, firstName, lastName, role } = this.props.user;
+		let isInArray = this.props.deleteArray.includes(id);
 		return (
 			<tr onClick={::this.props.clickOnUserHandler}>
 				<td>
@@ -14,7 +14,7 @@ class AdminTableItem extends Component {
 					/>
 				</td>
 				<td id="uuid" style={{ display: "none" }}>
-					{uuid}
+					{id}
 				</td>
 				<td id="login">
 					{login}
@@ -23,7 +23,7 @@ class AdminTableItem extends Component {
 					{email}
 				</td>
 				<td>
-					{type}
+					{role.name}
 				</td>
 				<td>
 					{firstName}

@@ -8,9 +8,9 @@ namespace Dynamic_IP_Address_Service_Server.BLL
     {
         public static void RegisterMappings()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<UserDTO, User>());
             Mapper.Initialize(cfg =>
             {
+                cfg.CreateMap<UserDTO, User>();
                 cfg.CreateMap<DomainDTO, Domain>().ForMember(i => i.DomainName, k => k.MapFrom(i => i.Domain));
                 cfg.CreateMap<EditDomainDTO, Domain>().ForMember(i => i.DomainName, k => k.MapFrom(i => i.Domain));
             });

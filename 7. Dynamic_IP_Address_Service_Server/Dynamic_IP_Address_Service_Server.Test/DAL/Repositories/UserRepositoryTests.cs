@@ -60,5 +60,19 @@ namespace Dynamic_IP_Address_Service_Server.Test.DAL.Repositories
             _uow.UserRepository.Delete(fakeUser1);
             _uow.Commit();
         }
+
+        [Test()]
+        public void GetAllUserBeyondDeleted()
+        {
+            fakeUser1.IsInBin = true;
+            _uow.UserRepository.Insert(fakeUser1);
+            _uow.UserRepository.Insert(fakeUser2);
+            _uow.Commit();
+            Assert.AreEqual(1, _uow.UserRepository.GetAllUserBeyondDeleted().Count);
+            Assert.AreEqual(1, _uow.UserRepository.GetAllDeletedUsers().Count);
+            _uow.UserRepository.Delete(fakeUser1);
+            _uow.UserRepository.Delete(fakeUser2);
+            _uow.Commit();
+        }
     }
 }

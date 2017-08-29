@@ -30,7 +30,6 @@ export const registerUser = (
 		dispatch(UIActionCreators.showLoading());
 		let saltHash = new SaltedHash(pass);
 		let newUser = new User(login, email, firstName, lastName, pass);
-		let dataFrom = JSON.stringify(user);
 		axios
 			.post(
 				`${AppConsts.SERVER_ADDRESS}/api/user/Registration/`,

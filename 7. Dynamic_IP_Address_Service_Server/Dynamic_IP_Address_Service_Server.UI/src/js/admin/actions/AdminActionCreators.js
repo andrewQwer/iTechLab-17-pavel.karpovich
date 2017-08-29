@@ -1,14 +1,24 @@
 import axios from "axios";
+import { AppConsts } from "../../app";
 import { AdminActionTypes } from "../index";
 import { UIActionCreators } from "../../ui";
 
+const headers = {
+	headers: {
+		Accept: "application/json",
+		"Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*"
+	}
+};
+
 export const getAllUsers = () => {
 	return dispatch => {
-		axios.get("http://localhost:3000/getAllUsers").then(result => {
+		axios.get(`${AppConsts.SERVER_ADDRESS}/api/user/GetAll`).then(result => {
+			let users = result.data != "null" ? JSON.parse(result.data) : [];
 			dispatch({
 				type: AdminActionTypes.GET_ALL_USERS,
 				payload: {
-					users: result.data.users
+					users
 				}
 			});
 		});
@@ -19,11 +29,11 @@ export const getPremiumAccess = uuids => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post("http://localhost:3000/getPremiumAccess", {
-				params: {
-					uuids
-				}
-			})
+			.post(
+				`${AppConsts.SERVER_ADDRESS}/api/user/ChangeRole`,
+				JSON.stringify(uuids),
+				headers
+			)
 			.then(result => {
 				dispatch({
 					type: AdminActionTypes.GET_PREMIUM_ACCESS,
@@ -40,11 +50,11 @@ export const moveToBin = uuids => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post("http://localhost:3000/moveToBin", {
-				params: {
-					uuids
-				}
-			})
+			.post(
+				`${AppConsts.SERVER_ADDRESS}/api/user/MoveToBin`,
+				JSON.stringify(uuids),
+				headers
+			)
 			.then(result => {
 				dispatch({
 					type: AdminActionTypes.MOVE_TO_BIN,
@@ -61,11 +71,7 @@ export const deleteUserFromBin = uuids => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post("http://localhost:3000/deleteUserFromBin", {
-				params: {
-					uuids
-				}
-			})
+			.post(`${AppConsts.SERVER_ADDRESS}/api/user/Delete`, JSON.stringify(uuids), headers)
 			.then(result => {
 				dispatch({
 					type: AdminActionTypes.DELETE_USER_FROM_BIN,
@@ -81,15 +87,18 @@ export const deleteUserFromBin = uuids => {
 export const getAllUserInBin = () => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
-		axios.get("http://localhost:3000/getAllUserInBin").then(result => {
-			dispatch({
-				type: AdminActionTypes.GET_ALL_USERS_IN_BIN,
-				payload: {
-					users: result.data.users
-				}
+		axios
+			.get(`${AppConsts.SERVER_ADDRESS}/api/user/GetAllDeleted`)
+			.then(result => {
+				let users = result.data != "null" ? JSON.parse(result.data) : [];
+				dispatch({
+					type: AdminActionTypes.GET_ALL_USERS_IN_BIN,
+					payload: {
+						users
+					}
+				});
+				dispatch(UIActionCreators.hideLoading());
 			});
-			dispatch(UIActionCreators.hideLoading());
-		});
 	};
 };
 
@@ -97,11 +106,7 @@ export const restoreUserFromBin = uuids => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post("http://localhost:3000/restoreUserFromBin", {
-				params: {
-					uuids
-				}
-			})
+			.post(`${AppConsts.SERVER_ADDRESS}/api/user/RestoreFromBin`, JSON.stringify(uuids), headers)
 			.then(result => {
 				dispatch({
 					type: AdminActionTypes.RESTORE_USER_FROM_BIN,

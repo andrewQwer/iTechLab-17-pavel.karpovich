@@ -1,4 +1,7 @@
-﻿using System.Data.Entity.Core.Objects;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using AutoMapper;
@@ -79,6 +82,86 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
                 result = Ok(JsonConvert.SerializeObject(domains));
             }
             return result;
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetAll()
+        {
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                var users = uow.UserRepository.GetAllUserBeyondDeleted();
+                return Ok(JsonConvert.SerializeObject(users));
+            }
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetAllDeleted()
+        {
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                var users = uow.UserRepository.GetAllDeletedUsers();
+                return Ok(JsonConvert.SerializeObject(users));
+            }
+        }
+
+        [HttpPost]
+        public void ChangeRole(List<Guid> guids)
+        {
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                foreach (var guid in guids)
+                {
+                    var user = uow.UserRepository.GetById(guid);
+                    user.Role = (user.Role.Name == "PremiumUser")
+                        ? uow.RoleRepository.GetByName("SimpleUser")
+                        : uow.RoleRepository.GetByName("PremiumUser");
+                    uow.UserRepository.Update(user);
+                    uow.Commit();
+                }
+            }
+        }
+
+        [HttpPost]
+        public void MoveToBin(List<Guid> guids)
+        {
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                foreach (var guid in guids)
+                {
+                    var user = uow.UserRepository.GetById(guid);
+                    user.IsInBin = true;
+                    uow.UserRepository.Update(user);
+                    uow.Commit();
+                }
+            }
+        }
+
+        [HttpPost]
+        public void Delete(List<Guid> guids)
+        {
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                foreach (var guid in guids)
+                {
+                    uow.UserRepository.DeleteById(guid);
+                    uow.Commit();
+                }
+            }
+        }
+
+        [HttpPost]
+        public void RestoreFromBin(List<Guid> guids)
+        {
+            using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+            {
+                foreach (var guid in guids)
+                {
+                    var user = uow.UserRepository.GetById(guid);
+                    user.IsInBin = false;
+                    uow.UserRepository.Update(user);
+                    uow.Commit();
+                }
+            }
         }
     }
 }
