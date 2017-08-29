@@ -63,6 +63,8 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Models\Common\Entity.cs" />
     <Compile Include="Models\Domain.cs" />
+    <Compile Include="Models\Error\Error.cs" />
+    <Compile Include="Models\Error\ErrorConsts.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,5 +79,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

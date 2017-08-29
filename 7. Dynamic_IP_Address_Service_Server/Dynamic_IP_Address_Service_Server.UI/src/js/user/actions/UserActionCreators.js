@@ -47,11 +47,8 @@ export const registerUser = (
 					history.push("/");
 				},
 				error => {
-					dispatch(UIActionCreators.hideLoading());
 					dispatch(
-						UIActionCreators.showError(
-							ErrorCodes.REGISTER_LOGIN_OR_EMAIL_UNAVAILABLE
-						)
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
 					);
 				}
 			);
@@ -65,37 +62,33 @@ export const loginInUser = (login, pass, history) => {
 			login,
 			pass
 		});
-		axios.post(`${AppConsts.SERVER_ADDRESS}/api/user/Login/`, authParam, headers).then(
-			result => {
-				const {
-					id,
-					login,
-					email,
-					firstName,
-					lastName,
-					role
-				} = JSON.parse(result.data);
-				dispatch(UIActionCreators.hideLoading());
-				dispatch({
-					type: UserActionTypes.LOGIN_IN_USER,
-					payload: {
-						uuid: id,
-						login,
-						email,
-						firstName,
-						role: new Role(role.name, role.domainCount),
-						lastName
-					}
-				});
-				history.push("/");
-			},
-			error => {
-				dispatch(UIActionCreators.hideLoading());
-				dispatch(
-					UIActionCreators.showError(ErrorCodes.INCORRECT_LOGIN_OR_PASSWORD)
-				);
-			}
-		);
+		axios
+			.post(`${AppConsts.SERVER_ADDRESS}/api/user/Login/`, authParam, headers)
+			.then(
+				result => {
+					const { id, login, email, firstName, lastName, role } = JSON.parse(
+						result.data
+					);
+					dispatch(UIActionCreators.hideLoading());
+					dispatch({
+						type: UserActionTypes.LOGIN_IN_USER,
+						payload: {
+							uuid: id,
+							login,
+							email,
+							firstName,
+							role: new Role(role.name, role.domainCount),
+							lastName
+						}
+					});
+					history.push("/");
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };
 

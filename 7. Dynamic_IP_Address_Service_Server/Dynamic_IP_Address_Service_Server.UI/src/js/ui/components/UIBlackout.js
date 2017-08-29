@@ -7,14 +7,18 @@ class UIBlackout extends Component {
 			? <div
 					onClick={::this.props.hideClick}
 					className={
-						!!this.props.code ? "error__popup--show" : "error__popup--hide"
+						!!this.props.code || !!this.props.message
+							? "error__popup--show"
+							: "error__popup--hide"
 					}
 				>
 					{this.props.children}
 				</div>
 			: <div
 					className={
-						!!this.props.code ? "error__popup--show" : "error__popup--hide"
+						!!this.props.code || !!this.props.message
+							? "error__popup--show"
+							: "error__popup--hide"
 					}
 				>
 					{this.props.children}

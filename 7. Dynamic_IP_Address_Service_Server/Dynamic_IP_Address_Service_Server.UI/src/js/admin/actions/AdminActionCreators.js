@@ -13,15 +13,22 @@ const headers = {
 
 export const getAllUsers = () => {
 	return dispatch => {
-		axios.get(`${AppConsts.SERVER_ADDRESS}/api/user/GetAll`).then(result => {
-			let users = result.data != "null" ? JSON.parse(result.data) : [];
-			dispatch({
-				type: AdminActionTypes.GET_ALL_USERS,
-				payload: {
-					users
-				}
-			});
-		});
+		axios.get(`${AppConsts.SERVER_ADDRESS}/api/user/GetAll`).then(
+			result => {
+				let users = result.data != "null" ? JSON.parse(result.data) : [];
+				dispatch({
+					type: AdminActionTypes.GET_ALL_USERS,
+					payload: {
+						users
+					}
+				});
+			},
+			error => {
+				dispatch(
+					UIActionCreators.getErrorFromServer(error.response.data.Message)
+				);
+			}
+		);
 	};
 };
 
@@ -34,15 +41,22 @@ export const getPremiumAccess = uuids => {
 				JSON.stringify(uuids),
 				headers
 			)
-			.then(result => {
-				dispatch({
-					type: AdminActionTypes.GET_PREMIUM_ACCESS,
-					payload: {
-						uuids
-					}
-				});
-				dispatch(UIActionCreators.hideLoading());
-			});
+			.then(
+				result => {
+					dispatch({
+						type: AdminActionTypes.GET_PREMIUM_ACCESS,
+						payload: {
+							uuids
+						}
+					});
+					dispatch(UIActionCreators.hideLoading());
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };
 
@@ -55,15 +69,22 @@ export const moveToBin = uuids => {
 				JSON.stringify(uuids),
 				headers
 			)
-			.then(result => {
-				dispatch({
-					type: AdminActionTypes.MOVE_TO_BIN,
-					payload: {
-						uuids
-					}
-				});
-				dispatch(UIActionCreators.hideLoading());
-			});
+			.then(
+				result => {
+					dispatch({
+						type: AdminActionTypes.MOVE_TO_BIN,
+						payload: {
+							uuids
+						}
+					});
+					dispatch(UIActionCreators.hideLoading());
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };
 
@@ -71,25 +92,35 @@ export const deleteUserFromBin = uuids => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post(`${AppConsts.SERVER_ADDRESS}/api/user/Delete`, JSON.stringify(uuids), headers)
-			.then(result => {
-				dispatch({
-					type: AdminActionTypes.DELETE_USER_FROM_BIN,
-					payload: {
-						uuids
-					}
-				});
-				dispatch(UIActionCreators.hideLoading());
-			});
+			.post(
+				`${AppConsts.SERVER_ADDRESS}/api/user/Delete`,
+				JSON.stringify(uuids),
+				headers
+			)
+			.then(
+				result => {
+					dispatch({
+						type: AdminActionTypes.DELETE_USER_FROM_BIN,
+						payload: {
+							uuids
+						}
+					});
+					dispatch(UIActionCreators.hideLoading());
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };
 
 export const getAllUserInBin = () => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
-		axios
-			.get(`${AppConsts.SERVER_ADDRESS}/api/user/GetAllDeleted`)
-			.then(result => {
+		axios.get(`${AppConsts.SERVER_ADDRESS}/api/user/GetAllDeleted`).then(
+			result => {
 				let users = result.data != "null" ? JSON.parse(result.data) : [];
 				dispatch({
 					type: AdminActionTypes.GET_ALL_USERS_IN_BIN,
@@ -98,7 +129,13 @@ export const getAllUserInBin = () => {
 					}
 				});
 				dispatch(UIActionCreators.hideLoading());
-			});
+			},
+			error => {
+				dispatch(
+					UIActionCreators.getErrorFromServer(error.response.data.Message)
+				);
+			}
+		);
 	};
 };
 
@@ -106,15 +143,26 @@ export const restoreUserFromBin = uuids => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
 		axios
-			.post(`${AppConsts.SERVER_ADDRESS}/api/user/RestoreFromBin`, JSON.stringify(uuids), headers)
-			.then(result => {
-				dispatch({
-					type: AdminActionTypes.RESTORE_USER_FROM_BIN,
-					payload: {
-						uuids
-					}
-				});
-				dispatch(UIActionCreators.hideLoading());
-			});
+			.post(
+				`${AppConsts.SERVER_ADDRESS}/api/user/RestoreFromBin`,
+				JSON.stringify(uuids),
+				headers
+			)
+			.then(
+				result => {
+					dispatch({
+						type: AdminActionTypes.RESTORE_USER_FROM_BIN,
+						payload: {
+							uuids
+						}
+					});
+					dispatch(UIActionCreators.hideLoading());
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };

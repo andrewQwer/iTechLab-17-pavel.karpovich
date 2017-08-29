@@ -26,25 +26,32 @@ export const getUserByLogin = login => {
 					login
 				}
 			})
-			.then(result => {
-				const { id, login, email, firstName, lastName, role } = JSON.parse(
-					result.data
-				);
-				dispatch({
-					type: ProfileActionTypes.GET_USER_INFO_BY_LOGIN,
-					payload: {
-						user: {
-							uuid: id,
-							login,
-							email,
-							firstName,
-							role: new Role(role.name, role.domainCount),
-							lastName
+			.then(
+				result => {
+					const { id, login, email, firstName, lastName, role } = JSON.parse(
+						result.data
+					);
+					dispatch({
+						type: ProfileActionTypes.GET_USER_INFO_BY_LOGIN,
+						payload: {
+							user: {
+								uuid: id,
+								login,
+								email,
+								firstName,
+								role: new Role(role.name, role.domainCount),
+								lastName
+							}
 						}
-					}
-				});
-				dispatch(UIActionCreators.hideLoading());
-			});
+					});
+					dispatch(UIActionCreators.hideLoading());
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };
 
@@ -65,16 +72,23 @@ export const getUserIpByLogin = login => {
 					login
 				}
 			})
-			.then(result => {
-				let domains = result.data != "null" ? JSON.parse(result.data) : [];
-				dispatch({
-					type: ProfileActionTypes.GET_USER_IP_BY_LOGIN,
-					payload: {
-						userIps: domains
-					}
-				});
-				dispatch(UIActionCreators.hideLoading());
-			});
+			.then(
+				result => {
+					let domains = result.data != "null" ? JSON.parse(result.data) : [];
+					dispatch({
+						type: ProfileActionTypes.GET_USER_IP_BY_LOGIN,
+						payload: {
+							userIps: domains
+						}
+					});
+					dispatch(UIActionCreators.hideLoading());
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };
 
@@ -111,8 +125,9 @@ export const addIp = (ip, domain) => {
 						dispatch(UIActionCreators.hideLoading());
 					},
 					error => {
-						dispatch(UIActionCreators.hideLoading());
-						dispatch(UIActionCreators.showError(ErrorCodes.DOMAIN_UNAVAILABLE));
+						dispatch(
+							UIActionCreators.getErrorFromServer(error.response.data.Message)
+						);
 					}
 				);
 		} else {
@@ -136,18 +151,25 @@ export const editIp = (uuid, domain, ip) => {
 					}),
 					headers
 				)
-				.then(result => {
-					dispatch({
-						type: ProfileActionTypes.EDIT_IP,
-						payload: {
-							uuid,
-							domain,
-							ip,
-							updateDate: new Date()
-						}
-					});
-					dispatch(UIActionCreators.hideLoading());
-				});
+				.then(
+					result => {
+						dispatch({
+							type: ProfileActionTypes.EDIT_IP,
+							payload: {
+								uuid,
+								domain,
+								ip,
+								updateDate: new Date()
+							}
+						});
+						dispatch(UIActionCreators.hideLoading());
+					},
+					error => {
+						dispatch(
+							UIActionCreators.getErrorFromServer(error.response.data.Message)
+						);
+					}
+				);
 		} else {
 			dispatch(UIActionCreators.hideLoading());
 			dispatch(UIActionCreators.showError(ErrorCodes.INCORRECT_IP_ADDRESS));
@@ -164,14 +186,21 @@ export const deleteIp = uuid => {
 					id: uuid
 				}
 			})
-			.then(result => {
-				dispatch({
-					type: ProfileActionTypes.DELETE_IP,
-					payload: {
-						uuid
-					}
-				});
-				dispatch(UIActionCreators.hideLoading());
-			});
+			.then(
+				result => {
+					dispatch({
+						type: ProfileActionTypes.DELETE_IP,
+						payload: {
+							uuid
+						}
+					});
+					dispatch(UIActionCreators.hideLoading());
+				},
+				error => {
+					dispatch(
+						UIActionCreators.getErrorFromServer(error.response.data.Message)
+					);
+				}
+			);
 	};
 };

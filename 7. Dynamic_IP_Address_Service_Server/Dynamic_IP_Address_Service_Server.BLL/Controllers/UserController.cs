@@ -12,19 +12,20 @@ using Dynamic_IP_Address_Service_Server.DAL.Models;
 using Dynamic_IP_Address_Service_Server.DAL.Repositories;
 using System.Web.Http;
 using System.Web.Http.Results;
+using Dynamic_IP_Address_Service_Server.BLL.Filters;
+using Dynamic_IP_Address_Service_Server.DAL.Models.Error;
 using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 
 namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
 {
+    [Exception]
     public class UserController : ApiController
     {
         [HttpPost]
         public IHttpActionResult Registration(UserDTO userDto)
         {
-            IHttpActionResult result = Unauthorized();
             var user = Mapper.Map<User>(userDto);
-
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
             {
                 user.Role = uow.RoleRepository.GetByName("SimpleUser");
@@ -32,16 +33,15 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
                 {
                     uow.UserRepository.Insert(user);
                     uow.Commit();
-                    result = Ok();
+                    return Ok();
                 }
+                throw ErrorConsts.REGISTRATION;
             }
-            return result;
         }
 
         [HttpPost]
         public IHttpActionResult Login(LoginDTO loginDTO)
         {
-            IHttpActionResult result = Unauthorized();
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
             {
                 var user = uow.UserRepository.CheckUserAuthentication(loginDTO.Login, loginDTO.Pass);
@@ -49,8 +49,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
                 {
                     return Ok(JsonConvert.SerializeObject(user));
                 }
+                throw ErrorConsts.INCORRECT_LOGIN_OR_PASSWORD;
             }
-            return result;
         }
 
         [HttpPost]
@@ -67,21 +67,21 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
             {
                 var user = uow.UserRepository.GetByLogin(login);
                 if (user != null)
-                    result = Ok(JsonConvert.SerializeObject(user));
+                    return Ok(JsonConvert.SerializeObject(user));
+                throw ErrorConsts.USER_NOT_FOUND;
             }
-            return result;
         }
 
         [HttpGet]
         public IHttpActionResult GetUserDomains(string login)
         {
-            IHttpActionResult result;
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
             {
+                if (uow.UserRepository.GetByLogin(login) == null)
+                    throw ErrorConsts.USER_NOT_FOUND;
                 var domains = uow.DomainRepository.GetDomainsByLogin(login);
-                result = Ok(JsonConvert.SerializeObject(domains));
+                return Ok(JsonConvert.SerializeObject(domains));
             }
-            return result;
         }
 
         [HttpGet]
@@ -112,6 +112,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
                 foreach (var guid in guids)
                 {
                     var user = uow.UserRepository.GetById(guid);
+                    if (user == null)
+                        throw ErrorConsts.USER_NOT_FOUND;
                     user.Role = (user.Role.Name == "PremiumUser")
                         ? uow.RoleRepository.GetByName("SimpleUser")
                         : uow.RoleRepository.GetByName("PremiumUser");
@@ -129,6 +131,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
                 foreach (var guid in guids)
                 {
                     var user = uow.UserRepository.GetById(guid);
+                    if (user == null)
+                        throw ErrorConsts.USER_NOT_FOUND;
                     user.IsInBin = true;
                     uow.UserRepository.Update(user);
                     uow.Commit();
@@ -143,6 +147,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
             {
                 foreach (var guid in guids)
                 {
+                    if (uow.UserRepository.GetById(guid) == null)
+                        throw ErrorConsts.USER_NOT_FOUND;
                     uow.UserRepository.DeleteById(guid);
                     uow.Commit();
                 }
@@ -157,6 +163,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
                 foreach (var guid in guids)
                 {
                     var user = uow.UserRepository.GetById(guid);
+                    if (user == null)
+                        throw ErrorConsts.USER_NOT_FOUND;
                     user.IsInBin = false;
                     uow.UserRepository.Update(user);
                     uow.Commit();

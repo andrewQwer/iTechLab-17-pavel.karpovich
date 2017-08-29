@@ -16,6 +16,7 @@ class UIContainer extends Component {
 		};
 		if (
 			this.props.ui.errorCode === null &&
+			this.props.ui.message === null &&
 			this.props.ui.notification === null &&
 			this.props.ui.loading === false
 		) {
@@ -32,9 +33,11 @@ class UIContainer extends Component {
 				<UIBlackout
 					hideClick={::this.props.UIActionCreators.hideError}
 					code={this.props.ui.errorCode}
+					message={this.props.ui.message}
 				>
 					<UIErrorPopup
 						code={this.props.ui.errorCode}
+						message={this.props.ui.message}
 						hideClick={::this.props.UIActionCreators.hideError}
 					/>
 				</UIBlackout>
@@ -44,7 +47,7 @@ class UIContainer extends Component {
 					hideClick={::this.props.UIActionCreators.hideNotification}
 				/>
 				<UIBlackout code={this.props.ui.loading} hideClick={null}>
-				<UILoading />
+					<UILoading />
 				</UIBlackout>
 			</div>
 		);

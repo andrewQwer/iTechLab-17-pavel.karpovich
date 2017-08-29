@@ -3,8 +3,13 @@ import { Errors, Error } from "../../index";
 
 class UIErrorPopup extends Component {
 	renderPopup = () => {
-		const { code } = this.props;
-		let error = Errors.GetErrorByCode(code);
+		const { code, message } = this.props;
+		let error = {
+			Message: null
+		};
+		error = Errors.GetErrorByCode(code);
+		if(message != null)
+			error.Message = message;
 		return !!error
 			? <div className="alert alert-danger">
 					<h2 className="alert-heading">

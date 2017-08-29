@@ -1,31 +1,67 @@
 import { UIActionTypes } from "../index";
 
-export const showError = code => ({
-	type: UIActionTypes.SHOW_ERROR,
-	payload: {
-		errorCode: code
-	}
-});
+export const showError = code => {
+	return dispatch => {
+		dispatch({
+			type: UIActionTypes.SHOW_ERROR,
+			payload: {
+				errorCode: code
+			}
+		});
+	};
+};
 
-export const hideError = () => ({
-	type: UIActionTypes.HIDE_ERROR
-});
+export const getErrorFromServer = msg => {
+	return dispatch => {
+		dispatch(hideLoading());
+		dispatch({
+			type: UIActionTypes.GET_ERROR_FROM_SERVER,
+			payload: {
+				msg
+			}
+		});
+	};
+};
 
-export const showNotification = msg => ({
-	type: UIActionTypes.SHOW_NOTIFICATION,
-	payload: {
-		message: msg
-	}
-});
+export const hideError = () => {
+	return dispatch => {
+		dispatch({
+			type: UIActionTypes.HIDE_ERROR
+		});
+	};
+};
 
-export const hideNotification = () => ({
-	type: UIActionTypes.HIDE_NOTIFICATION
-});
+export const showNotification = msg => {
+	return dispatch => {
+		dispatch({
+			type: UIActionTypes.SHOW_NOTIFICATION,
+			payload: {
+				message: msg
+			}
+		});
+	};
+};
 
-export const showLoading = () => ({
-	type: UIActionTypes.SHOW_LOADING
-});
+export const hideNotification = () => {
+	return dispatch => {
+		dispatch({
+			type: UIActionTypes.HIDE_NOTIFICATION
+		});
+	};
+};
 
-export const hideLoading = () => ({
-	type: UIActionTypes.HIDE_LOADING
-});
+export const showLoading = () => {
+	return dispatch => {
+		dispatch({
+			type: UIActionTypes.SHOW_LOADING
+		});
+	};
+};
+
+export const hideLoading = () => {
+	return dispatch => {
+		dispatch({
+			type: UIActionTypes.HIDE_LOADING
+		});
+	};
+};

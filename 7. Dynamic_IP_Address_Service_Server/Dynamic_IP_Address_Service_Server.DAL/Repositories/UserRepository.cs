@@ -48,8 +48,12 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Repositories
         public User CheckUserAuthentication(string login, string pass)
         {
             User userAttempt = GetByLogin(login);
-            return SaltedHash.Verify(pass, userAttempt.Hash, userAttempt.Salt) ? userAttempt : null;
-        }
 
+            return (userAttempt != null)
+                ? SaltedHash.Verify(pass, userAttempt.Hash, userAttempt.Salt)
+                    ? userAttempt
+                    : null
+                : null;
+        }
     }
 }
