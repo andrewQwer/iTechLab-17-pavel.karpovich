@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ProfileIpForm, ProfileIpList, ProfileActionCreators } from "../index";
-import { GetUserById, IType } from "../../user";
+import { GetUserById, Role } from "../../user";
 import { UIActionCreators, ErrorCodes } from "../../ui"
 
 class ProfileIpContainer extends Component {
@@ -74,7 +74,7 @@ class ProfileIpContainer extends Component {
 	}
 
 	calculateDomainRemainingCount = () => {
-		let typeCount = new IType().GetDomainCount(this.props.user.type);
+		let typeCount = this.props.user.role.DomainCount;
 		return typeCount - this.props.ips.length;
 	};
 

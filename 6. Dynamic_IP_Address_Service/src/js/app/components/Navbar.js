@@ -36,8 +36,8 @@ class Navbar extends Component {
 
 	getAdminMenuButton() {
 		const { user } = this.props;
-		const type = user.uuid != null ? user.type : "";
-		return type === new Admin().GetType()
+		const role = user.uuid != null ? user.role : "";
+		return role === "Admin"
 			? <div className="navigation__admin">
 					<div className="navigation__logo">
 						<Link to="/admin">Admin</Link>

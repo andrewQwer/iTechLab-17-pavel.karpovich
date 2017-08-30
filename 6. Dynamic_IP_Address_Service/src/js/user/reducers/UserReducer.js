@@ -7,22 +7,20 @@ const initialState = Immutable.fromJS({
 	login: null,
 	email: null,
 	firstName: null,
-	lastName: null,
-	users: [],
-	basket: []
+	lastName: null
 });
 
 export default function users(state = initialState, action) {
 	switch (action.type) {
 		case UserActionTypes.LOGIN_IN_USER:
-			const { uuid, login, email, firstName, lastName, type } = action.payload;
+			const { uuid, login, email, firstName, lastName, role } = action.payload;
 			return Immutable.fromJS(state)
 				.set("uuid", uuid)
 				.set("login", login)
 				.set("email", email)
 				.set("firstName", firstName)
 				.set("lastName", lastName)
-				.set("type", type)
+				.set("role", role)
 				.toJS();
 		case UserActionTypes.LOG_OUT_USER:
 			return Immutable.fromJS(state)
@@ -31,7 +29,7 @@ export default function users(state = initialState, action) {
 				.set("email", null)
 				.set("firstName", null)
 				.set("lastName", null)
-				.set("type", null)
+				.set("type", role)
 				.toJS();
 		default:
 			return state;

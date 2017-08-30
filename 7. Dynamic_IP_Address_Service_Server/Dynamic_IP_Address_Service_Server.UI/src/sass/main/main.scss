@@ -1,0 +1,46 @@
+.main {
+	min-height: 100vh;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		height: 50px;
+		margin-bottom: 1px;
+		box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+	}
+
+	&__main {
+		height: calc(100vh - (51px + 51px));
+		background: #fafafa;
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		height: 50px;
+		box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+
+		h6 {
+			margin-bottom: 0px;
+		}
+	}
+
+	&__main {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__footer {
+		order: 9;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

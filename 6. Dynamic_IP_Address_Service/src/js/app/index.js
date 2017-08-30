@@ -1,5 +1,4 @@
 import { ConfigureStore } from "./ConfigureStore";
-import initial from "./Initial"
 import RootReducer from "./RootReducer";
 
 import NotFoundContainer from "./containers/NotFoundContainer";
@@ -14,10 +13,11 @@ import PermissionRoute from "./components/PermissionRoute";
 import SaltedHash from "./Helpers/Hashing/SaltedHash";
 import { GenUUID } from "./Helpers/Uuid";
 
+import User from "./models/User"
+
 export {
 	ConfigureStore,
 	RootReducer,
-	initial,
 	NotFoundContainer,
 	MainContainer,
 	HomeContainer,
@@ -26,5 +26,6 @@ export {
 	Navbar,
 	PermissionRoute,
 	SaltedHash,
-	GenUUID
+	GenUUID,
+	User
 };

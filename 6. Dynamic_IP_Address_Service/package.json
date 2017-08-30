@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "server": "webpack-dev-server --open",
+    "client": "webpack-dev-server --open",
     "express": "node --harmony ./server",
-    "start": "npm run express | npm run server"
+    "start": "npm run express | npm run client"
   },
   "author": "Pavel Karpovich",
   "license": "ISC",
