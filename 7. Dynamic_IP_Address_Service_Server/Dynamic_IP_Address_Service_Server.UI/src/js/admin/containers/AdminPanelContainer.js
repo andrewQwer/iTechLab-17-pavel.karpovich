@@ -82,7 +82,7 @@ class AdminPanelContainer extends Component {
         original.includes(uuidValue)
             ? original.splice(original.indexOf(uuidValue), 1)
             : original.push(uuidValue);
-        this.toDeleteArray = original;
+        this.toDeleteArray = [...original];
         event.stopPropagation();
     }
 
