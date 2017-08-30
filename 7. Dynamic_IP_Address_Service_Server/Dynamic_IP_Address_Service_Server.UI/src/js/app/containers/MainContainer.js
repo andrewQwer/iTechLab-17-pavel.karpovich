@@ -3,7 +3,11 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { PermissionRoute, HomeContainer, NotFoundContainer } from "../index";
-import { UserRegistrationContainer, UserLoginContainer } from "../../user";
+import {
+	UserRegistrationContainer,
+	UserLoginContainer,
+	UserActionCreators
+} from "../../user";
 import { ProfileContainer, ProfileIpContainer } from "../../profile";
 import { AdminRecycleBinContainer, AdminPanelContainer } from "../../admin";
 

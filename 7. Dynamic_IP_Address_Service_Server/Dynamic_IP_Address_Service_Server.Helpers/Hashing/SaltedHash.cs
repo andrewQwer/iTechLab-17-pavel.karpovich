@@ -36,7 +36,7 @@ namespace Dynamic_IP_Address_Service_Server.Helpers.Hashing
             }
         }
 
-        private string GenerateSalt(uint length)
+        public static string GenerateSalt(uint length)
         {
             var saltBytes = new byte[length];
             new Random().NextBytes(saltBytes);

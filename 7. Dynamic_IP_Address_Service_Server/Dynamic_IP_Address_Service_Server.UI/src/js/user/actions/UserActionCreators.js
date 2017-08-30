@@ -17,6 +17,29 @@ const headers = {
 	}
 };
 
+export const checkAuth = () => {
+	return dispatch => {
+		axios
+			.get(`${AppConsts.SERVER_ADDRESS}/api/user/CheckAuth`, headers)
+			.then(result => {
+				if (!!result.data) {
+					const { id, login, email, firstName, lastName, role } = JSON.parse(result.data);
+					dispatch({
+						type: UserActionTypes.LOGIN_IN_USER,
+						payload: {
+							uuid: id,
+							login,
+							email,
+							firstName,
+							role: new Role(role.name, role.domainCount),
+							lastName
+						}
+					});
+				}
+			});
+	};
+};
+
 export const registerUser = (
 	login,
 	pass,

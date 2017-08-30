@@ -61,16 +61,27 @@
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201708250948058_InitialCreate.cs" />
+    <Compile Include="Migrations\201708250948058_InitialCreate.Designer.cs">
+      <DependentUpon>201708250948058_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291234023_add token table.cs" />
+    <Compile Include="Migrations\201708291234023_add token table.Designer.cs">
+      <DependentUpon>201708291234023_add token table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Common\Entity.cs" />
     <Compile Include="Models\Domain.cs" />
     <Compile Include="Models\Error\Error.cs" />
     <Compile Include="Models\Error\ErrorConsts.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Token.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DomainRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\TokenRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +90,13 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708250948058_InitialCreate.resx">
+      <DependentUpon>201708250948058_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291234023_add token table.resx">
+      <DependentUpon>201708291234023_add token table.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

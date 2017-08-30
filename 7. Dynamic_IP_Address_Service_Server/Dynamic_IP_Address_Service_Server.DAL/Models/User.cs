@@ -55,6 +55,9 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Models
         [JsonIgnore]
         public virtual ICollection<Domain> Domains { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<Token> Tokens { get; set; }
+
         public User(string login, string email, string firstName, string lastName, string pass)
         {
             SaltedHash saltedHash = new SaltedHash(pass);

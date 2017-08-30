@@ -4,6 +4,7 @@ using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using AutoMapper;
 using Dynamic_IP_Address_Service_Server.BLL.DTO;
 using Dynamic_IP_Address_Service_Server.DAL.Context;
@@ -14,6 +15,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using Dynamic_IP_Address_Service_Server.BLL.Filters;
 using Dynamic_IP_Address_Service_Server.DAL.Models.Error;
+using Dynamic_IP_Address_Service_Server.Helpers.Hashing;
 using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 
@@ -22,6 +24,26 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
     [Exception]
     public class UserController : ApiController
     {
+        [HttpGet]
+        public IHttpActionResult CheckAuth()
+        {
+            var authToken = Request.Headers.GetCookies("authToken").FirstOrDefault()?["authToken"].Value;
+            var authGuid = Request.Headers.GetCookies("authGuid").FirstOrDefault()?["authGuid"].Value;
+            if (authToken != null && authGuid != null)
+            {
+                using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
+                {
+                    var lastToken = uow.TokenRepository.GetLastUserToken(Guid.Parse(authGuid));
+                    if (lastToken.AuthToken == authToken)
+                    {
+                        var user = uow.UserRepository.GetById(Guid.Parse(authGuid));
+                        return Ok(JsonConvert.SerializeObject(user));
+                    }
+                }
+            }
+            return Ok();
+        }
+
         [HttpPost]
         public IHttpActionResult Registration(UserDTO userDto)
         {
@@ -40,26 +62,61 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Login(LoginDTO loginDTO)
+        public HttpResponseMessage Login(LoginDTO loginDTO)
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
             {
                 var user = uow.UserRepository.CheckUserAuthentication(loginDTO.Login, loginDTO.Pass);
                 if (user != null)
                 {
-                    return Ok(JsonConvert.SerializeObject(user));
+                    Token token = new Token(SaltedHash.GenerateSalt(64), user);
+                    var authCookie = new CookieHeaderValue("authToken", token.AuthToken)
+                    {
+                        Expires = DateTimeOffset.Now.AddDays(31),
+                        Domain = Request.RequestUri.Host,
+                        Path = "/"
+                    };
+                    var guidCookie = new CookieHeaderValue("authGuid", user.Id.ToString())
+                    {
+                        Expires = DateTimeOffset.Now.AddDays(31),
+                        Domain = Request.RequestUri.Host,
+                        Path = "/"
+                    };
+                    uow.TokenRepository.Insert(token);
+                    uow.Commit();
+                    var response = Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(user));
+                    response.Headers.AddCookies(new[] { authCookie, guidCookie });
+                    return response;
                 }
                 throw ErrorConsts.INCORRECT_LOGIN_OR_PASSWORD;
             }
         }
 
         [HttpPost]
-        public IHttpActionResult LogOut()
+        [Authentication]
+        [Authorization(Role = "admin, simpleUser, premiumUser")]
+        public HttpResponseMessage LogOut()
         {
-            return Ok();
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            var authCookie = new CookieHeaderValue("authToken", "")
+            {
+                Expires = DateTimeOffset.Now.AddYears(-31),
+                Domain = Request.RequestUri.Host,
+                Path = "/"
+            };
+            var guidCookie = new CookieHeaderValue("authGuid", "")
+            {
+                Expires = DateTimeOffset.Now.AddYears(-31),
+                Domain = Request.RequestUri.Host,
+                Path = "/"
+            };
+            response.Headers.AddCookies(new[] { authCookie, guidCookie });
+            return response;
         }
 
         [HttpGet]
+        [Authentication]
+        [Authorization(Role = "admin, simpleUser, premiumUser")]
         public IHttpActionResult GetUserInfo(string login)
         {
             IHttpActionResult result = NotFound();
@@ -73,6 +130,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpGet]
+        [Authentication]
+        [Authorization(Role = "admin, simpleUser, premiumUser")]
         public IHttpActionResult GetUserDomains(string login)
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
@@ -85,6 +144,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpGet]
+        [Authentication]
+        [Authorization(Role = "admin")]
         public IHttpActionResult GetAll()
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
@@ -95,6 +156,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpGet]
+        [Authentication]
+        [Authorization(Role = "admin")]
         public IHttpActionResult GetAllDeleted()
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
@@ -105,6 +168,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpPost]
+        [Authentication]
+        [Authorization(Role = "admin")]
         public void ChangeRole(List<Guid> guids)
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
@@ -124,6 +189,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpPost]
+        [Authentication]
+        [Authorization(Role = "admin")]
         public void MoveToBin(List<Guid> guids)
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
@@ -141,6 +208,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpPost]
+        [Authentication]
+        [Authorization(Role = "admin")]
         public void Delete(List<Guid> guids)
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
@@ -156,6 +225,8 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
         }
 
         [HttpPost]
+        [Authentication]
+        [Authorization(Role = "admin")]
         public void RestoreFromBin(List<Guid> guids)
         {
             using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))

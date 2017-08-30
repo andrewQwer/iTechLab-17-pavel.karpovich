@@ -12,6 +12,7 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
         UserRepository UserRepository { get; }
         DomainRepository DomainRepository { get; }
         RoleRepository RoleRepository { get; }
+        TokenRepository TokenRepository { get; }
 
         void Commit();
     }

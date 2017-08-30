@@ -16,6 +16,7 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
         private UserRepository _userRepository;
         private DomainRepository _domainRepository;
         private RoleRepository _roleRepository;
+        private TokenRepository _tokenRepository;
 
         private readonly IEntityContext _dbContext;
 
@@ -31,6 +32,9 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
         public DomainRepository DomainRepository => _domainRepository ?? (_domainRepository = new DomainRepository(_dbContext));
 
         public RoleRepository RoleRepository => _roleRepository ?? (_roleRepository = new RoleRepository(_dbContext));
+
+        public TokenRepository TokenRepository => _tokenRepository ??
+                                                  (_tokenRepository = new TokenRepository(_dbContext));
 
         public void Commit()
         {

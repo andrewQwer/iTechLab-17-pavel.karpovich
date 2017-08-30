@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import { MainContainer, HeaderContainer, FooterContainer } from "./app";
 import { UIContainer } from "./ui";
+import { UserActionCreators } from "./user";
 
-export default class App extends Component {
+class App extends Component {
+	componentWillMount() {
+		this.props.UserActionCreators.checkAuth()
+	}
+
 	render() {
 		return (
 			<BrowserRouter>
@@ -17,3 +24,13 @@ export default class App extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	user: state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+	UserActionCreators: bindActionCreators(UserActionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

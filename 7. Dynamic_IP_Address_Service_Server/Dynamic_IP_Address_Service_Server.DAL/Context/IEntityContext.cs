@@ -15,6 +15,7 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Context
         DbSet<User> Users { get; set; }
         DbSet<Domain> Domains { get; set; }
         DbSet<Role> Roles { get; set; }
+        DbSet<Token> Tokens { get; set; }
 
         int SaveChanges();
 

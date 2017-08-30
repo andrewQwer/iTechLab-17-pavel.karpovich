@@ -12,6 +12,8 @@ using Newtonsoft.Json;
 namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
 {
     [Exception]
+    [Authentication]
+    [Authorization(Role = "admin, simpleUser, premiumUser")]
     public class DomainController : ApiController
     {
         [HttpPost]

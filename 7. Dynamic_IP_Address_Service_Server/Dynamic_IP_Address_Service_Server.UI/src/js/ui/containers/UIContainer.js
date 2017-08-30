@@ -8,6 +8,7 @@ import {
 	UILoading,
 	UIErrorPopup
 } from "../index";
+import { UserActionCreators } from "../../user";
 
 class UIContainer extends Component {
 	showUIElement = () => {

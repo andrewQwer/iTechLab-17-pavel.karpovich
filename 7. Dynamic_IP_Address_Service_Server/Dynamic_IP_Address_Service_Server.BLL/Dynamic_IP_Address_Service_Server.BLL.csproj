@@ -177,6 +177,8 @@
     <Compile Include="DTO\EditDomainDTO.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Filters\AuthenticationAttribute.cs" />
+    <Compile Include="Filters\AuthorizationAttribute.cs" />
     <Compile Include="Filters\ExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
