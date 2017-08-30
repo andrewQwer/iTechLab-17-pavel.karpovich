@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ProfileActionTypes } from "../index";
 import { UIActionCreators, ErrorCodes } from "../../ui";
-import { GenUUID, AppConsts } from "../../app";
+import { AppConsts } from "../../app";
 import { Role } from "../../user";
 
 function CheckIpAddress(ip) {

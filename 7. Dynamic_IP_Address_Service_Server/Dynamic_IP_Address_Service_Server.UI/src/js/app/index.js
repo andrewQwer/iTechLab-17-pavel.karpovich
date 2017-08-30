@@ -11,7 +11,6 @@ import Navbar from "./components/Navbar";
 import PermissionRoute from "./components/PermissionRoute";
 
 import SaltedHash from "./Helpers/Hashing/SaltedHash";
-import { GenUUID } from "./Helpers/Uuid";
 
 import User from "./models/User"
 
@@ -28,7 +27,6 @@ export {
     Navbar,
     PermissionRoute,
     SaltedHash,
-    GenUUID,
     User,
     AppConsts
 };

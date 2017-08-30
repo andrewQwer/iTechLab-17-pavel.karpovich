@@ -11,7 +11,7 @@ class UIBlackout extends Component {
 					onClick={::this.props.hideClick}
 					className={classNames(
 						{ "error__popup--show": popupShowCondition },
-						{ "error__popup--hide": popupShowCondition }
+						{ "error__popup--hide": !popupShowCondition }
 					)}
 				>
 					{children}
@@ -19,7 +19,7 @@ class UIBlackout extends Component {
 			: <div
 					className={classNames(
 						{ "error__popup--show": popupShowCondition },
-						{ "error__popup--hide": popupShowCondition }
+						{ "error__popup--hide": !popupShowCondition }
 					)}
 				>
 					{children}

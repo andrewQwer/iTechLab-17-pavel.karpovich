@@ -1,7 +1,7 @@
 import axios from "axios";
 import { push } from "react-router-redux";
 import { UserActionTypes } from "../index";
-import { SaltedHash, GenUUID, User, AppConsts } from "../../app";
+import { SaltedHash, User, AppConsts } from "../../app";
 import { Role } from "../../user";
 import { UIActionCreators, ErrorCodes, NotificationConst } from "../../ui";
 
