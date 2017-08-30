@@ -35,32 +35,11 @@ class AdminPanelContainer extends Component {
 
     deleteButtonClickHandler(event) {
         this.props.AdminActionCreators.moveToBin(this.toDeleteArray);
-        this.disableAllHighlights();
-        this.uncheckedAllCheckBoxes();
     }
 
     getPremiumClickHandler(event) {
         this.props.AdminActionCreators.getPremiumAccess(this.toDeleteArray);
-        this.disableAllHighlights();
-        this.uncheckedAllCheckBoxes();
-    }
-
-    disableAllHighlights() {
-        let trs = document.querySelectorAll("tr");
-        for (let item of trs) {
-            if ($(item).hasClass("table-danger")) {
-                $(item).removeClass("table-danger");
-            }
-        }
-    }
-
-    uncheckedAllCheckBoxes() {
-        let checkBoxes = document.querySelectorAll("input[type=checkbox]");
-        for (let item of checkBoxes) {
-            if ($(item).get(0).checked) {
-                $(item).prop("checked", false);
-            }
-        }
+        this.toDeleteArray = [];
     }
 
     setItemCount(event) {
@@ -104,8 +83,6 @@ class AdminPanelContainer extends Component {
     Change account type
 				</button >
     <AdminPaginationTable
-        disableAllHighlights={::this.disableAllHighlights}
-        uncheckedAllCheckBoxes={::this.uncheckedAllCheckBoxes}
         deleteUserArray={this.state.toDelete}
         items={this.props.admin.users}
         navigate={::this.navigate}

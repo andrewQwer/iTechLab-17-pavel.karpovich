@@ -107,7 +107,6 @@ export default class AdminPaginationTable extends Component {
                 currentPage={this.currentPage}
                 limitation={item}
                 changePageHandler={::this.changePageHandler}
-    style = "active"
     />
 		);
 		return ![0, 1].includes(this.pageCount)
@@ -142,8 +141,6 @@ export default class AdminPaginationTable extends Component {
 	}
 
 renderUsersTable() {
-    this.props.disableAllHighlights();
-    this.props.uncheckedAllCheckBoxes();
     const renderUsers = (
         <table className="table table-hover">
             <tbody>

@@ -36,33 +36,11 @@ class AdminRecycleBinContainer extends Component {
     deleteButtonClickHandler(event) {
         if (confirm("Do you really want to delete these users?")) {
             this.props.AdminActionCreators.deleteUserFromBin(this.toDeleteArray);
-            this.disableAllHighlights();
-            this.uncheckedAllCheckBoxes();
         }
     }
 
     restoreButtonClickHandler(event) {
         this.props.AdminActionCreators.restoreUserFromBin(this.toDeleteArray);
-        this.disableAllHighlights();
-        this.uncheckedAllCheckBoxes();
-    }
-
-    disableAllHighlights() {
-        let trs = document.querySelectorAll("tr");
-        for (let item of trs) {
-            if ($(item).hasClass("table-danger")) {
-                $(item).removeClass("table-danger");
-            }
-        }
-    }
-
-    uncheckedAllCheckBoxes() {
-        let checkBoxes = document.querySelectorAll("input[type=checkbox]");
-        for (let item of checkBoxes) {
-            if ($(item).get(0).checked) {
-                $(item).prop("checked", false);
-            }
-        }
     }
 
     setItemCount(event) {
@@ -108,8 +86,6 @@ class AdminRecycleBinContainer extends Component {
     <AdminSelectItemPerPage setItemCount={::this.setItemCount} />
     <AdminPaginationTable
         items={this.props.admin.bin}
-        disableAllHighlights={::this.disableAllHighlights}
-        uncheckedAllCheckBoxes={::this.uncheckedAllCheckBoxes}
         deleteUserArray={this.state.toDelete}
         navigate={::this.navigate}
         selectUser={::this.selectUserHandler}
