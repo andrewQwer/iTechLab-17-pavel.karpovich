@@ -1,12 +1,20 @@
 import axios from "axios";
 import { push } from "react-router-redux";
 import { UserActionTypes } from "../index";
-import { SaltedHash, GenUUID } from "../../app";
-import { SimpleUser, Admin } from "../../user";
+import { SaltedHash, GenUUID, User } from "../../app";
+import { Role } from "../../user";
 import { UIActionCreators, ErrorCodes, NotificationConst } from "../../ui";
 
 const checkUserForUniq = (users, login, email) => {
 	return !!!users.find(item => item.login === login || item.email == email);
+};
+
+const headers = {
+	headers: {
+		Accept: "application/json",
+		"Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*"
+	}
 };
 
 export const registerUser = (
@@ -18,42 +26,30 @@ export const registerUser = (
 	history
 ) => {
 	let users = store.getState().user.users;
+	let user = {
+		login: "taller",
+		pass: "123456789"
+	};
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
+		let saltHash = new SaltedHash(pass);
+		let newUser = new User(login, email, firstName, lastName, pass);
+		let dataFrom = JSON.stringify(user);
 		axios
-			.post("http://localhost:3000/checkUserForUniq", {
-				params: {
-					email,
-					login
-				}
-			})
+			.post(
+				"http://localhost:20791/api/user/Registration/",
+				JSON.stringify(newUser),
+				headers
+			)
 			.then(
 				result => {
-					let saltHash = new SaltedHash(pass);
-					axios
-						.post("http://localhost:3000/register", {
-							params: {
-								user: {
-									uuid: GenUUID(),
-									login,
-									hash: saltHash.GetHash(),
-									salt: saltHash.GetSalt(),
-									email,
-									type: new Admin().GetType(),
-									firstName,
-									lastName
-								}
-							}
-						})
-						.then(result => {
-							dispatch(UIActionCreators.hideLoading());
-							dispatch(
-								UIActionCreators.showNotification(
-									NotificationConst.SUCCESS_REGISTRATION
-								)
-							);
-							history.push("/");
-						});
+					dispatch(UIActionCreators.hideLoading());
+					dispatch(
+						UIActionCreators.showNotification(
+							NotificationConst.SUCCESS_REGISTRATION
+						)
+					);
+					history.push("/");
 				},
 				error => {
 					dispatch(UIActionCreators.hideLoading());
@@ -70,51 +66,48 @@ export const registerUser = (
 export const loginInUser = (login, pass, history) => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
-		axios
-			.post("http://localhost:3000/login", {
-				params: {
+		let authParam = JSON.stringify({
+			login,
+			pass
+		});
+		axios.post("http://localhost:20791/api/user/Login/", authParam, headers).then(
+			result => {
+				const {
+					id,
 					login,
-					pass
-				}
-			})
-			.then(
-				result => {
-					const {
-						uuid,
+					email,
+					firstName,
+					lastName,
+					role
+				} = JSON.parse(result.data);
+				dispatch(UIActionCreators.hideLoading());
+				dispatch({
+					type: UserActionTypes.LOGIN_IN_USER,
+					payload: {
+						uuid: id,
 						login,
 						email,
 						firstName,
-						lastName,
-						type
-					} = result.data.user;
-					dispatch(UIActionCreators.hideLoading());
-					dispatch({
-						type: UserActionTypes.LOGIN_IN_USER,
-						payload: {
-							uuid,
-							login,
-							email,
-							firstName,
-							type,
-							lastName
-						}
-					});
-					history.push("/");
-				},
-				error => {
-					dispatch(UIActionCreators.hideLoading());
-					dispatch(
-						UIActionCreators.showError(ErrorCodes.INCORRECT_LOGIN_OR_PASSWORD)
-					);
-				}
-			);
+						role: new Role(role.name, role.domainCount),
+						lastName
+					}
+				});
+				history.push("/");
+			},
+			error => {
+				dispatch(UIActionCreators.hideLoading());
+				dispatch(
+					UIActionCreators.showError(ErrorCodes.INCORRECT_LOGIN_OR_PASSWORD)
+				);
+			}
+		);
 	};
 };
 
 export const logOutUser = () => {
 	return dispatch => {
 		dispatch(UIActionCreators.showLoading());
-		axios.post("http://localhost:3000/logOut").then(result => {
+		axios.post("http://localhost:20791/api/user/logOut").then(result => {
 			dispatch(UIActionCreators.hideLoading());
 			dispatch({
 				type: UserActionTypes.LOG_OUT_USER

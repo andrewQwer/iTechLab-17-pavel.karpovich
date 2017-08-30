@@ -1,0 +1,27 @@
+.error {
+	&__popup {
+		&--hide {
+			display: none;
+			background-color: rgba(0, 0, 0, 0);
+			transition: background-color 1000ms linear;
+		}
+
+		&--show {
+			display: flex;
+			position: absolute;
+			width: 100vw;
+			height: 100vh;
+			background-color: rgba(0, 0, 0, 0.90);
+			z-index: 10;
+			justify-content: center;
+			align-items: center;
+			transition: background-color 1000ms linear;
+		}
+	}
+
+	&__buttons{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
