@@ -1,5 +1,5 @@
 import * as AdminActionCreators from "./actions/AdminActionCreators";
-import * as AdminActionTypes from "./actions/AdminActionTypes";
+import {AdminActionTypes} from "./actions/AdminActionTypes";
 
 import AdminPanelContainer from "./containers/AdminPanelContainer";
 import AdminRecycleBinContainer from "./containers/AdminRecycleBinContainer";
