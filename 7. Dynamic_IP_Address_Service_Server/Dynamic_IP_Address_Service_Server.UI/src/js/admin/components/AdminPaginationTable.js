@@ -117,14 +117,12 @@ export default class AdminPaginationTable extends Component {
             currentPage={this.currentPage}
             limitation={1}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 					<AdminPaginationItem
             label="Previous"
             currentPage={this.currentPage}
             limitation={1}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 					{renderPageNumbers}
         <AdminPaginationItem
@@ -132,14 +130,12 @@ export default class AdminPaginationTable extends Component {
             currentPage={this.currentPage}
             limitation={this.pageCount}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 					<AdminPaginationItem
             label="Last"
             currentPage={this.currentPage}
             limitation={this.pageCount}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 				</ul>
     : null;

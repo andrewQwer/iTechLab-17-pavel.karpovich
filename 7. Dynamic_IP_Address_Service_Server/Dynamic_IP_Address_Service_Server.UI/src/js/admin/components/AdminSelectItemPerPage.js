@@ -6,7 +6,7 @@ class AdminSelectItemPerPage extends Component {
             <ul className="pagination">
                 <li>
                     <a className="page-link" onClick={::this.props.setItemCount}>
-						20
+						1
 					</a>
 				</li>
             <li>

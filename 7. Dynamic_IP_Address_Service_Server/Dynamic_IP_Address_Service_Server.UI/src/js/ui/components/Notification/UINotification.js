@@ -1,25 +1,22 @@
 import React, { Component } from "react";
+import classNames from "classnames";
 
-class UINotification extends Component {
-    componentWillUpdate = () => {
-        // setTimeout(() => {
-        // 	this.props.hideClick();
-        // }, 5000);
-    };
-
-    render() {
-        return (
-            <div
-                className={`alert alert-success ${!!this.props.text
-                    ? "notification__block--show"
-                    : "notification__block--hide"}`}
-                onClick={::this.props.hideClick}
+export default class UINotification extends Component {
+	render() {
+		const { text, title } = this.props;
+		return (
+			<div
+				className={classNames(
+					"alert",
+					"alert-success",
+					{ "notification__block--show": !!text },
+					{ "notification__block--hide": !!!text }
+				)}
+				onClick={::this.props.hideClick}
 			>
-    <strong>{this.props.title}</strong> & nbsp;
-{ this.props.text }
-			</div >
+				<strong>{title}</strong> & nbsp;
+				{text}
+			</div>
 		);
 	}
 }
-
-export default UINotification;

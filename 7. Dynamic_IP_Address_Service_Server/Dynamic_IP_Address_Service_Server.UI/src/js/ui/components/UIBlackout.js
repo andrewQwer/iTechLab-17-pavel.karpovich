@@ -1,28 +1,29 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class UIBlackout extends Component {
-    render() {
-        return !!this.props.hideClick
-            ? <div
-                onClick={::this.props.hideClick}
-    className = {
-						!!this.props.code || !!this.props.message
-    ? "error__popup--show"
-    : "error__popup--hide"
-					}
+	render() {
+		const { code, message, children } = this.props;
+		let popupShowCondition = !!code || !!message;
+		return !!this.props.hideClick
+			? <div
+					onClick={::this.props.hideClick}
+					className={classNames(
+						{ "error__popup--show": popupShowCondition },
+						{ "error__popup--hide": popupShowCondition }
+					)}
 				>
-    { this.props.children }
-				</div >
+					{children}
+				</div>
 			: <div
-    className={
-        !!this.props.code || !!this.props.message
-            ? "error__popup--show"
-            : "error__popup--hide"
-    }
->
-    {this.props.children}
-</div>;
+					className={classNames(
+						{ "error__popup--show": popupShowCondition },
+						{ "error__popup--hide": popupShowCondition }
+					)}
+				>
+					{children}
+				</div>;
 	}
 }
 
