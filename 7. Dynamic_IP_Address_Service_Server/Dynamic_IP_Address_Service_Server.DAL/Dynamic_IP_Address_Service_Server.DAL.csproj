@@ -61,6 +61,7 @@
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Initializers\RoleInitializer.cs" />
     <Compile Include="Migrations\201708250948058_InitialCreate.cs" />
     <Compile Include="Migrations\201708250948058_InitialCreate.Designer.cs">
       <DependentUpon>201708250948058_InitialCreate.cs</DependentUpon>

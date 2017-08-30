@@ -1,12 +1,7 @@
-﻿using NUnit.Framework;
-using Dynamic_IP_Address_Service_Server.Helpers.Hashing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dynamic_IP_Address_Service_Server.Helpers.Hashing;
+using NUnit.Framework;
 
-namespace Dynamic_IP_Address_Service_Server.Helpers.Hashing.DAL.Tests
+namespace Dynamic_IP_Address_Service_Server.Test.Helpers.Hashing
 {
     [TestFixture()]
     public class SaltedHashTests

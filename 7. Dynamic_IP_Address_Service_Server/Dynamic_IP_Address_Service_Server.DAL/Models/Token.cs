@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dynamic_IP_Address_Service_Server.DAL.Models.Common;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Models.Common;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dynamic_IP_Address_Service_Server.DAL.Models
 {

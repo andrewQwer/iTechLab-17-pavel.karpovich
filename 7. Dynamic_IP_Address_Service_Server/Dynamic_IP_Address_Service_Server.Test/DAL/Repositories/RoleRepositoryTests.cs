@@ -1,8 +1,8 @@
-﻿using System.Data.Common;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
 using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
 using Dynamic_IP_Address_Service_Server.DAL.Models;
 using NUnit.Framework;
+using System.Data.Common;
 
 namespace Dynamic_IP_Address_Service_Server.Test.DAL.Repositories
 {

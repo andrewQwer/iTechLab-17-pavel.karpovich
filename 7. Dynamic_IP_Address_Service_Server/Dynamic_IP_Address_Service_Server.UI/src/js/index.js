@@ -7,30 +7,30 @@ import { UIContainer } from "./ui";
 import { UserActionCreators } from "./user";
 
 class App extends Component {
-	componentWillMount() {
-		this.props.UserActionCreators.checkAuth()
-	}
+    componentWillMount() {
+        this.props.UserActionCreators.checkAuth()
+    }
 
-	render() {
-		return (
-			<BrowserRouter>
-				<div className="main">
-					<HeaderContainer />
-					<MainContainer />
-					<FooterContainer />
-					<UIContainer />
-				</div>
-			</BrowserRouter>
-		);
-	}
+    render() {
+        return (
+            <BrowserRouter>
+                <div className="main">
+                    <HeaderContainer />
+                    <MainContainer />
+                    <FooterContainer />
+                    <UIContainer />
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-	user: state.user
+    user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
-	UserActionCreators: bindActionCreators(UserActionCreators, dispatch)
+    UserActionCreators: bindActionCreators(UserActionCreators, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

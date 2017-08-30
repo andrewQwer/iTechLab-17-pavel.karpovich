@@ -34,7 +34,7 @@ namespace Dynamic_IP_Address_Service_Server.BLL.Controllers
                 using (IUnitOfWork uow = new UnitOfWork(new EntityContext()))
                 {
                     var lastToken = uow.TokenRepository.GetLastUserToken(Guid.Parse(authGuid));
-                    if (lastToken.AuthToken == authToken)
+                    if (lastToken != null && lastToken.AuthToken == authToken)
                     {
                         var user = uow.UserRepository.GetById(Guid.Parse(authGuid));
                         return Ok(JsonConvert.SerializeObject(user));

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
+using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
+using System;
 using System.Linq;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
-using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
 
 namespace Dynamic_IP_Address_Service_Server.BLL.Filters
 {

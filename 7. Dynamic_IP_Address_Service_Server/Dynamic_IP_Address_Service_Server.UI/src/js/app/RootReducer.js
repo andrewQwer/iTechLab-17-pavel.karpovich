@@ -5,10 +5,10 @@ import { ProfileReducer as profile } from "../profile";
 import { AdminReducer as admin } from "../admin";
 
 const RootReducer = combineReducers({
-	user,
-	ui,
-	profile,
-	admin
+    user,
+    ui,
+    profile,
+    admin
 });
 
 export default RootReducer;

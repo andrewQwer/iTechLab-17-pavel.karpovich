@@ -12,13 +12,13 @@ import AdminTableItem from "./components/AdminTableItem"
 import AdminReducer from "./reducers/AdminReducer";
 
 export {
-	AdminActionCreators,
-	AdminActionTypes,
-	AdminPanelContainer,
-	AdminRecycleBinContainer,
-	AdminPaginationTable,
-	AdminPaginationItem,
-	AdminSelectItemPerPage,
-	AdminTableItem,
-	AdminReducer
+    AdminActionCreators,
+    AdminActionTypes,
+    AdminPanelContainer,
+    AdminRecycleBinContainer,
+    AdminPaginationTable,
+    AdminPaginationItem,
+    AdminSelectItemPerPage,
+    AdminTableItem,
+    AdminReducer
 }

@@ -11,12 +11,12 @@ import UserRegistrationContainer from "./containers/UserRegistrationContainer";
 import UserLogOut from "./components/UserLogOut";
 
 export {
-	UserReducer,
-	GetUserById,
-	UserActionCreators,
-	UserActionTypes,
-	Role,
-	UserLoginContainer,
-	UserRegistrationContainer,
-	UserLogOut
+    UserReducer,
+    GetUserById,
+    UserActionCreators,
+    UserActionTypes,
+    Role,
+    UserLoginContainer,
+    UserRegistrationContainer,
+    UserLogOut
 };

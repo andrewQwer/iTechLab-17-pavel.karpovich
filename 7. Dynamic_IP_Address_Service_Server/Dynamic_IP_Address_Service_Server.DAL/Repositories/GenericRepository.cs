@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
 using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
 using Dynamic_IP_Address_Service_Server.DAL.Models.Common;
+using System.Data.Entity;
+using System.Linq;
 
 namespace Dynamic_IP_Address_Service_Server.DAL.Repositories
 {

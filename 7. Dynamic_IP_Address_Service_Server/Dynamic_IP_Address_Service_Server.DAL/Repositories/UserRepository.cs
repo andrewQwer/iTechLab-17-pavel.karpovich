@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
 using Dynamic_IP_Address_Service_Server.DAL.Models;
 using Dynamic_IP_Address_Service_Server.Helpers.Hashing;
+using System.Collections.Generic;
 using System.Linq;
+using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
 
 namespace Dynamic_IP_Address_Service_Server.DAL.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
         bool CheckForUniq(User user);
 

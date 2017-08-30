@@ -11,12 +11,12 @@ import ProfileIpList from "./components/ip/ProfileIpList";
 import ProfileReducer from "./reducers/ProfileReducer";
 
 export {
-	ProfileActionCreators,
-	ProfileActionTypes,
-	ProfileIpContainer,
-	ProfileContainer,
-	ProfileIpForm,
-	ProfileIpItem,
-	ProfileIpList,
-	ProfileReducer
+    ProfileActionCreators,
+    ProfileActionTypes,
+    ProfileIpContainer,
+    ProfileContainer,
+    ProfileIpForm,
+    ProfileIpItem,
+    ProfileIpList,
+    ProfileReducer
 }

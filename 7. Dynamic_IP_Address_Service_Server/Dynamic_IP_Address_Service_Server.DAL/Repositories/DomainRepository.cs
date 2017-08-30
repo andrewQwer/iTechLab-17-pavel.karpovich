@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
+using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
+using Dynamic_IP_Address_Service_Server.DAL.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
-using Dynamic_IP_Address_Service_Server.DAL.Models;
 
 namespace Dynamic_IP_Address_Service_Server.DAL.Repositories
 {
-    public interface IDomainRepository
+    public interface IDomainRepository : IRepository<Domain>
     {
         List<Domain> GetDomainsByLogin(string login);
 

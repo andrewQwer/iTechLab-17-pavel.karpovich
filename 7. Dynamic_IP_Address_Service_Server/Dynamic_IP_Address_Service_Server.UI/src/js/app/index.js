@@ -18,17 +18,17 @@ import User from "./models/User"
 import * as AppConsts from "./AppConsts";
 
 export {
-	ConfigureStore,
-	RootReducer,
-	NotFoundContainer,
-	MainContainer,
-	HomeContainer,
-	HeaderContainer,
-	FooterContainer,
-	Navbar,
-	PermissionRoute,
-	SaltedHash,
-	GenUUID,
-	User,
-	AppConsts
+    ConfigureStore,
+    RootReducer,
+    NotFoundContainer,
+    MainContainer,
+    HomeContainer,
+    HeaderContainer,
+    FooterContainer,
+    Navbar,
+    PermissionRoute,
+    SaltedHash,
+    GenUUID,
+    User,
+    AppConsts
 };

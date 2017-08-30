@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Dynamic_IP_Address_Service_Server.Test")]
@@ -10,9 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
 [assembly: ComVisible(false)]
-
 [assembly: Guid("e6da8820-5283-4bc3-8dc4-27b0cb0332cd")]
 
 // [assembly: AssemblyVersion("1.0.*")]

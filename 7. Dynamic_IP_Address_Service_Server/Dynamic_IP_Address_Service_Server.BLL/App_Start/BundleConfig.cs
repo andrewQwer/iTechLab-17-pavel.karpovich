@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Dynamic_IP_Address_Service_Server.BLL
 {
@@ -9,10 +8,10 @@ namespace Dynamic_IP_Address_Service_Server.BLL
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                        "~/Scripts/main.bundle.js", "~/Scripts/main.bundle.js.map"));
+                        "~/Scripts/main.bundle.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/main.bundle.css", "~/Content/main.bundle.css.map"));
+                      "~/Content/main.bundle.css"));
         }
     }
 }

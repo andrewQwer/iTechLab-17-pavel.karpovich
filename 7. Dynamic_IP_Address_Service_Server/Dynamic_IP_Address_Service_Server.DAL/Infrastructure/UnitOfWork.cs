@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
+using Dynamic_IP_Address_Service_Server.DAL.Models.Common;
+using Dynamic_IP_Address_Service_Server.DAL.Repositories;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
-using Dynamic_IP_Address_Service_Server.DAL.Models.Common;
-using Dynamic_IP_Address_Service_Server.DAL.Repositories;
 
 namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private UserRepository _userRepository;
-        private DomainRepository _domainRepository;
-        private RoleRepository _roleRepository;
-        private TokenRepository _tokenRepository;
+        private IUserRepository _userRepository;
+        private IDomainRepository _domainRepository;
+        private IRoleRepository _roleRepository;
+        private ITokenRepository _tokenRepository;
 
         private readonly IEntityContext _dbContext;
 
@@ -27,13 +24,13 @@ namespace Dynamic_IP_Address_Service_Server.DAL.Infrastructure
 
         private string UserName => $"{Environment.MachineName}\\{Environment.UserDomainName}";
 
-        public UserRepository UserRepository => _userRepository ?? (_userRepository = new UserRepository(_dbContext));
+        public IUserRepository UserRepository => _userRepository ?? (_userRepository = new UserRepository(_dbContext));
 
-        public DomainRepository DomainRepository => _domainRepository ?? (_domainRepository = new DomainRepository(_dbContext));
+        public IDomainRepository DomainRepository => _domainRepository ?? (_domainRepository = new DomainRepository(_dbContext));
 
-        public RoleRepository RoleRepository => _roleRepository ?? (_roleRepository = new RoleRepository(_dbContext));
+        public IRoleRepository RoleRepository => _roleRepository ?? (_roleRepository = new RoleRepository(_dbContext));
 
-        public TokenRepository TokenRepository => _tokenRepository ??
+        public ITokenRepository TokenRepository => _tokenRepository ??
                                                   (_tokenRepository = new TokenRepository(_dbContext));
 
         public void Commit()

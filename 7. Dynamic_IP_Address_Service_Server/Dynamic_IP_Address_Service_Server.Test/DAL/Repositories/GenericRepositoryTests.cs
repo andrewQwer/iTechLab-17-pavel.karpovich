@@ -1,13 +1,11 @@
-﻿using System;
-using System.Data.Common;
-using System.Linq;
-using Dynamic_IP_Address_Service_Server.DAL.Context;
+﻿using Dynamic_IP_Address_Service_Server.DAL.Context;
 using Dynamic_IP_Address_Service_Server.DAL.Infrastructure;
 using Dynamic_IP_Address_Service_Server.DAL.Models;
 using Dynamic_IP_Address_Service_Server.DAL.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using System.Data.Common;
+using System.Linq;
 
 namespace Dynamic_IP_Address_Service_Server.Test.DAL.Repositories
 {
