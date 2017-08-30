@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import classNames from "classnames";
 
-export default class UINotification extends Component {
+export default class UINotification extends PureComponent {
 	render() {
 		const { text, title } = this.props;
 		return (

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Admin, GetUserById } from "../../user";
 
-class PermissionRoute extends Component {
+class PermissionRoute extends PureComponent {
     static propTypes = {
         path: PropTypes.string.isRequired
     };

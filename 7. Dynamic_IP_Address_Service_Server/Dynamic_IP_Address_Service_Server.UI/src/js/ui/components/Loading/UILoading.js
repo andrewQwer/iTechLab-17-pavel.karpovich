@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class UILoading extends Component {
+class UILoading extends PureComponent {
     render() {
         return (
             <div className="progress loading">

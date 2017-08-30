@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-export default class LogOut extends Component {
+export default class LogOut extends PureComponent {
     constructor(props) {
         super(props);
     }

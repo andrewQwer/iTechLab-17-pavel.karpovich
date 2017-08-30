@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-class ProfileIpForm extends Component {
+class ProfileIpForm extends PureComponent {
     static propTypes = {
         ip: PropTypes.string.isRequired,
         domain: PropTypes.string.isRequired,

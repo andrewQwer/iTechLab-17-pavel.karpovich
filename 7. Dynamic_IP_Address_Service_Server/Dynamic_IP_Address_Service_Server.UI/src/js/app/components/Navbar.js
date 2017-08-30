@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { Admin, GetUserById, UserActionCreators, UserLogOut } from "../../user";
 
-class Navbar extends Component {
+class Navbar extends PureComponent {
     getUserNavButton() {
         return (
             <div className="navigation__buttons">

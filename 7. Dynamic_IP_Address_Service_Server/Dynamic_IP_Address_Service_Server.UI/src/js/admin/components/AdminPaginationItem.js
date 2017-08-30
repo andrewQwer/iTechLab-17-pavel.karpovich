@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import classNames from "classnames";
 
-class AdminPaginationItem extends Component {
+class AdminPaginationItem extends PureComponent {
 	render() {
 		const { currentPage, limitation, label } = this.props;
 		return (

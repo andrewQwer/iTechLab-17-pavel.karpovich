@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-class UIBlackout extends Component {
+class UIBlackout extends PureComponent {
 	render() {
 		const { code, message, children } = this.props;
 		let popupShowCondition = !!code || !!message;

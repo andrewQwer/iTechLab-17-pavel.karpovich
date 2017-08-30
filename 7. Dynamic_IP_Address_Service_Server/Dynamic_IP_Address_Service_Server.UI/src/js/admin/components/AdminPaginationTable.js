@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
@@ -7,7 +7,7 @@ import {
     AdminTableItem
 } from "../index";
 
-export default class AdminPaginationTable extends Component {
+export default class AdminPaginationTable extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { currentPage: 1, sortType: "Login", isReverse: false };

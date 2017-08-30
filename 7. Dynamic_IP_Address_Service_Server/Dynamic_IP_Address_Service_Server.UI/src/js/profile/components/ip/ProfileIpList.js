@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import { ProfileIpItem } from "../../index";
 
-export default class ProfileIpList extends Component {
+export default class ProfileIpList extends PureComponent {
     static propTypes = {
         editClick: PropTypes.func.isRequired
     };
