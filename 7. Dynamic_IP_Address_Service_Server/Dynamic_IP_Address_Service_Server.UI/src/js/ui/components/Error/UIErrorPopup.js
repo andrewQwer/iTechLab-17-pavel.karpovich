@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Errors, Error } from "../../index";
 
-class UIErrorPopup extends Component {
+class UIErrorPopup extends PureComponent {
     renderPopup = () => {
         const { code, message } = this.props;
         let error = {

@@ -1,21 +1,21 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import classNames from "classnames";
 
-class AdminPaginationItem extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <li
-                className={`page-item ${this.props.currentPage == this.props.limitation ? this.props.style : ""}`}
-            >
-                <a className="page-link" onClick={::this.props.changePageHandler}>
-					{this.props.label}
+class AdminPaginationItem extends PureComponent {
+	render() {
+		const { currentPage, limitation, label } = this.props;
+		return (
+			<li
+				className={classNames("page-item", {
+					disabled: currentPage == limitation
+				})}
+			>
+				<a className="page-link" onClick={::this.props.changePageHandler}>
+					{label}
 				</a>
-			</li >
+			</li>
 		);
-    }
+	}
 }
 
 export default AdminPaginationItem;

@@ -11,7 +11,7 @@ BEGIN /*1. Простейшие запросы*/
     Id,
     Position
   FROM Job
-  WHERE MinSalary > 500
+  WHERE MinSalary < 500
 
   -- c. Получить среднюю заработную плату начисленную в январе 2015 года.
   SELECT avg(Salary) AS avgSalary
@@ -61,9 +61,13 @@ END
 
 BEGIN /*3. Группировка данных:*/
   -- a. Найти среднюю начисленную заработную плату за 2015 год в разрезе работников;
-  SELECT avg(Salary) as avgSalary
+  SELECT
+    avg(Salary) AS avgSalary,
+    FullName
   FROM Salary
+    INNER JOIN Employee ON Salary.EmployeeId = Employee.Id
   WHERE Year = 2015
+  GROUP BY FullName
 
   -- b. Найти среднюю заработную плату за 2015 год в разрезе работников. Включать в результат только тех работников,
   --  начисления которым проводились не менее двух раз.
@@ -78,7 +82,9 @@ END
 
 BEGIN /*4. Соединения таблиц:*/
   -- a. Найти имена тех работников, начисленная заработная плата которых за январь 2015 превысила 1000;
-  SELECT *
+  SELECT
+    FullName,
+    Salary
   FROM Employee
     INNER JOIN Salary ON Employee.Id = Salary.EmployeeId
   WHERE Year = 2015 AND Month = 1 AND Salary > 1000

@@ -1,7 +1,7 @@
 import UIReducer from "./reducers/UIReducer";
 
 import * as UIActionCreators from "./actions/UIActionCreators";
-import * as UIActionTypes from "./actions/UIActionTypes";
+import { UIActionTypes } from "./actions/UIActionTypes";
 
 import UIContainer from "./containers/UIContainer";
 
@@ -19,18 +19,18 @@ import UINotification from "./components/Notification/UINotification";
 import UILoading from "./components/Loading/UILoading";
 
 export {
-    UIReducer,
-    UIActionTypes,
-    UIActionCreators,
-    UIContainer,
-    Error,
-    Errors,
-    ErrorCodes,
-    Notification,
-    NotificationConst,
-    Notifications,
-    UIErrorPopup,
-    UIBlackout,
-    UINotification,
-    UILoading
+	UIReducer,
+	UIActionTypes,
+	UIActionCreators,
+	UIContainer,
+	Error,
+	Errors,
+	ErrorCodes,
+	Notification,
+	NotificationConst,
+	Notifications,
+	UIErrorPopup,
+	UIBlackout,
+	UINotification,
+	UILoading
 };

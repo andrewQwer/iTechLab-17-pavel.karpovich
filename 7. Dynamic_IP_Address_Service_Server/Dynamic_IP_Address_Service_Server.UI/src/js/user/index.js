@@ -1,7 +1,7 @@
-import UserReducer, { GetUserById } from "./reducers/UserReducer";
+import UserReducer from "./reducers/UserReducer";
 
 import * as UserActionCreators from "./actions/UserActionCreators";
-import * as UserActionTypes from "./actions/UserActionTypes";
+import { UserActionTypes } from "./actions/UserActionTypes";
 
 import Role from "./models/Role";
 
@@ -11,12 +11,11 @@ import UserRegistrationContainer from "./containers/UserRegistrationContainer";
 import UserLogOut from "./components/UserLogOut";
 
 export {
-    UserReducer,
-    GetUserById,
-    UserActionCreators,
-    UserActionTypes,
-    Role,
-    UserLoginContainer,
-    UserRegistrationContainer,
-    UserLogOut
+	UserReducer,
+	UserActionCreators,
+	UserActionTypes,
+	Role,
+	UserLoginContainer,
+	UserRegistrationContainer,
+	UserLogOut
 };

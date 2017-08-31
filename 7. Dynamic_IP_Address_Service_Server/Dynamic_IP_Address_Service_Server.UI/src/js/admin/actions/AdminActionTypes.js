@@ -1,6 +1,10 @@
-export const GET_ALL_USERS = "GET_USERS";
-export const GET_ALL_USERS_IN_BIN = "GET_ALL_USERS_IN_BIN";
-export const GET_PREMIUM_ACCESS = "GET_PREMIUM_ACCESS";
-export const MOVE_TO_BIN = "MOVE_TO_BIN";
-export const DELETE_USER_FROM_BIN = "DELETE_USER_FROM_BIN";
-export const RESTORE_USER_FROM_BIN = "RESTORE_USER_FROM_BIN";
+import keyMirror from "keymirror";
+
+export const AdminActionTypes = keyMirror({
+	GET_ALL_USERS: null,
+	GET_ALL_USERS_IN_BIN: null,
+	GET_PREMIUM_ACCESS: null,
+	MOVE_TO_BIN: null,
+	DELETE_USER_FROM_BIN: null,
+	RESTORE_USER_FROM_BIN: null
+});

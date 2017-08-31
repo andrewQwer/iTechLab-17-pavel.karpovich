@@ -1,5 +1,4 @@
 import { SimpleUser, PremiumUser, Admin, UserActionTypes } from "../index";
-import { GenUUID, SaltedHash } from "../../app";
 import Immutable from "immutable";
 
 const initialState = Immutable.fromJS({
@@ -34,8 +33,4 @@ export default function users(state = initialState, action) {
         default:
             return state;
     }
-}
-
-export function GetUserById(state, id) {
-    return state.users.find(item => item.uuid === id);
 }

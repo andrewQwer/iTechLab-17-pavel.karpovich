@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { MainContainer, HeaderContainer, FooterContainer } from "./app";
+import { Main, Header, Footer } from "./app";
 import { UIContainer } from "./ui";
 import { UserActionCreators } from "./user";
 
@@ -15,9 +15,9 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="main">
-                    <HeaderContainer />
-                    <MainContainer />
-                    <FooterContainer />
+                    <Header />
+                    <Main />
+                    <Footer />
                     <UIContainer />
                 </div>
             </BrowserRouter>
