@@ -6,14 +6,13 @@ import { UserActionCreators } from "../index";
 
 class LoginContainer extends PureComponent {
 	submitClickHandler = () => {
-		this.props.UserActionCreators.loginInUser(
+		this.props.loginInUser(
 			this.loginInput.value,
 			this.passInput.value,
 			this.props.history
 		);
 	};
 
-	//TODO: delete default value from form
 	renderLoginPage = () => {
 		return (
 			<div className="login__form">
@@ -55,7 +54,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	UserActionCreators: bindActionCreators(UserActionCreators, dispatch)
+	loginInUser: bindActionCreators(UserActionCreators.loginInUser, dispatch)
 });
 
 export default withRouter(

@@ -19,7 +19,7 @@ class AdminRecycleBinContainer extends PureComponent {
 	}
 
 	componentWillMount() {
-		this.props.AdminActionCreators.getAllUserInBin();
+		this.props.getAllUserInBin();
 	}
 
 	set toDeleteArray(array) {
@@ -36,12 +36,12 @@ class AdminRecycleBinContainer extends PureComponent {
 
 	deleteButtonClickHandler(event) {
 		if (confirm("Do you really want to delete these users?")) {
-			this.props.AdminActionCreators.deleteUserFromBin(this.toDeleteArray);
+			this.props.deleteUserFromBin(this.toDeleteArray);
 		}
 	}
 
 	restoreButtonClickHandler(event) {
-		this.props.AdminActionCreators.restoreUserFromBin(this.toDeleteArray);
+		this.props.restoreUserFromBin(this.toDeleteArray);
 	}
 
 	setItemCount(event) {
@@ -102,7 +102,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	AdminActionCreators: bindActionCreators(AdminActionCreators, dispatch)
+    getAllUserInBin: bindActionCreators(AdminActionCreators.getAllUserInBin, dispatch),
+    restoreUserFromBin: bindActionCreators(AdminActionCreators.restoreUserFromBin, dispatch),
+    deleteUserFromBin: bindActionCreators(AdminActionCreators.deleteUserFromBin, dispatch)
 });
 
 export default withRouter(

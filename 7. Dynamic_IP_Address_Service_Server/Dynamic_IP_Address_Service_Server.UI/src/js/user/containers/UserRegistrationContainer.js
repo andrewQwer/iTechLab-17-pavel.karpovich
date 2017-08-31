@@ -14,7 +14,7 @@ class RegistrationContainer extends PureComponent {
 			this.checkStringFiled(this.lastNameInput.value) &&
 			this.checkEmailField(this.emailInput.value)
 		) {
-			this.props.UserActionCreators.registerUser(
+			this.props.registerUser(
 				this.loginInput.value,
 				this.passInput.value,
 				this.firstNameInput.value,
@@ -103,7 +103,6 @@ class RegistrationContainer extends PureComponent {
 		);
 	};
 
-	//TODO: delete default value from form
 	render() {
 		return this.renderRegisterPage();
 	}
@@ -115,7 +114,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	UserActionCreators: bindActionCreators(UserActionCreators, dispatch)
+	registerUser: bindActionCreators(UserActionCreators.registerUser, dispatch)
 });
 
 export default withRouter(

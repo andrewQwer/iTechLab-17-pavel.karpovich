@@ -10,8 +10,6 @@ import Navbar from "./components/Navbar";
 import NotFound from "./components/NotFound";
 import PermissionRoute from "./components/PermissionRoute";
 
-import SaltedHash from "./Helpers/Hashing/SaltedHash";
-
 import User from "./models/User"
 
 import * as AppConsts from "./AppConsts";
@@ -26,7 +24,6 @@ export {
     Footer,
     Navbar,
     PermissionRoute,
-    SaltedHash,
     User,
     AppConsts
 };

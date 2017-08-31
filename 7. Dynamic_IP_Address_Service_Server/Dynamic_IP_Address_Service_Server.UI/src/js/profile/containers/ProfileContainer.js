@@ -9,13 +9,13 @@ import { Admin } from "../../user";
 
 class ProfileContainer extends PureComponent {
 	componentWillMount() {
-		this.props.AdminActionCreators.getUserByLogin(
+		this.props.getUserByLogin(
 			this.props.match.params.login
 		);
 	}
 
 	componentWillUnmount() {
-		this.props.AdminActionCreators.clearUserInfo();
+		this.props.clearUserInfo();
 	}
 
 	getProfilePage() {
@@ -81,7 +81,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	AdminActionCreators: bindActionCreators(ProfileActionCreators, dispatch)
+	getUserByLogin: bindActionCreators(ProfileActionCreators.getUserByLogin, dispatch),
+	clearUserInfo: bindActionCreators(ProfileActionCreators.clearUserInfo, dispatch)
 });
 
 export default withRouter(

@@ -19,7 +19,7 @@ class AdminPanelContainer extends PureComponent {
 	}
 
 	componentWillMount() {
-		this.props.AdminActionCreators.getAllUsers();
+		this.props.getAllUsers();
 	}
 
 	set toDeleteArray(array) {
@@ -35,11 +35,11 @@ class AdminPanelContainer extends PureComponent {
 	}
 
 	deleteButtonClickHandler(event) {
-		this.props.AdminActionCreators.moveToBin(this.toDeleteArray);
+		this.props.moveToBin(this.toDeleteArray);
 	}
 
 	getPremiumClickHandler(event) {
-		this.props.AdminActionCreators.getPremiumAccess(this.toDeleteArray);
+		this.props.getPremiumAccess(this.toDeleteArray);
 		this.toDeleteArray = [];
 	}
 
@@ -100,7 +100,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	AdminActionCreators: bindActionCreators(AdminActionCreators, dispatch)
+    getAllUsers: bindActionCreators(AdminActionCreators.getAllUsers, dispatch),
+    moveToBin: bindActionCreators(AdminActionCreators.moveToBin, dispatch),
+    getPremiumAccess: bindActionCreators(AdminActionCreators.getPremiumAccess, dispatch)
 });
 
 export default withRouter(

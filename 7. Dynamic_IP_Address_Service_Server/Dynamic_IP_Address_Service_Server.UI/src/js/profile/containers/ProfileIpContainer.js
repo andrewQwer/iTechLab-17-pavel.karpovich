@@ -17,13 +17,11 @@ class ProfileIpContainer extends PureComponent {
 	};
 
 	componentWillMount() {
-		this.props.ProfileActionCreators.getUserIpByLogin(
-			this.props.match.params.login
-		);
+		this.props.getUserIpByLogin(this.props.match.params.login);
 	}
 
 	componentWillUnmount() {
-		this.props.ProfileActionCreators.clearUserInfo();
+		this.props.clearUserInfo();
 	}
 
 	set uuid(value) {
@@ -90,7 +88,7 @@ class ProfileIpContainer extends PureComponent {
 
 	deleteClickHandler = uuid => {
 		this.setHideForm(true);
-		this.props.ProfileActionCreators.deleteIp(uuid);
+		this.props.deleteIp(uuid);
 	};
 
 	inputChangeHandler = event => {
@@ -108,7 +106,7 @@ class ProfileIpContainer extends PureComponent {
 			this.setHideForm(false);
 			this.domainRemainingCount = this.calculateDomainRemainingCount();
 		} else {
-			this.props.UIActionCreators.showError(
+			this.props.showError(
 				ErrorCodes.EXCEEDED_DOMAIN_COUNT_LIMIT
 			);
 		}
@@ -124,9 +122,7 @@ class ProfileIpContainer extends PureComponent {
 					>
 						+
 					</button>
-					<label>
-						Remain {this.calculateDomainRemainingCount()} domain
-					</label>
+					<label>Remain {this.calculateDomainRemainingCount()} domain</label>
 				</div>
 				<div className="ip__main">
 					<ProfileIpList
@@ -141,8 +137,8 @@ class ProfileIpContainer extends PureComponent {
 						isEdit={this.isEditForm}
 						setEdit={::this.setEditForm}
 						inputChange={::this.inputChangeHandler}
-						addIpToUser={::this.props.ProfileActionCreators.addIp}
-						editUserIp={::this.props.ProfileActionCreators.editIp}
+						addIpToUser={::this.props.addIp}
+						editUserIp={::this.props.editIp}
 						uuid={this.uuid}
 						ip={this.ip}
 						domain={this.domain}
@@ -159,8 +155,18 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	ProfileActionCreators: bindActionCreators(ProfileActionCreators, dispatch),
-	UIActionCreators: bindActionCreators(UIActionCreators, dispatch)
+	getUserIpByLogin: bindActionCreators(
+		ProfileActionCreators.getUserIpByLogin,
+		dispatch
+	),
+	clearUserInfo: bindActionCreators(
+		ProfileActionCreators.clearUserInfo,
+		dispatch
+	),
+	deleteIp: bindActionCreators(ProfileActionCreators.deleteIp, dispatch),
+	addIp: bindActionCreators(ProfileActionCreators.addIp, dispatch),
+	editIp: bindActionCreators(ProfileActionCreators.editIp, dispatch),
+	showError: bindActionCreators(UIActionCreators.showError, dispatch)
 });
 
 export default withRouter(

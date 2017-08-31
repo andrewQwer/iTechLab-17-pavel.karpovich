@@ -1,5 +1,4 @@
 import { SimpleUser, PremiumUser, Admin, UserActionTypes } from "../index";
-import { SaltedHash } from "../../app";
 import Immutable from "immutable";
 
 const initialState = Immutable.fromJS({

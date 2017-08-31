@@ -33,20 +33,20 @@ class UIContainer extends PureComponent {
 		return (
 			<div className="ui">
 				<UIBlackout
-					hideClick={::this.props.UIActionCreators.hideError}
+					hideClick={::this.props.hideError}
 					code={this.props.ui.errorCode}
 					message={this.props.ui.message}
 				>
 					<UIErrorPopup
 						code={this.props.ui.errorCode}
 						message={this.props.ui.message}
-						hideClick={::this.props.UIActionCreators.hideError}
+						hideClick={::this.props.hideError}
 					/>
 				</UIBlackout>
 				<UINotification
 					title="Well done!"
 					text={this.props.ui.notification}
-					hideClick={::this.props.UIActionCreators.hideNotification}
+					hideClick={::this.props.hideNotification}
 				/>
 				<UIBlackout code={this.props.ui.loading} hideClick={null}>
 					<UILoading />
@@ -65,7 +65,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	UIActionCreators: bindActionCreators(UIActionCreators, dispatch)
+	hideError: bindActionCreators(UIActionCreators.hideError, dispatch),
+	hideNotification: bindActionCreators(UIActionCreators.hideNotification, dispatch)
 });
 
 export default withRouter(
