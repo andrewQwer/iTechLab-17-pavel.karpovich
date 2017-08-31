@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class AdminTableItem extends Component {
+class AdminTableItem extends PureComponent {
     render() {
         const { id, login, email, firstName, lastName, role } = this.props.user;
         let isInArray = this.props.deleteArray.includes(id);

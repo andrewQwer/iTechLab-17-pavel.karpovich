@@ -1,6 +1,6 @@
 var ArrayTools = function() {
 	var getSorted = function (array) {
-		var sortedArray = JSON.parse(JSON.stringify(array));
+		var sortedArray = array.slice();
 		return sortedArray.sort(function (a, b) {
 			return a - b
 		});

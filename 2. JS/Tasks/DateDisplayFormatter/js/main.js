@@ -10,7 +10,7 @@
     //CheckInputDate();
     if (_inputFormat != "") {
       //CheckInputFormat(_inputFormat);
-      CheckInputDateFormat();
+      CheckInputDateFormat(_inputData, _inputFormat);
     }
     if (_outputFormat != "") {
       //CheckOutputFormat(_outputFormat);

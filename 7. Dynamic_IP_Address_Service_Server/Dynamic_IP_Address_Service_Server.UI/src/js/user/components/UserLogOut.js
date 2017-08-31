@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-export default class LogOut extends Component {
-    constructor(props) {
-        super(props);
+export default class LogOut extends PureComponent {
+    logOutHandleClick = () => {
+        this.props.actions.logOutUser()
     }
 
     render() {
         return (
-            <button onClick={() => this.props.actions.logOutUser()}>
+            <button onClick={::this.logOutHandleClick}>
                 Login out
 			</button>
         );

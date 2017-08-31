@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class AdminSelectItemPerPage extends Component {
+class AdminSelectItemPerPage extends PureComponent {
     renderItems() {
         return (
             <ul className="pagination">
                 <li>
                     <a className="page-link" onClick={::this.props.setItemCount}>
-						20
+						10
 					</a>
 				</li>
             <li>

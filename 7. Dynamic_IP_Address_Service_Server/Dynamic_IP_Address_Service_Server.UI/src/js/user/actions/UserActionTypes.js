@@ -1,3 +1,7 @@
-export const REGISTER_USER = "REGISTER_USER";
-export const LOGIN_IN_USER = "LOGIN_IN_USER";
-export const LOG_OUT_USER = "LOG_OUT_USER";
+import keyMirror from "keymirror";
+
+export const UserActionTypes = keyMirror({
+	REGISTER_USER: null,
+	LOGIN_IN_USER: null,
+	LOG_OUT_USER: null
+});

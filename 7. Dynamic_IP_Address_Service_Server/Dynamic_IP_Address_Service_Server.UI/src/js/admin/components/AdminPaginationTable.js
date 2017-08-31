@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
@@ -7,7 +7,7 @@ import {
     AdminTableItem
 } from "../index";
 
-export default class AdminPaginationTable extends Component {
+export default class AdminPaginationTable extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { currentPage: 1, sortType: "Login", isReverse: false };
@@ -107,7 +107,6 @@ export default class AdminPaginationTable extends Component {
                 currentPage={this.currentPage}
                 limitation={item}
                 changePageHandler={::this.changePageHandler}
-    style = "active"
     />
 		);
 		return ![0, 1].includes(this.pageCount)
@@ -117,14 +116,12 @@ export default class AdminPaginationTable extends Component {
             currentPage={this.currentPage}
             limitation={1}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 					<AdminPaginationItem
             label="Previous"
             currentPage={this.currentPage}
             limitation={1}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 					{renderPageNumbers}
         <AdminPaginationItem
@@ -132,22 +129,18 @@ export default class AdminPaginationTable extends Component {
             currentPage={this.currentPage}
             limitation={this.pageCount}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 					<AdminPaginationItem
             label="Last"
             currentPage={this.currentPage}
             limitation={this.pageCount}
             changePageHandler={::this.changePageHandler}
-						style="disabled"
 					/>
 				</ul>
     : null;
 	}
 
 renderUsersTable() {
-    this.props.disableAllHighlights();
-    this.props.uncheckedAllCheckBoxes();
     const renderUsers = (
         <table className="table table-hover">
             <tbody>
