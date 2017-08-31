@@ -1,4 +1,4 @@
-import UserReducer, { GetUserById } from "./reducers/UserReducer";
+import UserReducer from "./reducers/UserReducer";
 
 import * as UserActionCreators from "./actions/UserActionCreators";
 import { UserActionTypes } from "./actions/UserActionTypes";
@@ -12,7 +12,6 @@ import UserLogOut from "./components/UserLogOut";
 
 export {
 	UserReducer,
-	GetUserById,
 	UserActionCreators,
 	UserActionTypes,
 	Role,

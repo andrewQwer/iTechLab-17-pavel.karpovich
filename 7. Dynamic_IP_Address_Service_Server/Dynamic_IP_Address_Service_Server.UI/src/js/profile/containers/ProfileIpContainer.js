@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { bindActionCreators } from "redux";
 import { ProfileIpForm, ProfileIpList, ProfileActionCreators } from "../index";
-import { GetUserById, Role } from "../../user";
+import { Role } from "../../user";
 import { UIActionCreators, ErrorCodes } from "../../ui";
 
 class ProfileIpContainer extends PureComponent {

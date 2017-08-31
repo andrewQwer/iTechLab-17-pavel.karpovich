@@ -35,7 +35,3 @@ export default function users(state = initialState, action) {
             return state;
     }
 }
-
-export function GetUserById(state, id) {
-    return state.users.find(item => item.uuid === id);
-}

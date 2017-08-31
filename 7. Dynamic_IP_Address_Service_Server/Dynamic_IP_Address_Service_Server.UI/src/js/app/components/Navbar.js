@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
-import { Admin, GetUserById, UserActionCreators, UserLogOut } from "../../user";
+import { Admin, UserActionCreators, UserLogOut } from "../../user";
 
 class Navbar extends PureComponent {
     getUserNavButton() {
