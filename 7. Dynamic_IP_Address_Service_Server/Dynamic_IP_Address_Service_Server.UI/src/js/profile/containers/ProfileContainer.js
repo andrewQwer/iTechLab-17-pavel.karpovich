@@ -19,9 +19,6 @@ class ProfileContainer extends PureComponent {
 	}
 
 	getProfilePage() {
-		// const { uuid, users } = this.props.user;
-		// let login = this.props.match.params.login;
-		// let currentUser = users.find(item => item.login === login);
 		const { profile } = this.props;
 		return !!profile
 			? <div className="login__form">

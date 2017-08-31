@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import App from "./js";
 import { ConfigureStore, initial } from "./js/app";
 
-window.store = ConfigureStore();
+let store = ConfigureStore();
 
 render(
 	<Provider store={store}>
